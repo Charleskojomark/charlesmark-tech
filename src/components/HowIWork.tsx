@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Compass, PencilRuler, Wrench, ShieldCheck, TrendingUp, Check } from "lucide-react";
 
 interface Step {
@@ -141,58 +142,67 @@ export function HowIWork() {
           })}
         </div>
 
-        {/* Detailed Stage Card */}
-        <div className="bg-[#F5F0E8] rounded-3xl p-6 sm:p-10 border border-[#D8C5AF] shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center">
-                  <StepIcon className="w-5 h-5 text-[#B58A64]" />
+        {/* Detailed Stage Card with Motion */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep.step}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="bg-[#F5F0E8] rounded-3xl p-6 sm:p-10 border border-[#D8C5AF] shadow-sm"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center">
+                    <StepIcon className="w-5 h-5 text-[#B58A64]" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-xs text-[#B58A64] font-semibold tracking-wider uppercase">
+                      STAGE {currentStep.step} / 05
+                    </span>
+                    <h3 className="font-display font-bold text-2xl text-[#241A15]">
+                      {currentStep.title}
+                    </h3>
+                  </div>
                 </div>
-                <div>
-                  <span className="font-mono text-xs text-[#B58A64] font-semibold tracking-wider uppercase">
-                    STAGE {currentStep.step} / 05
-                  </span>
-                  <h3 className="font-display font-bold text-2xl text-[#241A15]">
-                    {currentStep.title}
-                  </h3>
-                </div>
-              </div>
 
-              <p className="font-display text-lg text-[#241A15] font-semibold leading-snug pt-2">
-                &ldquo;{currentStep.headline}&rdquo;
-              </p>
-              <p className="text-sm text-[#4A3428] leading-relaxed">
-                {currentStep.description}
-              </p>
-
-              <div className="mt-4 p-4 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/70">
-                <span className="font-mono text-[11px] text-[#241A15] font-bold tracking-wider uppercase block mb-1">
-                  ENGINEERING CONSIDERATION:
-                </span>
-                <p className="text-xs text-[#4A3428] font-mono leading-relaxed">
-                  {currentStep.engineeringFocus}
+                <p className="font-display text-lg text-[#241A15] font-semibold leading-snug pt-2">
+                  &ldquo;{currentStep.headline}&rdquo;
                 </p>
+                <p className="text-sm text-[#4A3428] leading-relaxed">
+                  {currentStep.description}
+                </p>
+
+                <div className="mt-4 p-4 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/70">
+                  <span className="font-mono text-[11px] text-[#241A15] font-bold tracking-wider uppercase block mb-1">
+                    ENGINEERING CONSIDERATION:
+                  </span>
+                  <p className="text-xs text-[#4A3428] font-mono leading-relaxed">
+                    {currentStep.engineeringFocus}
+                  </p>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 bg-[#FAF7F2] rounded-2xl p-6 border border-[#D8C5AF]">
+                <span className="font-mono text-xs text-[#241A15] font-semibold uppercase tracking-wider block mb-4">
+                  KEY DELIVERABLES
+                </span>
+                <ul className="space-y-3">
+                  {currentStep.deliverables.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-xs text-[#4A3428]">
+                      <div className="w-4 h-4 rounded-full bg-[#B58A64]/20 text-[#4A3428] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-[#241A15]" />
+                      </div>
+                      <span className="leading-tight">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-
-            <div className="lg:col-span-5 bg-[#FAF7F2] rounded-2xl p-6 border border-[#D8C5AF]">
-              <span className="font-mono text-xs text-[#241A15] font-semibold uppercase tracking-wider block mb-4">
-                KEY DELIVERABLES
-              </span>
-              <ul className="space-y-3">
-                {currentStep.deliverables.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-xs text-[#4A3428]">
-                    <div className="w-4 h-4 rounded-full bg-[#B58A64]/20 text-[#4A3428] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-[#241A15]" />
-                    </div>
-                    <span className="leading-tight">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

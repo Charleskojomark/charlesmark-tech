@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Github, Code2, Sparkles, Layers } from "lucide-react";
+import { ArrowUpRight, Github, Code2, Sparkles, Layers, Activity } from "lucide-react";
+import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
 
 export function FeaturedProjects() {
@@ -10,12 +11,12 @@ export function FeaturedProjects() {
     <section id="work" className="py-10 sm:py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 md:mb-16 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 border-b border-[#D8C5AF]/70 pb-6 sm:pb-8">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
               FEATURED ENGINEERING WORK
             </span>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
               APPLIED AI, WORKFLOWS & BACKEND SERVICES
             </h2>
           </div>
@@ -26,6 +27,11 @@ export function FeaturedProjects() {
             <span>View All Engineering Projects ({projects.length})</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
+        </div>
+
+        {/* Interactive System Design & Simulation Studio */}
+        <div className="mb-12">
+          <ProjectSystemDesign />
         </div>
 
         {/* Featured Projects Grid */}

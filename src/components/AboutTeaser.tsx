@@ -116,7 +116,7 @@ export function AboutTeaser() {
                   </div>
                   <div className="flex justify-between py-1">
                     <span className="text-[#4A3428]/60">PRIMARY STACK:</span>
-                    <span className="text-[#241A15] font-semibold">Node / Python / n8n</span>
+                    <span className="text-[#241A15] font-semibold">Express.js / Django / PostgreSQL</span>
                   </div>
                 </div>
               </div>

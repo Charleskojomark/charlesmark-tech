@@ -12,6 +12,7 @@ import {
   ShieldAlert,
   Lightbulb,
 } from "lucide-react";
+import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
 
 export async function generateStaticParams() {
@@ -118,6 +119,19 @@ export default async function ProjectCaseStudyPage({
               </span>
             ))}
           </div>
+        </section>
+
+        {/* Interactive Architecture & System Design Simulator */}
+        <section className="mb-14">
+          <div className="mb-4">
+            <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-1">
+              SYSTEM DESIGN & RUNTIME SIMULATION
+            </span>
+            <h2 className="font-display font-bold text-2xl text-[#241A15]">
+              Interactive Architecture & Pipeline Inspector
+            </h2>
+          </div>
+          <ProjectSystemDesign defaultProject={project.slug} />
         </section>
 
         {/* Problem & Solution Grid */}

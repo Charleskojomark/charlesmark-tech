@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Github, Sparkles, Code2, ArrowLeft } from "lucide-react";
+import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
 
 const CATEGORIES = ["All", "AI Systems", "Automation", "Backend", "Cloud & DevOps"];
@@ -30,7 +31,7 @@ export default function WorkPage() {
         </div>
 
         {/* Page Header */}
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-10">
           <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-2">
             ENGINEERING PORTFOLIO
           </span>
@@ -40,6 +41,19 @@ export default function WorkPage() {
           <p className="text-base text-[#4A3428] leading-relaxed">
             A documented collection of AI systems, backend services, and automation pipelines. Each project details the concrete problem, architecture decisions, trade-offs, and lessons learned.
           </p>
+        </div>
+
+        {/* Interactive Architecture & System Design Simulator Studio */}
+        <div className="mb-14">
+          <div className="mb-4">
+            <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-1">
+              SYSTEM DESIGN & RUNTIME SIMULATION
+            </span>
+            <h2 className="font-display font-bold text-2xl text-[#241A15]">
+              Interactive System Design & Pipeline Inspector
+            </h2>
+          </div>
+          <ProjectSystemDesign />
         </div>
 
         {/* Category Filters */}
