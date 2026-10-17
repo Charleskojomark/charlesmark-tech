@@ -435,27 +435,28 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
 
       {/* Detailed Node Inspector Panel - Instantly in viewport directly under the compact step bar */}
       <div className="relative z-10 mt-4 sm:mt-6 p-4 sm:p-6 rounded-2xl bg-[#1C1410] border border-[#4A3428]">
-        {/* Inspector Sub-Tabs & Mobile Step Navigator */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[#4A3428]">
-          <div className="flex items-center justify-between sm:justify-start gap-2">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-bold text-[#F5F0E8] uppercase">
-                STEP 0{activeNodeIndex + 1}: {activeNode.name}
+        {/* Inspector Header: Clean stacked layout on mobile so titles never wrap awkwardly */}
+        <div className="space-y-3 pb-3 sm:pb-4 border-b border-[#4A3428]">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-mono text-xs font-bold text-[#B58A64] bg-[#2E2019] px-2.5 py-0.5 rounded border border-[#B58A64]/30">
+                STEP 0{activeNodeIndex + 1} OF 0{currentFlow.nodes.length}
               </span>
-              <span className="font-mono text-[9px] text-[#B58A64] bg-[#2E2019] px-2 py-0.5 rounded">
+              <span className="font-mono text-[10px] text-[#D8C5AF]/90 bg-[#140E0B] px-2 py-0.5 rounded border border-[#4A3428]">
                 {activeNode.protocol}
               </span>
             </div>
 
             {/* Quick Step Controls on Mobile */}
-            <div className="flex sm:hidden items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 disabled={activeNodeIndex === 0}
                 onClick={() => setActiveNodeIndex((i) => Math.max(0, i - 1))}
-                className="px-2 py-1 rounded bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] disabled:opacity-30"
+                className="px-2.5 py-1 rounded-lg bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                aria-label="Previous step"
               >
-                &larr;
+                &larr; Prev
               </button>
               <button
                 type="button"
@@ -465,46 +466,60 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                     Math.min(currentFlow.nodes.length - 1, i + 1)
                   )
                 }
-                className="px-2 py-1 rounded bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] disabled:opacity-30"
+                className="px-2.5 py-1 rounded-lg bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                aria-label="Next step"
               >
-                &rarr;
+                Next &rarr;
               </button>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[#241A15] p-1 rounded-xl border border-[#4A3428]">
+          <div>
+            <h4 className="font-display font-bold text-base sm:text-xl text-[#F5F0E8] leading-tight">
+              {activeNode.name}
+            </h4>
+            <span className="font-mono text-xs text-[#B58A64] block mt-0.5">
+              Role: {activeNode.role}
+            </span>
+          </div>
+
+          {/* Responsive 3-Column Tab Bar (Never overflows or truncates) */}
+          <div className="grid grid-cols-3 gap-1 bg-[#241A15] p-1 rounded-xl border border-[#4A3428]">
             <button
               type="button"
               onClick={() => setActiveTab("flow")}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-mono font-medium transition-colors text-center cursor-pointer ${
                 activeTab === "flow"
                   ? "bg-[#B58A64] text-[#241A15] font-bold"
                   : "text-[#D8C5AF] hover:text-[#F5F0E8]"
               }`}
             >
-              System Logic
+              <span className="sm:hidden">Logic</span>
+              <span className="hidden sm:inline">System Logic</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("payload")}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-mono font-medium transition-colors text-center cursor-pointer ${
                 activeTab === "payload"
                   ? "bg-[#B58A64] text-[#241A15] font-bold"
                   : "text-[#D8C5AF] hover:text-[#F5F0E8]"
               }`}
             >
-              Data Schema
+              <span className="sm:hidden">Schema</span>
+              <span className="hidden sm:inline">Data Schema</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("failure")}
-              className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors cursor-pointer ${
+              className={`py-1.5 px-2 rounded-lg text-xs font-mono font-medium transition-colors text-center cursor-pointer ${
                 activeTab === "failure"
                   ? "bg-[#B58A64] text-[#241A15] font-bold"
                   : "text-[#D8C5AF] hover:text-[#F5F0E8]"
               }`}
             >
-              Failure Handling
+              <span className="sm:hidden">Fail-Safe</span>
+              <span className="hidden sm:inline">Fail-Safe Recovery</span>
             </button>
           </div>
         </div>
@@ -519,9 +534,9 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
               <p className="text-xs sm:text-sm text-[#D8C5AF] leading-relaxed">
                 {activeNode.description}
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#D8C5AF]/70 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-4 text-xs font-mono text-[#D8C5AF]/70 pt-2 border-t border-[#4A3428]/40 mt-3">
                 <span>ESTIMATED LATENCY: <strong className="text-emerald-400">{activeNode.latency}</strong></span>
-                <span>•</span>
+                <span className="hidden sm:inline text-[#D8C5AF]/30">•</span>
                 <span>TRANSPORT: <strong className="text-[#F5F0E8]">{activeNode.protocol}</strong></span>
               </div>
             </div>
