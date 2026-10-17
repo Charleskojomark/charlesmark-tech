@@ -1,0 +1,170 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/config/site";
+
+export function Footer() {
+  const [currentYear, setCurrentYear] = useState(2026);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
+  return (
+    <footer className="bg-[#FAF7F2] border-t border-[#D8C5AF]/70 text-[#241A15] pt-16 pb-12 mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-[#D8C5AF]/60">
+          {/* Brand Column */}
+          <div className="md:col-span-5 flex flex-col space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-mono text-sm font-semibold tracking-tighter">
+                CM
+              </div>
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-lg tracking-wider text-[#241A15] uppercase">
+                  CHARLES MARK
+                </span>
+                <span className="font-mono text-[10px] tracking-widest text-[#4A3428]/80 uppercase">
+                  AI SYSTEMS ENGINEER
+                </span>
+              </div>
+            </div>
+
+            <p className="text-[#4A3428] text-sm leading-relaxed max-w-sm pt-1">
+              Building AI-powered systems, intelligent workflows, and backend applications that solve practical problems.
+            </p>
+
+            <div className="pt-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] text-xs font-mono text-[#4A3428]">
+                <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                <span>Primary domain: https://charlesmark.tech</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="md:col-span-3 flex flex-col space-y-3">
+            <span className="font-mono text-xs text-[#4A3428]/70 tracking-widest uppercase font-semibold">
+              Navigation
+            </span>
+            <ul className="space-y-2 text-sm font-medium">
+              <li>
+                <Link href="/work" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Work & Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Services & Capabilities
+                </Link>
+              </li>
+              <li>
+                <Link href="/insights" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Insights & Resources
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  About Charles
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Contact & Inquiries
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social Profiles & Rules */}
+          <div className="md:col-span-4 flex flex-col space-y-4">
+            <span className="font-mono text-xs text-[#4A3428]/70 tracking-widest uppercase font-semibold">
+              Connect & Verify
+            </span>
+            <div className="space-y-3 text-sm">
+              {/* LinkedIn Row */}
+              <a
+                href={siteConfig.social.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  {/* LinkedIn Icon in Official Blue #0A66C2 ONLY */}
+                  <svg
+                    className="w-5 h-5 fill-[#0A66C2] flex-shrink-0"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.3a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28" />
+                  </svg>
+                  {/* Username in pure black text #000000 */}
+                  <span className="font-mono text-xs font-semibold text-[#000000]">
+                    {siteConfig.social.linkedin.username}
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              {/* GitHub Row */}
+              <a
+                href={siteConfig.social.github.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  {/* GitHub Icon in pure black #000000 */}
+                  <svg
+                    className="w-5 h-5 fill-[#000000] flex-shrink-0"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    />
+                  </svg>
+                  {/* Username in pure black text #000000 */}
+                  <span className="font-mono text-xs font-semibold text-[#000000]">
+                    {siteConfig.social.github.username}
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              {/* Website Domain Row */}
+              <a
+                href={siteConfig.social.website.url}
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#000000] flex items-center justify-center text-[10px] text-[#F5F0E8] font-mono">
+                    ✦
+                  </div>
+                  {/* Domain in pure black text #000000 */}
+                  <span className="font-mono text-xs font-semibold text-[#000000]">
+                    {siteConfig.social.website.domain}
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#4A3428]">
+          <p>© {currentYear} Charles Mark. Engineered with practical precision.</p>
+          <div className="flex items-center gap-6">
+            <span>Latte / Espresso Brand Palette</span>
+            <span>WCAG 2.2 Accessible</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

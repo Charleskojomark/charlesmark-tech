@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-milk: #F5F0E8;
+  --color-espresso: #4A3428;
+  --color-latte: #B58A64;
+  --color-beige: #D8C5AF;
+  --color-deep: #241A15;
+
+  --color-milk-light: #FAF7F2;
+  --color-milk-dark: #ECE4D6;
+  --color-espresso-dark: #38261D;
+  --color-espresso-light: #5E4334;
+  --color-latte-light: #CBB093;
+  --color-beige-light: #E8DDCF;
+
+  --font-display: var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  --background: #F5F0E8;
+  --foreground: #241A15;
+  --brand-espresso: #4A3428;
+  --brand-latte: #B58A64;
+  --brand-beige: #D8C5AF;
+  --brand-deep: #241A15;
+  --brand-milk: #F5F0E8;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Headings font utility */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom selection */
+::selection {
+  background-color: #B58A64;
+  color: #F5F0E8;
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8C5AF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B58A64;
+}
+
+/* Caret animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-caret {
+  animation: blink 1s step-end infinite;
+}
+
+/* Pulse glow for node diagram */
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+.animate-node-pulse {
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+/* Signal flow dash animation */
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-dash-flow {
+  stroke-dasharray: 6 4;
+  animation: dashFlow 2s linear infinite;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
