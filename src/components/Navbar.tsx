@@ -99,15 +99,18 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Let's Talk CTA */}
+          {/* Let's Talk WhatsApp CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/contact"
+            <a
+              href={siteConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4A3428] hover:bg-[#241A15] text-[#F5F0E8] text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]"
             >
+              <span className="w-2 h-2 rounded-full bg-[#25D366]" />
               <span>Let&apos;s Talk</span>
               <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -170,14 +173,17 @@ export function Navbar() {
               })}
 
               <div className="pt-4 mt-2 border-t border-[#D8C5AF]">
-                <Link
-                  href="/contact"
+                <a
+                  href={siteConfig.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#4A3428] text-[#F5F0E8] font-medium text-base shadow-md active:scale-[0.98] transition-transform"
                 >
-                  <span>Let&apos;s Talk</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#25D366]" />
+                  <span>Let&apos;s Talk on WhatsApp</span>
                   <ArrowUpRight className="w-5 h-5 text-[#D8C5AF]" />
-                </Link>
+                </a>
               </div>
 
               {/* Status Badge */}

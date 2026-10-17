@@ -49,8 +49,17 @@ export const siteConfig = {
     "Workflow Automation Engineer",
   ],
   contact: {
+    phone: "+2347082367382",
+    phoneDisplay: "+234 708 236 7382",
+    whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20let's%20talk%20about%20a%20project",
+    getWhatsappUrlForService: (serviceName?: string) => {
+      const text = serviceName
+        ? `Hi Charles, I'm interested in discussing ${serviceName} with you.`
+        : "Hi Charles, let's talk about a project.";
+      return `https://wa.me/2347082367382?text=${encodeURIComponent(text)}`;
+    },
     emailPlaceholder: "charles@charlesmark.tech",
     fallbackMailto: "mailto:markcharleskojo@gmail.com",
-    turnaround: "Typically replies within 24–48 hours",
+    turnaround: "Direct WhatsApp chat • Instant response / same day reply",
   },
 };

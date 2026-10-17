@@ -74,9 +74,32 @@ export function Footer() {
           {/* Social Profiles & Rules */}
           <div className="md:col-span-4 flex flex-col space-y-4">
             <span className="font-mono text-xs text-[#4A3428]/70 tracking-widest uppercase font-semibold">
-              Connect & Verify
+              Connect & Direct Message
             </span>
             <div className="space-y-3 text-sm">
+              {/* WhatsApp Direct Row */}
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#25D366]/40 hover:border-[#25D366] transition-all shadow-xs"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full bg-[#25D366] text-[#F5F0E8] flex items-center justify-center font-bold text-xs flex-shrink-0">
+                    ✆
+                  </span>
+                  <div className="flex flex-col">
+                    <span className="font-mono text-xs font-bold text-[#000000]">
+                      {siteConfig.contact.phoneDisplay}
+                    </span>
+                    <span className="text-[10px] text-[#25D366] font-semibold">
+                      WhatsApp • Instant Reply
+                    </span>
+                  </div>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
               {/* LinkedIn Row */}
               <a
                 href={siteConfig.social.linkedin.url}

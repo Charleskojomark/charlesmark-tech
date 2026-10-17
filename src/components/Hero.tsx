@@ -63,13 +63,30 @@ export function Hero() {
                 <ArrowDown className="w-4 h-4 text-[#D8C5AF] group-hover:translate-y-0.5 transition-transform" />
               </a>
 
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#4A3428] text-[#241A15] font-display font-semibold text-sm transition-all duration-200 active:scale-[0.98]"
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#FAF7F2] border-2 border-[#4A3428] hover:bg-[#4A3428] hover:text-[#F5F0E8] text-[#241A15] font-display font-bold text-sm transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98] group"
               >
-                <span>Let&apos;s Work Together</span>
-                <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </Link>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] flex-shrink-0" />
+                <span>Let&apos;s Talk on WhatsApp</span>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
+
+            {/* Direct WhatsApp Phone Number Chip */}
+            <div className="pt-0.5">
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#4A3428] hover:text-[#241A15] transition-colors"
+              >
+                <span className="text-[#B58A64]">✦ WhatsApp / Direct:</span>
+                <span className="font-bold underline underline-offset-4">{siteConfig.contact.phoneDisplay}</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">Instant reply</span>
+              </a>
             </div>
 
             {/* Optional CV link & quick metrics */}

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, ArrowLeft, Cpu, Bot, Server, Check } from "lucide-react";
 import { services } from "@/data/services";
+import { siteConfig } from "@/config/site";
 
 const ICON_MAP = {
   Cpu: Cpu,
@@ -70,13 +71,16 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <Link
-                    href={contactHref}
+                  <a
+                    href={siteConfig.contact.getWhatsappUrlForService(service.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4A3428] hover:bg-[#241A15] text-[#F5F0E8] font-mono text-xs uppercase tracking-wider font-semibold transition-colors"
                   >
-                    <span>{service.ctaText}</span>
+                    <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                    <span>{service.ctaText} via WhatsApp</span>
                     <ArrowUpRight className="w-4 h-4 text-[#D8C5AF]" />
-                  </Link>
+                  </a>
                 </div>
 
                 <div className="max-w-2xl mb-8">

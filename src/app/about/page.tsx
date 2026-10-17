@@ -202,12 +202,15 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/contact"
-                className="px-6 py-3 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
               >
-                Send a Project Brief
-              </Link>
+                <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                <span>Chat on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
+              </a>
             </div>
           </div>
         </section>

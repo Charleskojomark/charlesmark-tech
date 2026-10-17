@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
+import { siteConfig } from "@/config/site";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -259,13 +260,16 @@ export default async function ProjectCaseStudyPage({
               Let&apos;s evaluate your current requirements and engineering constraints.
             </p>
           </div>
-          <Link
-            href="/contact"
+          <a
+            href={`https://wa.me/2347082367382?text=${encodeURIComponent(`Hi Charles, I read your case study on ${project.title} and would like to discuss a similar architecture.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4A3428] hover:bg-[#241A15] text-[#F5F0E8] text-xs font-semibold uppercase tracking-wider font-mono transition-colors"
           >
-            <span>Discuss This System</span>
+            <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+            <span>Discuss This System on WhatsApp</span>
             <ArrowUpRight className="w-4 h-4 text-[#D8C5AF]" />
-          </Link>
+          </a>
         </div>
       </div>
     </article>

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2, Cpu, Bot, Server } from "lucide-react";
 import { services } from "@/data/services";
+import { siteConfig } from "@/config/site";
 
 const ICON_MAP = {
   Cpu: Cpu,
@@ -32,8 +33,8 @@ export function ServicesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => {
             const Icon = ICON_MAP[service.icon as keyof typeof ICON_MAP] || Cpu;
-            // Pre-fill query for contact page
-            const contactHref = `/contact?service=${service.id}`;
+            // Direct WhatsApp link for instant messaging
+            const whatsappServiceUrl = siteConfig.contact.getWhatsappUrlForService(service.name);
 
             return (
               <div
@@ -79,13 +80,18 @@ export function ServicesSection() {
 
                 {/* Service Direct CTA */}
                 <div className="pt-6 border-t border-[#D8C5AF]/70">
-                  <Link
-                    href={contactHref}
+                  <a
+                    href={whatsappServiceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group/btn w-full inline-flex items-center justify-between p-3.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] text-[#241A15] font-medium text-xs hover:bg-[#241A15] hover:text-[#F5F0E8] hover:border-[#241A15] transition-all duration-200"
                   >
-                    <span className="font-semibold">{service.ctaText}</span>
+                    <span className="font-semibold flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                      <span>{service.ctaText} via WhatsApp</span>
+                    </span>
                     <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover/btn:text-[#D8C5AF] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Link>
+                  </a>
                 </div>
               </div>
             );

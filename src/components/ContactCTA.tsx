@@ -32,27 +32,34 @@ export function ContactCTA() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-sm sm:text-base transition-colors shadow-lg active:scale-[0.98] text-center"
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl sm:rounded-full bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-sm sm:text-base transition-all shadow-lg hover:shadow-xl active:scale-[0.98] text-center group"
               >
-                <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-[#241A15] flex-shrink-0" />
-                <span>Start a Project Discussion</span>
-                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#241A15] flex-shrink-0" />
-              </Link>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] flex-shrink-0" />
+                <span>Message on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-[#241A15] flex-shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
 
               <a
                 href={siteConfig.contact.fallbackMailto}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl sm:rounded-full bg-[#38261D] border border-[#4A3428] hover:border-[#B58A64] text-[#F5F0E8] font-mono text-xs font-medium transition-colors text-center"
               >
                 <Mail className="w-4 h-4 text-[#D8C5AF] flex-shrink-0" />
-                <span>Direct Email Fallback</span>
+                <span>Email Fallback</span>
               </a>
             </div>
 
-            <p className="font-mono text-[11px] sm:text-xs text-[#D8C5AF]/60 mt-4 sm:mt-6">
-              {siteConfig.contact.turnaround}
-            </p>
+            <div className="flex flex-wrap items-center gap-4 pt-4 text-xs font-mono text-[#D8C5AF]/80">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                <span>Direct WhatsApp: <strong>{siteConfig.contact.phoneDisplay}</strong></span>
+              </span>
+              <span>•</span>
+              <span>No forms required • Direct engineer access</span>
+            </div>
           </div>
         </div>
       </div>
