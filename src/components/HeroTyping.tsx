@@ -77,18 +77,18 @@ export function HeroTyping() {
         I build systems as an
       </span>
 
-      {/* Dynamic typing container with fixed minimum dimensions to prevent layout shifts */}
+      {/* Dynamic typing container with responsive dimensions to prevent horizontal overflow */}
       <div
         aria-hidden="true"
-        className="inline-flex items-center min-h-[2.5rem] sm:min-h-[2.75rem] min-w-[280px] sm:min-w-[340px]"
+        className="inline-flex items-center min-h-[2.25rem] sm:min-h-[2.75rem] max-w-full"
       >
-        <span className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-[#241A15] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5">
+        <span className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-[#241A15] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5 break-words">
           {prefersReducedMotion ? roles[0] : currentText}
         </span>
         {/* Visible blinking caret */}
         {!prefersReducedMotion && (
           <span
-            className="inline-block w-[3px] h-6 sm:h-8 bg-[#4A3428] ml-1.5 animate-caret rounded-full align-middle"
+            className="inline-block w-[2.5px] sm:w-[3px] h-5 sm:h-8 bg-[#4A3428] ml-1 sm:ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
             aria-hidden="true"
           />
         )}

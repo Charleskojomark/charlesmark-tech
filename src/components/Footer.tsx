@@ -35,13 +35,6 @@ export function Footer() {
             <p className="text-[#4A3428] text-sm leading-relaxed max-w-sm pt-1">
               Building AI-powered systems, intelligent workflows, and backend applications that solve practical problems.
             </p>
-
-            <div className="pt-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] text-xs font-mono text-[#4A3428]">
-                <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                <span>Primary domain: https://charlesmark.tech</span>
-              </div>
-            </div>
           </div>
 
           {/* Navigation Links */}
@@ -157,12 +150,8 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#4A3428]">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#4A3428]">
           <p>© {currentYear} Charles Mark. Engineered with practical precision.</p>
-          <div className="flex items-center gap-6">
-            <span>Latte / Espresso Brand Palette</span>
-            <span>WCAG 2.2 Accessible</span>
-          </div>
         </div>
       </div>
     </footer>

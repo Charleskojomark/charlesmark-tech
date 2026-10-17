@@ -11,25 +11,25 @@ const ICON_MAP = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 relative">
+    <section id="services" className="py-10 sm:py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 md:mb-16 gap-4">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
               CORE SERVICES & OFFERINGS
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
               ENGINEERED SOLUTIONS FOR APPLIED AI & BACKENDS
             </h2>
           </div>
-          <p className="text-sm text-[#4A3428] max-w-md leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4A3428] max-w-md leading-relaxed">
             I build practical, durable systems tailored to your workflows and infrastructure — avoiding fragile demos and unnecessary complexity.
           </p>
         </div>
 
         {/* 3 Visually Distinct Service Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => {
             const Icon = ICON_MAP[service.icon as keyof typeof ICON_MAP] || Cpu;
             // Pre-fill query for contact page
@@ -38,11 +38,11 @@ export function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-lg transition-all duration-300 relative overflow-hidden"
               >
                 {/* Visual accent badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-sm">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-sm">
                     <Icon className="w-6 h-6 text-[#D8C5AF]" />
                   </div>
                   <span className="font-mono text-xs font-semibold text-[#4A3428]/70 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF]/60">

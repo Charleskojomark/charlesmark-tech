@@ -7,21 +7,21 @@ export function InsightsSection() {
   const recentArticles = articles.slice(0, 3);
 
   return (
-    <section id="insights" className="py-20 bg-[#FAF7F2] border-t border-[#D8C5AF]/70">
+    <section id="insights" className="py-10 sm:py-16 md:py-20 bg-[#FAF7F2] border-t border-[#D8C5AF]/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 md:mb-16 gap-4">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
               FREE EDUCATIONAL RESOURCES & INSIGHTS
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
               PRACTICAL ARCHITECTURE & AUTOMATION LESSONS
             </h2>
           </div>
           <Link
             href="/insights"
-            className="group inline-flex items-center gap-2 text-sm font-mono font-medium text-[#241A15] hover:text-[#4A3428]"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-medium text-[#241A15] hover:text-[#4A3428]"
           >
             <span>Read All Articles & Guides ({articles.length})</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -29,11 +29,11 @@ export function InsightsSection() {
         </div>
 
         {/* Editorial Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {recentArticles.map((article) => (
             <article
               key={article.slug}
-              className="group flex flex-col justify-between bg-[#F5F0E8] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-md transition-all duration-300"
+              className="group flex flex-col justify-between bg-[#F5F0E8] rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-md transition-all duration-300"
             >
               <div>
                 <div className="flex items-center justify-between mb-4 text-xs font-mono">

@@ -7,21 +7,21 @@ import { siteConfig } from "@/config/site";
 
 export function Hero() {
   return (
-    <section className="pt-8 pb-16 md:pt-12 md:pb-24 overflow-hidden relative">
+    <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-12 md:pb-24 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Column: Hero Text and Dynamic Typing */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6">
             {/* Small Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#B58A64] animate-pulse" />
-              <span className="font-mono text-xs font-semibold text-[#4A3428] tracking-widest uppercase">
+              <span className="font-mono text-[11px] sm:text-xs font-semibold text-[#4A3428] tracking-widest uppercase">
                 {siteConfig.tagline}
               </span>
             </div>
 
             {/* Primary Headline */}
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#241A15] tracking-tight leading-[1.08]">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#241A15] tracking-tight leading-[1.12]">
               I BUILD AI-POWERED SYSTEMS THAT SOLVE REAL PROBLEMS.
             </h1>
 
@@ -29,15 +29,15 @@ export function Hero() {
             <HeroTyping />
 
             {/* Animated Supporting Line */}
-            <p className="text-base sm:text-lg text-[#4A3428] leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-lg text-[#4A3428] leading-relaxed max-w-xl">
               From backend services to intelligent agents and automated workflows, I turn practical problems into engineered solutions.
             </p>
 
             {/* Primary & Secondary CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <a
                 href="#work"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
               >
                 <span>Explore My Work</span>
                 <ArrowDown className="w-4 h-4 text-[#D8C5AF] group-hover:translate-y-0.5 transition-transform" />
@@ -45,7 +45,7 @@ export function Hero() {
 
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#4A3428] text-[#241A15] font-display font-semibold text-sm transition-all duration-200 active:scale-[0.98]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#4A3428] text-[#241A15] font-display font-semibold text-sm transition-all duration-200 active:scale-[0.98]"
               >
                 <span>Let&apos;s Work Together</span>
                 <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -53,7 +53,7 @@ export function Hero() {
             </div>
 
             {/* Optional CV link & quick metrics */}
-            <div className="pt-2 flex items-center gap-6 text-xs font-mono text-[#4A3428]">
+            <div className="pt-1 flex flex-wrap items-center gap-3 sm:gap-6 text-xs font-mono text-[#4A3428]">
               {siteConfig.cv.available ? (
                 <a
                   href={siteConfig.cv.url}

@@ -13,12 +13,12 @@ export function TrustStrip() {
   return (
     <section
       aria-label="Core Engineering Disciplines"
-      className="w-full border-y border-[#D8C5AF]/70 bg-[#FAF7F2] py-8 my-8"
+      className="w-full border-y border-[#D8C5AF]/70 bg-[#FAF7F2] py-5 sm:py-8 my-4 sm:my-8"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
           <div className="flex-shrink-0">
-            <span className="font-mono text-xs text-[#4A3428]/70 tracking-widest uppercase block font-semibold">
+            <span className="font-mono text-[11px] sm:text-xs text-[#4A3428]/70 tracking-widest uppercase block font-semibold">
               ENGINEERING DISCIPLINES
             </span>
             <p className="text-xs text-[#241A15] font-medium mt-0.5">
@@ -26,7 +26,7 @@ export function TrustStrip() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 w-full md:w-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 w-full md:w-auto">
             {DISCIPLINES.map((item) => {
               const Icon = item.icon;
               return (

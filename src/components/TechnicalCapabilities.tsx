@@ -13,19 +13,19 @@ export function TechnicalCapabilities() {
       : capabilities.filter((g) => g.id === selectedGroupId);
 
   return (
-    <section id="capabilities" className="py-20">
+    <section id="capabilities" className="py-10 sm:py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
               TECHNICAL PROFICIENCY MATRIX
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
               PROVEN STACK & HONEST CAPABILITIES
             </h2>
           </div>
-          <p className="text-sm text-[#4A3428] max-w-md leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4A3428] max-w-md leading-relaxed">
             Technologies grouped by architectural role. Categorized transparently between production-tested implementations and active lab research.
           </p>
         </div>

@@ -7,21 +7,21 @@ export function FeaturedProjects() {
   const featured = projects.filter((p) => p.featured);
 
   return (
-    <section id="work" className="py-20 relative">
+    <section id="work" className="py-10 sm:py-16 md:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 md:mb-16 gap-4">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
               FEATURED ENGINEERING WORK
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
               APPLIED AI, WORKFLOWS & BACKEND SERVICES
             </h2>
           </div>
           <Link
             href="/work"
-            className="group inline-flex items-center gap-2 text-sm font-mono font-medium text-[#241A15] hover:text-[#4A3428]"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-mono font-medium text-[#241A15] hover:text-[#4A3428]"
           >
             <span>View All Engineering Projects ({projects.length})</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -29,11 +29,11 @@ export function FeaturedProjects() {
         </div>
 
         {/* Featured Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {featured.map((project) => (
             <article
               key={project.slug}
-              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-lg transition-all duration-300 relative"
+              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-lg transition-all duration-300 relative"
             >
               <div>
                 {/* Meta Header */}

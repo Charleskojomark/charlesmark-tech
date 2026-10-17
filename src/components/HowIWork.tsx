@@ -92,17 +92,17 @@ export function HowIWork() {
   const StepIcon = currentStep.icon;
 
   return (
-    <section id="process" className="py-20 bg-[#FAF7F2] border-y border-[#D8C5AF]/70">
+    <section id="process" className="py-10 sm:py-16 md:py-20 bg-[#FAF7F2] border-y border-[#D8C5AF]/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mb-14">
+        <div className="max-w-3xl mb-8 sm:mb-12 md:mb-14">
           <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
             ENGINEERING METHODOLOGY
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
             HOW I WORK: FROM PROBLEM TO PRODUCTION
           </h2>
-          <p className="text-sm text-[#4A3428] mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4A3428] mt-2 sm:mt-3 leading-relaxed">
             A disciplined, step-by-step engineering process designed to eliminate ambiguity, guarantee reliability, and ensure long-term maintainability.
           </p>
         </div>
