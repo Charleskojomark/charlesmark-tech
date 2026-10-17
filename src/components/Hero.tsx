@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown, FileText, CheckCircle2 } from "lucide-react";
 import { HeroTyping } from "@/components/HeroTyping";
@@ -10,14 +11,33 @@ export function Hero() {
     <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-12 md:pb-24 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-          {/* Left Column: Hero Text and Dynamic Typing */}
+          {/* Left Column: Hero Text, Profile Photo, and Dynamic Typing */}
           <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-            {/* Small Label */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#B58A64] animate-pulse" />
-              <span className="font-mono text-[11px] sm:text-xs font-semibold text-[#4A3428] tracking-widest uppercase">
-                {siteConfig.tagline}
-              </span>
+            {/* Charles Mark Profile Photo & Tagline */}
+            <div className="flex flex-col items-start gap-2.5">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#4A3428] shadow-md bg-[#241A15]">
+                <Image
+                  src="/charles-mark.png"
+                  alt="Charles Mark - AI Systems Engineer"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 80px, 96px"
+                  priority
+                />
+                <span
+                  className="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-[#10B981] border border-[#241A15]"
+                  title="Available for projects"
+                />
+              </div>
+
+              <div>
+                <span className="font-display font-bold text-base sm:text-lg text-[#241A15] uppercase tracking-wide block">
+                  Charles Mark
+                </span>
+                <span className="font-mono text-xs sm:text-sm text-[#4A3428] font-semibold tracking-wider block mt-0.5">
+                  AI Systems Engineer / Backend / Automation
+                </span>
+              </div>
             </div>
 
             {/* Primary Headline */}

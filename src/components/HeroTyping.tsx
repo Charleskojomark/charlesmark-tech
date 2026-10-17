@@ -63,32 +63,24 @@ export function HeroTyping() {
   }, [currentText, isDeleting, roleIndex, roles, prefersReducedMotion]);
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-baseline gap-2 sm:gap-3 py-1">
+    <div className="flex flex-wrap items-center gap-2 sm:gap-3 py-1">
       {/* Screen reader accessible persistent description */}
       <span className="sr-only">
-        I build systems as an AI Systems Engineer, Backend Engineer, AI Automation Engineer, and AI Agent Builder.
+        Engineering disciplines: AI Systems Engineer, Backend Engineer, and Workflow Automation Engineer.
       </span>
 
-      {/* Static prefix phrase */}
-      <span
-        aria-hidden="true"
-        className="font-display text-xl sm:text-2xl md:text-3xl text-[#4A3428] font-normal"
-      >
-        I build systems as an
-      </span>
-
-      {/* Dynamic typing container with responsive dimensions to prevent horizontal overflow */}
+      {/* Dynamic typing container with responsive dimensions */}
       <div
         aria-hidden="true"
         className="inline-flex items-center min-h-[2.25rem] sm:min-h-[2.75rem] max-w-full"
       >
-        <span className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-[#241A15] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5 break-words">
+        <span className="font-display text-xl sm:text-3xl md:text-4xl font-extrabold text-[#241A15] tracking-tight border-b-2 border-[#B58A64] pb-0.5 break-words">
           {prefersReducedMotion ? roles[0] : currentText}
         </span>
         {/* Visible blinking caret */}
         {!prefersReducedMotion && (
           <span
-            className="inline-block w-[2.5px] sm:w-[3px] h-5 sm:h-8 bg-[#4A3428] ml-1 sm:ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
+            className="inline-block w-[2.5px] sm:w-[3px] h-6 sm:h-8 bg-[#4A3428] ml-1.5 sm:ml-2 animate-caret rounded-full align-middle flex-shrink-0"
             aria-hidden="true"
           />
         )}

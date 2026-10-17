@@ -46,10 +46,7 @@ export const siteConfig = {
   rolesToCycle: [
     "AI Systems Engineer",
     "Backend Engineer",
-    "AI Automation Engineer",
-    "AI Agent Builder",
-    "API Integration Engineer",
-    "Problem Solver",
+    "Workflow Automation Engineer",
   ],
   contact: {
     emailPlaceholder: "charles@charlesmark.tech",
