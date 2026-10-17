@@ -10,10 +10,45 @@ const ICON_MAP = {
   Server: Server,
 };
 
-export const metadata = {
-  title: "Services & Offerings",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Engineering Services & Capabilities | Charles Mark",
   description:
-    "AI Workflow Automation, Custom AI Agents & Assistants, and Backend Development & AI Integration by Charles Mark.",
+    "AI Workflow Automation (n8n & Python), Custom AI Agents & Assistants (LangGraph), and Scalable Backend Development & AI Integration by Charles Mark.",
+  keywords: [
+    "AI Automation Services",
+    "Custom AI Agent Development",
+    "Backend Engineering Services",
+    "n8n Workflow Automation",
+    "LangGraph Development",
+    "PostgreSQL API Integration",
+  ],
+  alternates: {
+    canonical: `${siteConfig.url}/services`,
+  },
+  openGraph: {
+    title: `Engineering Services & Capabilities | ${siteConfig.name}`,
+    description:
+      "AI Workflow Automation (n8n & Python), Custom AI Agents & Assistants (LangGraph), and Scalable Backend Development & AI Integration by Charles Mark.",
+    url: `${siteConfig.url}/services`,
+    type: "website",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Engineering Services`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Engineering Services & Capabilities | ${siteConfig.name}`,
+    description:
+      "AI Workflow Automation, Custom AI Agents & Assistants, and Backend Development by Charles Mark.",
+    images: [siteConfig.ogImage],
+  },
 };
 
 export default function ServicesPage() {

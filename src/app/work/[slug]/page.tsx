@@ -12,6 +12,7 @@ import {
   ShieldAlert,
   Lightbulb,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/config/site";
@@ -20,6 +21,51 @@ export async function generateStaticParams() {
   return projects.map((p) => ({
     slug: p.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+
+  if (!project) {
+    return {
+      title: "Case Study Not Found",
+    };
+  }
+
+  return {
+    title: `${project.title} | Case Study`,
+    description: project.tagline || project.solution,
+    keywords: [project.category, ...project.technologies, "Charles Mark Case Study"],
+    alternates: {
+      canonical: `${siteConfig.url}/work/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} | ${siteConfig.name}`,
+      description: project.tagline || project.solution,
+      url: `${siteConfig.url}/work/${project.slug}`,
+      type: "article",
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} | ${siteConfig.name}`,
+      description: project.tagline || project.solution,
+      images: [siteConfig.ogImage],
+    },
+  };
 }
 
 export default async function ProjectCaseStudyPage({

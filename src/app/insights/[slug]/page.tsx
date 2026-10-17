@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Share2,
 } from "lucide-react";
+import type { Metadata } from "next";
 import { articles } from "@/data/articles";
 import { siteConfig } from "@/config/site";
 
@@ -17,6 +18,52 @@ export async function generateStaticParams() {
   return articles.map((a) => ({
     slug: a.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
+
+  if (!article) {
+    return {
+      title: "Article Not Found",
+    };
+  }
+
+  return {
+    title: `${article.title} | Engineering Guide`,
+    description: article.summary,
+    keywords: [article.category, ...(article.keyTakeaways || []), "Charles Mark Guide"],
+    alternates: {
+      canonical: `${siteConfig.url}/insights/${article.slug}`,
+    },
+    openGraph: {
+      title: `${article.title} | ${siteConfig.name}`,
+      description: article.summary,
+      url: `${siteConfig.url}/insights/${article.slug}`,
+      type: "article",
+      authors: [siteConfig.name],
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${article.title} | ${siteConfig.name}`,
+      description: article.summary,
+      images: [siteConfig.ogImage],
+    },
+  };
 }
 
 export default async function ArticleDetailPage({
@@ -33,8 +80,29 @@ export default async function ArticleDetailPage({
 
   const related = articles.filter((a) => a.slug !== slug).slice(0, 2);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: article.title,
+    description: article.summary,
+    author: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.name,
+    },
+    url: `${siteConfig.url}/insights/${article.slug}`,
+  };
+
   return (
     <article className="py-12 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <div className="mb-8">

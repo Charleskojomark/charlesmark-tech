@@ -14,10 +14,44 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
-export const metadata = {
-  title: "About Charles Mark",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Charles Mark | Background & Engineering Philosophy",
   description:
     "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+  keywords: [
+    "About Charles Mark",
+    "AI Systems Engineer Background",
+    "Backend Engineer Portfolio",
+    "Workflow Automation Consultant",
+    "Charles Mark Bio",
+  ],
+  alternates: {
+    canonical: `${siteConfig.url}/about`,
+  },
+  openGraph: {
+    title: `About Charles Mark | ${siteConfig.name}`,
+    description:
+      "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+    url: `${siteConfig.url}/about`,
+    type: "profile",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - About Charles Mark`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About Charles Mark | ${siteConfig.name}`,
+    description:
+      "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+    images: [siteConfig.ogImage],
+  },
 };
 
 export default function AboutPage() {
