@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { HowIWork } from "@/components/HowIWork";
 import { TechnicalCapabilities } from "@/components/TechnicalCapabilities";
 import { InsightsSection } from "@/components/InsightsSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { AboutTeaser } from "@/components/AboutTeaser";
 import { ContactCTA } from "@/components/ContactCTA";
 
@@ -32,10 +33,13 @@ export default function HomePage() {
       {/* 7. Free learning resources and insights */}
       <InsightsSection />
 
-      {/* 8. About Charles */}
+      {/* 8. Client & peer testimonials */}
+      <TestimonialsSection />
+
+      {/* 9. About Charles */}
       <AboutTeaser />
 
-      {/* 9. Contact CTA */}
+      {/* 10. Contact CTA */}
       <ContactCTA />
     </div>
   );

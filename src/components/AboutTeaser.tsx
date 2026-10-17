@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Terminal, CheckCircle2, FileText } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -80,23 +80,30 @@ export function AboutTeaser() {
               </div>
             </div>
 
-            {/* Right Column: Typographic Monogram & Identity Shield */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="w-full max-w-sm bg-[#F5F0E8] rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#D8C5AF] shadow-sm flex flex-col items-center text-center relative">
-                {/* Decorative node points */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-display font-bold text-2xl tracking-tight border-2 border-[#4A3428] shadow-md mb-4 relative">
-                  <span>CM</span>
-                  <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#B58A64] border-2 border-[#FAF7F2]" />
+            {/* Right Column: Authentic Professional Portrait & Identity Card */}
+            <div className="lg:col-span-5 flex justify-center w-full">
+              <div className="w-full max-w-sm bg-[#F5F0E8] rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-[#D8C5AF] shadow-sm flex flex-col items-center text-center relative">
+                {/* Professional Portrait of Charles Mark */}
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-[#4A3428] shadow-md mb-3 bg-[#241A15]">
+                  <Image
+                    src="/charles-mark.png"
+                    alt="Charles Mark - AI Systems Engineer"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 112px, 128px"
+                    priority
+                  />
+                  <span className="absolute top-2 right-2 w-3 h-3 rounded-full bg-[#10B981] border-2 border-[#241A15]" title="Available for projects" />
                 </div>
 
                 <span className="font-display font-bold text-lg sm:text-xl text-[#241A15] tracking-wide uppercase">
                   CHARLES MARK
                 </span>
-                <span className="font-mono text-[11px] text-[#B58A64] tracking-widest uppercase font-semibold mt-0.5">
+                <span className="font-mono text-[11px] text-[#4A3428] font-bold tracking-widest uppercase mt-0.5">
                   AI SYSTEMS ENGINEER
                 </span>
 
-                <div className="w-full my-4 border-t border-[#D8C5AF]/60" />
+                <div className="w-full my-3 border-t border-[#D8C5AF]/60" />
 
                 <div className="w-full space-y-1.5 text-left font-mono text-[11px] sm:text-xs text-[#4A3428]">
                   <div className="flex justify-between py-1 border-b border-[#D8C5AF]/30">

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -35,18 +36,30 @@ export default function AboutPage() {
         </div>
 
         {/* Hero Section */}
-        <header className="mb-16 border-b border-[#D8C5AF]/70 pb-12">
-          <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-3">
-            ENGINEERING IDENTITY & BACKGROUND
-          </span>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#241A15] tracking-tight mb-6">
-            PRACTICAL SYSTEMS.
-            <br />
-            NO DEMO-WARE. NO GIMMICKS.
-          </h1>
-          <p className="font-display text-xl sm:text-2xl text-[#4A3428] font-normal leading-relaxed max-w-3xl">
-            &ldquo;I&apos;m Charles Mark, an engineer interested in building practical AI-powered systems, reliable backend services, and automation that solves real problems.&rdquo;
-          </p>
+        <header className="mb-16 border-b border-[#D8C5AF]/70 pb-12 flex flex-col md:flex-row md:items-center gap-8">
+          <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden border-2 border-[#4A3428] shadow-lg flex-shrink-0 bg-[#241A15]">
+            <Image
+              src="/charles-mark.png"
+              alt="Charles Mark - AI Systems Engineer"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 640px) 128px, 160px"
+              priority
+            />
+          </div>
+          <div>
+            <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
+              ENGINEERING IDENTITY & BACKGROUND
+            </span>
+            <h1 className="font-display text-3xl sm:text-5xl md:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4">
+              PRACTICAL SYSTEMS.
+              <br />
+              NO DEMO-WARE. NO GIMMICKS.
+            </h1>
+            <p className="font-display text-lg sm:text-xl text-[#4A3428] font-normal leading-relaxed max-w-2xl">
+              &ldquo;I&apos;m Charles Mark, an engineer interested in building practical AI-powered systems, reliable backend services, and automation that solves real problems.&rdquo;
+            </p>
+          </div>
         </header>
 
         {/* Narrative & Philosophy */}

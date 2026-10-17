@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -99,8 +100,14 @@ export default async function ArticleDetailPage({
 
         {/* Author Bio Box */}
         <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] flex flex-col sm:flex-row items-center gap-6">
-          <div className="w-16 h-16 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-display font-bold text-xl flex-shrink-0">
-            CM
+          <div className="relative w-16 h-16 rounded-2xl overflow-hidden border-2 border-[#4A3428] shadow-sm flex-shrink-0 bg-[#241A15]">
+            <Image
+              src="/charles-mark.png"
+              alt="Charles Mark"
+              fill
+              className="object-cover object-top"
+              sizes="64px"
+            />
           </div>
           <div className="space-y-1 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-2">
