@@ -100,8 +100,31 @@ export function SystemDiagram() {
         </span>
       </div>
 
-      {/* Visual Canvas Area */}
-      <div className="relative my-6 min-h-[300px] sm:min-h-[360px] w-full flex flex-col justify-between">
+      {/* Mobile Node Switcher: Horizontal pill track right above the inspector */}
+      <div className="flex sm:hidden items-center gap-2 overflow-x-auto pb-2 my-3 no-scrollbar">
+        {NODES.map((node) => {
+          const Icon = node.icon;
+          const isSelected = activeNode.id === node.id;
+          return (
+            <button
+              key={node.id}
+              type="button"
+              onClick={() => setActiveNode(node)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-mono text-xs whitespace-nowrap transition-all flex-shrink-0 cursor-pointer ${
+                isSelected
+                  ? "bg-[#B58A64] text-[#241A15] font-bold shadow-md"
+                  : "bg-[#1C1410] text-[#D8C5AF] border border-[#4A3428]"
+              }`}
+            >
+              <Icon className="w-3.5 h-3.5" />
+              <span>{node.title.split(" ")[0]}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Desktop Visual Canvas Area (hidden on mobile to keep inspector in viewport) */}
+      <div className="hidden sm:flex relative my-6 min-h-[300px] sm:min-h-[360px] w-full flex-col justify-between">
         {/* SVG connection lines between nodes */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden sm:block"

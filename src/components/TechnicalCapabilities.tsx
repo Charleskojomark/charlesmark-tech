@@ -133,65 +133,96 @@ export function TechnicalCapabilities() {
                           : "bg-[#FAF7F2] border-[#D8C5AF] hover:border-[#4A3428] text-[#241A15]"
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-2">
-                        <span
-                          className={`font-mono text-xs font-bold leading-snug ${
-                            isSelected ? "text-[#F5F0E8]" : "text-[#241A15]"
-                          }`}
-                        >
-                          {item.name}
-                        </span>
-
-                        {/* Streamlined pill indicator */}
-                        <span
-                          className={`font-mono text-[9px] px-2 py-0.5 rounded-full flex-shrink-0 flex items-center gap-1 ${
-                            isProficient
-                              ? isSelected
-                                ? "bg-emerald-900/60 text-emerald-300 border border-emerald-700"
-                                : "bg-emerald-100/90 text-emerald-800 border border-emerald-300"
-                              : isLearning
-                              ? isSelected
-                                ? "bg-amber-900/60 text-amber-300 border border-amber-700"
-                                : "bg-amber-100/90 text-amber-900 border border-amber-300"
-                              : isSelected
-                              ? "bg-blue-900/60 text-blue-300 border border-blue-700"
-                              : "bg-blue-100/90 text-blue-900 border border-blue-300"
-                          }`}
-                        >
+                      <div
+                        onClick={() =>
+                          setSelectedTech(
+                            selectedTech === item.name ? null : item.name
+                          )
+                        }
+                        className="cursor-pointer"
+                      >
+                        <div className="flex items-start justify-between gap-2">
                           <span
-                            className={`w-1.5 h-1.5 rounded-full ${
-                              isProficient
-                                ? "bg-emerald-600"
-                                : isLearning
-                                ? "bg-amber-600"
-                                : "bg-blue-600"
+                            className={`font-mono text-xs font-bold leading-snug ${
+                              isSelected ? "text-[#F5F0E8]" : "text-[#241A15]"
                             }`}
-                          />
-                          <span>
-                            {isProficient
-                              ? "Production"
-                              : isLearning
-                              ? "Lab Lab"
-                              : "Hands-on"}
+                          >
+                            {item.name}
                           </span>
-                        </span>
+
+                          {/* Streamlined pill indicator */}
+                          <span
+                            className={`font-mono text-[9px] px-2 py-0.5 rounded-full flex-shrink-0 flex items-center gap-1 ${
+                              isProficient
+                                ? isSelected
+                                  ? "bg-emerald-900/60 text-emerald-300 border border-emerald-700"
+                                  : "bg-emerald-100/90 text-emerald-800 border border-emerald-300"
+                                : isLearning
+                                ? isSelected
+                                  ? "bg-amber-900/60 text-amber-300 border border-amber-700"
+                                  : "bg-amber-100/90 text-amber-900 border border-amber-300"
+                                : isSelected
+                                ? "bg-blue-900/60 text-blue-300 border border-blue-700"
+                                : "bg-blue-100/90 text-blue-900 border border-blue-300"
+                            }`}
+                          >
+                            <span
+                              className={`w-1.5 h-1.5 rounded-full ${
+                                isProficient
+                                  ? "bg-emerald-600"
+                                  : isLearning
+                                  ? "bg-amber-600"
+                                  : "bg-blue-600"
+                              }`}
+                            />
+                            <span>
+                              {isProficient
+                                ? "Production"
+                                : isLearning
+                                ? "Lab Lab"
+                                : "Hands-on"}
+                            </span>
+                          </span>
+                        </div>
+
+                        <p
+                          className={`text-[11px] leading-relaxed line-clamp-2 mt-1.5 ${
+                            isSelected ? "text-[#D8C5AF]" : "text-[#4A3428]"
+                          }`}
+                        >
+                          {item.note}
+                        </p>
                       </div>
 
-                      <p
-                        className={`text-[11px] leading-relaxed line-clamp-2 ${
-                          isSelected ? "text-[#D8C5AF]" : "text-[#4A3428]"
-                        }`}
-                      >
-                        {item.note}
-                      </p>
+                      {/* Mobile Inline Expansion (Reveals instantly beneath tapped item with zero scrolling!) */}
+                      {isSelected && (
+                        <div className="lg:hidden mt-2.5 pt-2.5 border-t border-[#4A3428] space-y-2">
+                          <div className="p-2.5 rounded-lg bg-[#140E0B] border border-[#4A3428] space-y-1">
+                            <span className="font-mono text-[9px] text-[#B58A64] uppercase block">
+                              PRACTICAL IMPLEMENTATION:
+                            </span>
+                            <p className="text-xs text-[#D8C5AF] leading-relaxed font-sans">
+                              {item.note}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400">
+                            <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" />
+                            <span>
+                              {isProficient
+                                ? "Production-Tested Architecture & Schema Rigor"
+                                : "Active Lab Benchmarking & Integration Testing"}
+                            </span>
+                          </div>
+                        </div>
+                      )}
                     </motion.div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Right: Interactive Architectural Detail Inspector */}
-            <div className="lg:col-span-5">
+            {/* Right: Desktop Architectural Detail Inspector (Hidden on mobile where inline expansion is used) */}
+            <div className="hidden lg:block lg:col-span-5">
               <div className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#241A15] border border-[#4A3428] text-[#F5F0E8] shadow-lg sticky top-28">
                 <div className="flex items-center justify-between pb-4 border-b border-[#4A3428]">
                   <div className="flex items-center gap-2">

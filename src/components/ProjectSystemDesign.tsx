@@ -372,8 +372,8 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
           </div>
         </div>
 
-        {/* Nodes Horizontal Pipeline (Scrollable on small mobile screens) */}
-        <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 relative">
+        {/* Nodes Pipeline: Horizontal swipeable track on mobile, 5-col grid on desktop */}
+        <div className="flex sm:grid sm:grid-cols-5 overflow-x-auto gap-2.5 sm:gap-3 pb-2 sm:pb-0 no-scrollbar snap-x snap-mandatory">
           {currentFlow.nodes.map((node, index) => {
             const isActive = activeNodeIndex === index;
             const isSimulatedActive = isSimulating && simulationStep === index;
@@ -388,7 +388,7 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                   setIsSimulating(false);
                   setActiveNodeIndex(index);
                 }}
-                className={`p-3.5 rounded-2xl border transition-all cursor-pointer relative text-left flex flex-col justify-between ${
+                className={`min-w-[180px] sm:min-w-0 snap-start p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border transition-all cursor-pointer relative text-left flex flex-col justify-between flex-shrink-0 sm:flex-shrink ${
                   isActive || isSimulatedActive
                     ? "bg-[#38261D] border-[#B58A64] shadow-lg ring-2 ring-[#B58A64]/80"
                     : isCompleted
@@ -397,7 +397,7 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                 }`}
               >
                 {/* Node Status Badge */}
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-1.5">
                   <span className="font-mono text-[9px] text-[#D8C5AF]/70 uppercase tracking-widest">
                     STEP 0{index + 1}
                   </span>
@@ -412,8 +412,8 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                   </span>
                 </div>
 
-                <div className="space-y-1 mb-2">
-                  <h4 className="font-display font-bold text-xs sm:text-sm text-[#F5F0E8] leading-tight">
+                <div className="space-y-0.5 mb-2">
+                  <h4 className="font-display font-bold text-xs sm:text-sm text-[#F5F0E8] leading-tight truncate">
                     {node.name}
                   </h4>
                   <span className="font-mono text-[10px] text-[#B58A64] block truncate">
@@ -421,7 +421,7 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                   </span>
                 </div>
 
-                <div className="pt-2 border-t border-[#4A3428]/60 flex items-center justify-between text-[10px] font-mono text-[#D8C5AF]/60">
+                <div className="pt-1.5 border-t border-[#4A3428]/60 flex items-center justify-between text-[10px] font-mono text-[#D8C5AF]/60">
                   <span className="truncate">{node.protocol}</span>
                   {isActive && (
                     <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
@@ -433,17 +433,43 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
         </div>
       </div>
 
-      {/* Detailed Node Inspector Panel */}
-      <div className="relative z-10 mt-6 p-5 sm:p-6 rounded-2xl bg-[#1C1410] border border-[#4A3428]">
-        {/* Inspector Sub-Tabs */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#4A3428]">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs font-bold text-[#F5F0E8] uppercase">
-              NODE INSPECTOR: {activeNode.name}
-            </span>
-            <span className="font-mono text-[10px] text-[#B58A64] bg-[#2E2019] px-2 py-0.5 rounded">
-              {activeNode.protocol}
-            </span>
+      {/* Detailed Node Inspector Panel - Instantly in viewport directly under the compact step bar */}
+      <div className="relative z-10 mt-4 sm:mt-6 p-4 sm:p-6 rounded-2xl bg-[#1C1410] border border-[#4A3428]">
+        {/* Inspector Sub-Tabs & Mobile Step Navigator */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 sm:pb-4 border-b border-[#4A3428]">
+          <div className="flex items-center justify-between sm:justify-start gap-2">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs font-bold text-[#F5F0E8] uppercase">
+                STEP 0{activeNodeIndex + 1}: {activeNode.name}
+              </span>
+              <span className="font-mono text-[9px] text-[#B58A64] bg-[#2E2019] px-2 py-0.5 rounded">
+                {activeNode.protocol}
+              </span>
+            </div>
+
+            {/* Quick Step Controls on Mobile */}
+            <div className="flex sm:hidden items-center gap-1">
+              <button
+                type="button"
+                disabled={activeNodeIndex === 0}
+                onClick={() => setActiveNodeIndex((i) => Math.max(0, i - 1))}
+                className="px-2 py-1 rounded bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] disabled:opacity-30"
+              >
+                &larr;
+              </button>
+              <button
+                type="button"
+                disabled={activeNodeIndex === currentFlow.nodes.length - 1}
+                onClick={() =>
+                  setActiveNodeIndex((i) =>
+                    Math.min(currentFlow.nodes.length - 1, i + 1)
+                  )
+                }
+                className="px-2 py-1 rounded bg-[#241A15] border border-[#4A3428] text-xs font-mono text-[#D8C5AF] disabled:opacity-30"
+              >
+                &rarr;
+              </button>
+            </div>
           </div>
 
           <div className="flex items-center gap-1.5 bg-[#241A15] p-1 rounded-xl border border-[#4A3428]">
