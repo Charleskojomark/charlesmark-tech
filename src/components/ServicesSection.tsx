@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Clock, Users, Cpu, Bot, Server, Check } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Clock, Users, Cpu, Bot, Server, Check, MessageCircle } from "lucide-react";
 import { services } from "@/data/services";
 
 const ICON_MAP = {
@@ -96,15 +95,22 @@ export function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Primary CTA Button */}
+                {/* Primary CTA Button: Direct WhatsApp Chat */}
                 <div className="pt-5 space-y-2">
-                  <Link
-                    href={`/contact?service=${service.id}`}
-                    className="group/btn w-full inline-flex items-center justify-between p-3.5 rounded-xl bg-[#241A15] text-[#F5F0E8] font-medium text-xs hover:bg-[#4A3428] transition-all duration-200 shadow-sm"
+                  <a
+                    href={`https://wa.me/2347082367382?text=${encodeURIComponent(
+                      `Hi Charles, I'd like to discuss ${service.name} for my business.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn w-full inline-flex items-center justify-between p-3.5 rounded-xl bg-[#241A15] text-[#F5F0E8] hover:bg-[#25D366] hover:text-white font-medium text-xs transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
                   >
-                    <span className="font-semibold">{service.ctaText}</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Link>
+                    <span className="font-semibold flex items-center gap-2">
+                      <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                      <span>{service.ctaText}</span>
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
             );

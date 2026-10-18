@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowUpRight,
   CheckCircle2,
+  MessageCircle,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SystemDiagram } from "@/components/SystemDiagram";
@@ -154,6 +155,18 @@ export default function AboutPage() {
               </span>
               <div className="space-y-3 pt-2">
                 <a
+                  href={siteConfig.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#25D366] transition-colors"
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                    <span>WhatsApp</span>
+                  </span>
+                  <span className="text-[#25D366] font-bold">Chat on WhatsApp &rarr;</span>
+                </a>
+                <a
                   href={siteConfig.social.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -212,13 +225,16 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] text-xs font-display font-bold uppercase tracking-wider transition-colors"
+              <a
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider shadow-md active:scale-95 transition-all"
               >
-                <span>Book a Workflow Review</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+                <MessageCircle className="w-4 h-4 fill-current" />
+                <span>Chat on WhatsApp</span>
+                <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
+              </a>
             </div>
           </div>
         </section>

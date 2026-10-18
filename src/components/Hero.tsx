@@ -1,7 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, ArrowDown, CheckCircle2, ShieldCheck, Zap, Workflow, Database, Bot } from "lucide-react";
-import { HeroTyping } from "@/components/HeroTyping";
+import {
+  ArrowUpRight,
+  ArrowDown,
+  CheckCircle2,
+  ShieldCheck,
+  Zap,
+  Workflow,
+  Database,
+  Bot,
+  MessageCircle,
+} from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function Hero() {
@@ -43,12 +52,25 @@ export function Hero() {
               AI automation and backend systems for businesses that want less manual work and more reliable operations.
             </h1>
 
-            {/* Continuous Typing Section for Business Solutions */}
-            <div className="py-0.5">
-              <span className="font-mono text-xs uppercase tracking-widest text-[#B58A64] font-semibold block mb-1">
-                SOLUTIONS ENGINEERED:
+            {/* Lively Solutions Badges (No artificial animations) */}
+            <div className="py-1">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-[#B58A64] font-bold block mb-2">
+                CORE SOLUTIONS DELIVERED:
               </span>
-              <HeroTyping />
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] text-xs font-mono font-bold text-[#241A15] shadow-xs hover:border-[#B58A64] hover:bg-[#F5F0E8] transition-all">
+                  <Workflow className="w-3.5 h-3.5 text-[#B58A64]" />
+                  <span>AI Workflow Automation</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] text-xs font-mono font-bold text-[#241A15] shadow-xs hover:border-[#B58A64] hover:bg-[#F5F0E8] transition-all">
+                  <Bot className="w-3.5 h-3.5 text-[#B58A64]" />
+                  <span>Custom AI Agents & RAG</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] text-xs font-mono font-bold text-[#241A15] shadow-xs hover:border-[#B58A64] hover:bg-[#F5F0E8] transition-all">
+                  <Database className="w-3.5 h-3.5 text-[#B58A64]" />
+                  <span>Scalable Backend Systems</span>
+                </span>
+              </div>
             </div>
 
             {/* Supporting Business Description */}
@@ -59,11 +81,14 @@ export function Hero() {
             {/* Primary & Secondary CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <a
-                href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl sm:rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+                href={siteConfig.contact.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl sm:rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98] group"
               >
-                <span>Book a free workflow review</span>
-                <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <MessageCircle className="w-5 h-5 fill-current" />
+                <span>Chat on WhatsApp</span>
+                <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
 
               <a
@@ -75,18 +100,20 @@ export function Hero() {
               </a>
             </div>
 
-            {/* Direct WhatsApp Phone Number Chip */}
+            {/* Direct WhatsApp Status Chip (No plain phone number) */}
             <div className="pt-1 flex flex-wrap items-center gap-3 text-xs font-mono text-[#4A3428]">
               <a
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-[#241A15] transition-colors"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#25D366] transition-all shadow-xs"
               >
                 <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                <span className="text-[#B58A64] font-semibold">Or chat directly:</span>
-                <span className="font-bold underline underline-offset-4">{siteConfig.contact.phoneDisplay}</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">Fast reply</span>
+                <span className="text-[#241A15] font-semibold">Direct client access on WhatsApp</span>
+                <span className="text-[#D8C5AF]">•</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">
+                  Fast reply
+                </span>
               </a>
             </div>
 

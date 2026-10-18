@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
-    telephone: true,
+    telephone: false,
   },
   alternates: {
     canonical: siteConfig.url,
@@ -94,9 +94,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/icon",
+    icon: [
+      { url: "/charles-mark.png", type: "image/png" },
+      { url: "/icon" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/charles-mark.png",
+    apple: "/charles-mark.png",
   },
 };
 
@@ -116,7 +120,6 @@ export default function RootLayout({
         url: siteConfig.url,
         image: `${siteConfig.url}/charles-mark.png`,
         jobTitle: siteConfig.title,
-        telephone: siteConfig.contact.phone,
         email: siteConfig.contact.email,
         description: siteConfig.description,
         sameAs: [
@@ -140,7 +143,6 @@ export default function RootLayout({
         name: `${siteConfig.name} | AI Systems Engineer`,
         url: siteConfig.url,
         image: `${siteConfig.url}/charles-mark.png`,
-        telephone: siteConfig.contact.phone,
         email: siteConfig.contact.email,
         description: siteConfig.description,
         priceRange: "$$",

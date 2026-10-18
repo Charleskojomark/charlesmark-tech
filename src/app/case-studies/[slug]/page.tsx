@@ -9,9 +9,9 @@ import {
   ShieldAlert,
   Lightbulb,
   AlertTriangle,
+  MessageCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/config/site";
 
@@ -183,18 +183,6 @@ export default async function ProjectCaseStudyPage({
           </div>
         </section>
 
-        {/* Interactive Architecture Flow Simulator */}
-        <section className="mb-16">
-          <div className="mb-6">
-            <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-1">
-              SYSTEM ARCHITECTURE & FLOW SIMULATOR
-            </span>
-            <h2 className="font-display font-bold text-2xl text-[#241A15]">
-              Interactive Node Pipeline
-            </h2>
-          </div>
-          <ProjectSystemDesign defaultProject={project.slug} />
-        </section>
 
         {/* Architecture Details */}
         <section className="mb-16 p-8 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF]">
@@ -299,10 +287,11 @@ export default async function ProjectCaseStudyPage({
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#38261D] border border-[#4A3428] text-[#F5F0E8] font-mono text-xs transition-colors"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-md active:scale-95 transition-all"
             >
-              <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-              <span>WhatsApp Chat</span>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Chat on WhatsApp</span>
+              <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
             </a>
           </div>
         </div>

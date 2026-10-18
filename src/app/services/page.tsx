@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, ArrowLeft, Cpu, Bot, Server, Check, Clock, Users } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ArrowLeft, Cpu, Bot, Server, Check, Clock, Users, MessageCircle } from "lucide-react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/config/site";
 
@@ -218,13 +218,16 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-colors"
+            <a
+              href={siteConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95"
             >
-              <span>Book a Free Workflow Review</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Chat on WhatsApp</span>
+              <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
+            </a>
           </div>
         </div>
       </div>

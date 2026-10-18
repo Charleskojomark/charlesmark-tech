@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 export function AboutTeaser() {
   return (
@@ -61,13 +62,16 @@ export function AboutTeaser() {
                   <ArrowUpRight className="w-4 h-4 text-[#D8C5AF]" />
                 </Link>
 
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl sm:rounded-full bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] text-xs sm:text-sm font-semibold uppercase tracking-wider transition-colors shadow-sm"
+                <a
+                  href={siteConfig.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl sm:rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-sm active:scale-95"
                 >
-                  <span>Book a Workflow Review</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>Chat on WhatsApp</span>
+                  <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
+                </a>
               </div>
             </div>
 

@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function Navbar() {
@@ -52,17 +53,23 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Wordmark & Monogram */}
+          {/* Brand Wordmark & Profile Picture Logo */}
           <Link
             href="/"
             className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] rounded-md p-1"
             aria-label="Charles Mark - Home"
           >
-            {/* Engineering Node Monogram */}
-            <div className="w-9 h-9 rounded-lg bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-mono text-sm font-semibold tracking-tighter border border-[#4A3428] group-hover:border-[#B58A64] transition-colors relative shadow-sm">
-              <span className="relative z-10">CM</span>
-              {/* Subtle tech node dots */}
-              <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#B58A64] border-2 border-[#F5F0E8]" />
+            {/* Profile Picture Logo */}
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#4A3428] group-hover:border-[#B58A64] transition-colors shadow-sm bg-[#241A15] flex-shrink-0">
+              <Image
+                src="/charles-mark.png"
+                alt="Charles Mark"
+                fill
+                sizes="40px"
+                className="object-cover object-top"
+                priority
+              />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#10B981] border-2 border-[#F5F0E8]" />
             </div>
 
             <div className="flex flex-col">
@@ -99,26 +106,18 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTAs: Book a Call (Primary) + WhatsApp (Secondary) */}
+          {/* Desktop CTA: Direct WhatsApp button */}
           <div className="hidden md:flex items-center gap-2.5">
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#25D366] text-[#241A15] transition-colors"
-              title="Chat on WhatsApp"
-              aria-label="Direct WhatsApp Chat"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] inline-block" />
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>Chat on WhatsApp</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
-
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]"
-            >
-              <span>Book a Call</span>
-              <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -181,24 +180,16 @@ export function Navbar() {
               })}
 
               <div className="pt-4 mt-2 border-t border-[#D8C5AF] flex flex-col gap-2.5">
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#241A15] text-[#F5F0E8] font-medium text-base shadow-md active:scale-[0.98] transition-transform"
-                >
-                  <span>Book a Call / Send Brief</span>
-                  <ArrowUpRight className="w-5 h-5 text-[#D8C5AF]" />
-                </Link>
-
                 <a
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#FAF7F2] border border-[#25D366]/60 text-[#241A15] font-medium text-sm transition-colors"
+                  className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-base shadow-md active:scale-[0.98] transition-all"
                 >
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#25D366]" />
-                  <span>Chat on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
+                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <span>Chat on WhatsApp</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-80" />
                 </a>
               </div>
 

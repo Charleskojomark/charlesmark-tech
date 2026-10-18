@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -8,7 +9,6 @@ import { siteConfig } from "@/config/site";
 const CURRENT_YEAR = 2026;
 
 export function Footer() {
-
   return (
     <footer className="bg-[#FAF7F2] border-t border-[#D8C5AF]/70 text-[#241A15] pt-16 pb-12 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,8 +16,14 @@ export function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-5 flex flex-col space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-mono text-sm font-semibold tracking-tighter">
-                CM
+              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#4A3428] shadow-sm bg-[#241A15] flex-shrink-0">
+                <Image
+                  src="/charles-mark.png"
+                  alt="Charles Mark"
+                  fill
+                  sizes="36px"
+                  className="object-cover object-top"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-lg tracking-wider text-[#241A15] uppercase">
@@ -84,22 +90,22 @@ export function Footer() {
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#25D366]/40 hover:border-[#25D366] transition-all shadow-xs"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#25D366]/40 hover:bg-[#25D366] hover:border-[#25D366] transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#25D366] text-[#F5F0E8] flex items-center justify-center font-bold text-xs flex-shrink-0">
+                  <span className="w-5 h-5 rounded-full bg-[#25D366] text-[#F5F0E8] flex items-center justify-center font-bold text-xs flex-shrink-0 group-hover:bg-white group-hover:text-[#25D366] transition-colors">
                     ✆
                   </span>
                   <div className="flex flex-col">
-                    <span className="font-mono text-xs font-bold text-[#000000]">
-                      {siteConfig.contact.phoneDisplay}
+                    <span className="font-mono text-xs font-bold text-[#000000] group-hover:text-white transition-colors">
+                      Chat on WhatsApp
                     </span>
-                    <span className="text-[10px] text-[#25D366] font-semibold">
-                      WhatsApp • Direct Message
+                    <span className="text-[10px] text-[#25D366] group-hover:text-white/90 font-semibold transition-colors">
+                      Fast Direct Reply
                     </span>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
 
               {/* Email Direct Row */}

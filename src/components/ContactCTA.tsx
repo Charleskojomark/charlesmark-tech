@@ -1,7 +1,30 @@
 import React from "react";
-import { ArrowUpRight, Calendar, Mail } from "lucide-react";
-import { EnquiryForm } from "@/components/EnquiryForm";
+import Image from "next/image";
+import { ArrowUpRight, MessageCircle, Mail, Sparkles, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+
+const WHATSAPP_PROMPTS = [
+  {
+    title: "AI Workflow Automation",
+    subtitle: "Eliminate repetitive manual tasks, CRM sync, PDF parsing",
+    message: "Hi Charles, I'd like to discuss automating our business processes with n8n and Python.",
+  },
+  {
+    title: "Custom AI Agent / RAG",
+    subtitle: "Private assistant grounded in company documents & manuals",
+    message: "Hi Charles, I'm interested in building a custom AI assistant grounded on our company documents.",
+  },
+  {
+    title: "Backend API & Database",
+    subtitle: "Production backend in Node or FastAPI with PostgreSQL",
+    message: "Hi Charles, I have an app idea/interface that needs a production backend and database architecture.",
+  },
+  {
+    title: "General Scope Consultation",
+    subtitle: "Discuss an upcoming project scope or technical feasibility",
+    message: "Hi Charles, I'd like to consult on an upcoming AI/backend project for my business.",
+  },
+];
 
 export function ContactCTA() {
   return (
@@ -17,86 +40,110 @@ export function ContactCTA() {
             }}
           />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Column: Direct Booking & Fast-Track Channels */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#38261D] border border-[#B58A64]/40 text-[#D8C5AF] font-mono text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Open for Client Engagements</span>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Column: Direct Invitation */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#241A15] flex-shrink-0">
+                  <Image
+                    src="/charles-mark.png"
+                    alt="Charles Mark"
+                    fill
+                    sizes="48px"
+                    className="object-cover object-top"
+                  />
+                  <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#25D366] border-2 border-[#241A15]" />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-bold text-[#B58A64] uppercase tracking-wider block">
+                    DIRECT CLIENT COMMUNICATION
+                  </span>
+                  <span className="font-display font-bold text-lg text-[#F5F0E8] block">
+                    Talk Directly With Charles Mark
+                  </span>
+                </div>
               </div>
 
-              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
-                LET&apos;S DISCUSS YOUR WORKFLOW OR APP.
+              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#F5F0E8]">
+                LET&apos;S TALK ABOUT YOUR WORKFLOW OR APP.
               </h2>
 
               <p className="text-sm sm:text-base text-[#D8C5AF] leading-relaxed">
-                Have a repetitive manual bottleneck to automate, company documents that need an AI assistant, or a product idea that needs a production backend? Let&apos;s map out a solution.
+                No long forms, no sales middlemen, and no waiting days for a ticket reply. Click below to start a direct WhatsApp conversation about your operational bottleneck or product backend.
               </p>
 
-              {/* Booking Link Placeholder [TODO: booking URL] */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#38261D] border border-[#B58A64]/40 space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F5F0E8] uppercase tracking-wider">
-                    <Calendar className="w-4 h-4 text-[#B58A64]" />
-                    <span>Schedule a 20-min Discovery Call</span>
-                  </div>
-                  <span className="font-mono text-[10px] text-[#D8C5AF] bg-[#241A15] px-2 py-0.5 rounded">
-                    Free Review
-                  </span>
-                </div>
-                <p className="text-xs text-[#D8C5AF] leading-relaxed">
-                  Pick a time directly on my calendar to review your manual workflow and determine automation feasibility.
-                </p>
-                <a
-                  href={siteConfig.booking.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-all"
-                >
-                  <span>Book Call ({siteConfig.booking.placeholder})</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-
-              {/* Secondary WhatsApp Channel */}
-              <div className="p-4 rounded-2xl bg-[#38261D]/60 border border-[#4A3428] space-y-2">
-                <span className="font-mono text-[11px] text-[#D8C5AF] block">
-                  Prefer direct messaging?
-                </span>
+              {/* Big High-Converting WhatsApp Button (No phone digits displayed) */}
+              <div className="pt-2">
                 <a
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#F5F0E8] hover:text-[#25D366] transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group"
                 >
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] flex-shrink-0" />
-                  <span>Chat on WhatsApp: {siteConfig.contact.phoneDisplay}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF]" />
+                  <MessageCircle className="w-6 h-6 fill-current flex-shrink-0" />
+                  <span>Chat with Charles on WhatsApp</span>
+                  <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
 
-              {/* Email direct */}
-              <div className="pt-2 text-xs font-mono text-[#D8C5AF]/80 flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#B58A64]" />
-                <span>Or email: <strong>{siteConfig.contact.email}</strong></span>
+              {/* Guarantees */}
+              <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#D8C5AF]/90 pt-3 border-t border-[#4A3428]/80">
+                <span className="inline-flex items-center gap-1.5 text-emerald-400">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Fast, direct reply</span>
+                </span>
+                <span>•</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-[#B58A64]" />
+                  <span>Free technical feasibility review</span>
+                </span>
               </div>
             </div>
 
-            {/* Right Column: Short Enquiry Form */}
-            <div className="lg:col-span-7 bg-[#F5F0E8] text-[#241A15] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-9 shadow-lg border border-[#D8C5AF]">
-              <div className="mb-6">
-                <span className="font-mono text-[11px] text-[#B58A64] uppercase font-bold tracking-wider block mb-1">
-                  SUBMIT A PROJECT BRIEF
-                </span>
-                <h3 className="font-display font-bold text-xl sm:text-2xl text-[#241A15]">
-                  Tell Me What You Want to Build
-                </h3>
-                <p className="text-xs text-[#4A3428] mt-1">
-                  Fill out this 60-second brief and I will get back to you with an honest feasibility review and next steps.
-                </p>
-              </div>
+            {/* Right Column: Pre-filled WhatsApp Topics (Click opens WhatsApp immediately) */}
+            <div className="lg:col-span-6 space-y-3.5">
+              <span className="font-mono text-[11px] text-[#B58A64] uppercase font-bold tracking-widest block mb-1">
+                OR TAP A TOPIC TO PREFILL YOUR MESSAGE:
+              </span>
 
-              <EnquiryForm />
+              {WHATSAPP_PROMPTS.map((topic) => (
+                <a
+                  key={topic.title}
+                  href={`https://wa.me/2347082367382?text=${encodeURIComponent(topic.message)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between p-4 rounded-2xl bg-[#2E2019] border border-[#4A3428] hover:border-[#25D366] hover:bg-[#38261D] transition-all shadow-sm cursor-pointer"
+                >
+                  <div className="space-y-0.5 pr-3">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#25D366] flex-shrink-0" />
+                      <h3 className="font-display font-bold text-sm text-[#F5F0E8] group-hover:text-white transition-colors">
+                        {topic.title}
+                      </h3>
+                    </div>
+                    <p className="text-xs text-[#D8C5AF]/80 pl-4 leading-relaxed">
+                      {topic.subtitle}
+                    </p>
+                  </div>
+                  <div className="w-8 h-8 rounded-xl bg-[#241A15] border border-[#4A3428] group-hover:bg-[#25D366] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-colors">
+                    <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-white transition-colors" />
+                  </div>
+                </a>
+              ))}
+
+              {/* Direct Email Fallback */}
+              <div className="pt-2 flex items-center justify-between p-3.5 rounded-xl bg-[#1C1410] border border-[#4A3428] text-xs font-mono text-[#D8C5AF]">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[#B58A64]" />
+                  <span>Prefer email?</span>
+                </div>
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="font-bold text-[#F5F0E8] hover:text-[#B58A64] underline underline-offset-4 transition-colors"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowUpRight,
-  Copy,
-  Check,
-  Calendar,
-  Clock,
   MessageCircle,
+  Mail,
+  Clock,
+  CheckCircle2,
 } from "lucide-react";
-import { EnquiryForm } from "@/components/EnquiryForm";
 import { siteConfig } from "@/config/site";
 
 const WHATSAPP_TOPICS = [
@@ -38,25 +37,17 @@ const WHATSAPP_TOPICS = [
   },
   {
     id: "audit",
-    title: "Workflow Audit / Advisory",
+    title: "Workflow Audit & Feasibility",
     desc: "Diagnostic review of current manual processes to determine feasibility and ROI.",
-    message: "Hi Charles, I'd like to book a workflow audit to review our team's bottlenecks.",
-    badge: "Fixed diagnostic",
+    message: "Hi Charles, I'd like to consult on an upcoming workflow audit or technical feasibility review.",
+    badge: "Fast assessment",
   },
 ];
 
 export default function ContactPage() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText(siteConfig.contact.phone);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
-  };
-
   return (
-    <div className="py-12 md:py-20 min-h-screen">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-10 sm:py-16 md:py-20 min-h-screen">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <div className="mb-6">
           <Link
@@ -69,188 +60,156 @@ export default function ContactPage() {
         </div>
 
         {/* Page Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        <div className="max-w-3xl mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
             <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
-              LET&apos;S DISCUSS YOUR SYSTEM REQUIREMENTS
+              DIRECT CLIENT ACCESS
             </span>
           </div>
           <h1 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#241A15] tracking-tight mb-4">
-            START A CONVERSATION.
+            LET&apos;S TALK ON WHATSAPP.
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-[#4A3428] max-w-2xl leading-relaxed">
-            Choose the method that works best for your schedule: submit an enquiry brief below, schedule a 20-minute discovery call, or chat directly with Charles Mark on WhatsApp.
+            Skip the forms and sales delays. You will speak directly with Charles Mark, AI Systems Engineer. Tap below to start a chat or choose a topic to prefill your inquiry.
           </p>
         </div>
 
-        {/* Main Grid: Form on Left, Direct Booking & Channels on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
-          {/* Enquiry Form */}
-          <div className="lg:col-span-7 bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 md:p-10 border border-[#D8C5AF] shadow-md">
-            <div className="mb-6">
-              <span className="font-mono text-xs font-bold text-[#B58A64] uppercase tracking-wider block mb-1">
-                PROJECT ENQUIRY BRIEF
-              </span>
-              <h2 className="font-display font-bold text-2xl text-[#241A15]">
-                Tell Me What You Want to Automate or Build
-              </h2>
-              <p className="text-xs text-[#4A3428] mt-1">
-                Fill out this quick form and I will review your requirements and reply within 24 hours.
-              </p>
-            </div>
+        {/* Primary Hero WhatsApp Action Card */}
+        <div className="bg-[#241A15] rounded-3xl p-6 sm:p-10 md:p-12 text-[#F5F0E8] border border-[#4A3428] shadow-2xl mb-12 relative overflow-hidden">
+          <div
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage: `radial-gradient(#FAF7F2 1px, transparent 1px)`,
+              backgroundSize: "24px 24px",
+            }}
+          />
 
-            <EnquiryForm />
-          </div>
-
-          {/* Right Column: Direct Booking Link & WhatsApp */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Booking Link Card [TODO: booking URL] */}
-            <div className="p-6 sm:p-7 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-xl space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[#38261D] flex items-center justify-center text-[#B58A64]">
-                    <Calendar className="w-4 h-4" />
-                  </div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#D8C5AF]">
-                    SCHEDULE A CALL
-                  </span>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="space-y-4 max-w-xl">
+              <div className="flex items-center gap-3">
+                <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#1C1410] flex-shrink-0">
+                  <Image
+                    src="/charles-mark.png"
+                    alt="Charles Mark"
+                    fill
+                    sizes="56px"
+                    className="object-cover object-top"
+                    priority
+                  />
+                  <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#25D366] border border-[#1C1410]" />
                 </div>
-                <span className="text-[10px] font-mono bg-[#38261D] text-[#D8C5AF] px-2 py-0.5 rounded">
-                  20 Min Discovery
-                </span>
+                <div>
+                  <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block">
+                    FOUNDER &amp; LEAD ENGINEER
+                  </span>
+                  <h2 className="font-display font-bold text-xl sm:text-2xl text-[#F5F0E8]">
+                    Charles Mark
+                  </h2>
+                </div>
               </div>
 
-              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F0E8]">
-                Direct Discovery Calendar
-              </h3>
-              <p className="text-xs text-[#D8C5AF] leading-relaxed">
-                Prefer to talk in real-time? Book a slot directly on my calendar to review your manual bottlenecks or backend scope.
+              <p className="text-sm sm:text-base text-[#D8C5AF] leading-relaxed">
+                Whether you want to automate a repetitive back-office bottleneck, build an AI document assistant, or engineer a reliable backend API, you get direct engineering insight from day one.
               </p>
 
+              <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#D8C5AF]/90 pt-1">
+                <span className="inline-flex items-center gap-1.5 text-emerald-400">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Fast reply</span>
+                </span>
+                <span>•</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-[#B58A64]" />
+                  <span>Free feasibility assessment</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Big WhatsApp Click-to-Chat Button */}
+            <div className="flex flex-col items-stretch md:items-end flex-shrink-0">
               <a
-                href={siteConfig.booking.url}
+                href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-all"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-200 group"
               >
-                <span>Book a Discovery Call ({siteConfig.booking.placeholder})</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <MessageCircle className="w-6 h-6 fill-current flex-shrink-0" />
+                <span>Chat on WhatsApp</span>
+                <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-            </div>
-
-            {/* Direct WhatsApp Action Hub */}
-            <div className="p-6 sm:p-7 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#241A15] uppercase tracking-wider">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#25D366]" />
-                  <span>DIRECT WHATSAPP CHAT</span>
-                </div>
-                <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  Online
-                </span>
-              </div>
-
-              <div className="text-xl sm:text-2xl font-mono font-bold text-[#241A15]">
-                {siteConfig.contact.phoneDisplay}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-2">
-                <a
-                  href={siteConfig.contact.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#4A3428] hover:bg-[#241A15] text-[#F5F0E8] font-mono text-xs font-semibold uppercase tracking-wider transition-colors"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>Open WhatsApp</span>
-                </a>
-
-                <button
-                  type="button"
-                  onClick={handleCopyPhone}
-                  className="inline-flex items-center justify-center gap-1.5 py-3 px-4 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] text-xs font-mono text-[#241A15] hover:bg-[#D8C5AF]/30 transition-colors cursor-pointer"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700 font-semibold">Copied!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5 text-[#4A3428]" />
-                      <span>Copy Number</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Direct email fallback */}
-              <div className="pt-2 text-xs font-mono text-[#4A3428] border-t border-[#D8C5AF]/60 flex items-center justify-between">
-                <span>Direct Email:</span>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="font-bold text-[#241A15] underline underline-offset-4 hover:text-[#4A3428]"
-                >
-                  {siteConfig.contact.email}
-                </a>
-              </div>
-            </div>
-
-            {/* Turnaround Guarantee Badge */}
-            <div className="p-4 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] flex items-center gap-3">
-              <Clock className="w-5 h-5 text-[#B58A64] flex-shrink-0" />
-              <div className="text-xs font-mono text-[#4A3428]">
-                <span className="font-bold text-[#241A15] block">24-Hour Reply Policy</span>
-                <span>All project briefs receive a personal, direct assessment from Charles.</span>
-              </div>
+              <span className="font-mono text-[11px] text-[#D8C5AF]/70 mt-2 text-center md:text-right">
+                No forms required • Opens WhatsApp directly
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Pre-formatted WhatsApp Conversation Starters */}
-        <div className="p-6 sm:p-10 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF]">
-          <div className="max-w-2xl mb-6">
-            <span className="font-mono text-xs text-[#B58A64] uppercase font-bold tracking-wider block mb-1">
-              FAST-TRACK ON WHATSAPP
+        {/* Quick Topic Selection: Pre-fills WhatsApp */}
+        <div className="mb-14">
+          <div className="mb-6">
+            <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-bold block mb-1">
+              CHOOSE A TOPIC TO PREFILL YOUR MESSAGE:
             </span>
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-[#241A15]">
-              Choose a Pre-Filled Topic
-            </h3>
-            <p className="text-xs text-[#4A3428] mt-1">
-              Click any topic below to open WhatsApp with a tailored opening inquiry:
-            </p>
+            <h2 className="font-display font-bold text-xl sm:text-3xl text-[#241A15]">
+              What would you like to discuss?
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {WHATSAPP_TOPICS.map((topic) => (
               <a
                 key={topic.id}
                 href={`https://wa.me/2347082367382?text=${encodeURIComponent(topic.message)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col justify-between p-4 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-sm transition-all"
+                className="group p-5 sm:p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#25D366] hover:shadow-md transition-all flex flex-col justify-between cursor-pointer"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-[10px] font-bold text-[#B58A64] uppercase">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="font-mono text-[11px] font-bold text-[#B58A64] bg-[#F5F0E8] border border-[#D8C5AF]/70 px-2.5 py-0.5 rounded-full">
                       {topic.badge}
                     </span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] group-hover:scale-125 transition-transform" />
                   </div>
-                  <h4 className="font-display font-bold text-sm text-[#241A15] mb-1">
+                  <h3 className="font-display font-bold text-lg text-[#241A15] group-hover:text-[#25D366] transition-colors mb-1.5">
                     {topic.title}
-                  </h4>
-                  <p className="text-[11px] text-[#4A3428] leading-relaxed">
+                  </h3>
+                  <p className="text-xs text-[#4A3428] leading-relaxed">
                     {topic.desc}
                   </p>
                 </div>
-                <div className="pt-3 mt-2 border-t border-[#D8C5AF]/60 text-[10px] font-mono font-semibold text-[#241A15] group-hover:text-[#4A3428]">
-                  Open in WhatsApp →
+
+                <div className="pt-4 mt-4 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono font-semibold text-[#241A15]">
+                  <span>Tap to send this inquiry</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#B58A64] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Secondary Contact: Email Direct */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="font-mono text-[11px] text-[#B58A64] font-bold uppercase tracking-wider block">
+              ALTERNATIVE CHANNEL
+            </span>
+            <h3 className="font-display font-bold text-lg text-[#241A15]">
+              Prefer to send an email?
+            </h3>
+            <p className="text-xs text-[#4A3428]">
+              If you have detailed RFPs or specifications, feel free to email me directly.
+            </p>
+          </div>
+          <a
+            href={`mailto:${siteConfig.contact.email}`}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-mono text-xs font-bold transition-all flex-shrink-0"
+          >
+            <Mail className="w-4 h-4 text-[#B58A64]" />
+            <span>{siteConfig.contact.email}</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF]" />
+          </a>
         </div>
       </div>
     </div>

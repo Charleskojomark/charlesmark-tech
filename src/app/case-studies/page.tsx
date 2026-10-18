@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Github, Code2, ArrowLeft, AlertTriangle } from "lucide-react";
-import { ProjectSystemDesign } from "@/components/ProjectSystemDesign";
+import { ArrowUpRight, Github, Code2, ArrowLeft, AlertTriangle, MessageCircle } from "lucide-react";
 import { projects } from "@/data/projects";
+import { siteConfig } from "@/config/site";
 
 const CATEGORIES = ["All", "Automation", "AI Systems", "Backend", "Cloud & DevOps"];
 
@@ -43,18 +43,6 @@ export default function CaseStudiesPage() {
           </p>
         </div>
 
-        {/* Interactive Architecture & System Design Simulator Studio */}
-        <div className="mb-16">
-          <div className="mb-4">
-            <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-1">
-              SYSTEM DESIGN & RUNTIME SIMULATION
-            </span>
-            <h2 className="font-display font-bold text-2xl text-[#241A15]">
-              Interactive Architecture & Flow Inspector
-            </h2>
-          </div>
-          <ProjectSystemDesign />
-        </div>
 
         {/* Category Filters */}
         <div className="flex flex-wrap gap-2 mb-10 border-b border-[#D8C5AF]/60 pb-6">
@@ -201,13 +189,16 @@ export default function CaseStudiesPage() {
               Book a 20-minute discovery call to evaluate your technical constraints and workflow ROI.
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-colors flex-shrink-0"
+          <a
+            href={siteConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider transition-all flex-shrink-0 shadow-md active:scale-95"
           >
-            <span>Book a Workflow Review</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
+            <MessageCircle className="w-4 h-4 fill-current" />
+            <span>Chat on WhatsApp</span>
+            <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
+          </a>
         </div>
       </div>
     </div>

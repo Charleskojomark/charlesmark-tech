@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Book a Call & Project Inquiries | Charles Mark",
   description:
-    "Schedule a discovery call, submit an inquiry brief, or chat directly with Charles Mark on WhatsApp (+234 708 236 7382) to discuss AI systems, workflow automation, and backend engineering.",
+    "Connect directly with Charles Mark on WhatsApp to discuss AI systems, workflow automation, and backend engineering.",
   keywords: [
     "Contact Charles Mark",
     "AI Automation Consultation",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Book a Call & Project Inquiries | ${siteConfig.name}`,
     description:
-      "Schedule a discovery call, submit an inquiry brief, or chat directly with Charles Mark on WhatsApp (+234 708 236 7382) to discuss AI systems, workflow automation, and backend engineering.",
+      "Connect directly with Charles Mark on WhatsApp to discuss AI systems, workflow automation, and backend engineering.",
     url: `${siteConfig.url}/contact`,
     type: "website",
     siteName: siteConfig.name,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Book a Call & Project Inquiries | ${siteConfig.name}`,
     description:
-      "Schedule a discovery call, submit an inquiry brief, or chat directly with Charles Mark on WhatsApp (+234 708 236 7382) to discuss AI systems, workflow automation, and backend engineering.",
+      "Connect directly with Charles Mark on WhatsApp to discuss AI systems, workflow automation, and backend engineering.",
     images: [siteConfig.ogImage],
   },
 };

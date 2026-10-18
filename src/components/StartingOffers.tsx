@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { ArrowUpRight, Check, Sparkles } from "lucide-react";
+import { ArrowUpRight, Check, Sparkles, MessageCircle } from "lucide-react";
 import { startingOffers } from "@/data/offers";
 
 export function StartingOffers() {
@@ -93,19 +92,26 @@ export function StartingOffers() {
                 </div>
               </div>
 
-              {/* Action Button */}
+              {/* Action Button: Direct WhatsApp Chat for Package */}
               <div className="pt-4 border-t border-[#D8C5AF]/70">
-                <Link
-                  href={`/contact?package=${offer.id}`}
-                  className={`w-full inline-flex items-center justify-between p-3.5 rounded-xl font-display font-semibold text-xs transition-all duration-200 shadow-sm ${
+                <a
+                  href={`https://wa.me/2347082367382?text=${encodeURIComponent(
+                    `Hi Charles, I'm interested in your ${offer.name} package.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full inline-flex items-center justify-between p-3.5 rounded-xl font-display font-bold text-xs transition-all duration-200 shadow-sm active:scale-95 ${
                     offer.popular
-                      ? "bg-[#241A15] text-[#F5F0E8] hover:bg-[#4A3428]"
-                      : "bg-[#FAF7F2] border border-[#4A3428] text-[#241A15] hover:bg-[#241A15] hover:text-[#F5F0E8]"
+                      ? "bg-[#25D366] hover:bg-[#20ba59] text-white"
+                      : "bg-[#241A15] text-[#F5F0E8] hover:bg-[#4A3428]"
                   }`}
                 >
-                  <span>{offer.ctaText}</span>
+                  <span className="flex items-center gap-2">
+                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <span>{offer.ctaText}</span>
+                  </span>
                   <ArrowUpRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           ))}
