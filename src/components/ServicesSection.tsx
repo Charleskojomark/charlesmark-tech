@@ -35,7 +35,7 @@ export function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
               >
                 <div>
                   {/* Top Bar: Icon + Service Counter */}

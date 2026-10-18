@@ -33,7 +33,7 @@ export function FeaturedProjects() {
           {featured.map((project) => (
             <article
               key={project.slug}
-              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 md:p-9 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-xl transition-all duration-300 relative"
+              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 md:p-9 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 relative"
             >
               <div>
                 {/* Meta Header */}

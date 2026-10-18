@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
+import { HeroTyping } from "@/components/HeroTyping";
+
 export function Hero() {
   return (
     <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-14 md:pb-20 overflow-hidden relative">
@@ -52,7 +54,12 @@ export function Hero() {
               AI automation and backend systems for businesses that want less manual work and more reliable operations.
             </h1>
 
-            {/* Lively Solutions Badges (No artificial animations) */}
+            {/* Changing Letters Dynamic Cycling Typography */}
+            <div className="pt-1 pb-1">
+              <HeroTyping />
+            </div>
+
+            {/* Core Deliverable Badges */}
             <div className="py-1">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#B58A64] font-bold block mb-2">
                 CORE SOLUTIONS DELIVERED:

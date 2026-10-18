@@ -39,7 +39,7 @@ export function ProblemsSection() {
             return (
               <div
                 key={item.id}
-                className="group flex flex-col justify-between bg-[#F5F0E8] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:shadow-md transition-all duration-300"
+                className="group flex flex-col justify-between bg-[#F5F0E8] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

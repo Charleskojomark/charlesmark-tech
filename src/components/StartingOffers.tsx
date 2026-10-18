@@ -24,10 +24,10 @@ export function StartingOffers() {
           {startingOffers.map((offer) => (
             <div
               key={offer.id}
-              className={`flex flex-col justify-between rounded-3xl p-6 sm:p-8 border transition-all duration-300 relative ${
+              className={`flex flex-col justify-between rounded-3xl p-6 sm:p-8 border transition-all duration-300 relative hover:-translate-y-2 ${
                 offer.popular
-                  ? "bg-[#F5F0E8] border-[#4A3428] shadow-xl ring-2 ring-[#B58A64]"
-                  : "bg-[#F5F0E8] border-[#D8C5AF] hover:border-[#4A3428] shadow-sm"
+                  ? "bg-[#F5F0E8] border-[#4A3428] shadow-xl hover:shadow-2xl ring-2 ring-[#B58A64]"
+                  : "bg-[#F5F0E8] border-[#D8C5AF] hover:border-[#4A3428] shadow-sm hover:shadow-2xl"
               }`}
             >
               {offer.popular && (

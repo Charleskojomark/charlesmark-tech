@@ -7,36 +7,128 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StartingOffers } from "@/components/StartingOffers";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
+import { SectionConnector } from "@/components/SectionConnector";
+import { SectionReveal } from "@/components/SectionReveal";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
+import { SectionNavigator } from "@/components/SectionNavigator";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full">
-      {/* 1. Hero: outcome-first headline for businesses */}
-      <Hero />
+    <div className="flex flex-col w-full relative">
+      {/* 0. Top Scroll Progress Line */}
+      <ScrollProgressBar />
+
+      {/* Floating Section Pipeline Navigator (Desktop) */}
+      <SectionNavigator />
+
+      {/* 1. Hero: Outcome-first headline, profile, dynamic changing letters, CTAs */}
+      <div id="hero">
+        <Hero />
+      </div>
+
+      {/* Pipeline Connector: Stage 01 */}
+      <SectionConnector
+        stage="STAGE 01"
+        label="PROBLEM DIAGNOSTIC"
+        sublabel="Isolating manual bottlenecks"
+        icon="workflow"
+      />
 
       {/* 2. Problems I solve */}
-      <ProblemsSection />
+      <SectionReveal>
+        <ProblemsSection />
+      </SectionReveal>
 
-      {/* 3. Services, written as outcomes with deliverables and timelines */}
-      <ServicesSection />
+      {/* Pipeline Connector: Stage 02 */}
+      <SectionConnector
+        stage="STAGE 02"
+        label="TAILORED ARCHITECTURE"
+        sublabel="Core engineering disciplines"
+        icon="cpu"
+      />
 
-      {/* 4. Case studies: Problem, What changed, Result */}
-      <FeaturedProjects />
+      {/* 3. Services written as outcomes */}
+      <SectionReveal>
+        <ServicesSection />
+      </SectionReveal>
 
-      {/* 5. How I work: Understand, Design, Build, Test, Improve */}
-      <HowIWork />
+      {/* Pipeline Connector: Stage 03 */}
+      <SectionConnector
+        stage="STAGE 03"
+        label="PROVEN IMPLEMENTATIONS"
+        sublabel="Real-world reference builds"
+        icon="layers"
+      />
 
-      {/* 6. Proof: Honesty rules, verified client standards & visible TODO slot */}
-      <TestimonialsSection />
+      {/* 4. Case studies */}
+      <SectionReveal>
+        <FeaturedProjects />
+      </SectionReveal>
 
-      {/* 7. Starting offers: Workflow Audit, Automation Build, Monthly Support */}
-      <StartingOffers />
+      {/* Pipeline Connector: Stage 04 */}
+      <SectionConnector
+        stage="STAGE 04"
+        label="ENGINEERING METHODOLOGY"
+        sublabel="From deconstruction to deployment"
+        icon="workflow"
+      />
 
-      {/* 8. FAQ: cost, timeline, code ownership, data security, support */}
-      <FaqSection />
+      {/* 5. How I work */}
+      <SectionReveal>
+        <HowIWork />
+      </SectionReveal>
 
-      {/* 9. Contact: Enquiry form, booking link placeholder & WhatsApp */}
-      <ContactCTA />
+      {/* Pipeline Connector: Stage 05 */}
+      <SectionConnector
+        stage="STAGE 05"
+        label="CLIENT STANDARDS & IP"
+        sublabel="Data security & 100% code ownership"
+        icon="shield"
+      />
+
+      {/* 6. Honest proof & client standards */}
+      <SectionReveal>
+        <TestimonialsSection />
+      </SectionReveal>
+
+      {/* Pipeline Connector: Stage 06 */}
+      <SectionConnector
+        stage="STAGE 06"
+        label="FIXED-SCOPE PACKAGES"
+        sublabel="Clear deliverables & fixed quotes"
+        icon="sparkles"
+      />
+
+      {/* 7. Starting offers */}
+      <SectionReveal>
+        <StartingOffers />
+      </SectionReveal>
+
+      {/* Pipeline Connector: Stage 07 */}
+      <SectionConnector
+        stage="STAGE 07"
+        label="COMMERCIAL & TECHNICAL CLARITY"
+        sublabel="Answers to common buyer questions"
+        icon="check"
+      />
+
+      {/* 8. FAQ */}
+      <SectionReveal>
+        <FaqSection />
+      </SectionReveal>
+
+      {/* Pipeline Connector: Stage 08 */}
+      <SectionConnector
+        stage="STAGE 08"
+        label="DIRECT ENGAGEMENT"
+        sublabel="Skip sales queues via WhatsApp"
+        icon="sparkles"
+      />
+
+      {/* 9. Direct WhatsApp Conversion Hub */}
+      <SectionReveal>
+        <ContactCTA />
+      </SectionReveal>
     </div>
   );
 }

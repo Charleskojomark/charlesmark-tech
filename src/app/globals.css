@@ -125,6 +125,42 @@ code, pre, .font-mono {
   animation: dashFlow 2s linear infinite;
 }
 
+/* Pipeline data stream travel animation */
+@keyframes pipelineFlow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-pipeline-stream {
+  animation: pipelineFlow 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Subtle ambient pulse for active pipeline nodes */
+@keyframes ambientNode {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(181, 138, 100, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(181, 138, 100, 0);
+  }
+}
+
+.animate-ambient-node {
+  animation: ambientNode 2.6s ease-in-out infinite;
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
