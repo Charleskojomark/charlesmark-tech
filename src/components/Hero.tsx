@@ -14,6 +14,7 @@ import {
 import { siteConfig } from "@/config/site";
 
 import { HeroTyping } from "@/components/HeroTyping";
+import { ThreeHeroScene } from "@/components/ThreeHeroScene";
 
 export function Hero() {
   return (
@@ -143,85 +144,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Business Architecture Snapshot Card */}
+          {/* Right Column: Interactive 3D WebGL AI Neural Core */}
           <div className="lg:col-span-5 w-full">
-            <div className="bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] shadow-md relative overflow-hidden space-y-6">
-              <div className="flex items-center justify-between border-b border-[#D8C5AF]/60 pb-4">
-                <div>
-                  <span className="font-mono text-[11px] text-[#B58A64] uppercase font-bold tracking-wider block">
-                    OPERATIONAL SYSTEM
-                  </span>
-                  <h3 className="font-display font-bold text-lg text-[#241A15]">
-                    How Your Solution Runs
-                  </h3>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-[#E8DDCF]/60 text-[10px] font-mono font-semibold text-[#4A3428]">
-                  Automated & Monitored
-                </span>
-              </div>
-
-              {/* 3 Step Connected Workflow Visual */}
-              <div className="space-y-3">
-                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
-                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
-                    <Workflow className="w-4 h-4 text-[#D8C5AF]" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-[10px] text-[#4A3428]/70 uppercase tracking-widest font-bold block">
-                      STAGE 01 • INTAKE
-                    </span>
-                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
-                      Inbound Leads, Emails & Document Webhooks
-                    </h4>
-                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
-                      Captures customer inquiries, invoice PDFs, or tickets instantly without manual checking.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
-                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
-                    <Bot className="w-4 h-4 text-[#B58A64]" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-[10px] text-[#B58A64] uppercase tracking-widest font-bold block">
-                      STAGE 02 • INTELLIGENCE
-                    </span>
-                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
-                      AI Extraction & Guardrailed Verification
-                    </h4>
-                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
-                      Extracts structured data, checks against schema rules, and guards against errors before saving.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
-                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
-                    <Database className="w-4 h-4 text-[#10B981]" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-[10px] text-emerald-700 uppercase tracking-widest font-bold block">
-                      STAGE 03 • ACTION
-                    </span>
-                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
-                      CRM / Database Sync & Team Alert
-                    </h4>
-                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
-                      Writes records directly to PostgreSQL/CRM and dispatches role-tailored notifications to Slack.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Quick Callout */}
-              <div className="pt-2 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono text-[#4A3428]">
-                <span>Typical Time Saved:</span>
-                <span className="font-bold text-[#241A15] bg-[#F5F0E8] px-2.5 py-1 rounded-md border border-[#D8C5AF]">
-                  10–20+ hrs/wk per workflow
-                </span>
-              </div>
-            </div>
+            <ThreeHeroScene />
           </div>
         </div>
       </div>
