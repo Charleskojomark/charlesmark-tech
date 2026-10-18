@@ -95,12 +95,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/charles-mark.png", type: "image/png" },
-      { url: "/icon" },
-      { url: "/favicon.ico" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
     ],
-    shortcut: "/charles-mark.png",
-    apple: "/charles-mark.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 
