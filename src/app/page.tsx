@@ -7,126 +7,65 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StartingOffers } from "@/components/StartingOffers";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
-import { SectionConnector } from "@/components/SectionConnector";
 import { SectionReveal } from "@/components/SectionReveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { SectionNavigator } from "@/components/SectionNavigator";
+import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full relative">
-      {/* 0. Top Scroll Progress Line */}
+      {/* Continuous 3D WebGL Constellation Canvas across all sections */}
+      <ThreeBackgroundCanvas />
+
+      {/* Top Scroll Progress Line */}
       <ScrollProgressBar />
 
       {/* Floating Section Pipeline Navigator (Desktop) */}
       <SectionNavigator />
 
-      {/* 1. Hero: Outcome-first headline, profile, dynamic changing letters, CTAs */}
-      <div id="hero">
+      {/* 1. Hero: Outcome-first headline, profile, dynamic changing letters, 3D WebGL core, CTAs */}
+      <div id="hero" className="relative z-10">
         <Hero />
       </div>
 
-      {/* Pipeline Connector: Stage 01 */}
-      <SectionConnector
-        stage="STAGE 01"
-        label="PROBLEM DIAGNOSTIC"
-        sublabel="Isolating manual bottlenecks"
-        icon="workflow"
-      />
-
       {/* 2. Problems I solve */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <ProblemsSection />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 02 */}
-      <SectionConnector
-        stage="STAGE 02"
-        label="TAILORED ARCHITECTURE"
-        sublabel="Core engineering disciplines"
-        icon="cpu"
-      />
-
       {/* 3. Services written as outcomes */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <ServicesSection />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 03 */}
-      <SectionConnector
-        stage="STAGE 03"
-        label="PROVEN IMPLEMENTATIONS"
-        sublabel="Real-world reference builds"
-        icon="layers"
-      />
-
       {/* 4. Case studies */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <FeaturedProjects />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 04 */}
-      <SectionConnector
-        stage="STAGE 04"
-        label="ENGINEERING METHODOLOGY"
-        sublabel="From deconstruction to deployment"
-        icon="workflow"
-      />
-
       {/* 5. How I work */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <HowIWork />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 05 */}
-      <SectionConnector
-        stage="STAGE 05"
-        label="CLIENT STANDARDS & IP"
-        sublabel="Data security & 100% code ownership"
-        icon="shield"
-      />
-
       {/* 6. Honest proof & client standards */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <TestimonialsSection />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 06 */}
-      <SectionConnector
-        stage="STAGE 06"
-        label="FIXED-SCOPE PACKAGES"
-        sublabel="Clear deliverables & fixed quotes"
-        icon="sparkles"
-      />
-
       {/* 7. Starting offers */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <StartingOffers />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 07 */}
-      <SectionConnector
-        stage="STAGE 07"
-        label="COMMERCIAL & TECHNICAL CLARITY"
-        sublabel="Answers to common buyer questions"
-        icon="check"
-      />
-
       {/* 8. FAQ */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <FaqSection />
       </SectionReveal>
 
-      {/* Pipeline Connector: Stage 08 */}
-      <SectionConnector
-        stage="STAGE 08"
-        label="DIRECT ENGAGEMENT"
-        sublabel="Skip sales queues via WhatsApp"
-        icon="sparkles"
-      />
-
       {/* 9. Direct WhatsApp Conversion Hub */}
-      <SectionReveal>
+      <SectionReveal className="relative z-10">
         <ContactCTA />
       </SectionReveal>
     </div>

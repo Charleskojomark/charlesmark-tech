@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowUpRight, AlertCircle, Clock, FileSpreadsheet, FolderSearch, ServerCrash } from "lucide-react";
 import { problemsSolved } from "@/data/problems";
+import { Card3D, Card3DItem } from "@/components/Card3D";
 
 const PROBLEM_ICONS = {
   "leads-slipping": Clock,
@@ -31,29 +32,31 @@ export function ProblemsSection() {
           </p>
         </div>
 
-        {/* 4 Problem Cards Grid */}
+        {/* 4 Problem Cards Grid with Interactive 3D Perspective Tilt */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {problemsSolved.map((item) => {
             const Icon = PROBLEM_ICONS[item.id as keyof typeof PROBLEM_ICONS] || AlertCircle;
 
             return (
-              <div
+              <Card3D
                 key={item.id}
-                className="group flex flex-col justify-between bg-[#F5F0E8] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300"
+                className="group flex flex-col justify-between bg-[#F5F0E8] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] shadow-md hover:shadow-2xl transition-all duration-300"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <Card3DItem translateZ={30} className="flex items-center justify-between mb-4">
                     <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-xs">
                       <Icon className="w-5 h-5 text-[#D8C5AF]" />
                     </div>
-                    <span className="font-mono text-xs font-bold text-[#B58A64] bg-[#FAF7F2] border border-[#D8C5AF] px-3 py-1 rounded-full">
+                    <span className="font-mono text-xs font-bold text-[#B58A64] bg-[#FAF7F2] border border-[#D8C5AF] px-3 py-1 rounded-full shadow-xs">
                       {item.badge}
                     </span>
-                  </div>
+                  </Card3DItem>
 
-                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#241A15] mb-3 leading-snug">
-                    {item.title}
-                  </h3>
+                  <Card3DItem translateZ={20}>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-[#241A15] mb-3 leading-snug">
+                      {item.title}
+                    </h3>
+                  </Card3DItem>
 
                   {/* Symptom vs Solved State */}
                   <div className="space-y-3 mb-4">
@@ -77,7 +80,7 @@ export function ProblemsSection() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono">
+                <Card3DItem translateZ={25} className="pt-3 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono">
                   <a
                     href="#contact"
                     className="inline-flex items-center gap-1.5 font-semibold text-[#241A15] group-hover:text-[#4A3428] transition-colors"
@@ -85,8 +88,8 @@ export function ProblemsSection() {
                     <span>Fix this problem in your operations</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#B58A64] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
-                </div>
-              </div>
+                </Card3DItem>
+              </Card3D>
             );
           })}
         </div>

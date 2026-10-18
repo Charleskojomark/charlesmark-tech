@@ -27,19 +27,25 @@ export function SectionReveal({
   }
 
   return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.08 }}
-      transition={{
-        duration: 0.7,
-        delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.section>
+    <div style={{ perspective: "1200px" }} className="w-full">
+      <motion.section
+        id={id}
+        initial={{ opacity: 0, rotateX: 10, y: 35, scale: 0.98 }}
+        whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{
+          duration: 0.75,
+          delay,
+          ease: [0.21, 0.47, 0.32, 0.98],
+        }}
+        style={{
+          transformStyle: "preserve-3d",
+          transformOrigin: "center top",
+        }}
+        className={className}
+      >
+        {children}
+      </motion.section>
+    </div>
   );
 }

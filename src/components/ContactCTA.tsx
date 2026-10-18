@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowUpRight, MessageCircle, Mail, Sparkles, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { Card3D, Card3DItem } from "@/components/Card3D";
 
 const WHATSAPP_PROMPTS = [
   {
@@ -30,7 +31,11 @@ export function ContactCTA() {
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-24 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#241A15] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#4A3428] shadow-2xl relative overflow-hidden text-[#F5F0E8]">
+        <Card3D
+          maxTilt={6}
+          glowColor="rgba(181, 138, 100, 0.18)"
+          className="bg-[#241A15] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#4A3428] shadow-2xl relative overflow-hidden text-[#F5F0E8]"
+        >
           {/* Subtle warm glow background */}
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -43,7 +48,7 @@ export function ContactCTA() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Column: Direct Invitation */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center gap-3">
+              <Card3DItem translateZ={28} className="flex items-center gap-3">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#241A15] flex-shrink-0">
                   <Image
                     src="/charles-mark.png"
@@ -62,29 +67,31 @@ export function ContactCTA() {
                     Talk Directly With Charles Mark
                   </span>
                 </div>
-              </div>
+              </Card3DItem>
 
-              <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#F5F0E8]">
-                LET&apos;S TALK ABOUT YOUR WORKFLOW OR APP.
-              </h2>
+              <Card3DItem translateZ={20}>
+                <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#F5F0E8]">
+                  LET&apos;S TALK ABOUT YOUR WORKFLOW OR APP.
+                </h2>
+              </Card3DItem>
 
               <p className="text-sm sm:text-base text-[#D8C5AF] leading-relaxed">
                 No long forms, no sales middlemen, and no waiting days for a ticket reply. Click below to start a direct WhatsApp conversation about your operational bottleneck or product backend.
               </p>
 
-              {/* Big High-Converting WhatsApp Button (No phone digits displayed) */}
-              <div className="pt-2">
+              {/* Big High-Converting WhatsApp Button */}
+              <Card3DItem translateZ={32} className="pt-2">
                 <a
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer"
                 >
                   <MessageCircle className="w-6 h-6 fill-current flex-shrink-0" />
                   <span>Chat with Charles on WhatsApp</span>
                   <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-              </div>
+              </Card3DItem>
 
               {/* Guarantees */}
               <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#D8C5AF]/90 pt-3 border-t border-[#4A3428]/80">
@@ -100,35 +107,40 @@ export function ContactCTA() {
               </div>
             </div>
 
-            {/* Right Column: Pre-filled WhatsApp Topics (Click opens WhatsApp immediately) */}
+            {/* Right Column: Pre-filled WhatsApp Topics with 3D Tilt */}
             <div className="lg:col-span-6 space-y-3.5">
               <span className="font-mono text-[11px] text-[#B58A64] uppercase font-bold tracking-widest block mb-1">
                 OR TAP A TOPIC TO PREFILL YOUR MESSAGE:
               </span>
 
               {WHATSAPP_PROMPTS.map((topic) => (
-                <a
+                <Card3D
                   key={topic.title}
-                  href={`https://wa.me/2347082367382?text=${encodeURIComponent(topic.message)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between p-4 rounded-2xl bg-[#2E2019] border border-[#4A3428] hover:border-[#25D366] hover:bg-[#38261D] transition-all shadow-sm cursor-pointer"
+                  maxTilt={8}
+                  glowColor="rgba(37, 211, 102, 0.25)"
                 >
-                  <div className="space-y-0.5 pr-3">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#25D366] flex-shrink-0" />
-                      <h3 className="font-display font-bold text-sm text-[#F5F0E8] group-hover:text-white transition-colors">
-                        {topic.title}
-                      </h3>
+                  <a
+                    href={`https://wa.me/2347082367382?text=${encodeURIComponent(topic.message)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between p-4 rounded-2xl bg-[#2E2019] border border-[#4A3428] hover:border-[#25D366] hover:bg-[#38261D] transition-all shadow-sm cursor-pointer block"
+                  >
+                    <div className="space-y-0.5 pr-3">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#25D366] flex-shrink-0" />
+                        <h3 className="font-display font-bold text-sm text-[#F5F0E8] group-hover:text-white transition-colors">
+                          {topic.title}
+                        </h3>
+                      </div>
+                      <p className="text-xs text-[#D8C5AF]/80 pl-4 leading-relaxed">
+                        {topic.subtitle}
+                      </p>
                     </div>
-                    <p className="text-xs text-[#D8C5AF]/80 pl-4 leading-relaxed">
-                      {topic.subtitle}
-                    </p>
-                  </div>
-                  <div className="w-8 h-8 rounded-xl bg-[#241A15] border border-[#4A3428] group-hover:bg-[#25D366] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-colors">
-                    <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-white transition-colors" />
-                  </div>
-                </a>
+                    <div className="w-8 h-8 rounded-xl bg-[#241A15] border border-[#4A3428] group-hover:bg-[#25D366] group-hover:text-white flex items-center justify-center flex-shrink-0 transition-colors">
+                      <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-white transition-colors" />
+                    </div>
+                  </a>
+                </Card3D>
               ))}
 
               {/* Direct Email Fallback */}
@@ -138,15 +150,15 @@ export function ContactCTA() {
                   <span>Prefer email?</span>
                 </div>
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="font-bold text-[#F5F0E8] hover:text-[#B58A64] underline underline-offset-4 transition-colors"
+                  href={`mailto:${siteConfig.contact.email}?subject=Project%20Inquiry%20-%20AI%20Systems`}
+                  className="font-semibold text-white hover:text-[#B58A64] transition-colors underline"
                 >
                   {siteConfig.contact.email}
                 </a>
               </div>
             </div>
           </div>
-        </div>
+        </Card3D>
       </div>
     </section>
   );

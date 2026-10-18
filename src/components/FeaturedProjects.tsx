@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight, Github, Code2, AlertTriangle } from "lucide-react";
 import { projects } from "@/data/projects";
+import { Card3D, Card3DItem } from "@/components/Card3D";
 
 export function FeaturedProjects() {
   const featured = projects.filter((p) => p.featured);
@@ -28,17 +29,17 @@ export function FeaturedProjects() {
           </Link>
         </div>
 
-        {/* Featured Case Studies Grid */}
+        {/* Featured Case Studies Grid with 3D Perspective Tilt */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {featured.map((project) => (
-            <article
+            <Card3D
               key={project.slug}
-              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 md:p-9 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 relative"
+              className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 md:p-9 border border-[#D8C5AF] hover:border-[#4A3428] shadow-md hover:shadow-2xl transition-all duration-300 relative"
             >
               <div>
                 {/* Meta Header */}
-                <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                  <span className="font-mono text-[11px] font-semibold text-[#B58A64] bg-[#F5F0E8] border border-[#D8C5AF] px-2.5 py-1 rounded-full uppercase tracking-wider">
+                <Card3DItem translateZ={30} className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                  <span className="font-mono text-[11px] font-semibold text-[#B58A64] bg-[#F5F0E8] border border-[#D8C5AF] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
                     {project.category}
                   </span>
                   <span
@@ -50,17 +51,19 @@ export function FeaturedProjects() {
                   >
                     {project.status}
                   </span>
-                </div>
+                </Card3DItem>
 
                 {/* Title & Tagline */}
-                <h3 className="font-display font-bold text-2xl text-[#241A15] group-hover:text-[#4A3428] transition-colors leading-snug">
-                  <Link href={`/case-studies/${project.slug}`}>
-                    {project.title}
-                  </Link>
-                </h3>
-                <p className="text-sm font-medium text-[#4A3428] mt-1 mb-5 leading-relaxed">
-                  {project.tagline}
-                </p>
+                <Card3DItem translateZ={20}>
+                  <h3 className="font-display font-bold text-2xl text-[#241A15] group-hover:text-[#4A3428] transition-colors leading-snug">
+                    <Link href={`/case-studies/${project.slug}`}>
+                      {project.title}
+                    </Link>
+                  </h3>
+                  <p className="text-sm font-medium text-[#4A3428] mt-1 mb-5 leading-relaxed">
+                    {project.tagline}
+                  </p>
+                </Card3DItem>
 
                 {/* Klinik Prototype Disclaimer Notice if applicable */}
                 {project.honestyNote && (
@@ -123,7 +126,7 @@ export function FeaturedProjects() {
               </div>
 
               {/* Actions & Links */}
-              <div className="pt-4 border-t border-[#D8C5AF]/70 flex items-center justify-between gap-3">
+              <Card3DItem translateZ={28} className="pt-4 border-t border-[#D8C5AF]/70 flex items-center justify-between gap-3">
                 <Link
                   href={`/case-studies/${project.slug}`}
                   className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#241A15] group-hover:text-[#4A3428] transition-colors"
@@ -138,15 +141,15 @@ export function FeaturedProjects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] text-[#000000] hover:bg-[#D8C5AF]/40 transition-colors"
+                      className="p-2 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] text-[#000000] hover:bg-[#D8C5AF]/40 transition-colors shadow-xs"
                       aria-label={`${project.title} GitHub repository`}
                     >
                       <Github className="w-4 h-4 text-[#000000]" />
                     </a>
                   )}
                 </div>
-              </div>
-            </article>
+              </Card3DItem>
+            </Card3D>
           ))}
         </div>
       </div>

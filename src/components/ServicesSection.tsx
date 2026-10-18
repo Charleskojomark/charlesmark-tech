@@ -1,6 +1,7 @@
 import React from "react";
-import { ArrowUpRight, CheckCircle2, Clock, Users, Cpu, Bot, Server, Check, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Clock, Users, Cpu, Bot, Server, Check, MessageCircle } from "lucide-react";
 import { services } from "@/data/services";
+import { Card3D, Card3DItem } from "@/components/Card3D";
 
 const ICON_MAP = {
   Cpu: Cpu,
@@ -27,40 +28,40 @@ export function ServicesSection() {
           </p>
         </div>
 
-        {/* 3 Outcome-First Service Cards */}
+        {/* 3 Outcome-First Service Cards with 3D Perspective Tilt */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => {
             const Icon = ICON_MAP[service.icon as keyof typeof ICON_MAP] || Cpu;
 
             return (
-              <div
+              <Card3D
                 key={service.id}
-                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] hover:border-[#4A3428] shadow-md hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
               >
                 <div>
                   {/* Top Bar: Icon + Service Counter */}
-                  <div className="flex items-center justify-between mb-5">
+                  <Card3DItem translateZ={30} className="flex items-center justify-between mb-5">
                     <div className="w-12 h-12 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-sm">
                       <Icon className="w-6 h-6 text-[#D8C5AF]" />
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#4A3428]/70 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF]/60">
+                    <span className="font-mono text-xs font-semibold text-[#4A3428]/70 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF]/60 shadow-xs">
                       SERVICE 0{index + 1}
                     </span>
-                  </div>
+                  </Card3DItem>
 
                   {/* Title & Core Outcome */}
-                  <div className="space-y-2 mb-5">
+                  <Card3DItem translateZ={20} className="space-y-2 mb-5">
                     <span className="font-mono text-xs font-bold text-[#B58A64] tracking-wider uppercase block">
                       {service.name}
                     </span>
                     <h3 className="font-display font-bold text-xl sm:text-2xl text-[#241A15] leading-snug">
                       {service.headline}
                     </h3>
-                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                    <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 shadow-xs">
                       <Check className="w-3.5 h-3.5 text-emerald-600" />
                       <span>{service.outcome}</span>
                     </div>
-                  </div>
+                  </Card3DItem>
 
                   {/* Who It's For */}
                   <div className="p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70 mb-5">
@@ -73,15 +74,17 @@ export function ServicesSection() {
                     </p>
                   </div>
 
-                  {/* What You Get */}
+                  {/* What You Get Deliverables List */}
                   <div className="space-y-2.5 mb-6">
                     <span className="font-mono text-[11px] text-[#241A15] font-bold uppercase tracking-wider block">
                       WHAT YOU GET:
                     </span>
                     <ul className="space-y-2">
-                      {service.whatYouGet.map((item) => (
+                      {service.deliverables.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-xs text-[#4A3428] leading-tight">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0 mt-0.5" />
+                          <div className="w-3.5 h-3.5 rounded-full bg-[#B58A64]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check className="w-2.5 h-2.5 text-[#4A3428]" />
+                          </div>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -96,7 +99,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Primary CTA Button: Direct WhatsApp Chat */}
-                <div className="pt-5 space-y-2">
+                <Card3DItem translateZ={28} className="pt-5 space-y-2">
                   <a
                     href={`https://wa.me/2347082367382?text=${encodeURIComponent(
                       `Hi Charles, I'd like to discuss ${service.name} for my business.`
@@ -111,8 +114,8 @@ export function ServicesSection() {
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </a>
-                </div>
-              </div>
+                </Card3DItem>
+              </Card3D>
             );
           })}
         </div>
