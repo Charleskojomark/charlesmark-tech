@@ -26,31 +26,25 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    default: `${siteConfig.name} | ${siteConfig.title}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
     "Charles Mark",
     "AI Systems Engineer",
-    "Backend Engineer",
-    "Workflow Automation Engineer",
-    "Agentic AI",
-    "n8n Automation",
-    "LangGraph Developer",
-    "FastAPI",
-    "Express.js",
-    "Django Developer",
-    "PostgreSQL",
-    "pgvector",
-    "RAG Systems",
-    "Event-Driven Architecture",
-    "Webhook Integration",
-    "Clinical Voice AI",
-    "Autonomous AI Agents",
-    "AI Automation Consultant",
-    "Full-Stack AI Engineer",
-    "Remote Backend Engineer",
+    "AI automation for business",
+    "n8n automation",
+    "custom AI assistant",
+    "RAG for company documents",
+    "backend development",
+    "AI agent development",
+    "workflow automation consultant",
+    "PostgreSQL pgvector",
+    "FastAPI Express backend",
+    "business process automation",
+    "LangGraph developer",
+    "webhook integration",
     "charlesmark.tech",
   ],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -68,9 +62,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
-    siteName: `${siteConfig.name} - Engineering Portfolio`,
+    siteName: `${siteConfig.name} | AI Systems Engineer`,
     images: [
       {
         url: siteConfig.ogImage,
@@ -83,7 +77,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: "@markcharleskojo",
@@ -111,31 +105,83 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Structured JSON-LD schema
+  // Structured JSON-LD schema combining Person and ProfessionalService
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    image: `${siteConfig.url}/charles-mark.png`,
-    jobTitle: siteConfig.tagline,
-    telephone: siteConfig.contact.phone,
-    description: siteConfig.description,
-    sameAs: [
-      siteConfig.social.linkedin.url,
-      siteConfig.social.github.url,
-      siteConfig.social.website.url,
-    ],
-    knowsAbout: [
-      "Artificial Intelligence",
-      "Agentic Systems",
-      "LangGraph State Machines",
-      "Backend Architecture",
-      "Workflow Automation",
-      "n8n Integration",
-      "REST APIs & Webhooks",
-      "PostgreSQL & Vector Databases",
-      "FastAPI & Node.js",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteConfig.url}/#person`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        image: `${siteConfig.url}/charles-mark.png`,
+        jobTitle: siteConfig.title,
+        telephone: siteConfig.contact.phone,
+        email: siteConfig.contact.email,
+        description: siteConfig.description,
+        sameAs: [
+          siteConfig.social.linkedin.url,
+          siteConfig.social.github.url,
+          siteConfig.social.website.url,
+        ],
+        knowsAbout: [
+          "AI Workflow Automation",
+          "Custom AI Agents",
+          "RAG on Business Documents",
+          "Backend API Development",
+          "n8n Integration",
+          "PostgreSQL & pgvector",
+          "FastAPI & Node.js",
+        ],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${siteConfig.url}/#service`,
+        name: `${siteConfig.name} | AI Systems Engineer`,
+        url: siteConfig.url,
+        image: `${siteConfig.url}/charles-mark.png`,
+        telephone: siteConfig.contact.phone,
+        email: siteConfig.contact.email,
+        description: siteConfig.description,
+        priceRange: "$$",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "NG",
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "AI Solutions & Engineering Services",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "AI Workflow Automation",
+                description:
+                  "Automated pipelines (n8n, Python) capturing leads, parsing PDFs, and syncing data across tools.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Custom AI Agents & RAG Assistants",
+                description:
+                  "Private knowledge assistants grounded in company documents with citations and tool integration.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Backend Development & AI Integration",
+                description:
+                  "Scalable REST APIs (Node/Express, FastAPI) and relational PostgreSQL database architectures.",
+              },
+            },
+          ],
+        },
+      },
     ],
   };
 

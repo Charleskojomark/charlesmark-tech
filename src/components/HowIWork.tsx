@@ -93,7 +93,7 @@ export function HowIWork() {
   const StepIcon = currentStep.icon;
 
   return (
-    <section id="process" className="py-10 sm:py-16 md:py-20 bg-[#FAF7F2] border-y border-[#D8C5AF]/70">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-24 bg-[#FAF7F2] border-y border-[#D8C5AF]/70 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-8 sm:mb-12 md:mb-14">

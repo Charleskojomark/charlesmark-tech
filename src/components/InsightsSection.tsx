@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, Clock, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Clock, Sparkles, CheckCircle2 } from "lucide-react";
 import { articles } from "@/data/articles";
 
 export function InsightsSection() {

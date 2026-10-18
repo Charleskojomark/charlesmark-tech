@@ -4,27 +4,24 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowUpRight,
-  Terminal,
   CheckCircle2,
-  FileText,
-  Workflow,
-  Server,
-  Bot,
-  ShieldCheck,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { SystemDiagram } from "@/components/SystemDiagram";
+import { TechnicalCapabilities } from "@/components/TechnicalCapabilities";
 
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Charles Mark | Background & Engineering Philosophy",
+  title: "About Charles Mark | AI Systems Engineer & Solutions Architect",
   description:
-    "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+    "Learn about Charles Mark, an AI Systems Engineer with a deep foundation in backend development, workflow automation, and practical AI applications.",
   keywords: [
     "About Charles Mark",
-    "AI Systems Engineer Background",
-    "Backend Engineer Portfolio",
+    "AI Systems Engineer",
     "Workflow Automation Consultant",
+    "AI Automation for Business",
+    "Backend Architecture",
     "Charles Mark Bio",
   ],
   alternates: {
@@ -33,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `About Charles Mark | ${siteConfig.name}`,
     description:
-      "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+      "Learn about Charles Mark, an AI Systems Engineer helping businesses automate workflows, build custom AI assistants, and engineer reliable backends.",
     url: `${siteConfig.url}/about`,
     type: "profile",
     images: [
@@ -49,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `About Charles Mark | ${siteConfig.name}`,
     description:
-      "Learn about Charles Mark, an AI Systems Engineer with a strong foundation in backend development, workflow automation, and practical AI applications.",
+      "Learn about Charles Mark, an AI Systems Engineer helping businesses automate workflows, build custom AI assistants, and engineer reliable backends.",
     images: [siteConfig.ogImage],
   },
 };
@@ -57,7 +54,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="py-12 md:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <div className="mb-8">
           <Link
@@ -82,16 +79,16 @@ export default function AboutPage() {
             />
           </div>
           <div>
-            <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
-              ENGINEERING IDENTITY & BACKGROUND
+            <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-2">
+              ABOUT CHARLES MARK
             </span>
             <h1 className="font-display text-3xl sm:text-5xl md:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4">
               PRACTICAL SYSTEMS.
               <br />
-              NO DEMO-WARE. NO GIMMICKS.
+              ENGINEERED FOR BUSINESS RELIABILITY.
             </h1>
             <p className="font-display text-lg sm:text-xl text-[#4A3428] font-normal leading-relaxed max-w-2xl">
-              &ldquo;I&apos;m Charles Mark, an engineer interested in building practical AI-powered systems, reliable backend services, and automation that solves real problems.&rdquo;
+              &ldquo;I build AI workflow automation, custom AI assistants, and backend systems for businesses that want less manual work and more reliable operations.&rdquo;
             </p>
           </div>
         </header>
@@ -100,19 +97,19 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-8 space-y-6 text-base text-[#38261D] leading-relaxed">
             <h2 className="font-display font-bold text-2xl text-[#241A15]">
-              The Bridge Between Backend Stability and AI Capability
+              Bringing Backend Discipline to Artificial Intelligence
             </h2>
 
             <p>
-              My path in technology is anchored in backend engineering. Before exploring agentic workflows and multi-step LLM chains, I learned to value what keeps production software alive: strict database schema integrity, idempotent API handlers, graceful error propagation, and connection pooling.
+              My foundation in software is anchored in backend engineering. Before building agentic workflows and multi-step LLM chains, I spent years focusing on what keeps production systems alive: strict database schema integrity, idempotent webhook handlers, graceful error propagation, and connection pooling.
             </p>
 
             <p>
-              When generative AI emerged, much of the industry rushed to build flashy web demos that proved fragile in real-world scenarios. A prompt alone cannot maintain data consistency, handle network dropped packets, or enforce role permissions.
+              When generative AI emerged, much of the industry rushed to build flashy web demos that proved fragile in real-world scenarios. A prompt alone cannot maintain data consistency, handle dropped packets, or enforce role permissions.
             </p>
 
             <p>
-              My mission as an <strong>AI Systems Engineer</strong> is to bring backend discipline to artificial intelligence. When I build with LangGraph or n8n, I ensure outputs pass through rigorous schema validation (such as Zod or Pydantic) before touching a database or dispatching external actions.
+              My role as an <strong>AI Systems Engineer</strong> is to bridge the gap between AI capability and operational stability. When I build an automation pipeline or AI assistant for a business, every output passes through rigorous schema validation (Zod / Pydantic) before touching a database or dispatching actions.
             </p>
 
             <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] my-6">
@@ -120,7 +117,7 @@ export default function AboutPage() {
                 CORE OPERATIONAL PHILOSOPHY
               </span>
               <p className="text-sm text-[#241A15] font-medium leading-relaxed">
-                If an AI workflow cannot handle malformed data, API rate limits, or ambiguous user queries gracefully without crashing or hallucinating actions, it is not production-ready.
+                If an automation cannot handle malformed data, API rate limits, or ambiguous queries gracefully without crashing or creating cleanup work, it is not production-ready.
               </p>
             </div>
           </div>
@@ -129,7 +126,7 @@ export default function AboutPage() {
           <div className="lg:col-span-4 space-y-6">
             <div className="p-6 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF]">
               <span className="font-mono text-xs text-[#241A15] font-semibold uppercase tracking-wider block mb-4">
-                CORE FOCUS
+                CORE SOLUTIONS
               </span>
               <ul className="space-y-3 font-mono text-xs text-[#4A3428]">
                 <li className="flex items-start gap-2">
@@ -138,7 +135,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>Stateful AI Agents (LangGraph)</span>
+                  <span>Document RAG Assistants</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
@@ -146,14 +143,14 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>Data Modeling (PostgreSQL, pgvector)</span>
+                  <span>PostgreSQL & pgvector Modeling</span>
                 </li>
               </ul>
             </div>
 
             <div className="p-6 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428]">
               <span className="font-mono text-xs text-[#B58A64] font-semibold uppercase tracking-wider block mb-2">
-                VERIFIED PROFILES
+                VERIFIED CHANNELS
               </span>
               <div className="space-y-3 pt-2">
                 <a
@@ -179,72 +176,49 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* What I Enjoy Building */}
-        <section className="mb-16">
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#241A15] mb-8">
-            What I Enjoy Building Most
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF]">
-              <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center mb-4">
-                <Workflow className="w-5 h-5 text-[#B58A64]" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-[#241A15] mb-2">
-                Event-Driven Automation
-              </h3>
-              <p className="text-xs text-[#4A3428] leading-relaxed">
-                Workflows that silently digest webhooks, normalize unstructured PDFs or emails, and route structured data to business systems without human intervention.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF]">
-              <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center mb-4">
-                <Bot className="w-5 h-5 text-[#B58A64]" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-[#241A15] mb-2">
-                Stateful Agent Workflows
-              </h3>
-              <p className="text-xs text-[#4A3428] leading-relaxed">
-                Autonomous loops constrained by graph state machines. Agents that can reflect, backtrack, call permissioned tools, and seek human clarification when confidence is low.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF]">
-              <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center mb-4">
-                <Server className="w-5 h-5 text-[#B58A64]" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-[#241A15] mb-2">
-                Reliable REST APIs
-              </h3>
-              <p className="text-xs text-[#4A3428] leading-relaxed">
-                Backends with clean layered service abstractions, type safety, relational database normalization, and predictable response times.
-              </p>
-            </div>
+        {/* Interactive System Diagram Feature */}
+        <section className="mb-20">
+          <div className="mb-6">
+            <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-1">
+              SYSTEM DESIGN BLUEPRINT
+            </span>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#241A15]">
+              Interactive Architecture Map
+            </h2>
+            <p className="text-xs sm:text-sm text-[#4A3428] mt-1">
+              Click any node below to inspect protocols, failure handling, and payload contracts across a typical client system.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-[#FAF7F2] p-4 sm:p-6 border border-[#D8C5AF]">
+            <SystemDiagram />
           </div>
         </section>
 
-        {/* Ways to Collaborate & CV */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF]">
+        {/* Technical Proficiency Matrix */}
+        <section className="mb-20">
+          <TechnicalCapabilities />
+        </section>
+
+        {/* Ways to Work Together CTA */}
+        <section className="p-8 sm:p-12 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <h2 className="font-display font-bold text-2xl text-[#241A15]">
-                Interested in Working Together?
+            <div className="space-y-2 max-w-xl">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl">
+                Ready to review your workflow?
               </h2>
-              <p className="text-sm text-[#4A3428] max-w-xl leading-relaxed">
-                Whether you need an automation pipeline audited, an AI agent scoped, or a backend service engineered from scratch, I am open to discussing high-impact projects.
+              <p className="text-xs sm:text-sm text-[#D8C5AF] leading-relaxed">
+                Whether you need a manual process audited, an AI assistant scoped, or a backend service built from scratch, let&apos;s talk about what will make the biggest difference to your team.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={siteConfig.contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#B58A64] hover:bg-[#D8C5AF] text-[#241A15] text-xs font-display font-bold uppercase tracking-wider transition-colors"
               >
-                <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                <span>Chat on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
-              </a>
+                <span>Book a Workflow Review</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </section>

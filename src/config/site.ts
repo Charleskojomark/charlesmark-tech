@@ -1,15 +1,15 @@
 export const siteConfig = {
   name: "Charles Mark",
   title: "AI Systems Engineer",
-  tagline: "AI Systems Engineer / Backend / Automation",
+  tagline: "AI Systems Engineer | Workflow Automation & Backend Systems",
   description:
-    "Personal website and portfolio of Charles Mark. Building AI-powered systems, intelligent workflows, and reliable backend services that solve practical problems.",
+    "AI automation and backend systems for businesses that want less manual work and more reliable operations. Custom AI agents, n8n workflows, RAG assistants, and scalable APIs.",
   url: "https://charlesmark.tech",
   ogImage: "https://charlesmark.tech/og-image.png",
   author: {
     name: "Charles Mark",
     role: "AI Systems Engineer",
-    location: "Global / Remote",
+    focus: "AI Automation, Custom Agents & Backend Systems",
   },
   social: {
     linkedin: {
@@ -30,36 +30,37 @@ export const siteConfig = {
       color: "#000000",
     },
   },
-  cv: {
-    // Configured CV path. If file does not exist, UI gracefully renders an advisory note
-    url: "/cv-charles-mark.pdf",
-    available: false, // Set to true when the actual CV file is placed in /public
+  // Business conversion links
+  booking: {
+    // [TODO: booking URL - e.g. Cal.com or Calendly link]
+    url: "https://cal.com/charlesmark", // [TODO: Replace with verified booking link]
+    placeholder: "[TODO: booking URL]",
   },
   nav: [
-    { label: "Home", href: "/" },
-    { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
+    { label: "Case Studies", href: "/case-studies" },
+    { label: "How I Work", href: "/#how-it-works" },
     { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
   rolesToCycle: [
-    "AI Systems Engineer",
-    "Backend Engineer",
-    "Workflow Automation Engineer",
+    "AI Workflow Automation",
+    "Custom AI Agents & RAG",
+    "Scalable Backend Systems",
   ],
   contact: {
     phone: "+2347082367382",
     phoneDisplay: "+234 708 236 7382",
-    whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20let's%20talk%20about%20a%20project",
+    email: "markcharleskojo@gmail.com",
+    whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20I'd%20like%20to%20discuss%20an%20AI%20automation%20or%20backend%20project",
     getWhatsappUrlForService: (serviceName?: string) => {
       const text = serviceName
-        ? `Hi Charles, I'm interested in discussing ${serviceName} with you.`
-        : "Hi Charles, let's talk about a project.";
+        ? `Hi Charles, I'd like to discuss ${serviceName} for our business.`
+        : "Hi Charles, I'd like to discuss an AI automation or backend project.";
       return `https://wa.me/2347082367382?text=${encodeURIComponent(text)}`;
     },
-    emailPlaceholder: "charles@charlesmark.tech",
-    fallbackMailto: "mailto:markcharleskojo@gmail.com",
-    turnaround: "Direct WhatsApp chat • Instant response / same day reply",
+    fallbackMailto: "mailto:markcharleskojo@gmail.com?subject=Project%20Inquiry%20-%20AI%20%26%20Backend%20Systems",
+    turnaround: "Fast response within 24 hours • Direct WhatsApp or booking",
   },
 };

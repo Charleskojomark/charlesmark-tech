@@ -1,32 +1,30 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, ArrowDown, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, ArrowDown, CheckCircle2, ShieldCheck, Zap, Workflow, Database, Bot } from "lucide-react";
 import { HeroTyping } from "@/components/HeroTyping";
-import { SystemDiagram } from "@/components/SystemDiagram";
 import { siteConfig } from "@/config/site";
 
 export function Hero() {
   return (
-    <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-12 md:pb-24 overflow-hidden relative">
+    <section className="pt-6 pb-12 sm:pt-8 sm:pb-16 md:pt-14 md:pb-20 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-          {/* Left Column: Hero Text, Profile Photo, and Dynamic Typing */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-6">
-            {/* Charles Mark Profile Photo & Tagline */}
-            <div className="flex flex-col items-start gap-2.5">
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-[#4A3428] shadow-md bg-[#241A15]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Business Outcome Headline, Identity, CTAs */}
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+            {/* Charles Mark Identity Badge */}
+            <div className="flex items-center gap-3">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-[#4A3428] shadow-md bg-[#241A15] flex-shrink-0">
                 <Image
                   src="/charles-mark.png"
                   alt="Charles Mark - AI Systems Engineer"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 640px) 80px, 96px"
+                  sizes="64px"
                   priority
                 />
                 <span
                   className="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-[#10B981] border border-[#241A15]"
-                  title="Available for projects"
+                  title="Available for client projects"
                 />
               </div>
 
@@ -34,90 +32,162 @@ export function Hero() {
                 <span className="font-display font-bold text-base sm:text-lg text-[#241A15] uppercase tracking-wide block">
                   Charles Mark
                 </span>
-                <span className="font-mono text-xs sm:text-sm text-[#4A3428] font-semibold tracking-wider block mt-0.5">
-                  AI Systems Engineer / Backend / Automation
+                <span className="font-mono text-xs sm:text-sm text-[#4A3428] font-semibold tracking-wider block">
+                  AI Systems Engineer
                 </span>
               </div>
             </div>
 
-            {/* Primary Headline */}
-            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#241A15] tracking-tight leading-[1.12]">
-              I BUILD AI-POWERED SYSTEMS THAT SOLVE REAL PROBLEMS.
+            {/* Outcome-First Headline for Business Leaders */}
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-5xl font-extrabold text-[#241A15] tracking-tight leading-[1.14]">
+              AI automation and backend systems for businesses that want less manual work and more reliable operations.
             </h1>
 
-            {/* Continuous Typing Section */}
-            <HeroTyping />
+            {/* Continuous Typing Section for Business Solutions */}
+            <div className="py-0.5">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#B58A64] font-semibold block mb-1">
+                SOLUTIONS ENGINEERED:
+              </span>
+              <HeroTyping />
+            </div>
 
-            {/* Animated Supporting Line */}
-            <p className="text-sm sm:text-lg text-[#4A3428] leading-relaxed max-w-xl">
-              From backend services to intelligent agents and automated workflows, I turn practical problems into engineered solutions.
+            {/* Supporting Business Description */}
+            <p className="text-base sm:text-lg text-[#4A3428] leading-relaxed max-w-2xl font-normal">
+              I help operations leads, founders, and product teams eliminate repetitive manual admin, deploy custom AI assistants over company documents, and build rock-solid backend services behind their products.
             </p>
 
             {/* Primary & Secondary CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <a
-                href="#work"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
+                href="#contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl sm:rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.98]"
               >
-                <span>Explore My Work</span>
-                <ArrowDown className="w-4 h-4 text-[#D8C5AF] group-hover:translate-y-0.5 transition-transform" />
+                <span>Book a free workflow review</span>
+                <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
 
               <a
-                href={siteConfig.contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#case-studies"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl sm:rounded-full bg-[#FAF7F2] border-2 border-[#4A3428] hover:bg-[#4A3428] hover:text-[#F5F0E8] text-[#241A15] font-display font-bold text-sm transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.98] group"
               >
-                <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] flex-shrink-0" />
-                <span>Let&apos;s Talk on WhatsApp</span>
-                <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <span>See what I build</span>
+                <ArrowDown className="w-4 h-4 text-[#4A3428] group-hover:text-[#F5F0E8] group-hover:translate-y-0.5 transition-transform" />
               </a>
             </div>
 
             {/* Direct WhatsApp Phone Number Chip */}
-            <div className="pt-0.5">
+            <div className="pt-1 flex flex-wrap items-center gap-3 text-xs font-mono text-[#4A3428]">
               <a
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#4A3428] hover:text-[#241A15] transition-colors"
+                className="inline-flex items-center gap-2 hover:text-[#241A15] transition-colors"
               >
-                <span className="text-[#B58A64]">✦ WhatsApp / Direct:</span>
+                <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                <span className="text-[#B58A64] font-semibold">Or chat directly:</span>
                 <span className="font-bold underline underline-offset-4">{siteConfig.contact.phoneDisplay}</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">Instant reply</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">Fast reply</span>
               </a>
             </div>
 
-            {/* Optional CV link & quick metrics */}
-            <div className="pt-1 flex flex-wrap items-center gap-3 sm:gap-6 text-xs font-mono text-[#4A3428]">
-              {siteConfig.cv.available ? (
-                <a
-                  href={siteConfig.cv.url}
-                  download
-                  className="inline-flex items-center gap-1.5 underline underline-offset-4 hover:text-[#241A15]"
-                >
-                  <FileText className="w-3.5 h-3.5 text-[#B58A64]" />
-                  <span>Download My CV</span>
-                </a>
-              ) : (
-                <span className="text-[#4A3428]/80">
-                  CV updated & available upon inquiry
-                </span>
-              )}
-
-              <span className="text-[#D8C5AF]">•</span>
-
+            {/* Trust Points */}
+            <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-[#4A3428] border-t border-[#D8C5AF]/60 pt-4">
               <span className="inline-flex items-center gap-1.5 text-[#241A15] font-medium">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Production-minded delivery</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                <span>Zero vendor lock-in</span>
+              </span>
+              <span className="text-[#D8C5AF]">•</span>
+              <span className="inline-flex items-center gap-1.5 text-[#241A15] font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                <span>100% code & workflow ownership</span>
+              </span>
+              <span className="text-[#D8C5AF]">•</span>
+              <span className="inline-flex items-center gap-1.5 text-[#241A15] font-medium">
+                <Zap className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
+                <span>Fixed-scope proposals</span>
               </span>
             </div>
           </div>
 
-          {/* Right Column: Interactive System Diagram */}
-          <div className="lg:col-span-6 w-full">
-            <SystemDiagram />
+          {/* Right Column: Business Architecture Snapshot Card */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#D8C5AF] shadow-md relative overflow-hidden space-y-6">
+              <div className="flex items-center justify-between border-b border-[#D8C5AF]/60 pb-4">
+                <div>
+                  <span className="font-mono text-[11px] text-[#B58A64] uppercase font-bold tracking-wider block">
+                    OPERATIONAL SYSTEM
+                  </span>
+                  <h3 className="font-display font-bold text-lg text-[#241A15]">
+                    How Your Solution Runs
+                  </h3>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-[#E8DDCF]/60 text-[10px] font-mono font-semibold text-[#4A3428]">
+                  Automated & Monitored
+                </span>
+              </div>
+
+              {/* 3 Step Connected Workflow Visual */}
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
+                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
+                    <Workflow className="w-4 h-4 text-[#D8C5AF]" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-[#4A3428]/70 uppercase tracking-widest font-bold block">
+                      STAGE 01 • INTAKE
+                    </span>
+                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
+                      Inbound Leads, Emails & Document Webhooks
+                    </h4>
+                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
+                      Captures customer inquiries, invoice PDFs, or tickets instantly without manual checking.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
+                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-4 h-4 text-[#B58A64]" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-[#B58A64] uppercase tracking-widest font-bold block">
+                      STAGE 02 • INTELLIGENCE
+                    </span>
+                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
+                      AI Extraction & Guardrailed Verification
+                    </h4>
+                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
+                      Extracts structured data, checks against schema rules, and guards against errors before saving.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70">
+                  <div className="w-9 h-9 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center flex-shrink-0">
+                    <Database className="w-4 h-4 text-[#10B981]" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-emerald-700 uppercase tracking-widest font-bold block">
+                      STAGE 03 • ACTION
+                    </span>
+                    <h4 className="font-display font-bold text-xs sm:text-sm text-[#241A15]">
+                      CRM / Database Sync & Team Alert
+                    </h4>
+                    <p className="text-[11px] text-[#4A3428] mt-0.5 leading-snug">
+                      Writes records directly to PostgreSQL/CRM and dispatches role-tailored notifications to Slack.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Quick Callout */}
+              <div className="pt-2 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono text-[#4A3428]">
+                <span>Typical Time Saved:</span>
+                <span className="font-bold text-[#241A15] bg-[#F5F0E8] px-2.5 py-1 rounded-md border border-[#D8C5AF]">
+                  10–20+ hrs/wk per workflow
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

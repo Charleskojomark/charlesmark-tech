@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { siteConfig } from "@/config/site";
 
 export const size = {
   width: 1200,
@@ -69,23 +68,23 @@ export default function OgImage() {
         </div>
 
         {/* Center Headline */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 960 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 1000 }}>
           <span style={{ fontSize: 16, color: "#B58A64", fontWeight: 700, letterSpacing: 2 }}>
-            AI SYSTEMS • BACKEND ENGINEERING • WORKFLOW AUTOMATION
+            WORKFLOW AUTOMATION • CUSTOM AI AGENTS & RAG • BACKEND SYSTEMS
           </span>
           <h1
             style={{
-              fontSize: 54,
+              fontSize: 52,
               fontWeight: 800,
               lineHeight: 1.15,
               color: "#241A15",
               margin: 0,
             }}
           >
-            I Build AI-Powered Systems That Solve Real Problems.
+            AI Automation and Backend Systems for Growing Businesses.
           </h1>
           <p style={{ fontSize: 22, color: "#4A3428", margin: 0, lineHeight: 1.4 }}>
-            From backend services to intelligent agents and automated workflows, I turn practical problems into engineered solutions.
+            Cut manual administrative bottlenecks, ground AI assistants in your company documents, and deploy reliable backends behind your product.
           </p>
         </div>
 
@@ -102,8 +101,8 @@ export default function OgImage() {
             fontFamily: "monospace",
           }}
         >
-          <span>FastAPI • LangGraph • n8n • PostgreSQL • Express</span>
-          <span>LinkedIn: markcharleskojo • GitHub: Charleskojomark</span>
+          <span>n8n • LangGraph • FastAPI • Express • PostgreSQL pgvector</span>
+          <span>LinkedIn: markcharleskojo • WhatsApp Direct</span>
         </div>
       </div>
     ),

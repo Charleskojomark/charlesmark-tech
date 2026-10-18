@@ -1,45 +1,41 @@
 import { Hero } from "@/components/Hero";
-import { TrustStrip } from "@/components/TrustStrip";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
+import { ProblemsSection } from "@/components/ProblemsSection";
 import { ServicesSection } from "@/components/ServicesSection";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { HowIWork } from "@/components/HowIWork";
-import { TechnicalCapabilities } from "@/components/TechnicalCapabilities";
-import { InsightsSection } from "@/components/InsightsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { AboutTeaser } from "@/components/AboutTeaser";
+import { StartingOffers } from "@/components/StartingOffers";
+import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col w-full">
-      {/* 1. Animated Hero with continuous typing and system diagram */}
+      {/* 1. Hero: outcome-first headline for businesses */}
       <Hero />
 
-      {/* 2. Compact trust/technical identity strip */}
-      <TrustStrip />
+      {/* 2. Problems I solve */}
+      <ProblemsSection />
 
-      {/* 3. Featured projects */}
-      <FeaturedProjects />
-
-      {/* 4. Services */}
+      {/* 3. Services, written as outcomes with deliverables and timelines */}
       <ServicesSection />
 
-      {/* 5. How I work */}
+      {/* 4. Case studies: Problem, What changed, Result */}
+      <FeaturedProjects />
+
+      {/* 5. How I work: Understand, Design, Build, Test, Improve */}
       <HowIWork />
 
-      {/* 6. Selected technical capabilities */}
-      <TechnicalCapabilities />
-
-      {/* 7. Free learning resources and insights */}
-      <InsightsSection />
-
-      {/* 8. Client & peer testimonials */}
+      {/* 6. Proof: Honesty rules, verified client standards & visible TODO slot */}
       <TestimonialsSection />
 
-      {/* 9. About Charles */}
-      <AboutTeaser />
+      {/* 7. Starting offers: Workflow Audit, Automation Build, Monthly Support */}
+      <StartingOffers />
 
-      {/* 10. Contact CTA */}
+      {/* 8. FAQ: cost, timeline, code ownership, data security, support */}
+      <FaqSection />
+
+      {/* 9. Contact: Enquiry form, booking link placeholder & WhatsApp */}
       <ContactCTA />
     </div>
   );

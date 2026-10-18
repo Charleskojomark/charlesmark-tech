@@ -2,42 +2,18 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Engineering Work & Case Studies",
+  title: "Case Studies & Production Systems | Charles Mark",
   description:
-    "Explore production-grade AI systems, real-time voice triage pipelines, workflow automation engines, and scalable backend services built by Charles Mark.",
+    "Explore case studies in AI workflow automation, RAG assistants, and scalable backend services built by Charles Mark.",
   keywords: [
-    "AI Systems Portfolio",
-    "Backend Engineering Case Studies",
-    "n8n Workflow Automation",
-    "LangGraph Clinical Voice AI",
-    "Event-Driven Architectures",
-    "Charles Mark Work",
+    "AI Case Studies",
+    "Workflow Automation Builds",
+    "n8n Automation Systems",
+    "Backend Systems Architecture",
+    "Charles Mark Case Studies",
   ],
   alternates: {
-    canonical: `${siteConfig.url}/work`,
-  },
-  openGraph: {
-    title: `Engineering Work & Case Studies | ${siteConfig.name}`,
-    description:
-      "Explore production-grade AI systems, real-time voice triage pipelines, workflow automation engines, and scalable backend services built by Charles Mark.",
-    url: `${siteConfig.url}/work`,
-    type: "website",
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} - Engineering Case Studies`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Engineering Work & Case Studies | ${siteConfig.name}`,
-    description:
-      "Explore production-grade AI systems, real-time voice triage pipelines, workflow automation engines, and scalable backend services built by Charles Mark.",
-    images: [siteConfig.ogImage],
+    canonical: `${siteConfig.url}/case-studies`,
   },
 };
 

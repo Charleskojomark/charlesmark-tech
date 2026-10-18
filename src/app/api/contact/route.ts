@@ -5,20 +5,12 @@ const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters long"),
   email: z.string().email("Please provide a valid email address"),
   company: z.string().optional(),
-  service: z.enum([
-    "ai-workflow-automation",
-    "custom-ai-agents",
-    "backend-and-ai-integration",
-    "other",
-  ], {
-    errorMap: () => ({ message: "Please select a valid service option" }),
-  }),
-  description: z
+  whatToBuild: z
     .string()
-    .min(10, "Project description must be at least 10 characters long"),
+    .min(5, "Please tell me a little about what you want to automate or build"),
   budget: z.string().optional(),
-  preferredContact: z.string().optional(),
-  // Honeypot field for spam bots
+  howHeard: z.string().optional(),
+  // Honeypot field for spam protection: must be empty
   botField: z.string().max(0, "Bot detected"),
 });
 
@@ -49,13 +41,13 @@ export async function POST(request: Request) {
 
     const validData = validationResult.data;
 
-    // Check for optional configured email notification API (e.g. Resend)
+    // Check for optional configured email notification API (Resend via fetch)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail =
       process.env.CONTACT_EMAIL || "markcharleskojo@gmail.com";
 
     if (resendApiKey) {
-      // In production with Resend configured:
+      // In production with Resend API key configured:
       const resendResponse = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -63,19 +55,24 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${resendApiKey}`,
         },
         body: JSON.stringify({
-          from: "Charles Mark Website <inquiries@charlesmark.tech>",
+          from: "Charles Mark Inquiries <inquiries@charlesmark.tech>",
           to: [recipientEmail],
-          subject: `[New Inquiry] ${validData.service}: ${validData.name}`,
+          reply_to: validData.email,
+          subject: `[New Inquiry] ${validData.name}${validData.company ? ` (${validData.company})` : ""}`,
           text: `
+New Business Inquiry Received:
+------------------------------
 Name: ${validData.name}
 Email: ${validData.email}
-Company: ${validData.company || "N/A"}
-Service: ${validData.service}
-Budget: ${validData.budget || "Not specified"}
-Preferred Contact: ${validData.preferredContact || "Email"}
+Company: ${validData.company || "Not provided"}
+Budget Range: ${validData.budget || "Not specified"}
+How Heard: ${validData.howHeard || "Not specified"}
 
-Project Details:
-${validData.description}
+What They Want to Automate / Build:
+${validData.whatToBuild}
+
+Submitted at: ${new Date().toISOString()}
+Origin: charlesmark.tech
           `,
         }),
       });
@@ -86,17 +83,21 @@ ${validData.description}
           {
             success: false,
             message:
-              "We encountered an issue submitting your inquiry. Please use the direct email link below.",
+              "We encountered an issue submitting your inquiry. Please reach out directly on WhatsApp or email markcharleskojo@gmail.com.",
           },
           { status: 500 }
         );
       }
     } else {
-      // Development / unconfigured environment: log securely without exposing to client
-      console.log("[INQUIRY_RECEIVED_SIMULATION]", {
+      // Local development or fallback: log securely to server console
+      console.log("[INQUIRY_RECEIVED_LOG]", {
         name: validData.name,
         email: validData.email,
-        service: validData.service,
+        company: validData.company,
+        budget: validData.budget,
+        howHeard: validData.howHeard,
+        whatToBuild: validData.whatToBuild,
+        recipient: recipientEmail,
         timestamp: new Date().toISOString(),
       });
     }
@@ -105,7 +106,7 @@ ${validData.description}
       {
         success: true,
         message:
-          "Thank you for reaching out! Your project brief has been received. Charles will review your requirements and respond within 24–48 hours.",
+          "Thank you for reaching out! Your brief has been received. Charles will review your requirements and respond within 24 hours.",
       },
       { status: 200 }
     );
@@ -115,7 +116,7 @@ ${validData.description}
       {
         success: false,
         message:
-          "An unexpected server error occurred. Please reach out directly via markcharleskojo@gmail.com.",
+          "An unexpected server error occurred. Please contact Charles directly via markcharleskojo@gmail.com or WhatsApp.",
       },
       { status: 500 }
     );

@@ -3,32 +3,33 @@
 import React, { useState, useEffect } from "react";
 import { siteConfig } from "@/config/site";
 
+function subscribe(callback: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export function HeroTyping() {
   const roles = siteConfig.rolesToCycle;
   const [roleIndex, setRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Check for reduced motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handler = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handler);
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+  const prefersReducedMotion = React.useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
   useEffect(() => {
-    // If reduced motion is preferred, fix to the first role without typing animation
-    if (prefersReducedMotion) {
-      setCurrentText(roles[0]);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     const currentRole = roles[roleIndex];
     let timer: NodeJS.Timeout;
@@ -52,10 +53,11 @@ export function HeroTyping() {
           setCurrentText(currentRole.slice(0, currentText.length - 1));
         }, 40); // Deletion speed
       } else {
-        // Finished deleting, move to next role
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-        timer = setTimeout(() => {}, 300);
+        // Finished deleting, brief pause before typing next role
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 200);
       }
     }
 
@@ -66,7 +68,7 @@ export function HeroTyping() {
     <div className="flex flex-wrap items-center gap-2 sm:gap-3 py-1">
       {/* Screen reader accessible persistent description */}
       <span className="sr-only">
-        Engineering disciplines: AI Systems Engineer, Backend Engineer, and Workflow Automation Engineer.
+        Specializations: AI Workflow Automation, Custom AI Agents & RAG, and Scalable Backend Systems.
       </span>
 
       {/* Dynamic typing container with responsive dimensions */}

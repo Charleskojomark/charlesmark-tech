@@ -2,16 +2,13 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { capabilities, CapabilityGroup } from "@/data/capabilities";
+import { capabilities } from "@/data/capabilities";
 import {
   Server,
   Database,
   Cpu,
   Cloud,
   Layers,
-  CheckCircle2,
-  BookOpen,
-  ArrowRight,
   Terminal,
   ShieldCheck,
   Code2,

@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
-export function Footer() {
-  const [currentYear, setCurrentYear] = useState(2026);
+const CURRENT_YEAR = 2026;
 
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+export function Footer() {
 
   return (
     <footer className="bg-[#FAF7F2] border-t border-[#D8C5AF]/70 text-[#241A15] pt-16 pb-12 mt-20">
@@ -33,7 +30,7 @@ export function Footer() {
             </div>
 
             <p className="text-[#4A3428] text-sm leading-relaxed max-w-sm pt-1">
-              Building AI-powered systems, intelligent workflows, and backend applications that solve practical problems.
+              AI automation and backend systems for businesses that want less manual work and more reliable operations.
             </p>
           </div>
 
@@ -44,28 +41,33 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-sm font-medium">
               <li>
-                <Link href="/work" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
-                  Work & Case Studies
+                <Link href="/services" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
-                  Services & Capabilities
+                <Link href="/case-studies" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/#how-it-works" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
+                  How I Work
                 </Link>
               </li>
               <li>
                 <Link href="/insights" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
-                  Insights & Resources
+                  Insights
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
-                  About Charles
+                  About
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
-                  Contact & Inquiries
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -74,9 +76,9 @@ export function Footer() {
           {/* Social Profiles & Rules */}
           <div className="md:col-span-4 flex flex-col space-y-4">
             <span className="font-mono text-xs text-[#4A3428]/70 tracking-widest uppercase font-semibold">
-              Connect & Direct Message
+              Direct Contact & Channels
             </span>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-2.5 text-sm">
               {/* WhatsApp Direct Row */}
               <a
                 href={siteConfig.contact.whatsappUrl}
@@ -93,9 +95,25 @@ export function Footer() {
                       {siteConfig.contact.phoneDisplay}
                     </span>
                     <span className="text-[10px] text-[#25D366] font-semibold">
-                      WhatsApp • Instant Reply
+                      WhatsApp • Direct Message
                     </span>
                   </div>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              {/* Email Direct Row */}
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#000000] flex items-center justify-center text-[11px] text-[#F5F0E8] font-mono">
+                    ✉
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-[#000000]">
+                    {siteConfig.contact.email}
+                  </span>
                 </div>
                 <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
@@ -108,7 +126,6 @@ export function Footer() {
                 className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
               >
                 <div className="flex items-center gap-3">
-                  {/* LinkedIn Icon in Official Blue #0A66C2 ONLY */}
                   <svg
                     className="w-5 h-5 fill-[#0A66C2] flex-shrink-0"
                     viewBox="0 0 24 24"
@@ -116,7 +133,6 @@ export function Footer() {
                   >
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.3a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28" />
                   </svg>
-                  {/* Username in pure black text #000000 */}
                   <span className="font-mono text-xs font-semibold text-[#000000]">
                     {siteConfig.social.linkedin.username}
                   </span>
@@ -132,7 +148,6 @@ export function Footer() {
                 className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
               >
                 <div className="flex items-center gap-3">
-                  {/* GitHub Icon in pure black #000000 */}
                   <svg
                     className="w-5 h-5 fill-[#000000] flex-shrink-0"
                     viewBox="0 0 24 24"
@@ -144,7 +159,6 @@ export function Footer() {
                       d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
                     />
                   </svg>
-                  {/* Username in pure black text #000000 */}
                   <span className="font-mono text-xs font-semibold text-[#000000]">
                     {siteConfig.social.github.username}
                   </span>
@@ -161,7 +175,6 @@ export function Footer() {
                   <div className="w-5 h-5 rounded-full bg-[#000000] flex items-center justify-center text-[10px] text-[#F5F0E8] font-mono">
                     ✦
                   </div>
-                  {/* Domain in pure black text #000000 */}
                   <span className="font-mono text-xs font-semibold text-[#000000]">
                     {siteConfig.social.website.domain}
                   </span>
@@ -174,7 +187,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#4A3428]">
-          <p>© {currentYear} Charles Mark. Engineered with practical precision.</p>
+          <p>© {CURRENT_YEAR} Charles Mark. Engineered with practical precision.</p>
         </div>
       </div>
     </footer>

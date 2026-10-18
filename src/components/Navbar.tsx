@@ -99,18 +99,26 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Let's Talk WhatsApp CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop CTAs: Book a Call (Primary) + WhatsApp (Secondary) */}
+          <div className="hidden md:flex items-center gap-2.5">
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4A3428] hover:bg-[#241A15] text-[#F5F0E8] text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]"
+              className="p-2 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] hover:border-[#25D366] text-[#241A15] transition-colors"
+              title="Chat on WhatsApp"
+              aria-label="Direct WhatsApp Chat"
             >
-              <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-              <span>Let&apos;s Talk</span>
-              <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] inline-block" />
             </a>
+
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]"
+            >
+              <span>Book a Call</span>
+              <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover:text-[#F5F0E8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -172,17 +180,25 @@ export function Navbar() {
                 );
               })}
 
-              <div className="pt-4 mt-2 border-t border-[#D8C5AF]">
+              <div className="pt-4 mt-2 border-t border-[#D8C5AF] flex flex-col gap-2.5">
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#241A15] text-[#F5F0E8] font-medium text-base shadow-md active:scale-[0.98] transition-transform"
+                >
+                  <span>Book a Call / Send Brief</span>
+                  <ArrowUpRight className="w-5 h-5 text-[#D8C5AF]" />
+                </Link>
+
                 <a
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#4A3428] text-[#F5F0E8] font-medium text-base shadow-md active:scale-[0.98] transition-transform"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#FAF7F2] border border-[#25D366]/60 text-[#241A15] font-medium text-sm transition-colors"
                 >
                   <span className="w-2.5 h-2.5 rounded-full bg-[#25D366]" />
-                  <span>Let&apos;s Talk on WhatsApp</span>
-                  <ArrowUpRight className="w-5 h-5 text-[#D8C5AF]" />
+                  <span>Chat on WhatsApp ({siteConfig.contact.phoneDisplay})</span>
                 </a>
               </div>
 
@@ -190,7 +206,7 @@ export function Navbar() {
               <div className="mt-4 px-4 py-3 rounded-lg bg-[#FAF7F2] border border-[#D8C5AF]/70 flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse" />
                 <span className="text-xs text-[#4A3428] font-medium">
-                  Available for select consulting & engineering projects
+                  Open for new workflow audits & client builds
                 </span>
               </div>
             </div>

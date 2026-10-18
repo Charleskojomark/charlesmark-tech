@@ -1,24 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
   Play,
   Pause,
   RotateCcw,
   CheckCircle2,
   AlertTriangle,
-  Layers,
-  ArrowRight,
-  Database,
-  Cpu,
-  Server,
-  Zap,
-  ShieldCheck,
-  Terminal,
   Activity,
-  Code2,
-  FileCode,
 } from "lucide-react";
 
 export interface SystemNode {
@@ -44,17 +34,17 @@ export interface ProjectSystemFlow {
 export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
   "klinik-voice-assistant": {
     projectSlug: "klinik-voice-assistant",
-    projectTitle: "Klinik Voice Intake & Triage Pipeline",
-    subtitle: "Real-time stateful voice agent architecture with deterministic clinical triage routing",
-    architectureType: "Async WebSockets + LangGraph State Machine",
-    summaryMetric: "Sub-850ms audio-to-triage turnaround with zero hallucinated diagnoses",
+    projectTitle: "Klinik Voice Intake & Triage Pipeline (Hackathon Prototype)",
+    subtitle: "Prototype stateful voice agent architecture with simulated clinical triage routing",
+    architectureType: "Async WebSockets + LangGraph State Machine (Hackathon POC)",
+    summaryMetric: "Real-time speech triage demonstrated in hackathon evaluation (illustrative simulation)",
     nodes: [
       {
         id: "node-1",
         name: "Audio Ingest Stream",
         role: "Client Microphone Feed",
         protocol: "WebSocket / 16kHz PCM",
-        latency: "18ms",
+        latency: "18ms (simulated)",
         description: "Captures spoken patient audio chunks in real-time over bi-directional duplex WebSockets with voice activity detection (VAD).",
         failureMode: "Auto-reconnects on dropped frame packets and buffers trailing speech audio.",
         samplePayload: '{\n  "event": "audio_chunk",\n  "format": "pcm_16000",\n  "bytes": 4096,\n  "vad_active": true\n}',
@@ -64,7 +54,7 @@ export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
         name: "Speech-to-Text Pipeline",
         role: "Whisper Transcription Core",
         protocol: "gRPC Streaming",
-        latency: "240ms",
+        latency: "240ms (simulated)",
         description: "Transcribes audio to text with streaming token recognition and medical acoustic terminology tuning.",
         failureMode: "Falls back to secondary fast STT transcription if inference latency exceeds 450ms.",
         samplePayload: '{\n  "transcript": "Sharp chest tightness radiating to left arm for past 20 minutes",\n  "confidence": 0.982\n}',
@@ -74,7 +64,7 @@ export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
         name: "LangGraph State Machine",
         role: "Clinical Decision Graph",
         protocol: "Python / Async Graph Loop",
-        latency: "320ms",
+        latency: "320ms (simulated)",
         description: "Evaluates symptoms across a state graph: checks emergency red flags, requests clarifying details, and routes non-linearly.",
         failureMode: "Immediate fail-safe redirect to human emergency clinician if confidence or severity threshold breached.",
         samplePayload: '{\n  "state": "RED_FLAG_TRIAGE",\n  "urgency_level": "LEVEL_2_EMERGENCY",\n  "requires_licensed_review": true\n}',
@@ -84,7 +74,7 @@ export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
         name: "Pydantic Schema Guard",
         role: "Deterministic Validation",
         protocol: "Zod / Pydantic V2",
-        latency: "8ms",
+        latency: "8ms (simulated)",
         description: "Strictly parses and sanitizes clinical entities against FHIR-compatible schemas before any database insertion.",
         failureMode: "Rejects ambiguous or ill-formed JSON entities without propagating invalid clinical data.",
         samplePayload: '{\n  "patient_vitals_noted": false,\n  "symptoms": ["chest_tightness", "referred_left_arm_pain"],\n  "duration_minutes": 20\n}',
@@ -94,19 +84,19 @@ export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
         name: "EMR & Dispatch Gateway",
         role: "Clinical Record Persistence",
         protocol: "HTTPS / REST FHIR",
-        latency: "65ms",
+        latency: "65ms (simulated)",
         description: "Dispatches validated triage brief directly to clinical queue and pre-populates intake paperwork for attending nurses.",
         failureMode: "Dead-letter message queued in Redis if hospital EMR endpoint experiences transient latency.",
-        samplePayload: '{\n  "status": "QUEUED_FOR_NURSE",\n  "record_id": "TRIAGE-2024-8841",\n  "timestamp": "2024-10-17T09:30:00Z"\n}',
+        samplePayload: '{\n  "status": "QUEUED_FOR_NURSE",\n  "record_id": "TRIAGE-2026-8841",\n  "timestamp": "2026-10-17T09:30:00Z"\n}',
       },
     ],
   },
   "n8n-workflow-automation": {
     projectSlug: "n8n-workflow-automation",
-    projectTitle: "Event-Driven n8n Multi-Channel Pipeline",
+    projectTitle: "Event-Driven n8n Multi-Channel Pipeline (Reference Build)",
     subtitle: "Resilient asynchronous webhook ingestion, LLM document extraction, and transactional dispatch",
     architectureType: "Event-Driven Webhook Micro-Architecture",
-    summaryMetric: "99.8% uptime with automated dead-letter queues and duplicate-prevention hashing",
+    summaryMetric: "Demonstrates automated dead-letter queues, duplicate-prevention hashing, and AI parsing",
     nodes: [
       {
         id: "node-1",
@@ -162,10 +152,10 @@ export const projectSystemFlows: Record<string, ProjectSystemFlow> = {
   },
   "rag-knowledge-assistant": {
     projectSlug: "rag-knowledge-assistant",
-    projectTitle: "Hybrid RAG Architecture & Vector Retrieval",
+    projectTitle: "Hybrid RAG Architecture & Vector Retrieval (Reference Build)",
     subtitle: "Enterprise documentation search uniting PostgreSQL pgvector HNSW indexing and grounded citations",
     architectureType: "Hybrid Reciprocal Rank Fusion (BM25 + Dense Vectors)",
-    summaryMetric: "Sub-350ms semantic search over 2,000+ technical docs with verified source citation",
+    summaryMetric: "Sub-second semantic search over indexed documents with verified source citations (Reference Build)",
     nodes: [
       {
         id: "node-1",

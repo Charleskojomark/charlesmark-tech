@@ -17,7 +17,7 @@ export const articles: Article[] = [
       "Not every repetitive task deserves an automated pipeline. Here is an engineer's framework for assessing ROI, failure tolerance, and data readiness before writing a single line of automation.",
     category: "Automation",
     readingTime: "5 min read",
-    publishedDate: "October 2024",
+    publishedDate: "October 2026",
     keyTakeaways: [
       "High volume + low ambiguity is the ideal automation candidate.",
       "Calculate total cost of manual time vs maintenance overhead of an automated system.",
@@ -38,7 +38,7 @@ export const articles: Article[] = [
       "Beyond the marketing buzzwords: a technical look at how state persistence, tool execution, and cyclical evaluation loops separate true agentic systems from standard conversational LLMs.",
     category: "AI Systems",
     readingTime: "6 min read",
-    publishedDate: "October 2024",
+    publishedDate: "October 2026",
     keyTakeaways: [
       "Chatbots are single-turn prediction engines; agents execute multi-step plans with tools.",
       "Agents require state management, memory, and validation checkpoints.",
@@ -58,7 +58,7 @@ export const articles: Article[] = [
       "A deep dive into event-driven architecture, webhook security, handling retries, and designing idempotent consumers that prevent duplicate data operations.",
     category: "Backend",
     readingTime: "7 min read",
-    publishedDate: "September 2024",
+    publishedDate: "October 2026",
     keyTakeaways: [
       "Webhooks push events in real-time, eliminating wasteful continuous polling.",
       "Always verify payload signatures using HMAC secret keys.",
@@ -78,7 +78,7 @@ export const articles: Article[] = [
       "Practical engineering techniques to prevent silent failures, handle LLM hallucinations, and build self-healing automation pipelines with n8n and Python.",
     category: "Automation",
     readingTime: "6 min read",
-    publishedDate: "August 2024",
+    publishedDate: "October 2026",
     keyTakeaways: [
       "Treat LLM outputs as untrusted user input; validate schemas immediately.",
       "Decouple ingestion from processing using asynchronous worker queues.",
@@ -98,7 +98,7 @@ export const articles: Article[] = [
       "Evaluating latency budgets, token cost economics, fallback strategies, data privacy boundaries, and vendor lock-in when adding AI to backend systems.",
     category: "Architecture",
     readingTime: "5 min read",
-    publishedDate: "August 2024",
+    publishedDate: "October 2026",
     keyTakeaways: [
       "Model inference introduces latency in seconds, not milliseconds; design for async or streaming.",
       "Budget token costs at projected user scale to prevent unexpected billing surprises.",

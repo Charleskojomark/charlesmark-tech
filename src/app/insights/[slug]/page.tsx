@@ -6,9 +6,7 @@ import {
   ArrowLeft,
   ArrowUpRight,
   Clock,
-  BookOpen,
   CheckCircle2,
-  Share2,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { articles } from "@/data/articles";
