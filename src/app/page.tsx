@@ -3,9 +3,7 @@ import { StickyBookCallBar } from "@/components/StickyBookCallBar";
 import { TrustStrip } from "@/components/TrustStrip";
 import { SolutionsEngine } from "@/components/SolutionsEngine";
 import { ServicesSection } from "@/components/ServicesSection";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { HowIWork } from "@/components/HowIWork";
-import { StartingOffers } from "@/components/StartingOffers";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SectionReveal } from "@/components/SectionReveal";
@@ -48,22 +46,12 @@ export default function HomePage() {
         <ServicesSection />
       </SectionReveal>
 
-      {/* 4. Case studies & Interactive Reference Architectures */}
-      <SectionReveal className="relative z-10">
-        <FeaturedProjects />
-      </SectionReveal>
-
-      {/* 5. How I work: From Diagnostic Call to Production Deployment */}
+      {/* 4. How I work: From Diagnostic Call to Production Deployment */}
       <SectionReveal className="relative z-10">
         <HowIWork />
       </SectionReveal>
 
-      {/* 6. Scope-Based Starting Offers */}
-      <SectionReveal className="relative z-10">
-        <StartingOffers />
-      </SectionReveal>
-
-      {/* 8. FAQ */}
+      {/* 5. FAQ */}
       <SectionReveal className="relative z-10">
         <FaqSection />
       </SectionReveal>

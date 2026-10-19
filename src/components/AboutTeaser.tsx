@@ -65,10 +65,10 @@ export function AboutTeaser() {
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
-                  href="/case-studies"
+                  href="/#solutions-engine"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl sm:rounded-full bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] text-xs sm:text-sm font-medium border border-[#D8C5AF] transition-colors"
                 >
-                  <span>View Case Studies</span>
+                  <span>Explore Solutions</span>
                 </Link>
               </div>
             </div>
