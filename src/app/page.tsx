@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { TrustStrip } from "@/components/TrustStrip";
 import { ProblemsSection } from "@/components/ProblemsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
@@ -23,9 +24,14 @@ export default function HomePage() {
       {/* Floating Section Pipeline Navigator (Desktop) */}
       <SectionNavigator />
 
-      {/* 1. Hero: Outcome-first headline, profile, dynamic changing letters, 3D WebGL core, CTAs */}
+      {/* 1. Hero: Outcome-first headline, background portrait, dynamic changing letters, single WhatsApp CTA */}
       <div id="hero" className="relative z-10">
         <Hero />
+      </div>
+
+      {/* Core Engineering Disciplines Bar */}
+      <div className="relative z-10">
+        <TrustStrip />
       </div>
 
       {/* 2. Problems I solve */}
