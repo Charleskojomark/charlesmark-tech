@@ -1,5 +1,15 @@
 import React from "react";
-import { ArrowUpRight, Clock, Users, Cpu, Bot, Server, Check, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  Clock,
+  Users,
+  Cpu,
+  Bot,
+  Server,
+  Cloud,
+  Check,
+  MessageCircle,
+} from "lucide-react";
 import { services } from "@/data/services";
 import { Card3D, Card3DItem } from "@/components/Card3D";
 
@@ -7,6 +17,7 @@ const ICON_MAP = {
   Cpu: Cpu,
   Bot: Bot,
   Server: Server,
+  Cloud: Cloud,
 };
 
 export function ServicesSection() {
@@ -17,14 +28,14 @@ export function ServicesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 md:mb-16 gap-4">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-2">
-              SERVICES WRITTEN AS BUSINESS OUTCOMES
+              PRODUCTION ENGINEERING SERVICES
             </span>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
-              HOW WE CAN WORK TOGETHER
+              ARCHITECTURAL CAPABILITIES & ENGAGEMENTS
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#4A3428] max-w-md leading-relaxed">
-            Every engagement delivers durable, self-hosted or dedicated systems designed around your team&apos;s real operational workflow.
+            From multi-agent architectures and resilient backend services to containerized cloud infrastructure, every system is engineered for production scale and durability.
           </p>
         </div>
 
@@ -58,63 +69,52 @@ export function ServicesSection() {
                       {service.headline}
                     </h3>
                     <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 shadow-xs">
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                       <span>{service.outcome}</span>
                     </div>
                   </Card3DItem>
 
-                  {/* Who It's For */}
-                  <div className="p-3.5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/70 mb-5">
-                    <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#241A15] font-bold uppercase tracking-wider mb-1">
-                      <Users className="w-3.5 h-3.5 text-[#B58A64]" />
-                      <span>WHO IT&apos;S FOR:</span>
-                    </div>
-                    <p className="text-xs text-[#4A3428] leading-relaxed">
+                  {/* Who It's For & Description */}
+                  <div className="space-y-3 mb-6 text-xs text-[#4A3428]">
+                    <p className="font-medium text-[#241A15]">
+                      <span className="font-mono text-[10px] text-[#B58A64] uppercase tracking-wider block font-bold mb-0.5">
+                        BEST FOR:
+                      </span>
                       {service.whoItsFor}
+                    </p>
+                    <p className="leading-relaxed">
+                      {service.description}
                     </p>
                   </div>
 
-                  {/* What You Get Deliverables List */}
-                  <div className="space-y-2.5 mb-6">
-                    <span className="font-mono text-[11px] text-[#241A15] font-bold uppercase tracking-wider block">
-                      WHAT YOU GET:
+                  {/* Deliverables Checklist */}
+                  <div className="space-y-2 pt-4 border-t border-[#D8C5AF]/60 mb-6">
+                    <span className="font-mono text-[10px] text-[#241A15] uppercase tracking-widest font-bold block mb-2">
+                      WHAT YOU GET IN PRODUCTION:
                     </span>
-                    <ul className="space-y-2">
-                      {service.deliverables.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-xs text-[#4A3428] leading-tight">
-                          <div className="w-3.5 h-3.5 rounded-full bg-[#B58A64]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <Check className="w-2.5 h-2.5 text-[#4A3428]" />
-                          </div>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Typical Timeline */}
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#4A3428] pb-5 border-b border-[#D8C5AF]/60">
-                    <Clock className="w-3.5 h-3.5 text-[#B58A64]" />
-                    <span>Typical turnaround: <strong>{service.typicalTimeline}</strong></span>
+                    {service.whatYouGet.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-[#38261D]">
+                        <Check className="w-3.5 h-3.5 text-emerald-700 mt-0.5 flex-shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Primary CTA Button: Direct WhatsApp Chat */}
-                <Card3DItem translateZ={28} className="pt-5 space-y-2">
+                {/* Card Footer: Timeline & Direct Link */}
+                <div className="pt-4 border-t border-[#D8C5AF]/60 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 font-mono text-xs text-[#4A3428]">
+                    <Clock className="w-3.5 h-3.5 text-[#B58A64]" />
+                    <span>{service.typicalTimeline}</span>
+                  </div>
                   <a
-                    href={`https://wa.me/2347082367382?text=${encodeURIComponent(
-                      `Hi Charles, I'd like to discuss ${service.name} for my business.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn w-full inline-flex items-center justify-between p-3.5 rounded-xl bg-[#241A15] text-[#F5F0E8] hover:bg-[#25D366] hover:text-white font-medium text-xs transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+                    href="#contact"
+                    className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#241A15] hover:text-[#B58A64] transition-colors"
                   >
-                    <span className="font-semibold flex items-center gap-2">
-                      <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                      <span>{service.ctaText}</span>
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 text-[#D8C5AF] group-hover/btn:text-white group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    <span>{service.ctaText}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
-                </Card3DItem>
+                </div>
               </Card3D>
             );
           })}

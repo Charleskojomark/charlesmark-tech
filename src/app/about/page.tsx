@@ -6,6 +6,10 @@ import {
   ArrowUpRight,
   CheckCircle2,
   MessageCircle,
+  Cpu,
+  Cloud,
+  Server,
+  Award,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SystemDiagram } from "@/components/SystemDiagram";
@@ -14,16 +18,16 @@ import { TechnicalCapabilities } from "@/components/TechnicalCapabilities";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Charles Mark | AI Systems Engineer & Solutions Architect",
+  title: "About Charles Mark | Applied AI & Forward Deployed Systems Engineer",
   description:
-    "Learn about Charles Mark, an AI Systems Engineer with a deep foundation in backend development, workflow automation, and practical AI applications.",
+    "Learn about Charles Mark, an Applied AI & Forward Deployed Systems Engineer with deep roots in backend architecture, cloud DevOps, and agentic system design. Trained by FAANG engineers.",
   keywords: [
     "About Charles Mark",
-    "AI Systems Engineer",
-    "Workflow Automation Consultant",
-    "AI Automation for Business",
-    "Backend Architecture",
-    "Charles Mark Bio",
+    "Applied AI Engineer",
+    "Forward Deployed Engineer",
+    "Agentic System Design",
+    "Cloud Infrastructure DevOps",
+    "Backend Systems Engineer",
   ],
   alternates: {
     canonical: `${siteConfig.url}/about`,
@@ -31,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `About Charles Mark | ${siteConfig.name}`,
     description:
-      "Learn about Charles Mark, an AI Systems Engineer helping businesses automate workflows, build custom AI assistants, and engineer reliable backends.",
+      "Applied AI & Forward Deployed Systems Engineer. Bridging robust backend infrastructure, cloud DevOps, and production agentic AI systems.",
     url: `${siteConfig.url}/about`,
     type: "profile",
     images: [
@@ -42,13 +46,6 @@ export const metadata: Metadata = {
         alt: `${siteConfig.name} - About Charles Mark`,
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `About Charles Mark | ${siteConfig.name}`,
-    description:
-      "Learn about Charles Mark, an AI Systems Engineer helping businesses automate workflows, build custom AI assistants, and engineer reliable backends.",
-    images: [siteConfig.ogImage],
   },
 };
 
@@ -72,7 +69,7 @@ export default function AboutPage() {
           <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden border-2 border-[#4A3428] shadow-lg flex-shrink-0 bg-[#241A15]">
             <Image
               src="/charles-mark.png"
-              alt="Charles Mark - AI Systems Engineer"
+              alt="Charles Mark - Applied AI & Forward Deployed Systems Engineer"
               fill
               className="object-cover object-top"
               sizes="(max-width: 640px) 128px, 160px"
@@ -84,67 +81,90 @@ export default function AboutPage() {
               ABOUT CHARLES MARK
             </span>
             <h1 className="font-display text-3xl sm:text-5xl md:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4">
-              PRACTICAL SYSTEMS.
+              FROM BACKEND & CLOUD INFRASTRUCTURE
               <br />
-              ENGINEERED FOR BUSINESS RELIABILITY.
+              TO PRODUCTION AGENTIC AI SYSTEMS.
             </h1>
             <p className="font-display text-lg sm:text-xl text-[#4A3428] font-normal leading-relaxed max-w-2xl">
-              &ldquo;I build AI workflow automation, custom AI assistants, and backend systems for businesses that want less manual work and more reliable operations.&rdquo;
+              &ldquo;I bridge high-throughput backend services, cloud DevOps pipelines, and autonomous agentic systems that run reliably in enterprise production.&rdquo;
             </p>
           </div>
         </header>
 
-        {/* Narrative & Philosophy */}
+        {/* The Evolution Story */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-8 space-y-6 text-base text-[#38261D] leading-relaxed">
             <h2 className="font-display font-bold text-2xl text-[#241A15]">
-              Bringing Backend Discipline to Artificial Intelligence
+              The Journey: Backend $\rightarrow$ Cloud DevOps $\rightarrow$ Applied Agentic AI
             </h2>
 
             <p>
-              My foundation in software is anchored in backend engineering. Before building agentic workflows and multi-step LLM chains, I spent years focusing on what keeps production systems alive: strict database schema integrity, idempotent webhook handlers, graceful error propagation, and connection pooling.
+              My foundation in engineering was forged in <strong>backend systems</strong>. Before designing multi-agent workflows or vector retrieval architectures, I spent years mastering what keeps mission-critical servers alive: transactional database schemas, idempotent webhook consumers, connection pooling, and resilient API contracts in Node/TypeScript, Python/FastAPI, and Go.
             </p>
 
             <p>
-              When generative AI emerged, much of the industry rushed to build flashy web demos that proved fragile in real-world scenarios. A prompt alone cannot maintain data consistency, handle dropped packets, or enforce role permissions.
+              As systems scale, code cannot survive without <strong>cloud infrastructure and DevOps discipline</strong>. I expanded deeply into container orchestration (Docker, Kubernetes), automated CI/CD pipelines via GitHub Actions, cloud architecture on AWS and GCP, and deep observability with OpenTelemetry and Prometheus.
             </p>
 
             <p>
-              My role as an <strong>AI Systems Engineer</strong> is to bridge the gap between AI capability and operational stability. When I build an automation pipeline or AI assistant for a business, every output passes through rigorous schema validation (Zod / Pydantic) before touching a database or dispatching actions.
+              When generative AI emerged, much of the market rushed to build fragile single-prompt wrappers and no-code toy demos that fall apart under production traffic. Recognizing that real enterprise AI demands structural rigor, I specialized in <strong>Agentic System Design</strong>, <strong>Applied AI Engineering</strong>, and <strong>Forward Deployed Engineering</strong> on Educative.io, mentored and trained directly by <strong>FAANG engineers</strong>.
             </p>
 
-            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] my-6">
-              <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block mb-2">
-                CORE OPERATIONAL PHILOSOPHY
-              </span>
-              <p className="text-sm text-[#241A15] font-medium leading-relaxed">
-                If an automation cannot handle malformed data, API rate limits, or ambiguous queries gracefully without crashing or creating cleanup work, it is not production-ready.
-              </p>
+            {/* Core Pedigree Box */}
+            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] my-6 space-y-3">
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#B58A64]" />
+                <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider">
+                  ENGINEERING PEDIGREE & CREDENTIALS
+                </span>
+              </div>
+              <ul className="space-y-2 text-xs font-mono text-[#241A15]">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <span><strong>Trained by FAANG Engineers</strong> in distributed system architecture & production AI</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <span><strong>Educative.io Certified:</strong> Agentic System Design & LangGraph State Machines</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <span><strong>Educative.io Certified:</strong> Applied AI Engineering & Production RAG Pipelines</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <span><strong>Educative.io Certified:</strong> Forward Deployed Engineering & Enterprise Integration</span>
+                </li>
+              </ul>
             </div>
+
+            <p>
+              Today, as an <strong>Applied AI & Forward Deployed Systems Engineer</strong>, I embed directly with fast-growing companies and enterprise teams. I don&apos;t just build standalone prototypes—I architect, containerize, and deploy hardened AI systems directly inside your cloud infrastructure with deterministic evaluation suites and full code ownership.
+            </p>
           </div>
 
           {/* Quick Facts Sidebar */}
           <div className="lg:col-span-4 space-y-6">
             <div className="p-6 rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF]">
               <span className="font-mono text-xs text-[#241A15] font-semibold uppercase tracking-wider block mb-4">
-                CORE SOLUTIONS
+                CORE TECHNICAL PILLARS
               </span>
               <ul className="space-y-3 font-mono text-xs text-[#4A3428]">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>AI Workflow Automation (n8n)</span>
+                  <Cpu className="w-3.5 h-3.5 text-[#B58A64] mt-0.5 flex-shrink-0" />
+                  <span>Agentic Systems & Multi-Agent Evals</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>Document RAG Assistants</span>
+                  <Cloud className="w-3.5 h-3.5 text-[#B58A64] mt-0.5 flex-shrink-0" />
+                  <span>Docker, K8s, CI/CD & Cloud DevOps</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>Backend APIs (Node/Express, FastAPI)</span>
+                  <Server className="w-3.5 h-3.5 text-[#B58A64] mt-0.5 flex-shrink-0" />
+                  <span>High-Concurrency APIs (Node, FastAPI, Go)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5" />
-                  <span>PostgreSQL & pgvector Modeling</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#B58A64] mt-0.5 flex-shrink-0" />
+                  <span>Hybrid RAG & pgvector Retrieval</span>
                 </li>
               </ul>
             </div>
@@ -199,7 +219,7 @@ export default function AboutPage() {
               Interactive Architecture Map
             </h2>
             <p className="text-xs sm:text-sm text-[#4A3428] mt-1">
-              Click any node below to inspect protocols, failure handling, and payload contracts across a typical client system.
+              Click any node below to inspect protocols, failure handling, and payload contracts across a production client system.
             </p>
           </div>
           <div className="rounded-3xl bg-[#FAF7F2] p-4 sm:p-6 border border-[#D8C5AF]">
@@ -217,10 +237,10 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl">
               <h2 className="font-display font-bold text-2xl sm:text-3xl">
-                Ready to review your workflow?
+                Ready to architect your production system?
               </h2>
               <p className="text-xs sm:text-sm text-[#D8C5AF] leading-relaxed">
-                Whether you need a manual process audited, an AI assistant scoped, or a backend service built from scratch, let&apos;s talk about what will make the biggest difference to your team.
+                Whether you need a multi-agent system designed, cloud infrastructure containerized, or high-throughput backend APIs built right, let&apos;s talk technical requirements.
               </p>
             </div>
 

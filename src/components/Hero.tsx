@@ -16,11 +16,10 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Focused Executive Story, Kinetic Typing, Single Primary CTA */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-7">
-            {/* Outcome-First Headline for Business Leaders */}
+            {/* Outcome-First Headline for Technical Leaders & Founders */}
             <h1 className="font-display text-3xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-[#241A15] tracking-tight leading-[1.12]">
-              AI automation and backend systems for businesses that want{" "}
-              <span className="animate-text-shimmer">less manual work</span> and{" "}
-              <span className="animate-text-shimmer">more reliable operations</span>.
+              Engineering resilient backend infrastructure and{" "}
+              <span className="animate-text-shimmer">production agentic AI systems</span> for companies operating at scale.
             </h1>
 
             {/* Kinetic Lettering / Discipline Switcher */}
@@ -28,9 +27,9 @@ export function Hero() {
               <HeroTyping />
             </div>
 
-            {/* Supporting Business Description */}
+            {/* Supporting Engineering Description */}
             <p className="text-base sm:text-lg text-[#4A3428] leading-relaxed max-w-xl font-normal">
-              I help operations leads, founders, and product teams eliminate repetitive manual bottlenecks with n8n pipelines, deploy private AI document assistants, and engineer resilient backend APIs.
+              Trained by FAANG engineers and specialized in Applied AI & Forward Deployed Engineering (Educative.io), I architect and deploy high-throughput backend services, cloud DevOps pipelines, and autonomous agentic systems that run reliably in enterprise production.
             </p>
 
             {/* The Single Primary Call-To-Action (Zero Choice Paralysis) */}
@@ -54,7 +53,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-mono text-[#4A3428] hover:text-[#241A15] transition-colors underline decoration-[#D8C5AF] underline-offset-4"
                 >
-                  <span>Prefer a scheduled meeting? Book 20 mins on Cal.com</span>
+                  <span>Prefer a scheduled technical consultation? Book 20 mins on Cal.com</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#B58A64]" />
                 </a>
               </div>

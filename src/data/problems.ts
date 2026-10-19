@@ -8,39 +8,39 @@ export interface ProblemItem {
 
 export const problemsSolved: ProblemItem[] = [
   {
-    id: "leads-slipping",
-    title: "Leads slipping through the cracks",
+    id: "fragile-ai-prototypes",
+    title: "Fragile AI Prototypes Failing in Production",
     symptom:
-      "Inbound inquiries sit in shared inboxes for hours or days before someone notices, manually copies the details, and notifies sales.",
+      "Prototype LLM wrappers and single-prompt scripts hallucinate, fail unpredictably under load, break on malformed inputs, and lack automated evaluation harnesses.",
     solutionOutcome:
-      "Automated lead intake that validates contact details instantly, routes high-priority alerts to Slack/CRM within seconds, and logs every step.",
-    badge: "Faster Response",
+      "Production-grade agentic system design with LangGraph state machines, Pydantic schema validation, and rigorous deterministic evaluation test suites.",
+    badge: "Agentic Rigor",
   },
   {
-    id: "manual-documents",
-    title: "Manual invoice & document handling",
+    id: "cloud-devops-gap",
+    title: "Disconnected Cloud Infrastructure & DevOps Gaps",
     symptom:
-      "Staff waste hours every week downloading email attachments, opening PDFs, and manually re-typing invoice items into spreadsheets or accounting tools.",
+      "AI models running isolated on temporary servers without Docker containerization, automated CI/CD pipelines, or production observability.",
     solutionOutcome:
-      "AI-driven document parsing with strict validation guards that extracts structured data from PDFs/receipts and writes directly to your database.",
-    badge: "10-20 hrs/wk Saved",
+      "Hardened cloud infrastructure with Docker/Kubernetes containerization, automated GitHub Actions CI/CD, and OpenTelemetry logging on AWS/GCP.",
+    badge: "Cloud DevOps",
   },
   {
-    id: "scattered-knowledge",
-    title: "Scattered company knowledge",
+    id: "backend-bottlenecks",
+    title: "Backend Concurrency Drops & Database Bottlenecks",
     symptom:
-      "Standard operating procedures, manuals, and customer support guidelines are split across Drive folders, Notion docs, and message threads.",
+      "Legacy server architectures freezing during streaming requests, unindexed database bottlenecks, and dropped async webhook messages under traffic spikes.",
     solutionOutcome:
-      "A private RAG knowledge assistant grounded strictly in your verified files, providing cited answers without hallucinating or leaking internal data.",
-    badge: "Instant Internal Answers",
+      "Resilient high-concurrency microservices in Node/TypeScript and FastAPI with Redis caching, connection pooling, and transactional ACID integrity.",
+    badge: "Resilient Backends",
   },
   {
-    id: "backend-needed",
-    title: "An app idea that needs a backend",
+    id: "hallucinating-rag",
+    title: "Enterprise Knowledge Silos & Ungrounded RAG",
     symptom:
-      "You have an interface design or validated product concept, but lack the API contracts, secure database architecture, and AI pipeline to make it real.",
+      "Basic vector search returning noisy document snippets and generating ungrounded speculations that cannot be trusted in business operations.",
     solutionOutcome:
-      "A production-ready backend in Node/Express or FastAPI with normalized PostgreSQL tables, authentication, and streaming AI endpoints ready for launch.",
-    badge: "Launch-Ready Architecture",
+      "Enterprise hybrid retrieval (dense pgvector + sparse BM25) with cross-encoder reranking, strict confidence thresholds, and verified paragraph citations.",
+    badge: "Grounded Retrieval",
   },
 ];

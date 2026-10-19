@@ -1,13 +1,20 @@
 import React from "react";
-import { ArrowUpRight, AlertCircle, Clock, FileSpreadsheet, FolderSearch, ServerCrash } from "lucide-react";
+import {
+  ArrowUpRight,
+  AlertCircle,
+  Cpu,
+  Cloud,
+  ServerCrash,
+  ShieldCheck,
+} from "lucide-react";
 import { problemsSolved } from "@/data/problems";
 import { Card3D, Card3DItem } from "@/components/Card3D";
 
 const PROBLEM_ICONS = {
-  "leads-slipping": Clock,
-  "manual-documents": FileSpreadsheet,
-  "scattered-knowledge": FolderSearch,
-  "backend-needed": ServerCrash,
+  "fragile-ai-prototypes": Cpu,
+  "cloud-devops-gap": Cloud,
+  "backend-bottlenecks": ServerCrash,
+  "hallucinating-rag": ShieldCheck,
 };
 
 export function ProblemsSection() {
@@ -20,15 +27,15 @@ export function ProblemsSection() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] mb-3">
               <AlertCircle className="w-3.5 h-3.5 text-[#B58A64]" />
               <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
-                COMMON OPERATIONAL FRICTIONS
+                ENGINEERING BOTTLENECKS & ARCHITECTURAL GAPS
               </span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
-              PROBLEMS I SOLVE FOR BUSINESSES
+              SYSTEM FAILURES I ELIMINATE
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#4A3428] max-w-md leading-relaxed">
-            Most businesses do not have an AI problem; they have a repetitive manual process or an incomplete backend holding back growth.
+            True enterprise AI value requires backend discipline, deterministic evaluation, and hardened cloud infrastructure—not fragile single-prompt demos.
           </p>
         </div>
 
@@ -62,7 +69,7 @@ export function ProblemsSection() {
                   <div className="space-y-3 mb-4">
                     <div className="p-3.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/60">
                       <span className="font-mono text-[10px] text-red-800 uppercase tracking-wider font-bold block mb-1">
-                        THE CURRENT BOTTLENECK:
+                        THE PRODUCTION BOTTLENECK:
                       </span>
                       <p className="text-xs text-[#4A3428] leading-relaxed">
                         {item.symptom}
@@ -71,7 +78,7 @@ export function ProblemsSection() {
 
                     <div className="p-3.5 rounded-xl bg-[#FAF7F2] border border-emerald-600/30">
                       <span className="font-mono text-[10px] text-emerald-800 uppercase tracking-wider font-bold block mb-1">
-                        WHAT CHANGES WITH THE SYSTEM:
+                        THE ENGINEERED ARCHITECTURE:
                       </span>
                       <p className="text-xs text-[#241A15] font-medium leading-relaxed">
                         {item.solutionOutcome}
@@ -80,15 +87,18 @@ export function ProblemsSection() {
                   </div>
                 </div>
 
-                <Card3DItem translateZ={25} className="pt-3 border-t border-[#D8C5AF]/60 flex items-center justify-between text-xs font-mono">
+                <div className="pt-2 border-t border-[#D8C5AF]/60 flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[#4A3428] font-medium">
+                    Engineered for zero downtime & strict evals
+                  </span>
                   <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 font-semibold text-[#241A15] group-hover:text-[#4A3428] transition-colors"
+                    href="#services"
+                    className="inline-flex items-center gap-1 font-mono text-xs font-bold text-[#241A15] hover:text-[#B58A64] transition-colors"
                   >
-                    <span>Fix this problem in your operations</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#B58A64] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <span>View Architecture</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
-                </Card3DItem>
+                </div>
               </Card3D>
             );
           })}

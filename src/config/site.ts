@@ -1,22 +1,22 @@
 export const siteConfig = {
   name: "Charles Mark",
-  title: "AI Systems Engineer",
-  tagline: "AI Systems Engineer | Workflow Automation & Backend Systems",
+  title: "Charles Mark | Applied AI & Forward Deployed Systems Engineer",
+  tagline: "Backend Systems • Cloud Infrastructure & DevOps • Agentic AI Systems",
   description:
-    "AI automation and backend systems for businesses that want less manual work and more reliable operations. Custom AI agents, n8n workflows, RAG assistants, and scalable APIs.",
+    "Applied AI & Forward Deployed Systems Engineer. Bridging resilient backend architecture, cloud DevOps infrastructure, and production agentic AI systems for companies operating at scale. Trained by FAANG engineers.",
   url: "https://charlesmark.tech",
   ogImage: "https://charlesmark.tech/og-image.png",
   author: {
     name: "Charles Mark",
-    role: "AI Systems Engineer",
-    focus: "AI Automation, Custom Agents & Backend Systems",
+    role: "Applied AI & Forward Deployed Systems Engineer",
+    focus: "Backend Architecture, Cloud DevOps & Production Agentic Systems",
   },
   social: {
     linkedin: {
       name: "LinkedIn",
       username: "markcharleskojo",
       url: "https://www.linkedin.com/in/markcharleskojo/",
-      color: "#0A66C2", // official brand blue for icon only
+      color: "#0A66C2",
     },
     github: {
       name: "GitHub",
@@ -33,7 +33,7 @@ export const siteConfig = {
   // Business conversion links
   booking: {
     url: "https://cal.com/charlesmark",
-    label: "Schedule a Call (Cal.com)",
+    label: "Schedule a Technical Consultation (Cal.com)",
   },
   nav: [
     { label: "Services", href: "/services" },
@@ -44,19 +44,20 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
   ],
   rolesToCycle: [
-    "AI Workflow Automation",
-    "Custom AI Agents & RAG",
-    "Scalable Backend Systems",
+    "Agentic System Design & AI Agents",
+    "Resilient Backend Architecture",
+    "Cloud Infrastructure & DevOps",
+    "Forward Deployed Engineering",
   ],
   contact: {
     phone: "+2347082367382",
     phoneDisplay: "+234 708 236 7382",
     email: "markcharleskojo@gmail.com",
-    whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20I'd%20like%20to%20discuss%20an%20AI%20automation%20or%20backend%20project",
+    whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20I'd%20like%20to%20discuss%20an%20AI%20systems%20or%20backend%20infrastructure%20project",
     getWhatsappUrlForService: (serviceName?: string) => {
       const text = serviceName
-        ? `Hi Charles, I'd like to discuss ${serviceName} for our business.`
-        : "Hi Charles, I'd like to discuss an AI automation or backend project.";
+        ? `Hi Charles, I'd like to discuss ${serviceName} for our systems.`
+        : "Hi Charles, I'd like to discuss an AI systems or backend infrastructure project.";
       return `https://wa.me/2347082367382?text=${encodeURIComponent(text)}`;
     },
     fallbackMailto: "mailto:markcharleskojo@gmail.com?subject=Project%20Inquiry%20-%20AI%20%26%20Backend%20Systems",

@@ -48,10 +48,10 @@ const STEPS: Step[] = [
     title: "Build",
     headline: "Implement the system with clean, maintainable code",
     description:
-      "Developing the actual backend services, n8n automation pipelines, or agentic loops. Code is modularized, typed with TypeScript/Python, and containerized for deployment parity.",
+      "Developing the actual backend services, cloud containers, or agentic loops. Code is modularized, typed with TypeScript/Python/Go, and containerized for deployment parity.",
     icon: Wrench,
     deliverables: [
-      "Modular services in Node.js/Express, FastAPI, or n8n workflows",
+      "Modular services in Node.js/Express, FastAPI, or containerized Docker clusters",
       "Database schema synchronization & connection pooling",
       "Environment isolation with zero hardcoded secret variables",
     ],

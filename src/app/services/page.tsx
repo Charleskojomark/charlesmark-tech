@@ -1,6 +1,18 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, ArrowLeft, Cpu, Bot, Server, Check, Clock, Users, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  ArrowLeft,
+  Cpu,
+  Bot,
+  Server,
+  Cloud,
+  Check,
+  Clock,
+  Users,
+  MessageCircle,
+} from "lucide-react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/config/site";
 
@@ -8,29 +20,30 @@ const ICON_MAP = {
   Cpu: Cpu,
   Bot: Bot,
   Server: Server,
+  Cloud: Cloud,
 };
 
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Automation & Backend Services | Charles Mark",
+  title: "Agentic Systems, Cloud Infrastructure & Backend Services | Charles Mark",
   description:
-    "AI Workflow Automation (n8n & Python), Custom AI Agents & Assistants (RAG & LangGraph), and Scalable Backend Development & AI Integration by Charles Mark.",
+    "Agentic Systems (LangGraph & Evals), Cloud Infrastructure & DevOps (Docker, K8s, CI/CD), and Resilient Backend Architecture by Charles Mark. Trained by FAANG engineers.",
   keywords: [
-    "AI Automation Services",
-    "Custom AI Agent Development",
-    "Backend Engineering Services",
-    "n8n Workflow Automation",
-    "RAG Knowledge Assistants",
-    "PostgreSQL API Integration",
+    "Agentic AI Systems",
+    "Forward Deployed Engineering",
+    "Cloud Infrastructure DevOps",
+    "Backend Systems Architecture",
+    "LangGraph State Machines",
+    "Production RAG Pipelines",
   ],
   alternates: {
     canonical: `${siteConfig.url}/services`,
   },
   openGraph: {
-    title: `AI Automation & Backend Services | ${siteConfig.name}`,
+    title: `Agentic Systems, Cloud Infrastructure & Backend Services | ${siteConfig.name}`,
     description:
-      "AI Workflow Automation (n8n & Python), Custom AI Agents & Assistants (RAG & LangGraph), and Scalable Backend Development & AI Integration by Charles Mark.",
+      "Agentic Systems, Cloud Infrastructure & DevOps, and Resilient Backend Architecture by Charles Mark. Trained by FAANG engineers.",
     url: `${siteConfig.url}/services`,
     type: "website",
     images: [
@@ -44,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `AI Automation & Backend Services | ${siteConfig.name}`,
+    title: `Agentic Systems, Cloud Infrastructure & Backend Services | ${siteConfig.name}`,
     description:
-      "AI Workflow Automation, Custom AI Agents & Assistants, and Backend Development by Charles Mark.",
+      "Agentic Systems, Cloud Infrastructure & DevOps, and Backend Architecture by Charles Mark.",
     images: [siteConfig.ogImage],
   },
 };
@@ -69,13 +82,13 @@ export default function ServicesPage() {
         {/* Page Header */}
         <div className="max-w-3xl mb-16">
           <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-2">
-            SERVICES WRITTEN AS BUSINESS OUTCOMES
+            PRODUCTION ENGINEERING SERVICES
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4">
-            AI AUTOMATION & BACKEND SOLUTIONS
+            AGENTIC AI, CLOUD DEVOPS & BACKEND ARCHITECTURE
           </h1>
           <p className="text-base text-[#4A3428] leading-relaxed">
-            I help businesses transition from manual administrative bottlenecks to durable, self-hosted or dedicated automated systems. Here are the three primary areas where I deliver dependable production results.
+            I help companies architect and deploy durable systems where cutting-edge agentic AI meets production-grade cloud infrastructure and resilient backend services. Here are the three core areas where I deliver dependable engineering results.
           </p>
         </div>
 
@@ -146,11 +159,11 @@ export default function ServicesPage() {
                         <span>TYPICAL TIMELINE:</span>
                       </div>
                       <p className="text-xs text-[#4A3428] leading-relaxed">
-                        {service.typicalTimeline} from kickoff to deployment.
+                        {service.typicalTimeline} from architecture kickoff to deployment.
                       </p>
                     </div>
                     <div className="pt-2 text-[11px] font-mono text-emerald-800 font-semibold">
-                      ✓ Includes 30-day post-launch warranty
+                      ✓ Includes 30-day post-launch warranty & telemetry handover
                     </div>
                   </div>
                 </div>
@@ -175,7 +188,7 @@ export default function ServicesPage() {
                   {/* Implementation Process */}
                   <div>
                     <span className="font-mono text-xs text-[#241A15] font-bold uppercase tracking-wider block mb-4">
-                      IMPLEMENTATION PROCESS
+                      ENGINEERING PROCESS
                     </span>
                     <ul className="space-y-2.5">
                       {service.process.map((step, idx) => (
@@ -211,10 +224,10 @@ export default function ServicesPage() {
         <div className="p-8 sm:p-12 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 max-w-xl">
             <h3 className="font-display font-bold text-2xl">
-              Not sure which option fits your workflow best?
+              Need technical scoping on your architecture?
             </h3>
             <p className="text-xs sm:text-sm text-[#D8C5AF]">
-              Book a free 20-minute workflow review. We will map out your current bottleneck and give you an honest appraisal of whether automation is worth it.
+              Book a free 20-minute architecture review. We will map out your current system bottlenecks, evaluate agentic vs deterministic patterns, and establish an honest technical roadmap.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">

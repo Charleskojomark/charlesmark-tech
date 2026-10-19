@@ -2,11 +2,11 @@ import React from "react";
 import { Cpu, Server, Workflow, Network, Cloud } from "lucide-react";
 
 const DISCIPLINES = [
-  { label: "AI SYSTEMS", icon: Cpu, desc: "Agentic loops & LLM pipelines" },
-  { label: "BACKEND DEV", icon: Server, desc: "Scalable REST APIs & PostgreSQL" },
-  { label: "WORKFLOW AUTO", icon: Workflow, desc: "n8n & event-driven webhooks" },
-  { label: "API CONTRACTS", icon: Network, desc: "Resilient schemas & data mapping" },
-  { label: "CLOUD INFRA", icon: Cloud, desc: "Containerized & reproducible apps" },
+  { label: "AGENTIC AI", icon: Cpu, desc: "Multi-agent evals & LangGraph" },
+  { label: "BACKEND ARCH", icon: Server, desc: "High-concurrency APIs & SQL" },
+  { label: "CLOUD DEVOPS", icon: Cloud, desc: "Docker, K8s & CI/CD pipelines" },
+  { label: "HYBRID RAG", icon: Network, desc: "pgvector & cross-encoder rerank" },
+  { label: "FORWARD DEPLOYED", icon: Workflow, desc: "FAANG-trained technical delivery" },
 ];
 
 export function TrustStrip() {
