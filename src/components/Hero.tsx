@@ -28,14 +28,6 @@ export function Hero() {
           
           {/* MOBILE PORTRAIT: Displayed at the TOP on mobile so head is prominently at the top */}
           <div className="lg:hidden flex flex-col items-center text-center">
-            {/* Status Pill on mobile */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#241A15] border border-[#B58A64]/50 shadow-md backdrop-blur-md mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-              <span className="font-mono text-[10px] sm:text-xs text-[#F5F0E8] font-bold uppercase tracking-wider">
-                BUSINESS SOLUTIONS ARCHITECT • FAANG TRAINED
-              </span>
-            </div>
-
             {/* Prominent Mobile Portrait with head clearly visible at the top */}
             <div className="relative w-full max-w-[270px] sm:max-w-[310px] aspect-[4/4.6] rounded-3xl overflow-hidden border-2 border-[#B58A64]/40 shadow-2xl bg-gradient-to-b from-[#241A15] to-[#150F0B]">
               <Image
@@ -60,14 +52,6 @@ export function Hero() {
 
           {/* Left Column (Desktop) / Main Content */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-7 text-left">
-            {/* Executive Solutions Eyebrow Pill (Desktop only, mobile has it above portrait) */}
-            <div className="hidden lg:inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#241A15]/90 border border-[#B58A64]/50 shadow-md backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-              <span className="font-mono text-xs text-[#F5F0E8] font-bold uppercase tracking-wider">
-                BUSINESS SOLUTIONS ARCHITECT • FAANG TRAINED
-              </span>
-            </div>
-
             {/* Solution-Oriented Headline for Business Leaders */}
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.35rem] font-extrabold text-[#F5F0E8] tracking-tight leading-[1.12]">
               I engineer AI automations, agentic systems, and cloud backends that{" "}
