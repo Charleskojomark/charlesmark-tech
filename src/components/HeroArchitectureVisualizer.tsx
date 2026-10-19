@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import {
-  ArrowRight,
+  ArrowDown,
   CheckCircle2,
-  Zap,
   Activity,
+  Layers,
 } from "lucide-react";
 
 interface WorkflowPipeline {
@@ -49,7 +49,7 @@ const PIPELINES: WorkflowPipeline[] = [
     metric: "< 3s response • 100% data fidelity",
     inputNode: {
       label: "Inbound Webhook / Form",
-      sub: "Typeform • Email • Webhook",
+      sub: "Typeform • Email • Webhooks",
       icon: "📥",
       badge: "Ingestion",
     },
@@ -142,15 +142,15 @@ export function HeroArchitectureVisualizer() {
 
   // Smooth, ambient automated execution loop demonstrating live system health
   useEffect(() => {
-    // Stage cycle timer (1 -> 2 -> 3)
+    // Stage cycle timer (Step 1 -> Step 2 -> Step 3)
     const stageInterval = setInterval(() => {
       setPulseStage((prev) => (prev % 3) + 1);
-    }, 1400);
+    }, 1500);
 
-    // Pipeline switch timer (cycles through real-world workflows every 8.4 seconds)
+    // Pipeline switch timer (cycles through real-world workflows every 9 seconds)
     const pipelineInterval = setInterval(() => {
       setActivePipelineIndex((prev) => (prev + 1) % PIPELINES.length);
-    }, 8400);
+    }, 9000);
 
     return () => {
       clearInterval(stageInterval);
@@ -161,9 +161,9 @@ export function HeroArchitectureVisualizer() {
   const pipeline = PIPELINES[activePipelineIndex];
 
   return (
-    <div className="w-full rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] shadow-xl overflow-hidden flex flex-col p-5 sm:p-6 relative">
-      {/* Top Header: System Telemetry (Ambient Monitor, Zero Clickable Buttons) */}
-      <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-[#D8C5AF]/70">
+    <div className="w-full rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] shadow-xl overflow-hidden flex flex-col p-4 sm:p-6 relative">
+      {/* Top Header: System Telemetry */}
+      <div className="flex items-center justify-between gap-3 pb-3 border-b border-[#D8C5AF]/70">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
@@ -174,6 +174,7 @@ export function HeroArchitectureVisualizer() {
           </span>
         </div>
 
+        {/* Workflow indicator pills */}
         <div className="flex items-center gap-1.5">
           {PIPELINES.map((_, idx) => (
             <span
@@ -188,9 +189,9 @@ export function HeroArchitectureVisualizer() {
         </div>
       </div>
 
-      {/* Active Pipeline Header & Category */}
-      <div className="pt-3 pb-2 flex items-center justify-between gap-2">
-        <div>
+      {/* Active Pipeline Header & Metric */}
+      <div className="pt-3 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="space-y-0.5">
           <span className="font-mono text-[10px] text-[#B58A64] font-bold uppercase tracking-wider block">
             WORKFLOW 0{activePipelineIndex + 1} • {pipeline.category}
           </span>
@@ -198,13 +199,13 @@ export function HeroArchitectureVisualizer() {
             {pipeline.title}
           </h3>
         </div>
-        <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#241A15] text-[#F5F0E8] font-mono text-[10px] font-bold whitespace-nowrap shadow-xs">
+        <span className="self-start sm:self-auto inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#241A15] text-[#F5F0E8] font-mono text-[10px] font-bold whitespace-nowrap shadow-xs">
           <CheckCircle2 className="w-3 h-3 text-[#10B981]" />
           <span>{pipeline.metric}</span>
         </span>
       </div>
 
-      {/* Problem Eliminated Card */}
+      {/* Problem Solved Card */}
       <div className="p-3 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]/80 my-2">
         <div className="flex items-start gap-2">
           <span className="font-mono text-[9px] text-red-700 font-bold uppercase tracking-wider whitespace-nowrap pt-0.5">
@@ -216,104 +217,118 @@ export function HeroArchitectureVisualizer() {
         </div>
       </div>
 
-      {/* 3-Stage Pipeline Diagram (Ambient Pulse, Vertical on Mobile, Horizontal on Desktop) */}
-      <div className="py-2.5">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-2.5 relative">
-          {/* Node 1: Ingestion */}
-          <div
-            className={`flex-1 p-3 rounded-2xl border transition-all duration-300 relative ${
-              pulseStage === 1
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-md scale-[1.01] sm:scale-105"
-                : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
-            }`}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-base">{pipeline.inputNode.icon}</span>
-              <span className="font-mono text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF]">
-                {pipeline.inputNode.badge}
-              </span>
-            </div>
-            <div className="font-display font-bold text-xs sm:text-sm leading-tight">
-              {pipeline.inputNode.label}
-            </div>
-            <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight">
-              {pipeline.inputNode.sub}
+      {/* 3-Stage Vertical Architecture Pipeline (100% Mobile-Friendly, Full Width, No Cramped Text) */}
+      <div className="py-2 space-y-1">
+        {/* Step 1: Ingestion Node */}
+        <div
+          className={`w-full p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 ${
+            pulseStage === 1
+              ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-md scale-[1.01]"
+              : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
+          }`}
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+              {pipeline.inputNode.icon}
+            </span>
+            <div className="min-w-0">
+              <div className="font-display font-bold text-xs sm:text-sm leading-tight truncate">
+                {pipeline.inputNode.label}
+              </div>
+              <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight truncate">
+                {pipeline.inputNode.sub}
+              </div>
             </div>
           </div>
+          <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded-md bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF] flex-shrink-0">
+            {pipeline.inputNode.badge}
+          </span>
+        </div>
 
-          {/* Pulse Connector 1 */}
-          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64] py-0.5 sm:py-0">
-            <ArrowRight
-              className={`w-4 h-4 sm:w-4.5 sm:h-4.5 rotate-90 sm:rotate-0 transition-transform ${
-                pulseStage >= 2 ? "text-[#10B981] animate-pulse" : "text-[#B58A64]"
+        {/* Pulse Connector 1 -> 2 */}
+        <div className="flex items-center justify-center py-0.5">
+          <div className="flex items-center gap-1.5 text-xs font-mono">
+            <ArrowDown
+              className={`w-4 h-4 transition-transform duration-300 ${
+                pulseStage >= 2 ? "text-[#10B981] animate-bounce" : "text-[#B58A64]"
               }`}
             />
           </div>
+        </div>
 
-          {/* Node 2: Processing Core */}
-          <div
-            className={`flex-1 p-3 rounded-2xl border transition-all duration-300 relative ${
-              pulseStage === 2
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-md scale-[1.01] sm:scale-105"
-                : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
-            }`}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-base">{pipeline.processNode.icon}</span>
-              <span className="font-mono text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF]">
-                {pipeline.processNode.badge}
-              </span>
-            </div>
-            <div className="font-display font-bold text-xs sm:text-sm leading-tight">
-              {pipeline.processNode.label}
-            </div>
-            <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight">
-              {pipeline.processNode.sub}
+        {/* Step 2: Automation Processing Core */}
+        <div
+          className={`w-full p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 ${
+            pulseStage === 2
+              ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-md scale-[1.01]"
+              : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
+          }`}
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+              {pipeline.processNode.icon}
+            </span>
+            <div className="min-w-0">
+              <div className="font-display font-bold text-xs sm:text-sm leading-tight truncate">
+                {pipeline.processNode.label}
+              </div>
+              <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight truncate">
+                {pipeline.processNode.sub}
+              </div>
             </div>
           </div>
+          <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded-md bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF] flex-shrink-0">
+            {pipeline.processNode.badge}
+          </span>
+        </div>
 
-          {/* Pulse Connector 2 */}
-          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64] py-0.5 sm:py-0">
-            <ArrowRight
-              className={`w-4 h-4 sm:w-4.5 sm:h-4.5 rotate-90 sm:rotate-0 transition-transform ${
-                pulseStage === 3 ? "text-[#10B981] animate-pulse" : "text-[#B58A64]"
+        {/* Pulse Connector 2 -> 3 */}
+        <div className="flex items-center justify-center py-0.5">
+          <div className="flex items-center gap-1.5 text-xs font-mono">
+            <ArrowDown
+              className={`w-4 h-4 transition-transform duration-300 ${
+                pulseStage === 3 ? "text-[#10B981] animate-bounce" : "text-[#B58A64]"
               }`}
             />
           </div>
+        </div>
 
-          {/* Node 3: Output System */}
-          <div
-            className={`flex-1 p-3 rounded-2xl border transition-all duration-300 relative ${
-              pulseStage === 3
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#10B981] shadow-md scale-[1.01] sm:scale-105"
-                : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
-            }`}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-base">{pipeline.outputNode.icon}</span>
-              <span className="font-mono text-[9px] uppercase font-bold px-1.5 py-0.5 rounded bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF]">
-                {pipeline.outputNode.badge}
-              </span>
-            </div>
-            <div className="font-display font-bold text-xs sm:text-sm leading-tight">
-              {pipeline.outputNode.label}
-            </div>
-            <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight">
-              {pipeline.outputNode.sub}
+        {/* Step 3: Target System Action */}
+        <div
+          className={`w-full p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 ${
+            pulseStage === 3
+              ? "bg-[#241A15] text-[#F5F0E8] border-[#10B981] shadow-md scale-[1.01]"
+              : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
+          }`}
+        >
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF] flex items-center justify-center text-lg flex-shrink-0 shadow-xs">
+              {pipeline.outputNode.icon}
+            </span>
+            <div className="min-w-0">
+              <div className="font-display font-bold text-xs sm:text-sm leading-tight truncate">
+                {pipeline.outputNode.label}
+              </div>
+              <div className="font-mono text-[10px] opacity-75 mt-0.5 leading-tight truncate">
+                {pipeline.outputNode.sub}
+              </div>
             </div>
           </div>
+          <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded-md bg-[#F5F0E8] text-[#4A3428] border border-[#D8C5AF] flex-shrink-0">
+            {pipeline.outputNode.badge}
+          </span>
         </div>
       </div>
 
       {/* Real-Time Telemetry Bar (Live Read-Only Feedback) */}
       <div className="mt-auto pt-3 border-t border-[#D8C5AF]/70 flex items-center justify-between gap-3 text-xs font-mono">
-        <div className="flex items-center gap-2">
-          <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+        <div className="flex items-center gap-2 min-w-0">
+          <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse flex-shrink-0" />
           <span className="text-[#241A15] font-semibold text-[11px] truncate">
             {pipeline.samplePayload.outcome}
           </span>
         </div>
-        <span className="px-2 py-0.5 rounded-md bg-[#241A15] text-[#F5F0E8] text-[10px] font-bold whitespace-nowrap">
+        <span className="px-2 py-0.5 rounded-md bg-[#241A15] text-[#F5F0E8] text-[10px] font-bold whitespace-nowrap flex-shrink-0">
           {pipeline.samplePayload.latency}
         </span>
       </div>
