@@ -1,7 +1,8 @@
 import React from "react";
-import { ArrowUpRight, Check, Sparkles, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { startingOffers } from "@/data/offers";
 import { Card3D, Card3DItem } from "@/components/Card3D";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export function StartingOffers() {
   return (
@@ -105,7 +106,7 @@ export function StartingOffers() {
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 fill-current" />
                     <span>{offer.ctaText}</span>
                   </span>
                   <ArrowUpRight className="w-4 h-4" />

@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Github, Code2, ArrowLeft, AlertTriangle, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Github, Code2, ArrowLeft, AlertTriangle } from "lucide-react";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 const CATEGORIES = ["All", "Automation", "AI Systems", "Backend", "Cloud & DevOps"];
 
@@ -195,7 +196,7 @@ export default function CaseStudiesPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs uppercase tracking-wider transition-all flex-shrink-0 shadow-md active:scale-95"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4 fill-current" />
             <span>Chat on WhatsApp</span>
             <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
           </a>

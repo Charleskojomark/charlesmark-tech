@@ -8,7 +8,6 @@ import {
   Server,
   Cloud,
   Check,
-  MessageCircle,
 } from "lucide-react";
 import { services } from "@/data/services";
 import { Card3D, Card3DItem } from "@/components/Card3D";

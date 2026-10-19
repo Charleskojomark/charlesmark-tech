@@ -8,13 +8,13 @@ import {
   Cloud,
   CheckCircle2,
   Calendar,
-  MessageCircle,
   ArrowUpRight,
   TrendingUp,
   ShieldCheck,
   Zap,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 interface SolutionItem {
   id: string;
@@ -286,7 +286,7 @@ export function SolutionsEngine() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
                   >
-                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 fill-current" />
                     <span>Discuss on WhatsApp</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>

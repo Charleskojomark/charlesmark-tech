@@ -9,11 +9,11 @@ import {
   ShieldAlert,
   Lightbulb,
   AlertTriangle,
-  MessageCircle,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -289,7 +289,7 @@ export default async function ProjectCaseStudyPage({
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs shadow-md active:scale-95 transition-all"
             >
-              <MessageCircle className="w-4 h-4 fill-current" />
+              <WhatsAppIcon className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>
               <ArrowUpRight className="w-4 h-4 text-white opacity-80" />
             </a>

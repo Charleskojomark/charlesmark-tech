@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,7 +115,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 fill-current" />
+              <WhatsAppIcon className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
@@ -187,7 +188,7 @@ export function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-base shadow-md active:scale-[0.98] transition-all"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <WhatsAppIcon className="w-5 h-5 fill-current" />
                   <span>Chat on WhatsApp</span>
                   <ArrowUpRight className="w-4 h-4 opacity-80" />
                 </a>

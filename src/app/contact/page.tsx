@@ -6,12 +6,12 @@ import Image from "next/image";
 import {
   ArrowLeft,
   ArrowUpRight,
-  MessageCircle,
   Mail,
   Clock,
   CheckCircle2,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 const WHATSAPP_TOPICS = [
   {
@@ -134,7 +134,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-200 group"
               >
-                <MessageCircle className="w-6 h-6 fill-current flex-shrink-0" />
+                <WhatsAppIcon className="w-6 h-6 fill-current flex-shrink-0" />
                 <span>Chat on WhatsApp</span>
                 <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>

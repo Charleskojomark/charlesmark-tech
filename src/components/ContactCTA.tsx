@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, MessageCircle, Mail, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Mail, Sparkles, CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Card3D, Card3DItem } from "@/components/Card3D";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 const WHATSAPP_PROMPTS = [
   {
@@ -87,7 +88,7 @@ export function ContactCTA() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-sm sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current flex-shrink-0" />
+                  <WhatsAppIcon className="w-5 h-5 fill-current flex-shrink-0" />
                   <span>Chat on WhatsApp</span>
                   <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>

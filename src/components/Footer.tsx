@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon, LinkedInIcon } from "@/components/icons/BrandIcons";
 
 const CURRENT_YEAR = 2026;
 
@@ -88,9 +89,9 @@ export function Footer() {
                 className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#25D366]/40 hover:bg-[#25D366] hover:border-[#25D366] transition-all shadow-xs"
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-[#25D366] text-[#F5F0E8] flex items-center justify-center font-bold text-xs flex-shrink-0 group-hover:bg-white group-hover:text-[#25D366] transition-colors">
-                    ✆
-                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#25D366] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-white group-hover:text-[#25D366] transition-colors p-1.5">
+                    <WhatsAppIcon className="w-4 h-4 fill-current" />
+                  </div>
                   <div className="flex flex-col">
                     <span className="font-mono text-xs font-bold text-[#000000] group-hover:text-white transition-colors">
                       Chat on WhatsApp
@@ -150,13 +151,7 @@ export function Footer() {
                 className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
               >
                 <div className="flex items-center gap-3">
-                  <svg
-                    className="w-5 h-5 fill-[#0A66C2] flex-shrink-0"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.3a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28" />
-                  </svg>
+                  <LinkedInIcon className="w-5 h-5 fill-[#0A66C2] flex-shrink-0" />
                   <span className="font-mono text-xs font-semibold text-[#000000]">
                     {siteConfig.social.linkedin.username}
                   </span>

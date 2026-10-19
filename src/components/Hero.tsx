@@ -4,15 +4,11 @@ import React from "react";
 import Image from "next/image";
 import {
   Calendar,
-  MessageCircle,
   ArrowUpRight,
-  ShieldCheck,
-  Zap,
-  CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { HeroTyping } from "@/components/HeroTyping";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export function Hero() {
   return (
@@ -92,28 +88,10 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5 fill-current" />
+                <WhatsAppIcon className="w-5 h-5 fill-current" />
                 <span>Chat on WhatsApp</span>
                 <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-            </div>
-
-            {/* Tangible Business Impact Badges */}
-            <div className="pt-4 border-t border-[#4A3428]/80 flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-mono text-[#D8C5AF]">
-              <span className="inline-flex items-center gap-1.5 text-[#F5F0E8] font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>15–20 hrs/wk saved per team</span>
-              </span>
-              <span className="text-[#4A3428]">•</span>
-              <span className="inline-flex items-center gap-1.5 text-[#F5F0E8] font-medium">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Zero-hallucination guardrails</span>
-              </span>
-              <span className="text-[#4A3428]">•</span>
-              <span className="inline-flex items-center gap-1.5 text-[#F5F0E8] font-medium">
-                <Zap className="w-4 h-4 text-[#B58A64] flex-shrink-0" />
-                <span>99.99% cloud uptime</span>
-              </span>
             </div>
           </div>
 

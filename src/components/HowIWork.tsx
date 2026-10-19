@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Compass, PencilRuler, Wrench, ShieldCheck, TrendingUp, Check, Calendar, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Compass, PencilRuler, Wrench, ShieldCheck, TrendingUp, Check, Calendar, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 interface Step {
   step: string;
@@ -232,7 +233,7 @@ export function HowIWork() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
             >
-              <MessageCircle className="w-3.5 h-3.5 fill-current" />
+              <WhatsAppIcon className="w-3.5 h-3.5 fill-current" />
               <span>WhatsApp</span>
             </a>
           </div>

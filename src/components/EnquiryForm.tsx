@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight, CheckCircle2, AlertCircle, Loader2, Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export function EnquiryForm() {
   const [formData, setFormData] = useState({
@@ -96,7 +97,7 @@ export function EnquiryForm() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4A3428] text-[#F5F0E8] text-xs font-mono font-semibold uppercase tracking-wider"
           >
-            <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+            <WhatsAppIcon className="w-4 h-4 fill-[#25D366]" />
             <span>Fast-track on WhatsApp</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
