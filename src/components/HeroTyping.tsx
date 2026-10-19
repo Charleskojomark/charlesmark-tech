@@ -1,87 +1,64 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Terminal, Sparkles } from "lucide-react";
-
-const DISCIPLINES = [
-  {
-    title: "AI Workflow Automation",
-    sub: "n8n • Webhooks • CRM Sync",
-    badge: "15-20 hrs/wk saved",
-  },
-  {
-    title: "Custom AI Agents & RAG",
-    sub: "LangGraph • Vector Search • Pydantic",
-    badge: "Document Intelligence",
-  },
-  {
-    title: "Scalable Backend Systems",
-    sub: "FastAPI • PostgreSQL • Node.js",
-    badge: "Production APIs",
-  },
-];
+import { siteConfig } from "@/config/site";
 
 export function HeroTyping() {
-  const [index, setIndex] = useState(0);
+  const roles = siteConfig.rolesToCycle;
+  const [roleIndex, setRoleIndex] = useState(0);
+  // Initialize with first role so there is never a blank flash or layout shift
+  const [currentText, setCurrentText] = useState(roles[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % DISCIPLINES.length);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, []);
+    // Respect reduced motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
 
-  const active = DISCIPLINES[index];
+    const currentRole = roles[roleIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      // Typing forward
+      if (currentText.length < currentRole.length) {
+        timer = setTimeout(() => {
+          setCurrentText(currentRole.slice(0, currentText.length + 1));
+        }, 70); // Natural fluid typing pace
+      } else {
+        // Full phrase displayed: hold for reading
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2200);
+      }
+    } else {
+      // Deleting backward
+      if (currentText.length > 0) {
+        timer = setTimeout(() => {
+          setCurrentText(currentRole.slice(0, currentText.length - 1));
+        }, 35); // Crisp backspacing
+      } else {
+        // Finished deleting: pause briefly then advance to next discipline
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 300);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, roleIndex, roles]);
 
   return (
-    <div className="pt-1 pb-1">
-      <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-        {/* Terminal Core Focus Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#241A15] text-[#F5F0E8] shadow-sm border border-[#4A3428] flex-shrink-0">
-          <Terminal className="w-3.5 h-3.5 text-[#B58A64]" />
-          <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-[#D8C5AF] uppercase">
-            CORE FOCUS:
-          </span>
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-          </span>
-        </div>
-
-        {/* Dynamic Kinetic Discipline Container - NO overflow-hidden so text NEVER clips */}
-        <div className="min-h-[2.25rem] flex items-center flex-1">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.title}
-              initial={{ opacity: 0, y: 8, filter: "blur(3px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -8, filter: "blur(3px)" }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap items-center gap-2 sm:gap-2.5 py-0.5"
-            >
-              <span className="font-display font-extrabold text-lg sm:text-xl md:text-2xl text-[#241A15] tracking-tight leading-snug">
-                {active.title}
-              </span>
-              <span className="inline-flex items-center gap-1 font-mono text-[10px] sm:text-[11px] text-[#B58A64] bg-[#FAF7F2] border border-[#D8C5AF] px-2.5 py-0.5 rounded-full font-semibold shadow-xs">
-                <Sparkles className="w-2.5 h-2.5 text-[#B58A64]" />
-                <span>{active.sub}</span>
-              </span>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Progress Dots Indicator */}
-        <div className="hidden sm:flex items-center gap-1 pl-1" aria-hidden="true">
-          {DISCIPLINES.map((d, i) => (
-            <span
-              key={d.title}
-              className={`h-1 rounded-full transition-all duration-300 ${
-                i === index ? "w-4 bg-[#B58A64]" : "w-1.5 bg-[#D8C5AF]"
-              }`}
-            />
-          ))}
-        </div>
+    <div className="py-1">
+      <div className="inline-flex items-center min-h-[2.5rem] sm:min-h-[3rem] max-w-full">
+        <span className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#B58A64] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5">
+          {currentText}
+        </span>
+        <span
+          aria-hidden="true"
+          className="inline-block w-[3px] h-6 sm:h-8 md:h-9 bg-[#B58A64] shadow-[0_0_8px_rgba(181,138,100,0.8)] ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
+        />
       </div>
     </div>
   );
