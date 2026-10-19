@@ -126,8 +126,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Big WhatsApp Click-to-Chat Button */}
-            <div className="flex flex-col items-stretch md:items-end flex-shrink-0">
+            {/* Action Buttons: WhatsApp & Cal.com */}
+            <div className="flex flex-col items-stretch md:items-end flex-shrink-0 gap-3">
               <a
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
@@ -138,8 +138,19 @@ export default function ContactPage() {
                 <span>Chat on WhatsApp</span>
                 <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-              <span className="font-mono text-[11px] text-[#D8C5AF]/70 mt-2 text-center md:text-right">
-                No forms required • Opens WhatsApp directly
+
+              <a
+                href={siteConfig.booking.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-mono text-xs font-bold border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group"
+              >
+                <span>📅 Schedule 30-min on Cal.com</span>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              <span className="font-mono text-[11px] text-[#D8C5AF]/70 mt-0.5 text-center md:text-right">
+                No forms required • Direct engineer contact
               </span>
             </div>
           </div>

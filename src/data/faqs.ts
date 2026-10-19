@@ -10,7 +10,7 @@ export const businessFaqs: FaqItem[] = [
     id: "cost",
     question: "How much does a typical automation or backend system cost?",
     answer:
-      "Engagements are typically fixed-price so you know your exact investment upfront with zero surprise billing. A standalone Workflow Audit starts at [TODO: price], while complete Automation Builds generally range from [TODO: price range, e.g. $2,000 to $6,000+] depending on integration complexity, number of tool connections, and custom parsing rules. After we review your workflow, you receive a scoped proposal with a fixed quote.",
+      "All engagements are strictly scope-based with fixed quotes, ensuring you know your exact investment upfront with zero surprise billing or open-ended hourly meters. Standalone Workflow Audits, turnkey Automation Builds, and custom AI agents are quoted after an initial discovery discussion based on tool complexity, system integration requirements, and business ROI. Once agreed, your quote is fixed with clear deliverables and milestones.",
     category: "Pricing & Scope",
   },
   {

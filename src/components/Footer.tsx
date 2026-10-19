@@ -108,6 +108,29 @@ export function Footer() {
                 <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
 
+              {/* Cal.com Live Booking Row */}
+              <a
+                href={siteConfig.booking.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#B58A64]/50 hover:bg-[#241A15] hover:border-[#241A15] transition-all shadow-xs"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full bg-[#241A15] text-[#F5F0E8] flex items-center justify-center font-bold text-xs flex-shrink-0 group-hover:bg-[#B58A64] group-hover:text-[#241A15] transition-colors">
+                    📅
+                  </span>
+                  <div className="flex flex-col">
+                    <span className="font-mono text-xs font-bold text-[#000000] group-hover:text-white transition-colors">
+                      Schedule on Cal.com
+                    </span>
+                    <span className="text-[10px] text-[#B58A64] group-hover:text-[#D8C5AF] font-semibold transition-colors">
+                      Live 30-Min Discovery Call
+                    </span>
+                  </div>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+
               {/* Email Direct Row */}
               <a
                 href={`mailto:${siteConfig.contact.email}`}

@@ -2,45 +2,57 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Sparkles, Activity, Rotate3d, Zap } from "lucide-react";
+import { Sparkles, Activity, Rotate3d, Cpu, Network, Bot } from "lucide-react";
 
 interface NodeData {
+  id: string;
   name: string;
   category: string;
   color: string;
   position: [number, number, number];
+  detail: string;
 }
 
-const NODES_DATA: NodeData[] = [
+const ARCHITECTURE_NODES: NodeData[] = [
   {
-    name: "n8n Automation",
-    category: "Pipelines",
+    id: "n8n",
+    name: "n8n Orchestrator",
+    category: "Workflow Engine",
     color: "#B58A64",
-    position: [3.4, 1.2, 1.0],
+    position: [3.2, 1.2, 1.0],
+    detail: "Self-hosted webhook pipelines, schema-validated error recovery",
   },
   {
-    name: "RAG Assistant",
+    id: "rag",
+    name: "RAG Document Brain",
     category: "AI Agent",
     color: "#10B981",
-    position: [-3.2, 1.6, -1.2],
+    position: [-3.2, 1.4, -0.8],
+    detail: "Hybrid semantic search, pgvector embeddings, verified citations",
   },
   {
+    id: "fastapi",
     name: "FastAPI Backend",
     category: "Core API",
     color: "#4A3428",
-    position: [2.2, -2.4, 1.8],
+    position: [2.0, -2.2, 1.6],
+    detail: "Asynchronous microservices, Pydantic type safety, HMAC auth",
   },
   {
+    id: "pgvector",
     name: "PostgreSQL & pgvector",
-    category: "Database",
+    category: "Persistent Store",
     color: "#25D366",
-    position: [-2.6, -2.0, -1.5],
+    position: [-2.4, -2.0, -1.4],
+    detail: "ACID compliance, relational business data + vector embeddings",
   },
   {
-    name: "LangGraph Multi-Agent",
-    category: "State Engine",
+    id: "langgraph",
+    name: "LangGraph State Machine",
+    category: "Agent Swarm",
     color: "#D8C5AF",
-    position: [0.0, 3.2, 2.0],
+    position: [0.0, 2.9, 1.6],
+    detail: "Multi-agent coordination, deterministic loops & human-in-the-loop",
   },
 ];
 
@@ -48,9 +60,8 @@ export function ThreeHeroScene() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  const [activeNode, setActiveNode] = useState<NodeData | null>(null);
   const [activeMode, setActiveMode] = useState<"neural" | "pipeline" | "agents">("neural");
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [fps] = useState(60);
   const [isInteracting, setIsInteracting] = useState(false);
 
   useEffect(() => {
@@ -58,13 +69,17 @@ export function ThreeHeroScene() {
     const canvas = canvasRef.current;
     if (!container || !canvas) return;
 
+    // Check prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     let width = container.clientWidth;
     let height = container.clientHeight;
 
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 0, 11);
+    // Slightly pulled back camera so 3D objects never touch borders or telemetry
+    const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 100);
+    camera.position.set(0, 0, 13.5);
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
@@ -75,54 +90,58 @@ export function ThreeHeroScene() {
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 2. Lighting
-    const ambientLight = new THREE.AmbientLight(0xf5f0e8, 1.8);
+    // 2. Dynamic Lighting
+    const ambientLight = new THREE.AmbientLight(0xfaf7f2, 1.6);
     scene.add(ambientLight);
 
-    const coreLight = new THREE.PointLight(0xb58a64, 4, 18);
+    const coreLight = new THREE.PointLight(0xb58a64, 5, 20);
     coreLight.position.set(0, 0, 0);
     scene.add(coreLight);
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
-    directionalLight.position.set(5, 8, 7);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    directionalLight.position.set(6, 10, 8);
     scene.add(directionalLight);
 
-    // Root 3D container group for smooth mouse rotation
+    const emeraldLight = new THREE.PointLight(0x10b981, 2, 14);
+    emeraldLight.position.set(-4, -3, 3);
+    scene.add(emeraldLight);
+
+    // Root Group with magnetic mouse orientation
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // 3. Central AI Neural Core
-    // Outer wireframe icosahedron
-    const coreGeo = new THREE.IcosahedronGeometry(2.0, 1);
+    // 3. Central Quantum AI Neural Core
+    // Outer wireframe geometric hull
+    const coreGeo = new THREE.IcosahedronGeometry(1.8, 1);
     const coreWireMat = new THREE.MeshStandardMaterial({
       color: 0x4a3428,
       wireframe: true,
       roughness: 0.3,
-      metalness: 0.8,
+      metalness: 0.85,
     });
     const coreMesh = new THREE.Mesh(coreGeo, coreWireMat);
     rootGroup.add(coreMesh);
 
-    // Inner glowing faceted core
-    const innerGeo = new THREE.IcosahedronGeometry(1.4, 2);
+    // Inner glowing faceted obsidian/gold core
+    const innerGeo = new THREE.IcosahedronGeometry(1.25, 2);
     const innerMat = new THREE.MeshStandardMaterial({
       color: 0xb58a64,
-      roughness: 0.2,
-      metalness: 0.9,
-      emissive: 0x38261d,
-      emissiveIntensity: 0.5,
+      roughness: 0.15,
+      metalness: 0.95,
+      emissive: 0x4a3428,
+      emissiveIntensity: 0.6,
     });
     const innerMesh = new THREE.Mesh(innerGeo, innerMat);
     rootGroup.add(innerMesh);
 
-    // 4. Concentric Gyroscope Rings
+    // 4. Concentric Gyroscope Rings with particle flow
     const ringMat1 = new THREE.MeshBasicMaterial({
       color: 0xb58a64,
       wireframe: true,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.38,
     });
-    const ringGeo1 = new THREE.TorusGeometry(2.8, 0.02, 16, 80);
+    const ringGeo1 = new THREE.TorusGeometry(2.7, 0.02, 16, 90);
     const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
     ring1.rotation.x = Math.PI / 3;
     rootGroup.add(ring1);
@@ -131,48 +150,50 @@ export function ThreeHeroScene() {
       color: 0x10b981,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.32,
     });
-    const ringGeo2 = new THREE.TorusGeometry(3.3, 0.02, 16, 80);
+    const ringGeo2 = new THREE.TorusGeometry(3.1, 0.02, 16, 90);
     const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
     ring2.rotation.y = Math.PI / 4;
     rootGroup.add(ring2);
 
-    // 5. Satellite Nodes and Data Synapses
+    // 5. Satellite Nodes & Active Curved Synapse Beziers
     const satelliteGroup = new THREE.Group();
     rootGroup.add(satelliteGroup);
 
     const satellites: {
+      id: string;
       mesh: THREE.Mesh;
       position: THREE.Vector3;
       curve: THREE.QuadraticBezierCurve3;
       pulseMesh: THREE.Mesh;
       pulseProgress: number;
       speed: number;
+      baseColor: string;
     }[] = [];
 
-    NODES_DATA.forEach((node, i) => {
+    ARCHITECTURE_NODES.forEach((node, i) => {
       const nodePos = new THREE.Vector3(...node.position);
 
-      // Node mesh
-      const satGeo = new THREE.OctahedronGeometry(0.36, 0);
+      // Node mesh: Octahedron
+      const satGeo = new THREE.OctahedronGeometry(0.38, 0);
       const satMat = new THREE.MeshStandardMaterial({
         color: new THREE.Color(node.color),
         roughness: 0.2,
-        metalness: 0.8,
+        metalness: 0.85,
         emissive: new THREE.Color(node.color),
-        emissiveIntensity: 0.3,
+        emissiveIntensity: 0.35,
       });
       const satMesh = new THREE.Mesh(satGeo, satMat);
       satMesh.position.copy(nodePos);
-      satMesh.userData = { id: i, name: node.name };
+      satMesh.userData = { id: node.id, name: node.name };
       satelliteGroup.add(satMesh);
 
       // Curved synapse connecting node to central core
       const midPoint = new THREE.Vector3(
-        nodePos.x * 0.5 + (Math.random() - 0.5) * 0.8,
-        nodePos.y * 0.5 + (Math.random() - 0.5) * 0.8,
-        nodePos.z * 0.5 + (Math.random() - 0.5) * 0.8
+        nodePos.x * 0.45 + (Math.random() - 0.5) * 0.5,
+        nodePos.y * 0.45 + (Math.random() - 0.5) * 0.5,
+        nodePos.z * 0.45 + (Math.random() - 0.5) * 0.5
       );
       const curve = new THREE.QuadraticBezierCurve3(
         nodePos,
@@ -185,13 +206,13 @@ export function ThreeHeroScene() {
       const curveMat = new THREE.LineBasicMaterial({
         color: new THREE.Color(node.color),
         transparent: true,
-        opacity: 0.45,
+        opacity: 0.42,
       });
       const curveLine = new THREE.Line(curveGeo, curveMat);
       satelliteGroup.add(curveLine);
 
       // Traveling data packet pulse
-      const pulseGeo = new THREE.SphereGeometry(0.1, 8, 8);
+      const pulseGeo = new THREE.SphereGeometry(0.09, 8, 8);
       const pulseMat = new THREE.MeshBasicMaterial({
         color: 0x25d366,
       });
@@ -199,22 +220,24 @@ export function ThreeHeroScene() {
       satelliteGroup.add(pulseMesh);
 
       satellites.push({
+        id: node.id,
         mesh: satMesh,
         position: nodePos,
         curve,
         pulseMesh,
         pulseProgress: (i * 0.2) % 1,
-        speed: 0.008 + i * 0.002,
+        speed: 0.007 + i * 0.002,
+        baseColor: node.color,
       });
     });
 
-    // 6. 3D Floating Particle Constellation (Dust)
-    const particleCount = 280;
+    // 6. 3D Floating Particle Constellation Dust
+    const particleCount = 240;
     const particlePositions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount * 3; i += 3) {
-      particlePositions[i] = (Math.random() - 0.5) * 16;
-      particlePositions[i + 1] = (Math.random() - 0.5) * 16;
-      particlePositions[i + 2] = (Math.random() - 0.5) * 16;
+      particlePositions[i] = (Math.random() - 0.5) * 14;
+      particlePositions[i + 1] = (Math.random() - 0.5) * 14;
+      particlePositions[i + 2] = (Math.random() - 0.5) * 14;
     }
     const particleGeo = new THREE.BufferGeometry();
     particleGeo.setAttribute(
@@ -223,14 +246,14 @@ export function ThreeHeroScene() {
     );
     const particleMat = new THREE.PointsMaterial({
       color: 0xb58a64,
-      size: 0.06,
+      size: 0.05,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.5,
     });
     const particles = new THREE.Points(particleGeo, particleMat);
     rootGroup.add(particles);
 
-    // 7. Mouse and Touch Smooth Tracking
+    // 7. Mouse & Drag Interaction with Magnetic Spring Damping
     let mouseX = 0;
     let mouseY = 0;
     let targetRotationX = 0;
@@ -253,13 +276,13 @@ export function ThreeHeroScene() {
       if (isDragging) {
         const deltaX = clientX - previousPointerX;
         const deltaY = clientY - previousPointerY;
-        targetRotationY += deltaX * 0.01;
-        targetRotationX += deltaY * 0.01;
+        targetRotationY += deltaX * 0.008;
+        targetRotationX += deltaY * 0.008;
         previousPointerX = clientX;
         previousPointerY = clientY;
       } else {
-        targetRotationY = mouseX * 0.45;
-        targetRotationX = -mouseY * 0.35;
+        targetRotationY = mouseX * 0.35;
+        targetRotationX = -mouseY * 0.28;
       }
     };
 
@@ -305,50 +328,51 @@ export function ThreeHeroScene() {
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
+      if (prefersReducedMotion) {
+        renderer.render(scene, camera);
+        return;
+      }
+
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth camera/rootGroup lerp
-      rootGroup.rotation.y += (targetRotationY - rootGroup.rotation.y) * 0.05;
-      rootGroup.rotation.x += (targetRotationX - rootGroup.rotation.x) * 0.05;
+      // Smooth camera/rootGroup spring lerp
+      rootGroup.rotation.y += (targetRotationY - rootGroup.rotation.y) * 0.055;
+      rootGroup.rotation.x += (targetRotationX - rootGroup.rotation.x) * 0.055;
 
       // Base idle continuous spinning
-      coreMesh.rotation.y = elapsedTime * 0.25;
-      coreMesh.rotation.x = elapsedTime * 0.15;
-      innerMesh.rotation.y = -elapsedTime * 0.35;
+      coreMesh.rotation.y = elapsedTime * 0.22;
+      coreMesh.rotation.x = elapsedTime * 0.12;
+      innerMesh.rotation.y = -elapsedTime * 0.32;
 
-      ring1.rotation.z = elapsedTime * 0.2;
-      ring2.rotation.z = -elapsedTime * 0.25;
+      ring1.rotation.z = elapsedTime * 0.18;
+      ring2.rotation.z = -elapsedTime * 0.22;
 
-      // Pulse core scale (breathing heartbeat)
-      const breath = 1.0 + Math.sin(elapsedTime * 2.0) * 0.04;
+      // Breathing scale
+      const breath = 1.0 + Math.sin(elapsedTime * 2.2) * 0.035;
       innerMesh.scale.set(breath, breath, breath);
 
-      // Animate satellites and data pulses along bezier curves
+      // Satellites and bezier data pulses
       satellites.forEach((sat) => {
-        // Subtle orbital hover oscillation
         sat.mesh.rotation.y += 0.02;
         sat.mesh.rotation.x += 0.01;
 
-        // Data pulse movement
         sat.pulseProgress = (sat.pulseProgress + sat.speed) % 1;
         const pulsePos = sat.curve.getPointAt(sat.pulseProgress);
         sat.pulseMesh.position.copy(pulsePos);
 
-        // Scale pulse according to progress
-        const pScale = Math.sin(sat.pulseProgress * Math.PI) * 1.4;
+        const pScale = Math.sin(sat.pulseProgress * Math.PI) * 1.35;
         sat.pulseMesh.scale.set(pScale, pScale, pScale);
       });
 
       // Background particle drift
-      particles.rotation.y = elapsedTime * 0.03;
-      particles.rotation.x = elapsedTime * 0.02;
+      particles.rotation.y = elapsedTime * 0.025;
+      particles.rotation.x = elapsedTime * 0.018;
 
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // 10. Cleanup on unmount
     return () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
@@ -359,7 +383,6 @@ export function ThreeHeroScene() {
       canvas.removeEventListener("touchstart", handlePointerDown);
       window.removeEventListener("touchend", handlePointerUp);
 
-      // Dispose Three.js resources
       coreGeo.dispose();
       coreWireMat.dispose();
       innerGeo.dispose();
@@ -377,28 +400,28 @@ export function ThreeHeroScene() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[460px] sm:h-[500px] lg:h-[520px] rounded-3xl bg-[#FAF7F2] border border-[#D8C5AF] shadow-xl overflow-hidden flex flex-col justify-between p-4 sm:p-6"
+      className="relative w-full h-[480px] sm:h-[530px] lg:h-[580px] rounded-3xl bg-gradient-to-b from-[#FAF7F2]/90 to-[#F5F0E8]/70 border border-[#D8C5AF]/90 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col justify-between p-4 sm:p-6 group"
     >
-      {/* Top Console Bar: System Telemetry HUD */}
-      <div className="relative z-10 flex items-center justify-between border-b border-[#D8C5AF]/60 pb-3">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2.5 w-2.5">
+      {/* Top Subtle Telemetry Header (Clean, unboxed, not overlapping 3D shapes) */}
+      <div className="relative z-10 flex items-center justify-between pointer-events-none">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2]/95 border border-[#D8C5AF] shadow-xs backdrop-blur-sm pointer-events-auto">
+          <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10B981]" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
           </span>
-          <span className="font-mono text-xs font-bold tracking-wider text-[#241A15] uppercase">
-            AI NEURAL CORE // 3D WEBGL
+          <span className="font-mono text-[10px] sm:text-xs font-bold tracking-wider text-[#241A15] uppercase">
+            3D SYSTEM ENGINE
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-[10px] font-mono text-[#4A3428]">
-          <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#F5F0E8] border border-[#D8C5AF]">
+        <div className="flex items-center gap-2 pointer-events-auto">
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F2]/95 border border-[#D8C5AF] text-[10px] font-mono font-medium text-[#4A3428]">
             <Activity className="w-3 h-3 text-[#10B981]" />
-            <span>{fps} FPS HARDWARE ACCELERATED</span>
+            <span>60 FPS WEBGL</span>
           </span>
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#241A15] text-[#F5F0E8] font-semibold">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#241A15] text-[#F5F0E8] text-[10px] font-mono font-bold shadow-xs">
             <Rotate3d className="w-3 h-3 text-[#B58A64]" />
-            <span>{isInteracting ? "ORBITING" : "DRAG 3D"}</span>
+            <span>{isInteracting ? "ORBITING" : "DRAG TO ORBIT"}</span>
           </span>
         </div>
       </div>
@@ -408,82 +431,106 @@ export function ThreeHeroScene() {
         <canvas ref={canvasRef} className="w-full h-full block" />
       </div>
 
-      {/* Floating Interactive 3D Node Chips Overlay */}
+      {/* Floating Interactive Architecture Node Cards at Bottom */}
       <div className="relative z-10 pointer-events-none mt-auto pt-4">
-        {/* Active Node Info Drawer */}
-        {hoveredNode && (
-          <div className="mb-3 p-3 rounded-2xl bg-[#241A15]/90 backdrop-blur-md text-[#F5F0E8] border border-[#B58A64]/40 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-150">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs font-bold text-[#B58A64]">
-                ACTIVE ARCHITECTURE NODE:
+        {/* Active Node Flyout Card */}
+        {activeNode && (
+          <div className="mb-3 p-3.5 rounded-2xl bg-[#241A15]/95 backdrop-blur-md text-[#F5F0E8] border border-[#B58A64]/50 shadow-2xl animate-in fade-in slide-in-from-bottom-2 duration-150 pointer-events-auto">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span
+                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: activeNode.color }}
+                />
+                <span className="font-mono text-[11px] font-bold text-[#B58A64] uppercase tracking-wider">
+                  {activeNode.category}
+                </span>
+              </div>
+              <span className="font-mono text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                ACTIVE
               </span>
-              <Zap className="w-3.5 h-3.5 text-[#10B981]" />
             </div>
-            <div className="font-display font-bold text-sm text-white mt-0.5">
-              {hoveredNode}
+            <div className="font-display font-bold text-sm text-white mt-1">
+              {activeNode.name}
             </div>
+            <p className="text-[11px] text-[#D8C5AF] mt-0.5 leading-snug">
+              {activeNode.detail}
+            </p>
           </div>
         )}
 
-        {/* Node quick pills */}
-        <div className="flex flex-wrap gap-1.5 pointer-events-auto">
-          {NODES_DATA.map((node) => (
-            <button
-              key={node.name}
-              type="button"
-              onMouseEnter={() => setHoveredNode(`${node.name} (${node.category})`)}
-              onMouseLeave={() => setHoveredNode(null)}
-              className="px-2.5 py-1 rounded-lg bg-[#F5F0E8]/90 hover:bg-[#241A15] text-[#241A15] hover:text-[#F5F0E8] border border-[#D8C5AF] text-[10px] font-mono font-bold transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: node.color }}
-              />
-              <span>{node.name}</span>
-            </button>
-          ))}
+        {/* Node quick pills - Clean, responsive, non-overlapping */}
+        <div className="flex flex-wrap gap-1.5 pointer-events-auto mb-3">
+          {ARCHITECTURE_NODES.map((node) => {
+            const isSelected = activeNode?.id === node.id;
+            return (
+              <button
+                key={node.id}
+                type="button"
+                onMouseEnter={() => setActiveNode(node)}
+                onMouseLeave={() => setActiveNode(null)}
+                onClick={() =>
+                  setActiveNode((prev) => (prev?.id === node.id ? null : node))
+                }
+                className={`px-2.5 py-1 rounded-xl text-[10px] font-mono font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 shadow-xs ${
+                  isSelected
+                    ? "bg-[#241A15] text-[#F5F0E8] border border-[#B58A64] scale-105"
+                    : "bg-[#FAF7F2]/90 hover:bg-[#241A15] text-[#241A15] hover:text-[#F5F0E8] border border-[#D8C5AF]"
+                }`}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: node.color }}
+                />
+                <span>{node.name}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Bottom Mode Switcher & Drag instructions */}
-        <div className="mt-3 pt-3 border-t border-[#D8C5AF]/60 flex items-center justify-between text-[11px] font-mono text-[#4A3428]">
+        {/* Bottom Mode Switcher Bar */}
+        <div className="pt-2.5 border-t border-[#D8C5AF]/60 flex items-center justify-between text-[11px] font-mono text-[#4A3428] pointer-events-auto">
           <span className="flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-[#B58A64]" />
-            <span>Interactive 3D System Architecture</span>
+            <span className="font-semibold text-xs text-[#241A15]">Interactive Architecture</span>
           </span>
 
           <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={() => setActiveMode("neural")}
-              className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-colors cursor-pointer flex items-center gap-1 ${
                 activeMode === "neural"
                   ? "bg-[#241A15] text-[#F5F0E8]"
-                  : "bg-[#F5F0E8] hover:bg-[#D8C5AF] text-[#4A3428]"
+                  : "bg-[#FAF7F2] hover:bg-[#D8C5AF] text-[#4A3428] border border-[#D8C5AF]/70"
               }`}
             >
-              Mesh
+              <Cpu className="w-2.5 h-2.5" />
+              <span>Mesh</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveMode("pipeline")}
-              className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-colors cursor-pointer flex items-center gap-1 ${
                 activeMode === "pipeline"
                   ? "bg-[#241A15] text-[#F5F0E8]"
-                  : "bg-[#F5F0E8] hover:bg-[#D8C5AF] text-[#4A3428]"
+                  : "bg-[#FAF7F2] hover:bg-[#D8C5AF] text-[#4A3428] border border-[#D8C5AF]/70"
               }`}
             >
-              Pipeline
+              <Network className="w-2.5 h-2.5" />
+              <span>Pipeline</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveMode("agents")}
-              className={`px-2 py-0.5 rounded text-[10px] font-bold transition-colors cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-colors cursor-pointer flex items-center gap-1 ${
                 activeMode === "agents"
                   ? "bg-[#241A15] text-[#F5F0E8]"
-                  : "bg-[#F5F0E8] hover:bg-[#D8C5AF] text-[#4A3428]"
+                  : "bg-[#FAF7F2] hover:bg-[#D8C5AF] text-[#4A3428] border border-[#D8C5AF]/70"
               }`}
             >
-              Agents
+              <Bot className="w-2.5 h-2.5" />
+              <span>Agents</span>
             </button>
           </div>
         </div>

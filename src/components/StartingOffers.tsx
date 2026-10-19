@@ -62,13 +62,13 @@ export function StartingOffers() {
                 {/* Price Display with visible tag */}
                 <Card3DItem translateZ={24} className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] mb-6 shadow-xs">
                   <span className="font-mono text-[10px] text-[#4A3428]/70 uppercase tracking-widest font-semibold block mb-1">
-                    STARTING INVESTMENT:
+                    ENGAGEMENT PRICING:
                   </span>
                   <div className="font-display text-xl sm:text-2xl font-extrabold text-[#241A15]">
                     {offer.priceNote}
                   </div>
                   <span className="inline-block mt-2 font-mono text-[10px] text-[#B58A64] font-semibold bg-[#F5F0E8] px-2 py-0.5 rounded border border-[#D8C5AF]/60">
-                    Transparent scoping • 100% code ownership
+                    Scope-based proposal • 100% code ownership
                   </span>
                 </Card3DItem>
 

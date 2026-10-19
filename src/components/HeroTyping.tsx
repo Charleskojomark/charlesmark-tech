@@ -1,100 +1,70 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { siteConfig } from "@/config/site";
-import { Terminal } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Terminal, Sparkles } from "lucide-react";
 
-function subscribe(callback: () => void) {
-  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  mediaQuery.addEventListener("change", callback);
-  return () => mediaQuery.removeEventListener("change", callback);
-}
-
-function getSnapshot() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function getServerSnapshot() {
-  return false;
-}
+const DISCIPLINES = [
+  {
+    title: "AI Workflow Automation",
+    sub: "n8n • Webhooks • CRM Sync",
+    badge: "15-20 hrs/wk saved",
+  },
+  {
+    title: "Custom AI Agents & RAG",
+    sub: "LangGraph • Vector Search • Pydantic",
+    badge: "Document Intelligence",
+  },
+  {
+    title: "Scalable Backend Systems",
+    sub: "FastAPI • PostgreSQL • Node.js",
+    badge: "Production APIs",
+  },
+];
 
 export function HeroTyping() {
-  const roles = siteConfig.rolesToCycle;
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const prefersReducedMotion = React.useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    getServerSnapshot
-  );
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % DISCIPLINES.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
 
-    const currentRole = roles[roleIndex];
-    let timer: NodeJS.Timeout;
-
-    if (!isDeleting) {
-      // Typing forward
-      if (currentText.length < currentRole.length) {
-        timer = setTimeout(() => {
-          setCurrentText(currentRole.slice(0, currentText.length + 1));
-        }, 70); // Natural crisp typing speed
-      } else {
-        // Finished typing phrase, hold for appreciation
-        timer = setTimeout(() => {
-          setIsDeleting(true);
-        }, 2200);
-      }
-    } else {
-      // Deleting backward
-      if (currentText.length > 0) {
-        timer = setTimeout(() => {
-          setCurrentText(currentRole.slice(0, currentText.length - 1));
-        }, 35); // Fast backspace
-      } else {
-        // Finished deleting, switch to next discipline
-        timer = setTimeout(() => {
-          setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % roles.length);
-        }, 250);
-      }
-    }
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, roleIndex, roles, prefersReducedMotion]);
+  const active = DISCIPLINES[index];
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-2 py-1">
-      <span className="sr-only">
-        Specializations: AI Workflow Automation, Custom AI Agents & RAG, and Scalable Backend Systems.
-      </span>
-
-      {/* Terminal prompt indicator */}
-      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#241A15] text-[#F5F0E8] w-fit shadow-xs">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-2 pb-1">
+      {/* Terminal Focus Pill */}
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#241A15] text-[#F5F0E8] w-fit shadow-sm border border-[#4A3428]">
         <Terminal className="w-3.5 h-3.5 text-[#B58A64]" />
-        <span className="font-mono text-[10px] sm:text-[11px] font-bold tracking-widest text-[#D8C5AF] uppercase">
-          FOCUS:
+        <span className="font-mono text-[11px] font-bold tracking-widest text-[#D8C5AF] uppercase">
+          CORE FOCUS:
         </span>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-ping" />
       </div>
 
-      {/* Dynamic changing letters text container */}
-      <div
-        aria-hidden="true"
-        className="inline-flex items-center min-h-[2.5rem] sm:min-h-[3rem] max-w-full"
-      >
-        <span className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#241A15] tracking-tight border-b-2 border-[#B58A64] pb-0.5 break-words">
-          {prefersReducedMotion ? roles[0] : currentText}
-        </span>
-
-        {/* Visible glowing pulsing caret */}
-        {!prefersReducedMotion && (
-          <span
-            className="inline-block w-1 sm:w-1.5 h-6 sm:h-8 bg-[#B58A64] shadow-[0_0_8px_rgba(181,138,100,0.8)] ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
-            aria-hidden="true"
-          />
-        )}
+      {/* Kinetic Animated Word Switcher */}
+      <div className="relative h-9 sm:h-10 overflow-hidden flex items-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.title}
+            initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -16, filter: "blur(4px)" }}
+            transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-2.5 flex-wrap"
+          >
+            <span className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-[#241A15] tracking-tight">
+              {active.title}
+            </span>
+            <span className="hidden md:inline-flex items-center gap-1 font-mono text-[10px] text-[#B58A64] bg-[#FAF7F2] border border-[#D8C5AF] px-2 py-0.5 rounded-full font-semibold">
+              <Sparkles className="w-2.5 h-2.5 text-[#B58A64]" />
+              <span>{active.sub}</span>
+            </span>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

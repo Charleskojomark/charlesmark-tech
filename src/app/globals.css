@@ -161,6 +161,63 @@ code, pre, .font-mono {
   animation: ambientNode 2.6s ease-in-out infinite;
 }
 
+/* Modern Kinetic Text Shimmer for Headlines */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(
+    115deg,
+    #241a15 0%,
+    #4a3428 25%,
+    #b58a64 50%,
+    #4a3428 75%,
+    #241a15 100%
+  );
+  background-size: 250% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShimmer 7s ease-in-out infinite;
+}
+
+/* Smooth Floating Micro-Motion for 3D Stage Badges */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4.5s ease-in-out infinite;
+}
+
+/* Executive Portrait Glowing Ring */
+@keyframes ringPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(181, 138, 100, 0.4), 0 0 25px rgba(181, 138, 100, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(181, 138, 100, 0.7), 0 0 35px rgba(181, 138, 100, 0.35);
+  }
+}
+
+.animate-portrait-ring {
+  animation: ringPulse 3.5s ease-in-out infinite;
+}
+
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

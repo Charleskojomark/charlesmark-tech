@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { MouseSpotlight } from "@/components/MouseSpotlight";
 import { siteConfig } from "@/config/site";
 
 const spaceGrotesk = Space_Grotesk({
@@ -80,7 +81,6 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@markcharleskojo",
   },
   robots: {
     index: true,
@@ -198,6 +198,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#F5F0E8] text-[#241A15] antialiased selection:bg-[#B58A64] selection:text-[#F5F0E8]">
+        <MouseSpotlight />
         <Navbar />
         <main className="flex-1 w-full">{children}</main>
         <Footer />

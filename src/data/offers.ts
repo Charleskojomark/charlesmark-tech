@@ -17,7 +17,7 @@ export const startingOffers: OfferItem[] = [
     name: "Workflow Audit",
     badge: "Diagnostic & Plan",
     tagline: "Uncover where your business loses manual hours and get an actionable automation blueprint.",
-    priceNote: "From [TODO: price - e.g. $500 or fixed engagement]",
+    priceNote: "Custom Quote / Scope-based",
     turnaround: "3–5 business days",
     bestFor: "Teams that know they have manual bottlenecks but want a clear roadmap and ROI estimate before committing to a full build.",
     includes: [
@@ -34,7 +34,7 @@ export const startingOffers: OfferItem[] = [
     name: "Automation Build",
     badge: "Turnkey System",
     tagline: "End-to-end implementation of an AI workflow, custom agent, or backend integration.",
-    priceNote: "From [TODO: price - e.g. $2,500 or fixed scope]",
+    priceNote: "Custom Quote / Scope-based",
     turnaround: "2–4 weeks",
     bestFor: "Businesses ready to replace manual repetitive workflows with a resilient, production-ready system.",
     popular: true,
@@ -52,7 +52,7 @@ export const startingOffers: OfferItem[] = [
     name: "Monthly Support & Evolution",
     badge: "Ongoing Partnership",
     tagline: "Continuous monitoring, schema updates, optimization, and new workflow expansion.",
-    priceNote: "From [TODO: price - e.g. $1,200/mo or monthly retainer]",
+    priceNote: "Scope-based Monthly Retainer",
     turnaround: "Ongoing / monthly retainer",
     bestFor: "Growing businesses that want an AI systems engineer on call to maintain, expand, and monitor their operational pipelines.",
     includes: [

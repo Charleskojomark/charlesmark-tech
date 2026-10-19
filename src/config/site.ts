@@ -32,9 +32,8 @@ export const siteConfig = {
   },
   // Business conversion links
   booking: {
-    // [TODO: booking URL - e.g. Cal.com or Calendly link]
-    url: "https://cal.com/charlesmark", // [TODO: Replace with verified booking link]
-    placeholder: "[TODO: booking URL]",
+    url: "https://cal.com/charlesmark",
+    label: "Schedule a Call (Cal.com)",
   },
   nav: [
     { label: "Services", href: "/services" },
