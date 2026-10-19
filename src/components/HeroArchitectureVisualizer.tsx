@@ -245,12 +245,12 @@ export function HeroArchitectureVisualizer() {
 
       {/* Animated 3-Stage Pipeline Architecture Diagram */}
       <div className="pt-3 pb-4">
-        <div className="flex items-center justify-between gap-2 sm:gap-3 relative">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3 relative">
           {/* Node 1: Input */}
           <div
             className={`flex-1 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 relative ${
               simulationStage === 1
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-lg scale-105"
+                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-lg scale-[1.01] sm:scale-105"
                 : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
             }`}
           >
@@ -269,10 +269,10 @@ export function HeroArchitectureVisualizer() {
           </div>
 
           {/* Animated Connecting Pulse Line 1 */}
-          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64]">
+          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64] py-0.5 sm:py-0">
             <ArrowRight
-              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
-                isSimulating ? "translate-x-1 text-[#10B981] animate-pulse" : "text-[#B58A64]"
+              className={`w-4 h-4 sm:w-5 sm:h-5 rotate-90 sm:rotate-0 transition-transform ${
+                isSimulating ? "translate-y-0.5 sm:translate-y-0 sm:translate-x-1 text-[#10B981] animate-pulse" : "text-[#B58A64]"
               }`}
             />
           </div>
@@ -281,7 +281,7 @@ export function HeroArchitectureVisualizer() {
           <div
             className={`flex-1 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 relative ${
               simulationStage === 2
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-lg scale-105"
+                ? "bg-[#241A15] text-[#F5F0E8] border-[#B58A64] shadow-lg scale-[1.01] sm:scale-105"
                 : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
             }`}
           >
@@ -300,11 +300,11 @@ export function HeroArchitectureVisualizer() {
           </div>
 
           {/* Animated Connecting Pulse Line 2 */}
-          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64]">
+          <div className="flex items-center justify-center flex-shrink-0 text-[#B58A64] py-0.5 sm:py-0">
             <ArrowRight
-              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 rotate-90 sm:rotate-0 transition-transform ${
                 simulationStage === 2 || simulationStage === 3
-                  ? "translate-x-1 text-[#10B981] animate-pulse"
+                  ? "translate-y-0.5 sm:translate-y-0 sm:translate-x-1 text-[#10B981] animate-pulse"
                   : "text-[#B58A64]"
               }`}
             />
@@ -314,7 +314,7 @@ export function HeroArchitectureVisualizer() {
           <div
             className={`flex-1 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 relative ${
               simulationStage === 3
-                ? "bg-[#241A15] text-[#F5F0E8] border-[#10B981] shadow-lg scale-105"
+                ? "bg-[#241A15] text-[#F5F0E8] border-[#10B981] shadow-lg scale-[1.01] sm:scale-105"
                 : "bg-[#FAF7F2] border-[#D8C5AF] text-[#241A15]"
             }`}
           >
