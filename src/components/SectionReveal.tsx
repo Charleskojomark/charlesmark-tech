@@ -27,20 +27,16 @@ export function SectionReveal({
   }
 
   return (
-    <div style={{ perspective: "1200px" }} className="w-full">
+    <div className="w-full max-w-full overflow-x-clip">
       <motion.section
         id={id}
-        initial={{ opacity: 0, rotateX: 10, y: 35, scale: 0.98 }}
-        whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.08 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.06 }}
         transition={{
-          duration: 0.75,
+          duration: 0.65,
           delay,
           ease: [0.21, 0.47, 0.32, 0.98],
-        }}
-        style={{
-          transformStyle: "preserve-3d",
-          transformOrigin: "center top",
         }}
         className={className}
       >

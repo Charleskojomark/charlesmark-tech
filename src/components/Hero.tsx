@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { HeroTyping } from "@/components/HeroTyping";
-import { ThreeHeroScene } from "@/components/ThreeHeroScene";
+import { HeroArchitectureVisualizer } from "@/components/HeroArchitectureVisualizer";
 
 export function Hero() {
   return (
@@ -122,18 +122,6 @@ export function Hero() {
               </a>
             </div>
 
-            {/* Direct Client Access Chip (No plain phone number) */}
-            <div className="pt-0.5 flex flex-wrap items-center gap-2.5 text-xs font-mono text-[#4A3428]">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                <span className="text-[#241A15] font-semibold">Direct WhatsApp &amp; Cal.com Access</span>
-                <span className="text-[#D8C5AF]">•</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-sans font-semibold">
-                  Fast reply within 24h
-                </span>
-              </span>
-            </div>
-
             {/* Trust Metrics Bar */}
             <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono text-[#4A3428] border-t border-[#D8C5AF]/60 pt-4">
               <span className="inline-flex items-center gap-1.5 text-[#241A15] font-medium">
@@ -153,9 +141,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Top-Aligned 3D WebGL Neural Core Canvas */}
+          {/* Right Column: Problem-Solving Automation Architecture Engine */}
           <div className="lg:col-span-5 w-full lg:sticky lg:top-24">
-            <ThreeHeroScene />
+            <HeroArchitectureVisualizer />
           </div>
         </div>
       </div>

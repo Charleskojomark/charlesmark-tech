@@ -49,7 +49,7 @@ export function MouseSpotlight() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-1 overflow-hidden"
+      className="fixed inset-0 pointer-events-none z-1 overflow-hidden hidden md:block"
     >
       <div
         ref={spotlightRef}

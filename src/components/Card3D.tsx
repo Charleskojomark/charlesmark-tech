@@ -54,7 +54,7 @@ export function Card3D({
   return (
     <div
       style={{ perspective: "1000px" }}
-      className="w-full h-full"
+      className="w-full h-full max-w-full overflow-hidden"
     >
       <div
         ref={cardRef}

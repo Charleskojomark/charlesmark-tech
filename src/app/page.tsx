@@ -3,7 +3,6 @@ import { ProblemsSection } from "@/components/ProblemsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { HowIWork } from "@/components/HowIWork";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StartingOffers } from "@/components/StartingOffers";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
@@ -14,7 +13,7 @@ import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col w-full relative">
+    <div className="flex flex-col w-full relative overflow-x-clip max-w-full">
       {/* Continuous 3D WebGL Constellation Canvas across all sections */}
       <ThreeBackgroundCanvas />
 
@@ -49,12 +48,7 @@ export default function HomePage() {
         <HowIWork />
       </SectionReveal>
 
-      {/* 6. Honest proof & client standards */}
-      <SectionReveal className="relative z-10">
-        <TestimonialsSection />
-      </SectionReveal>
-
-      {/* 7. Starting offers */}
+      {/* 6. Starting offers */}
       <SectionReveal className="relative z-10">
         <StartingOffers />
       </SectionReveal>

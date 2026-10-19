@@ -15,10 +15,9 @@ const SECTIONS: NavSection[] = [
   { id: "services", name: "Services", stage: "02" },
   { id: "case-studies", name: "Case Studies", stage: "03" },
   { id: "how-it-works", name: "Process", stage: "04" },
-  { id: "proof", name: "Standards", stage: "05" },
-  { id: "offers", name: "Packages", stage: "06" },
-  { id: "faq", name: "FAQ", stage: "07" },
-  { id: "contact", name: "Contact", stage: "08" },
+  { id: "offers", name: "Packages", stage: "05" },
+  { id: "faq", name: "FAQ", stage: "06" },
+  { id: "contact", name: "Contact", stage: "07" },
 ];
 
 export function SectionNavigator() {
