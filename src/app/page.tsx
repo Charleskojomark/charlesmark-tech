@@ -1,6 +1,7 @@
 import { Hero } from "@/components/Hero";
+import { StickyBookCallBar } from "@/components/StickyBookCallBar";
 import { TrustStrip } from "@/components/TrustStrip";
-import { ProblemsSection } from "@/components/ProblemsSection";
+import { SolutionsEngine } from "@/components/SolutionsEngine";
 import { ServicesSection } from "@/components/ServicesSection";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { HowIWork } from "@/components/HowIWork";
@@ -24,7 +25,10 @@ export default function HomePage() {
       {/* Floating Section Pipeline Navigator (Desktop) */}
       <SectionNavigator />
 
-      {/* 1. Hero: Outcome-first headline, background portrait, dynamic changing letters, single WhatsApp CTA */}
+      {/* Persistent Floating "Book a Call" Conversion Bar on Scroll */}
+      <StickyBookCallBar />
+
+      {/* 1. Hero: Full-bleed background portrait on mobile & desktop, outcome-first headline, Book a Call + WhatsApp */}
       <div id="hero" className="relative z-10">
         <Hero />
       </div>
@@ -34,27 +38,27 @@ export default function HomePage() {
         <TrustStrip />
       </div>
 
-      {/* 2. Problems I solve */}
-      <SectionReveal className="relative z-10">
-        <ProblemsSection />
-      </SectionReveal>
+      {/* 2. Innovative Solutions Engine: How I solve bottlenecks & improve client businesses */}
+      <div className="relative z-10">
+        <SolutionsEngine />
+      </div>
 
       {/* 3. Services written as outcomes */}
       <SectionReveal className="relative z-10">
         <ServicesSection />
       </SectionReveal>
 
-      {/* 4. Case studies */}
+      {/* 4. Case studies & Interactive Reference Architectures */}
       <SectionReveal className="relative z-10">
         <FeaturedProjects />
       </SectionReveal>
 
-      {/* 5. How I work */}
+      {/* 5. How I work: From Diagnostic Call to Production Deployment */}
       <SectionReveal className="relative z-10">
         <HowIWork />
       </SectionReveal>
 
-      {/* 6. Starting offers */}
+      {/* 6. Scope-Based Starting Offers */}
       <SectionReveal className="relative z-10">
         <StartingOffers />
       </SectionReveal>
@@ -64,7 +68,7 @@ export default function HomePage() {
         <FaqSection />
       </SectionReveal>
 
-      {/* 9. Direct WhatsApp Conversion Hub */}
+      {/* 9. Direct Conversion Hub: Book on Cal.com / WhatsApp */}
       <SectionReveal className="relative z-10">
         <ContactCTA />
       </SectionReveal>
