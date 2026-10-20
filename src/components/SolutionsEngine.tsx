@@ -272,7 +272,7 @@ export function SolutionsEngine() {
                     className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
                   >
                     <Calendar className="w-4 h-4 text-[#B58A64] flex-shrink-0" />
-                    <span>Book a Call: {activeSolution.category}</span>
+                    <span>Book a Kickoff Call</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF] flex-shrink-0" />
                   </a>
 

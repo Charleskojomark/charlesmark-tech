@@ -45,17 +45,17 @@ export function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className="sticky top-0 z-50 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300">
       {/* Dynamic backdrop layer separated from root to avoid breaking position: fixed for mobile menu */}
       <div
         className={`absolute inset-0 -z-10 transition-all duration-300 ${
-          scrolled
-            ? "bg-[#F5F0E8]/95 backdrop-blur-md border-b border-[#D8C5AF]/60 shadow-[0_4px_20px_rgba(36,26,21,0.04)]"
-            : "bg-transparent"
+          scrolled || isOpen
+            ? "bg-[#F5F0E8]/98 backdrop-blur-md border-b border-[#D8C5AF]/70 shadow-[0_4px_20px_rgba(36,26,21,0.06)]"
+            : "bg-[#F5F0E8]/92 backdrop-blur-sm border-b border-[#D8C5AF]/40"
         }`}
       />
 
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${scrolled ? "py-3" : "py-4 sm:py-5"}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${scrolled ? "py-2.5 sm:py-3" : "py-3 sm:py-4"}`}>
         <div className="flex items-center justify-between">
           {/* Brand Wordmark & Profile Picture Logo */}
           <Link
@@ -123,16 +123,16 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Always visible at top right */}
           <div className="flex md:hidden">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] text-[#241A15] hover:bg-[#D8C5AF]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] text-[#241A15] hover:bg-[#D8C5AF]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A3428] cursor-pointer shadow-xs active:scale-95"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-6 h-6 text-[#241A15]" /> : <Menu className="w-6 h-6 text-[#241A15]" />}
             </button>
           </div>
         </div>
@@ -144,11 +144,11 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-x-0 top-[60px] sm:top-[68px] bottom-0 z-50 md:hidden bg-[#241A15]/50 backdrop-blur-sm flex flex-col"
+          className="fixed inset-x-0 top-[56px] sm:top-[64px] bottom-0 z-[90] md:hidden bg-[#241A15]/60 backdrop-blur-sm flex flex-col"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-[#F5F0E8] border-b border-[#D8C5AF] px-6 py-6 shadow-2xl max-h-[calc(100dvh-68px)] overflow-y-auto"
+            className="bg-[#F5F0E8] border-b border-[#D8C5AF] px-6 py-6 shadow-2xl max-h-[calc(100dvh-64px)] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col gap-2">

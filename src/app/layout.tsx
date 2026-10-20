@@ -199,7 +199,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-[#F5F0E8] text-[#241A15] antialiased selection:bg-[#B58A64] selection:text-[#F5F0E8]">
         <MouseSpotlight />
         <Navbar />
-        <main className="flex-1 w-full max-w-full overflow-x-clip">{children}</main>
+        <main className="flex-1 w-full max-w-full overflow-x-clip pt-16 sm:pt-20">{children}</main>
         <Footer />
       </body>
     </html>
