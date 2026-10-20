@@ -24,11 +24,9 @@ export function ProblemsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-4">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] mb-3">
-              <AlertCircle className="w-3.5 h-3.5 text-[#B58A64]" />
-              <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
-                ENGINEERING BOTTLENECKS & ARCHITECTURAL GAPS
-              </span>
+            <div className="inline-flex items-center gap-2 mb-2 font-mono text-xs font-semibold text-[#B58A64] tracking-widest uppercase">
+              <AlertCircle className="w-4 h-4 text-[#B58A64]" />
+              <span>ENGINEERING BOTTLENECKS & ARCHITECTURAL GAPS</span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
               SYSTEM FAILURES I ELIMINATE
@@ -54,7 +52,7 @@ export function ProblemsSection() {
                     <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-xs">
                       <Icon className="w-5 h-5 text-[#D8C5AF]" />
                     </div>
-                    <span className="font-mono text-xs font-bold text-[#B58A64] bg-[#FAF7F2] border border-[#D8C5AF] px-3 py-1 rounded-full shadow-xs">
+                    <span className="font-mono text-xs font-bold text-[#8C6239] tracking-wider uppercase">
                       {item.badge}
                     </span>
                   </Card3DItem>

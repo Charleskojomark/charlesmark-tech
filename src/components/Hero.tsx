@@ -123,7 +123,8 @@ export function Hero() {
                     AI Systems & Forward Deployed Engineer
                   </div>
                 </div>
-                <div className="px-2.5 py-1 rounded-full bg-[#B58A64]/15 border border-[#B58A64]/40 text-[#D8C5AF] font-mono text-[10px] font-semibold">
+                <div className="flex items-center gap-1.5 font-mono text-[11px] font-medium text-[#D8C5AF]">
+                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
                   <span>Available</span>
                 </div>
               </div>

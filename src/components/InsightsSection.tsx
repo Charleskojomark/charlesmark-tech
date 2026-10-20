@@ -12,11 +12,9 @@ export function InsightsSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 md:mb-16 gap-4">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#B58A64]" />
-              <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
-                FREE CONTENT & EDUCATIONAL RESOURCES
-              </span>
+            <div className="inline-flex items-center gap-2 mb-2 font-mono text-xs font-semibold text-[#B58A64] tracking-widest uppercase">
+              <Sparkles className="w-4 h-4 text-[#B58A64]" />
+              <span>FREE CONTENT & EDUCATIONAL RESOURCES</span>
             </div>
             <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
               PRACTICAL ARCHITECTURE & AUTOMATION GUIDES
@@ -46,9 +44,9 @@ export function InsightsSection() {
               <div>
                 {/* Meta Tags */}
                 <div className="flex items-center justify-between mb-4 text-xs font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[9px] font-bold text-emerald-800 bg-emerald-100/90 border border-emerald-300 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                      FREE GUIDE
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
+                      FREE GUIDE •
                     </span>
                     <span className="text-[#B58A64] font-semibold tracking-wider uppercase">
                       {article.category}

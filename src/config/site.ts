@@ -36,6 +36,7 @@ export const siteConfig = {
     label: "Schedule a Technical Consultation (Cal.com)",
   },
   nav: [
+    { label: "Free Audit", href: "/#audit" },
     { label: "Services", href: "/services" },
     { label: "How I Work", href: "/#how-it-works" },
     { label: "Insights", href: "/insights" },

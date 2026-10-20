@@ -48,7 +48,7 @@ export function SectionConnector({
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative z-10 -my-3 inline-flex items-center gap-2 sm:gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#FAF7F2] border border-[#B58A64]/50 shadow-[0_4px_16px_rgba(36,26,21,0.06)] pointer-events-auto hover:border-[#4A3428] transition-colors"
+        className="relative z-10 -my-3 inline-flex items-center gap-2 sm:gap-2.5 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#FAF7F2] border border-[#D8C5AF]/70 shadow-xs pointer-events-none select-none"
       >
 
         {/* Node Icon */}

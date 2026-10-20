@@ -39,7 +39,7 @@ export function FeaturedProjects() {
               <div>
                 {/* Meta Header */}
                 <Card3DItem translateZ={30} className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                  <span className="font-mono text-[11px] font-semibold text-[#B58A64] bg-[#F5F0E8] border border-[#D8C5AF] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                  <span className="font-mono text-[11px] font-semibold text-[#8C6239] uppercase tracking-wider">
                     {project.category}
                   </span>
                   <span

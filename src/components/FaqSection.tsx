@@ -18,11 +18,9 @@ export function FaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] mb-3">
-            <HelpCircle className="w-3.5 h-3.5 text-[#B58A64]" />
-            <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
-              COMMERCIAL & TECHNICAL CLARITY
-            </span>
+          <div className="inline-flex items-center gap-2 mb-2 font-mono text-xs font-semibold text-[#B58A64] tracking-widest uppercase">
+            <HelpCircle className="w-4 h-4 text-[#B58A64]" />
+            <span>COMMERCIAL & TECHNICAL CLARITY</span>
           </div>
           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
             FREQUENTLY ASKED QUESTIONS

@@ -10,6 +10,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { SectionNavigator } from "@/components/SectionNavigator";
 import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
+import { FreeAuditSection } from "@/components/FreeAuditSection";
 
 export default function HomePage() {
   return (
@@ -51,12 +52,17 @@ export default function HomePage() {
         <HowIWork />
       </SectionReveal>
 
-      {/* 5. FAQ */}
+      {/* 5. Free 15-Minute Async AI & Automation Architecture Audit / Shareable Waitlist */}
+      <SectionReveal className="relative z-10">
+        <FreeAuditSection />
+      </SectionReveal>
+
+      {/* 6. FAQ */}
       <SectionReveal className="relative z-10">
         <FaqSection />
       </SectionReveal>
 
-      {/* 9. Direct Conversion Hub: Book on Cal.com / WhatsApp */}
+      {/* 7. Direct Conversion Hub: Book on Cal.com / WhatsApp */}
       <SectionReveal className="relative z-10">
         <ContactCTA />
       </SectionReveal>

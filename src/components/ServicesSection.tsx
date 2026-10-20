@@ -54,7 +54,7 @@ export function ServicesSection() {
                     <div className="w-12 h-12 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-sm">
                       <Icon className="w-6 h-6 text-[#D8C5AF]" />
                     </div>
-                    <span className="font-mono text-xs font-semibold text-[#4A3428]/70 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF]/60 shadow-xs">
+                    <span className="font-mono text-xs font-semibold text-[#8C6239] tracking-wider">
                       SERVICE 0{index + 1}
                     </span>
                   </Card3DItem>
