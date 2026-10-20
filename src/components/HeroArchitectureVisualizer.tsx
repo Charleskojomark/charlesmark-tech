@@ -164,10 +164,6 @@ export function HeroArchitectureVisualizer() {
       {/* Top Header: System Telemetry */}
       <div className="flex items-center justify-between gap-3 pb-3 border-b border-[#D8C5AF]/70">
         <div className="flex items-center gap-2">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#10B981]" />
-          </span>
           <span className="font-mono text-xs font-bold text-[#241A15] tracking-wider uppercase">
             LIVE SYSTEM ARCHITECTURE
           </span>
@@ -322,7 +318,7 @@ export function HeroArchitectureVisualizer() {
       {/* Real-Time Telemetry Bar (Live Read-Only Feedback) */}
       <div className="mt-auto pt-3 border-t border-[#D8C5AF]/70 flex items-center justify-between gap-3 text-xs font-mono">
         <div className="flex items-center gap-2 min-w-0">
-          <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse flex-shrink-0" />
+          <Activity className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
           <span className="text-[#241A15] font-semibold text-[11px] truncate">
             {pipeline.samplePayload.outcome}
           </span>

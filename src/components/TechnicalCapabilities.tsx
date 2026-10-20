@@ -35,7 +35,6 @@ export function TechnicalCapabilities() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 border-b border-[#D8C5AF]/70 pb-6 sm:pb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#D8C5AF] mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
               <span className="font-mono text-[11px] font-semibold text-[#4A3428] uppercase tracking-wider">
                 TECHNICAL PROFICIENCY MATRIX
               </span>
@@ -299,8 +298,7 @@ export function TechnicalCapabilities() {
 
                 <div className="pt-4 border-t border-[#4A3428] flex items-center justify-between text-[10px] font-mono text-[#D8C5AF]/60">
                   <span>DISCIPLINE: {currentGroup.title.toUpperCase()}</span>
-                  <span className="text-emerald-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-[#B58A64] font-semibold">
                     VERIFIED
                   </span>
                 </div>

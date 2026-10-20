@@ -267,7 +267,6 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
       <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#4A3428]">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#10B981] animate-pulse" />
             <span className="font-mono text-xs text-[#B58A64] uppercase tracking-wider font-bold">
               INTERACTIVE SYSTEM ARCHITECTURE STUDIO
             </span>
@@ -414,7 +413,7 @@ export function ProjectSystemDesign({ defaultProject = "klinik-voice-assistant" 
                 <div className="pt-1.5 border-t border-[#4A3428]/60 flex items-center justify-between text-[10px] font-mono text-[#D8C5AF]/60">
                   <span className="truncate">{node.protocol}</span>
                   {isActive && (
-                    <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
+                    <span className="text-[#B58A64] font-bold text-[9px] tracking-wider">ACTIVE</span>
                   )}
                 </div>
               </motion.div>

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ArrowUpRight, Mail, Sparkles, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Mail, Sparkles, CheckCircle2, Calendar } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Card3D, Card3DItem } from "@/components/Card3D";
 import { WhatsAppIcon } from "@/components/icons/BrandIcons";
@@ -86,21 +86,22 @@ export function ContactCTA() {
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-sm sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-sm sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer whitespace-nowrap min-h-[50px]"
                 >
                   <WhatsAppIcon className="w-5 h-5 fill-current flex-shrink-0" />
                   <span>Chat on WhatsApp</span>
-                  <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
                 </a>
 
                 <a
                   href={siteConfig.booking.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-mono text-xs font-bold border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-display font-bold text-sm sm:text-base border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group cursor-pointer whitespace-nowrap min-h-[50px]"
                 >
-                  <span>📅 Schedule on Cal.com</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <Calendar className="w-5 h-5 text-[#B58A64] flex-shrink-0" />
+                  <span>Book on Cal.com</span>
+                  <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
                 </a>
               </Card3DItem>
 

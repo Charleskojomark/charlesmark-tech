@@ -50,11 +50,6 @@ export function SectionConnector({
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative z-10 -my-3 inline-flex items-center gap-2 sm:gap-2.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#FAF7F2] border border-[#B58A64]/50 shadow-[0_4px_16px_rgba(36,26,21,0.06)] pointer-events-auto hover:border-[#4A3428] transition-colors"
       >
-        {/* Pulsing status node */}
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-        </span>
 
         {/* Node Icon */}
         <IconComponent className="w-3.5 h-3.5 text-[#B58A64]" />

@@ -405,10 +405,6 @@ export function ThreeHeroScene() {
       {/* Top Subtle Telemetry Header (Clean, unboxed, not overlapping 3D shapes) */}
       <div className="relative z-10 flex items-center justify-between pointer-events-none">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2]/95 border border-[#D8C5AF] shadow-xs backdrop-blur-sm pointer-events-auto">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-          </span>
           <span className="font-mono text-[10px] sm:text-xs font-bold tracking-wider text-[#241A15] uppercase">
             3D SYSTEM ENGINE
           </span>

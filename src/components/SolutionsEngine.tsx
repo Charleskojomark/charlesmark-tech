@@ -118,7 +118,6 @@ export function SolutionsEngine() {
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F0E8] border border-[#D8C5AF] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
             <span className="font-mono text-[11px] font-bold text-[#4A3428] uppercase tracking-wider">
               PROBLEM SOLVING & SOLUTIONS RENDERING
             </span>
@@ -270,11 +269,11 @@ export function SolutionsEngine() {
                     href={siteConfig.booking.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
                   >
-                    <Calendar className="w-4 h-4 text-[#B58A64]" />
+                    <Calendar className="w-4 h-4 text-[#B58A64] flex-shrink-0" />
                     <span>Book a Call: {activeSolution.category}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF] flex-shrink-0" />
                   </a>
 
                   {/* Chat on WhatsApp */}
@@ -284,11 +283,11 @@ export function SolutionsEngine() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
                   >
-                    <WhatsAppIcon className="w-4 h-4 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
                     <span>Discuss on WhatsApp</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-white opacity-80 flex-shrink-0" />
                   </a>
                 </div>
               </div>

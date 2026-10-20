@@ -216,25 +216,26 @@ export function HowIWork() {
               Schedule a technical kickoff call or message Charles directly.
             </span>
           </div>
-          <div className="flex items-center gap-2.5 flex-shrink-0 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-shrink-0 w-full sm:w-auto">
             <a
               href={siteConfig.booking.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#B58A64]" />
+              <Calendar className="w-4 h-4 text-[#B58A64] flex-shrink-0" />
               <span>Book Kickoff Call</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF] flex-shrink-0" />
             </a>
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
             >
-              <WhatsAppIcon className="w-3.5 h-3.5 fill-current" />
+              <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
               <span>WhatsApp</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white opacity-80 flex-shrink-0" />
             </a>
           </div>
         </div>

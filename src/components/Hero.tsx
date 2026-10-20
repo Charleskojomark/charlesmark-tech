@@ -36,9 +36,8 @@ export function Hero() {
               />
               {/* Bottom subtle blend */}
               <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#150F0B] via-[#150F0B]/80 to-transparent" />
-              {/* Live Availability Badge */}
-              <div className="absolute bottom-3 inset-x-3 py-1.5 px-3 rounded-full bg-[#150F0B]/90 border border-[#B58A64]/40 backdrop-blur-md flex items-center justify-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              {/* Availability Badge */}
+              <div className="absolute bottom-3 inset-x-3 py-1.5 px-3 rounded-full bg-[#150F0B]/90 border border-[#B58A64]/40 backdrop-blur-md flex items-center justify-center">
                 <span className="font-mono text-[10px] text-[#F5F0E8] font-semibold tracking-wide">
                   Charles Mark • Available for Projects
                 </span>
@@ -124,8 +123,7 @@ export function Hero() {
                     AI Systems & Forward Deployed Engineer
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#10B981]/15 border border-[#10B981]/40 text-[#10B981] font-mono text-[10px] font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+                <div className="px-2.5 py-1 rounded-full bg-[#B58A64]/15 border border-[#B58A64]/40 text-[#D8C5AF] font-mono text-[10px] font-semibold">
                   <span>Available</span>
                 </div>
               </div>
