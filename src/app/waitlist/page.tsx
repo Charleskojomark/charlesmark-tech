@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 
 export default function WaitlistPage() {
   return (
-    <div className="min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] bg-[#150F0B] text-[#F5F0E8] flex items-center justify-center py-8 px-4 sm:px-6">
+    <div className="min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] bg-[#150F0B] text-[#F5F0E8] flex items-center justify-center py-4 sm:py-8 px-3.5 sm:px-6">
       <div className="w-full max-w-xl sm:max-w-2xl">
         <AILearningWaitlistSection />
       </div>

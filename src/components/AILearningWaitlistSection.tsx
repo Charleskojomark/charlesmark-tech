@@ -161,7 +161,7 @@ export function AILearningWaitlistSection() {
       className="py-0 text-[#F5F0E8] relative w-full"
     >
       <div className="w-full">
-        <div className="p-6 sm:p-10 rounded-3xl bg-[#1C1410] border border-[#B58A64]/40 shadow-2xl relative overflow-hidden">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-[#1C1410] border border-[#B58A64]/40 shadow-2xl relative overflow-hidden">
           
           {submitted ? (
             /* Success State */
@@ -227,7 +227,7 @@ export function AILearningWaitlistSection() {
             </div>
           ) : (
             /* Interactive Survey Form */
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Header */}
               <div>
                 <div className="flex items-center justify-between gap-3 mb-2">
@@ -242,7 +242,7 @@ export function AILearningWaitlistSection() {
                   </span>
                 </div>
 
-                <h1 className="font-display font-bold text-xl sm:text-2xl text-[#F5F0E8] tracking-tight">
+                <h1 className="font-display font-bold text-base sm:text-2xl text-[#F5F0E8] tracking-tight leading-snug">
                   Help us understand how beginners learn AI and what could make it easier.
                 </h1>
 
@@ -279,12 +279,12 @@ export function AILearningWaitlistSection() {
                 const currentAnswer = answers[q.key];
 
                 return (
-                  <div className="space-y-4">
-                    <h2 className="font-display font-semibold text-base sm:text-lg text-[#F5F0E8] leading-snug">
+                  <div className="space-y-3 sm:space-y-4">
+                    <h2 className="font-display font-semibold text-sm sm:text-lg text-[#F5F0E8] leading-snug">
                       {q.title}
                     </h2>
 
-                    <div className="space-y-2.5">
+                    <div className="space-y-2 sm:space-y-2.5">
                       {q.options.map((option, idx) => {
                         const isSelected = currentAnswer === option;
 
@@ -293,24 +293,24 @@ export function AILearningWaitlistSection() {
                             key={idx}
                             type="button"
                             onClick={() => handleSelectOption(q.key, option)}
-                            className={`w-full text-left p-3.5 sm:p-4 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
+                            className={`w-full text-left px-3.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
                               isSelected
-                                ? "bg-[#241A15] border-2 border-[#B58A64] text-[#FFFFFF] shadow-md"
+                                ? "bg-[#241A15] border-2 border-[#B58A64] text-[#FFFFFF] shadow-sm"
                                 : "bg-[#150F0B] border border-[#B58A64]/30 text-[#D8C5AF] hover:border-[#B58A64]/70 hover:text-[#F5F0E8]"
                             }`}
                           >
-                            <span className="text-xs sm:text-sm font-sans font-medium leading-relaxed">
+                            <span className="text-xs sm:text-sm font-sans font-medium leading-snug">
                               {option}
                             </span>
 
                             <div
-                              className={`w-5 h-5 rounded-lg border flex items-center justify-center flex-shrink-0 transition-colors ${
+                              className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md sm:rounded-lg border flex items-center justify-center flex-shrink-0 transition-colors ${
                                 isSelected
                                   ? "bg-[#B58A64] border-[#B58A64] text-[#150F0B]"
                                   : "border-[#4A3428] bg-transparent"
                               }`}
                             >
-                              {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                              {isSelected && <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 stroke-[3]" />}
                             </div>
                           </button>
                         );
@@ -363,7 +363,7 @@ export function AILearningWaitlistSection() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-[#150F0B] border border-[#B58A64]/30 focus:border-[#B58A64] text-sm text-[#F5F0E8] placeholder-[#D8C5AF]/40 outline-none transition-colors"
+                        className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-[#150F0B] border border-[#B58A64]/30 focus:border-[#B58A64] text-xs sm:text-sm text-[#F5F0E8] placeholder-[#D8C5AF]/40 outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -373,7 +373,7 @@ export function AILearningWaitlistSection() {
                       type="button"
                       disabled={isSubmitting}
                       onClick={() => handleSubmit(undefined, false)}
-                      className="w-full py-3.5 px-6 rounded-xl bg-[#B58A64] hover:bg-[#c99d75] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-[0_4px_20px_rgba(181,138,100,0.3)] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-2.5 sm:py-3.5 px-4 sm:px-6 rounded-lg sm:rounded-xl bg-[#B58A64] hover:bg-[#c99d75] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-[0_4px_20px_rgba(181,138,100,0.3)] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                     >
                       {isSubmitting ? (
                         <>
@@ -392,7 +392,7 @@ export function AILearningWaitlistSection() {
                       type="button"
                       disabled={isSubmitting}
                       onClick={() => handleSubmit(undefined, true)}
-                      className="w-full py-2.5 px-4 text-xs font-mono text-[#D8C5AF]/70 hover:text-[#F5F0E8] transition-colors cursor-pointer text-center"
+                      className="w-full py-2 px-3 text-xs font-mono text-[#D8C5AF]/70 hover:text-[#F5F0E8] transition-colors cursor-pointer text-center"
                     >
                       Submit research without joining early access
                     </button>
@@ -402,12 +402,12 @@ export function AILearningWaitlistSection() {
 
               {/* Navigation Controls (Steps 1 to 5) */}
               {currentStep <= 5 && (
-                <div className="pt-2 flex items-center justify-between gap-3 border-t border-[#4A3428]/40">
+                <div className="pt-2 flex items-center justify-between gap-2.5 sm:gap-3 border-t border-[#4A3428]/40">
                   <button
                     type="button"
                     onClick={handlePrev}
                     disabled={currentStep === 1}
-                    className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-mono font-medium transition-colors cursor-pointer ${
+                    className={`inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs font-mono font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                       currentStep === 1
                         ? "opacity-30 cursor-not-allowed text-[#D8C5AF]"
                         : "text-[#D8C5AF] hover:text-[#FFFFFF] hover:bg-[#241A15]"
@@ -420,9 +420,10 @@ export function AILearningWaitlistSection() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#B58A64] hover:bg-[#c99d75] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-[#B58A64] hover:bg-[#c99d75] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
                   >
-                    <span>{currentStep === 5 ? "Continue to Email" : "Next Question"}</span>
+                    <span>{currentStep === 5 ? "Continue" : "Next"}</span>
+                    <span className="hidden sm:inline">{currentStep === 5 ? " to Email" : " Question"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
