@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { query } from "@/lib/db";
+import {
+  renderSubscriberWaitlistEmail,
+  renderOwnerWaitlistNotification,
+} from "@/lib/email-templates";
 
 const waitlistSchema = z.object({
   email: z.string().email("Please provide a valid email address"),
@@ -36,11 +40,10 @@ export async function POST(request: Request) {
     const { email, name, interests } = validation.data;
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = name.trim();
-    const cleanInterests = interests.trim();
+    const cleanInterests = interests.trim() || "3D Story-Based Virtual AI Learning";
 
-    // 1. Save details to Supabase PostgreSQL database
+    // 1. Persist applicant details to Supabase PostgreSQL database
     try {
-      // Ensure waitlist table exists
       await query(`
         CREATE TABLE IF NOT EXISTS public.waitlist (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -51,7 +54,6 @@ export async function POST(request: Request) {
         );
       `);
 
-      // Upsert into waitlist
       await query(
         `
         INSERT INTO public.waitlist (email, name, interests)
@@ -64,7 +66,6 @@ export async function POST(request: Request) {
         [cleanEmail, cleanName, cleanInterests]
       );
 
-      // Also ensure secondary table exists and store for redundancy
       await query(`
         CREATE TABLE IF NOT EXISTS public.ai_learning_waitlist (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -88,104 +89,95 @@ export async function POST(request: Request) {
       );
     } catch (dbErr) {
       console.error("[WAITLIST_DATABASE_ERROR]:", dbErr);
-      // If DB error, log but continue so we can still notify the user
     }
 
-    // 2. Email notification
-    const resendToEmail = process.env.CONTACT_EMAIL || "kcharlesmark@gmail.com";
-    const recipientEmail = "markcharleskojo@gmail.com";
+    // 2. Dispatch emails via Resend exclusively
     const resendApiKey = process.env.RESEND_API_KEY;
+    const ownerEmailAddress = "markcharleskojo@gmail.com";
 
-    const emailSubject = `🚀 [New Waitlist Signup] 3D AI Learning App: ${cleanName || cleanEmail}`;
-    const emailBody = `
-New 3D Story-Based Virtual AI Learning Waitlist Signup!
-======================================================
-Email: ${cleanEmail}
-Name: ${cleanName || "Not provided"}
-Interests / Focus: ${cleanInterests || "3D Virtual AI Learning"}
-Timestamp: ${new Date().toISOString()}
+    const timestamp = new Date().toLocaleString("en-US", {
+      timeZone: "UTC",
+      dateStyle: "full",
+      timeStyle: "medium",
+    }) + " (UTC)";
 
-Storage Status:
-- Supabase PostgreSQL: Saved in public.waitlist and public.ai_learning_waitlist
-- Host: aws-0-eu-west-1.pooler.supabase.com:6543
-======================================================
-    `.trim();
+    const subscriberTemplate = renderSubscriberWaitlistEmail(
+      cleanName,
+      cleanEmail
+    );
+    const ownerTemplate = renderOwnerWaitlistNotification(
+      cleanName,
+      cleanEmail,
+      cleanInterests,
+      timestamp
+    );
 
-    let deliveryStatus = "logged_for_notification";
+    let subscriberDelivery = "pending";
+    let ownerDelivery = "pending";
 
-    // Primary delivery via Resend
     if (resendApiKey) {
+      // Email A: Confirmation to Subscriber thanking them for joining
       try {
-        const resendRes = await fetch("https://api.resend.com/emails", {
+        const subRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: process.env.RESEND_FROM_EMAIL || "Charles Mark Platform <onboarding@resend.dev>",
-            to: [resendToEmail],
-            reply_to: cleanEmail,
-            subject: emailSubject,
-            text: emailBody,
+            from: "Charles Mark <waitlist@charlesmark.tech>",
+            to: [cleanEmail],
+            reply_to: ownerEmailAddress,
+            subject: subscriberTemplate.subject,
+            html: subscriberTemplate.html,
+            text: subscriberTemplate.text,
           }),
         });
-        if (resendRes.ok) {
-          deliveryStatus = "delivered_via_resend";
+
+        if (subRes.ok) {
+          subscriberDelivery = "delivered";
         } else {
-          const resendErrText = await resendRes.text();
-          console.error("[RESEND_ERROR]:", resendRes.status, resendErrText);
-          deliveryStatus = "resend_error_" + resendRes.status;
+          const errData = await subRes.text();
+          console.error("[RESEND_SUBSCRIBER_ERROR]:", subRes.status, errData);
+          subscriberDelivery = "failed_" + subRes.status;
         }
-      } catch (emailErr) {
-        console.error("[WAITLIST_EMAIL_ERROR]:", emailErr);
-        deliveryStatus = "resend_fetch_failed";
+      } catch (subErr) {
+        console.error("[RESEND_SUBSCRIBER_EXCEPTION]:", subErr);
+        subscriberDelivery = "exception";
+      }
+
+      // Email B: Notification to Owner (markcharleskojo@gmail.com)
+      try {
+        const ownerRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${resendApiKey}`,
+          },
+          body: JSON.stringify({
+            from: "Charles Mark Waitlist <waitlist@charlesmark.tech>",
+            to: [ownerEmailAddress],
+            reply_to: cleanEmail,
+            subject: ownerTemplate.subject,
+            html: ownerTemplate.html,
+            text: ownerTemplate.text,
+          }),
+        });
+
+        if (ownerRes.ok) {
+          ownerDelivery = "delivered";
+        } else {
+          const errData = await ownerRes.text();
+          console.error("[RESEND_OWNER_ERROR]:", ownerRes.status, errData);
+          ownerDelivery = "failed_" + ownerRes.status;
+        }
+      } catch (ownerErr) {
+        console.error("[RESEND_OWNER_EXCEPTION]:", ownerErr);
+        ownerDelivery = "exception";
       }
     }
 
-    // Direct automated email delivery to markcharleskojo@gmail.com via FormSubmit
-    try {
-      const fsRes = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Origin: "https://charlesmark.tech",
-          Referer: "https://charlesmark.tech/waitlist",
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        },
-        body: JSON.stringify({
-          _captcha: "false",
-          _template: "table",
-          _subject: emailSubject,
-          _replyto: cleanEmail,
-          "Applicant Name": cleanName || "Not provided",
-          "Applicant Email": cleanEmail,
-          "Selected Interest": cleanInterests || "3D Virtual AI Learning",
-          "Submitted At": new Date().toISOString(),
-          "Database Status": "Saved in Supabase public.waitlist",
-        }),
-      });
-
-      const fsData = await fsRes.json().catch(() => null);
-      console.log("[FORMSUBMIT_RESPONSE]:", fsRes.status, fsData);
-
-      if (fsData && (fsData.success === "true" || fsData.success === true)) {
-        deliveryStatus =
-          deliveryStatus === "delivered_via_resend"
-            ? "delivered_resend_and_formsubmit"
-            : "delivered_via_formsubmit";
-      } else if (fsData && fsData.message && fsData.message.includes("Activation")) {
-        deliveryStatus = "formsubmit_activation_required";
-      } else if (!deliveryStatus.startsWith("delivered")) {
-        deliveryStatus = "formsubmit_pending";
-      }
-    } catch (fsErr) {
-      console.error("[FORMSUBMIT_DELIVERY_ERROR]:", fsErr);
-    }
-
-    // Record notification in Supabase log table for complete auditability
+    // 3. Record audit log
     try {
       await query(`
         CREATE TABLE IF NOT EXISTS public.waitlist_email_log (
@@ -204,7 +196,13 @@ Storage Status:
         INSERT INTO public.waitlist_email_log (recipient, signup_email, signup_name, interests, delivery_status)
         VALUES ($1, $2, $3, $4, $5);
       `,
-        [recipientEmail, cleanEmail, cleanName, cleanInterests, deliveryStatus]
+        [
+          ownerEmailAddress,
+          cleanEmail,
+          cleanName,
+          cleanInterests,
+          `sub:${subscriberDelivery},owner:${ownerDelivery}`,
+        ]
       );
     } catch (auditErr) {
       console.error("[WAITLIST_AUDIT_ERROR]:", auditErr);
@@ -212,14 +210,16 @@ Storage Status:
 
     return NextResponse.json({
       success: true,
-      message: "You're on the waitlist! We'll reach out as soon as closed beta opens.",
+      message:
+        "You're on the waitlist! We have sent a confirmation email to your inbox.",
     });
   } catch (err: unknown) {
     console.error("[WAITLIST_API_ERROR]:", err);
     return NextResponse.json(
       {
         success: false,
-        message: "An unexpected error occurred. Please try again or reach out on WhatsApp.",
+        message:
+          "An unexpected error occurred. Please try again or reach out on WhatsApp.",
       },
       { status: 500 }
     );
