@@ -15,6 +15,19 @@ export const SHOW_UNVERIFIED_TESTIMONIALS = true;
 
 export const testimonials: Testimonial[] = [
   {
+    id: "david-kelechukwu",
+    quote:
+      "Working with him on my AI workflow automation project was a great experience. He understood my needs, delivered a well-structured solution, and helped automate processes that would otherwise require a lot of manual effort. His knowledge of AI automation and n8n really stood out, and the entire process was smooth and professional. I’m satisfied with the quality of his work and would recommend him to anyone looking to streamline business operations through AI automation.",
+    author: "David Kelechukwu",
+    role: "CEO",
+    company: "RedGuard Africa",
+    outcome: "Streamlined business operations & automated manual processes with n8n",
+    tag: "AI Workflow Automation",
+    verified: true,
+    rating: 5,
+    initials: "DK",
+  },
+  {
     id: "elvis-nwoko",
     quote:
       "Excellent engineer. He took our vague idea and turned it into a functional AI product. Fast, professional, and knows how to ship.",
