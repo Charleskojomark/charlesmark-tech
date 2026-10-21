@@ -86,7 +86,10 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#FAF7F2] p-1.5 rounded-full border border-[#D8C5AF]/70 shadow-sm">
+          <nav
+            aria-label="Primary Navigation"
+            className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-[#FAF7F2] p-1.5 rounded-full border border-[#D8C5AF]/70 shadow-sm flex-shrink-0"
+          >
             {siteConfig.nav.map((item) => {
               const isActive =
                 item.href === "/"
@@ -97,9 +100,9 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                  className={`px-2.5 xl:px-3.5 py-1.5 rounded-full text-xs xl:text-[13px] font-medium whitespace-nowrap transition-all duration-200 shrink-0 ${
                     isActive
-                      ? "bg-[#241A15] text-[#F5F0E8] shadow-sm"
+                      ? "bg-[#241A15] text-[#F5F0E8] shadow-sm font-semibold"
                       : "text-[#4A3428] hover:text-[#241A15] hover:bg-[#D8C5AF]/30"
                   }`}
                 >
@@ -110,12 +113,12 @@ export function Navbar() {
           </nav>
 
           {/* Desktop CTA: Direct WhatsApp button */}
-          <div className="hidden md:flex items-center gap-2.5">
+          <div className="hidden lg:flex items-center gap-2.5 flex-shrink-0">
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
+              className="group inline-flex items-center gap-2 px-4 xl:px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
             >
               <WhatsAppIcon className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>
@@ -123,8 +126,8 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button - Always visible at top right */}
-          <div className="flex md:hidden">
+          {/* Mobile/Tablet Menu Button - Visible below lg */}
+          <div className="flex lg:hidden">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -144,7 +147,7 @@ export function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="fixed inset-x-0 top-[56px] sm:top-[64px] bottom-0 z-[90] md:hidden bg-[#241A15]/60 backdrop-blur-sm flex flex-col"
+          className="fixed inset-x-0 top-[56px] sm:top-[64px] bottom-0 z-[90] lg:hidden bg-[#241A15]/60 backdrop-blur-sm flex flex-col"
           onClick={() => setIsOpen(false)}
         >
           <div
