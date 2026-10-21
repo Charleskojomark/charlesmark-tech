@@ -164,7 +164,6 @@ export function FreeAuditSection() {
             <div className="p-6 sm:p-8 rounded-3xl bg-[#241A15] border border-[#B58A64]/40 shadow-2xl flex flex-col justify-between space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
                   <span className="font-mono text-[11px] font-bold text-[#B58A64] uppercase tracking-wider">
                     DIRECT ACCESS • ZERO FORMS REQUIRED
                   </span>
@@ -198,7 +197,7 @@ export function FreeAuditSection() {
                           <span className="font-display font-bold text-sm sm:text-base text-[#F5F0E8] group-hover:text-[#25D366] transition-colors">
                             Request via WhatsApp
                           </span>
-                          <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                          <span className="text-[10px] font-mono text-[#F5F0E8] font-bold bg-[#FAF7F2]/10 px-2 py-0.5 rounded-full border border-[#B58A64]/40">
                             FASTEST
                           </span>
                         </div>

@@ -108,14 +108,9 @@ export function SectionNavigator() {
                     : "hover:scale-110 opacity-60 hover:opacity-100"
                 }`}
               >
-                {isActive ? (
-                  <>
-                    <span className="absolute inset-0 rounded-full bg-[#B58A64] animate-ping opacity-70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#B58A64] shadow-[0_0_6px_#B58A64]" />
-                  </>
-                ) : (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D8C5AF] hover:bg-[#F5F0E8] transition-colors" />
-                )}
+                <span className={`text-[10px] font-mono font-bold ${isActive ? "text-[#B58A64]" : "text-[#D8C5AF]/60"}`}>
+                  {section.stage}
+                </span>
               </button>
             </div>
           );

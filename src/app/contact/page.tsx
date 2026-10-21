@@ -96,7 +96,6 @@ export default function ContactPage() {
                     className="object-cover object-top"
                     priority
                   />
-                  <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#25D366] border border-[#1C1410]" />
                 </div>
                 <div>
                   <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block">
@@ -180,7 +179,6 @@ export default function ContactPage() {
                     <span className="font-mono text-[11px] font-bold text-[#B58A64] bg-[#F5F0E8] border border-[#D8C5AF]/70 px-2.5 py-0.5 rounded-full">
                       {topic.badge}
                     </span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] group-hover:scale-125 transition-transform" />
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#241A15] group-hover:text-[#25D366] transition-colors mb-1.5">
                     {topic.title}

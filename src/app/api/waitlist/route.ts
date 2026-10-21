@@ -112,6 +112,7 @@ Storage Status:
 
     let deliveryStatus = "logged_for_notification";
 
+    // Attempt delivery via Resend if API key is provided
     if (resendApiKey) {
       try {
         const resendRes = await fetch("https://api.resend.com/emails", {
@@ -137,13 +138,37 @@ Storage Status:
         console.error("[WAITLIST_EMAIL_ERROR]:", emailErr);
         deliveryStatus = "resend_fetch_failed";
       }
-    } else {
-      console.log(`[WAITLIST_NOTIFICATION_SENT to ${recipientEmail}]:`, {
-        subject: emailSubject,
-        email: cleanEmail,
-        name: cleanName,
-        interests: cleanInterests,
+    }
+
+    // Direct automated email delivery to markcharleskojo@gmail.com via FormSubmit
+    try {
+      const fsRes = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Referer: "https://www.charlesmark.tech",
+          Origin: "https://www.charlesmark.tech",
+        },
+        body: JSON.stringify({
+          _subject: emailSubject,
+          _replyto: cleanEmail,
+          "Applicant Name": cleanName || "Not provided",
+          "Applicant Email": cleanEmail,
+          "Selected Interest": cleanInterests || "3D Virtual AI Learning",
+          "Submitted At": new Date().toISOString(),
+          "Database Status": "Saved in Supabase public.waitlist",
+        }),
       });
+
+      if (fsRes.ok) {
+        deliveryStatus =
+          deliveryStatus === "delivered_via_resend"
+            ? "delivered_resend_and_formsubmit"
+            : "delivered_via_formsubmit";
+      }
+    } catch (fsErr) {
+      console.error("[FORMSUBMIT_DELIVERY_ERROR]:", fsErr);
     }
 
     // Record notification in Supabase log table for complete auditability

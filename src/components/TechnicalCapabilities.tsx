@@ -148,34 +148,25 @@ export function TechnicalCapabilities() {
 
                           {/* Streamlined pill indicator */}
                           <span
-                            className={`font-mono text-[9px] px-2 py-0.5 rounded-full flex-shrink-0 flex items-center gap-1 ${
+                            className={`font-mono text-[9px] px-2 py-0.5 rounded-md flex-shrink-0 flex items-center ${
                               isProficient
                                 ? isSelected
-                                  ? "bg-emerald-900/60 text-emerald-300 border border-emerald-700"
-                                  : "bg-emerald-100/90 text-emerald-800 border border-emerald-300"
+                                  ? "bg-[#FAF7F2]/20 text-[#F5F0E8] border border-[#B58A64]/50"
+                                  : "bg-[#241A15]/10 text-[#241A15] border border-[#D8C5AF]"
                                 : isLearning
                                 ? isSelected
-                                  ? "bg-amber-900/60 text-amber-300 border border-amber-700"
-                                  : "bg-amber-100/90 text-amber-900 border border-amber-300"
+                                  ? "bg-[#FAF7F2]/10 text-[#D8C5AF] border border-[#D8C5AF]/40"
+                                  : "bg-[#FAF7F2] text-[#4A3428] border border-[#D8C5AF]"
                                 : isSelected
-                                ? "bg-blue-900/60 text-blue-300 border border-blue-700"
-                                : "bg-blue-100/90 text-blue-900 border border-blue-300"
+                                ? "bg-[#FAF7F2]/10 text-[#D8C5AF] border border-[#D8C5AF]/40"
+                                : "bg-[#FAF7F2] text-[#4A3428] border border-[#D8C5AF]"
                             }`}
                           >
-                            <span
-                              className={`w-1.5 h-1.5 rounded-full ${
-                                isProficient
-                                  ? "bg-emerald-600"
-                                  : isLearning
-                                  ? "bg-amber-600"
-                                  : "bg-blue-600"
-                              }`}
-                            />
                             <span>
                               {isProficient
                                 ? "Production"
                                 : isLearning
-                                ? "Lab Lab"
+                                ? "Lab"
                                 : "Hands-on"}
                             </span>
                           </span>

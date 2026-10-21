@@ -89,17 +89,30 @@ Origin: charlesmark.tech
         );
       }
     } else {
-      // Local development or fallback: log securely to server console
-      console.log("[INQUIRY_RECEIVED_LOG]", {
-        name: validData.name,
-        email: validData.email,
-        company: validData.company,
-        budget: validData.budget,
-        howHeard: validData.howHeard,
-        whatToBuild: validData.whatToBuild,
-        recipient: recipientEmail,
-        timestamp: new Date().toISOString(),
-      });
+      // Direct email dispatch to recipient via FormSubmit
+      try {
+        await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Referer: "https://www.charlesmark.tech",
+            Origin: "https://www.charlesmark.tech",
+          },
+          body: JSON.stringify({
+            _subject: `[New Inquiry] ${validData.name}${validData.company ? ` (${validData.company})` : ""}`,
+            _replyto: validData.email,
+            Name: validData.name,
+            Email: validData.email,
+            Company: validData.company || "Not provided",
+            Budget: validData.budget || "Not specified",
+            "What to Build": validData.whatToBuild,
+            "Submitted At": new Date().toISOString(),
+          }),
+        });
+      } catch (e) {
+        console.error("FormSubmit contact dispatch error:", e);
+      }
     }
 
     return NextResponse.json(

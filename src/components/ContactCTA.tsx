@@ -58,7 +58,6 @@ export function ContactCTA() {
                     sizes="48px"
                     className="object-cover object-top"
                   />
-                  <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#25D366] border-2 border-[#241A15]" />
                 </div>
                 <div>
                   <span className="font-mono text-xs font-bold text-[#B58A64] uppercase tracking-wider block">

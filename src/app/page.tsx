@@ -9,7 +9,6 @@ import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SectionReveal } from "@/components/SectionReveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
-import { SectionNavigator } from "@/components/SectionNavigator";
 import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
 import { FreeAuditTeaser } from "@/components/FreeAuditTeaser";
 
@@ -22,8 +21,6 @@ export default function HomePage() {
       {/* Top Scroll Progress Line */}
       <ScrollProgressBar />
 
-      {/* Floating Section Pipeline Navigator (Desktop) */}
-      <SectionNavigator />
 
       {/* Persistent Floating "Book a Call" Conversion Bar on Scroll */}
       <StickyBookCallBar />

@@ -433,17 +433,11 @@ export function ThreeHeroScene() {
         {activeNode && (
           <div className="mb-3 p-3.5 rounded-2xl bg-[#241A15]/95 backdrop-blur-md text-[#F5F0E8] border border-[#B58A64]/50 shadow-2xl animate-in fade-in slide-in-from-bottom-2 duration-150 pointer-events-auto">
             <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <span
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: activeNode.color }}
-                />
-                <span className="font-mono text-[11px] font-bold text-[#B58A64] uppercase tracking-wider">
-                  {activeNode.category}
-                </span>
-              </div>
-              <span className="font-mono text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
-                ACTIVE
+              <span className="font-mono text-[11px] font-bold text-[#B58A64] uppercase tracking-wider">
+                {activeNode.category}
+              </span>
+              <span className="font-mono text-[10px] text-[#F5F0E8] font-semibold bg-[#FAF7F2]/10 px-2 py-0.5 rounded border border-[#B58A64]/40">
+                SELECTED
               </span>
             </div>
             <div className="font-display font-bold text-sm text-white mt-1">
@@ -468,16 +462,12 @@ export function ThreeHeroScene() {
                 onClick={() =>
                   setActiveNode((prev) => (prev?.id === node.id ? null : node))
                 }
-                className={`px-2.5 py-1 rounded-xl text-[10px] font-mono font-bold transition-all duration-200 cursor-pointer flex items-center gap-1.5 shadow-xs ${
+                className={`px-2.5 py-1 rounded-xl text-[10px] font-mono font-bold transition-all duration-200 cursor-pointer flex items-center shadow-xs ${
                   isSelected
                     ? "bg-[#241A15] text-[#F5F0E8] border border-[#B58A64] scale-105"
                     : "bg-[#FAF7F2]/90 hover:bg-[#241A15] text-[#241A15] hover:text-[#F5F0E8] border border-[#D8C5AF]"
                 }`}
               >
-                <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: node.color }}
-                />
                 <span>{node.name}</span>
               </button>
             );

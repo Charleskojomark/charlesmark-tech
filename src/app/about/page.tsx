@@ -9,6 +9,7 @@ import {
   Cloud,
   Server,
   Award,
+  Check,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { WhatsAppIcon, LinkedInIcon } from "@/components/icons/BrandIcons";
@@ -120,19 +121,19 @@ export default function AboutPage() {
               </div>
               <ul className="space-y-2 text-xs font-mono text-[#241A15]">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
                   <span><strong>Trained by FAANG Engineers</strong> in distributed system architecture & production AI</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
                   <span><strong>Educative.io Certified:</strong> Agentic System Design & LangGraph State Machines</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
                   <span><strong>Educative.io Certified:</strong> Applied AI Engineering & Production RAG Pipelines</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                  <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
                   <span><strong>Educative.io Certified:</strong> Forward Deployed Engineering & Enterprise Integration</span>
                 </li>
               </ul>

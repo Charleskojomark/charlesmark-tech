@@ -90,7 +90,6 @@ export function SystemDiagram() {
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-[#4A3428]/80 gap-2 relative z-10">
         <div className="flex items-center gap-2.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#B58A64] animate-pulse" />
           <span className="font-mono text-xs text-[#D8C5AF] uppercase tracking-wider font-medium">
             INTERACTIVE SYSTEM ARCHITECTURE
           </span>

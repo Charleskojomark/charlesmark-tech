@@ -78,7 +78,6 @@ export function TestimonialsSection() {
           <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border-2 border-dashed border-[#D8C5AF] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                 <span className="font-mono text-xs font-bold text-[#241A15] uppercase tracking-wider">
                   VERIFIED CLIENT FEEDBACK POLICY
                 </span>
