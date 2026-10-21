@@ -122,7 +122,7 @@ Storage Status:
             Authorization: `Bearer ${resendApiKey}`,
           },
           body: JSON.stringify({
-            from: "Charles Mark Platform <inquiries@charlesmark.tech>",
+            from: process.env.RESEND_FROM_EMAIL || "Charles Mark Platform <onboarding@resend.dev>",
             to: [recipientEmail],
             reply_to: cleanEmail,
             subject: emailSubject,
@@ -132,6 +132,8 @@ Storage Status:
         if (resendRes.ok) {
           deliveryStatus = "delivered_via_resend";
         } else {
+          const resendErrText = await resendRes.text();
+          console.error("[RESEND_ERROR]:", resendRes.status, resendErrText);
           deliveryStatus = "resend_error_" + resendRes.status;
         }
       } catch (emailErr) {
@@ -147,10 +149,14 @@ Storage Status:
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Referer: "https://www.charlesmark.tech",
-          Origin: "https://www.charlesmark.tech",
+          Origin: "https://charlesmark.tech",
+          Referer: "https://charlesmark.tech/waitlist",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         },
         body: JSON.stringify({
+          _captcha: "false",
+          _template: "table",
           _subject: emailSubject,
           _replyto: cleanEmail,
           "Applicant Name": cleanName || "Not provided",
@@ -161,11 +167,18 @@ Storage Status:
         }),
       });
 
-      if (fsRes.ok) {
+      const fsData = await fsRes.json().catch(() => null);
+      console.log("[FORMSUBMIT_RESPONSE]:", fsRes.status, fsData);
+
+      if (fsData && (fsData.success === "true" || fsData.success === true)) {
         deliveryStatus =
           deliveryStatus === "delivered_via_resend"
             ? "delivered_resend_and_formsubmit"
             : "delivered_via_formsubmit";
+      } else if (fsData && fsData.message && fsData.message.includes("Activation")) {
+        deliveryStatus = "formsubmit_activation_required";
+      } else if (!deliveryStatus.startsWith("delivered")) {
+        deliveryStatus = "formsubmit_pending";
       }
     } catch (fsErr) {
       console.error("[FORMSUBMIT_DELIVERY_ERROR]:", fsErr);

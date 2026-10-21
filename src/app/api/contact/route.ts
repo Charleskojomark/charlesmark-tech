@@ -96,10 +96,14 @@ Origin: charlesmark.tech
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Referer: "https://www.charlesmark.tech",
-            Origin: "https://www.charlesmark.tech",
+            Origin: "https://charlesmark.tech",
+            Referer: "https://charlesmark.tech/contact",
+            "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
           },
           body: JSON.stringify({
+            _captcha: "false",
+            _template: "table",
             _subject: `[New Inquiry] ${validData.name}${validData.company ? ` (${validData.company})` : ""}`,
             _replyto: validData.email,
             Name: validData.name,
