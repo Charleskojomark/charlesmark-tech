@@ -91,7 +91,8 @@ export async function POST(request: Request) {
       // If DB error, log but continue so we can still notify the user
     }
 
-    // 2. Email notification to markcharleskojo@gmail.com
+    // 2. Email notification
+    const resendToEmail = process.env.CONTACT_EMAIL || "kcharlesmark@gmail.com";
     const recipientEmail = "markcharleskojo@gmail.com";
     const resendApiKey = process.env.RESEND_API_KEY;
 
@@ -112,7 +113,7 @@ Storage Status:
 
     let deliveryStatus = "logged_for_notification";
 
-    // Attempt delivery via Resend if API key is provided
+    // Primary delivery via Resend
     if (resendApiKey) {
       try {
         const resendRes = await fetch("https://api.resend.com/emails", {
@@ -123,7 +124,7 @@ Storage Status:
           },
           body: JSON.stringify({
             from: process.env.RESEND_FROM_EMAIL || "Charles Mark Platform <onboarding@resend.dev>",
-            to: [recipientEmail],
+            to: [resendToEmail],
             reply_to: cleanEmail,
             subject: emailSubject,
             text: emailBody,

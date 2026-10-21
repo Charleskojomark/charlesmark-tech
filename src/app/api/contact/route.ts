@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     // Check for optional configured email notification API (Resend via fetch)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail =
-      process.env.CONTACT_EMAIL || "markcharleskojo@gmail.com";
+      process.env.CONTACT_EMAIL || "kcharlesmark@gmail.com";
 
     if (resendApiKey) {
       // In production with Resend API key configured:
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${resendApiKey}`,
         },
         body: JSON.stringify({
-          from: "Charles Mark Inquiries <inquiries@charlesmark.tech>",
+          from: process.env.RESEND_FROM_EMAIL || "Charles Mark Inquiries <onboarding@resend.dev>",
           to: [recipientEmail],
           reply_to: validData.email,
           subject: `[New Inquiry] ${validData.name}${validData.company ? ` (${validData.company})` : ""}`,
