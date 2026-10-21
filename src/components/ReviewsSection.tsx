@@ -13,6 +13,8 @@ import { testimonials } from "@/data/testimonials";
 export function ReviewsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDownRef = useRef(false);
+  const isPausedRef = useRef(false);
+  const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -36,8 +38,8 @@ export function ReviewsSection() {
       const delta = currentTime - lastTime;
       lastTime = currentTime;
 
-      // Only auto-advance when user is not actively dragging
-      if (!isDownRef.current && container) {
+      // Only auto-advance when user is not actively dragging or interacting
+      if (!isPausedRef.current && !isDownRef.current && container) {
         // Continuous smooth advancement (~35px per sec)
         container.scrollLeft += delta * 0.035;
 
@@ -53,12 +55,17 @@ export function ReviewsSection() {
     };
 
     animationFrameId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    };
   }, []);
 
+  // Mouse drag handlers for desktop
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
     isDownRef.current = true;
+    isPausedRef.current = true;
     setIsDragging(true);
     startXRef.current = e.pageX - scrollRef.current.offsetLeft;
     scrollLeftRef.current = scrollRef.current.scrollLeft;
@@ -66,12 +73,18 @@ export function ReviewsSection() {
 
   const handleMouseLeave = () => {
     isDownRef.current = false;
+    isPausedRef.current = false;
     setIsDragging(false);
   };
 
   const handleMouseUp = () => {
     isDownRef.current = false;
     setIsDragging(false);
+    // Resume auto-scroll after a short delay
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => {
+      isPausedRef.current = false;
+    }, 1500);
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -80,6 +93,29 @@ export function ReviewsSection() {
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startXRef.current) * 1.5;
     scrollRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  // Touch handlers for mobile devices
+  // Explicitly allowing native vertical scrolling without interruption
+  const handleTouchStart = () => {
+    isPausedRef.current = true;
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+  };
+
+  const handleTouchEnd = () => {
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => {
+      isPausedRef.current = false;
+    }, 2000);
+  };
+
+  const handleScroll = () => {
+    // If the user is scrolling manually (horizontal flick or swipe), pause auto-scroll
+    isPausedRef.current = true;
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => {
+      isPausedRef.current = false;
+    }, 2000);
   };
 
   return (
@@ -138,7 +174,7 @@ export function ReviewsSection() {
 
       {/* Continuous Horizontal Interactive Marquee Container */}
       <div
-        className="relative w-full [mask-image:linear-gradient(to_right,transparent_0%,black_4%,black_96%,transparent_100%)] select-none"
+        className="relative w-full [mask-image:linear-gradient(to_right,transparent_0%,black_4%,black_96%,transparent_100%)]"
         aria-live="off"
       >
         <div
@@ -147,15 +183,19 @@ export function ReviewsSection() {
           onMouseLeave={handleMouseLeave}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
-          className={`flex gap-4 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-3 px-4 sm:px-8 touch-pan-x ${
-            isDragging ? "cursor-grabbing" : "cursor-grab"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+          onScroll={handleScroll}
+          className={`flex gap-4 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-3 px-4 sm:px-8 touch-pan-y ${
+            isDragging ? "cursor-grabbing select-none" : "cursor-grab"
           }`}
-          style={{ WebkitOverflowScrolling: "touch" }}
+          style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y pan-x" }}
         >
           {marqueeCards.map((review, idx) => (
             <div
               key={`${review.id}-${idx}`}
-              className="group relative flex flex-col justify-between w-[320px] sm:w-[460px] md:w-[500px] flex-shrink-0 p-6 sm:p-7 rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
+              className="group relative flex flex-col justify-between w-[300px] sm:w-[460px] md:w-[500px] flex-shrink-0 p-6 sm:p-7 rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
             >
               {/* Decorative Quote Icon */}
               <Quote className="absolute right-6 top-6 w-12 h-12 text-[#B58A64]/10 -rotate-12 pointer-events-none" />

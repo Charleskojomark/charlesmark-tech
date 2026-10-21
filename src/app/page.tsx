@@ -86,16 +86,10 @@ export default function HomePage() {
         <HowIWork />
       </SectionReveal>
 
-      {/* Verified Professional Certifications & Institutional Credentials */}
-      <SectionReveal className="relative z-10">
-        <CertificationsSection />
-      </SectionReveal>
-
       {/* Verified Client & Partner Reviews Continuous Slide */}
       <SectionReveal className="relative z-10">
         <ReviewsSection />
       </SectionReveal>
-
 
       {/* 5. Free 15-Minute Async AI & Automation Architecture Audit Teaser */}
       <SectionReveal className="relative z-10">
@@ -105,6 +99,11 @@ export default function HomePage() {
       {/* 6. FAQ */}
       <SectionReveal className="relative z-10">
         <FaqSection />
+      </SectionReveal>
+
+      {/* Verified Professional Certifications & Institutional Credentials (Just after FAQ) */}
+      <SectionReveal className="relative z-10">
+        <CertificationsSection />
       </SectionReveal>
 
       {/* 7. Direct Conversion Hub: Book on Cal.com / WhatsApp */}

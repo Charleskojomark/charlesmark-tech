@@ -14,10 +14,10 @@ const SECTIONS: NavSection[] = [
   { id: "solutions-engine", name: "Solutions", stage: "01" },
   { id: "services", name: "Services", stage: "02" },
   { id: "how-it-works", name: "Process", stage: "03" },
-  { id: "certifications", name: "Certs", stage: "04" },
-  { id: "reviews", name: "Reviews", stage: "05" },
-  { id: "audit", name: "Free Audit", stage: "06" },
-  { id: "faq", name: "FAQ", stage: "07" },
+  { id: "reviews", name: "Reviews", stage: "04" },
+  { id: "audit", name: "Free Audit", stage: "05" },
+  { id: "faq", name: "FAQ", stage: "06" },
+  { id: "certifications", name: "Certs", stage: "07" },
   { id: "contact", name: "Book a Call", stage: "08" },
 ];
 
