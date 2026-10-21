@@ -4,12 +4,19 @@ import { query } from "@/lib/db";
 import {
   renderSubscriberWaitlistEmail,
   renderOwnerWaitlistNotification,
+  AIResearchResponses,
 } from "@/lib/email-templates";
 
 const waitlistSchema = z.object({
-  email: z.string().email("Please provide a valid email address"),
+  email: z.string().optional().default(""),
   name: z.string().optional().default(""),
-  interests: z.string().optional().default("3D Virtual AI Learning"),
+  q1_goal: z.string().optional().default(""),
+  q2_current_learning: z.string().optional().default(""),
+  q3_biggest_challenge: z.string().optional().default(""),
+  q4_interactive_3d: z.string().optional().default(""),
+  q5_pricing_preference: z.string().optional().default(""),
+  q6_early_access_email: z.string().optional().default(""),
+  interests: z.string().optional().default("3D Story-Based Virtual AI Learning"),
   // Honeypot field for bot spam detection
   botField: z.string().max(0, "Bot detected").optional().default(""),
 });
@@ -21,72 +28,133 @@ export async function POST(request: Request) {
     // Validate request body
     const validation = waitlistSchema.safeParse(body);
     if (!validation.success) {
-      const fieldErrors: Record<string, string> = {};
-      validation.error.errors.forEach((err) => {
-        if (err.path[0]) {
-          fieldErrors[err.path[0].toString()] = err.message;
-        }
-      });
       return NextResponse.json(
         {
           success: false,
-          message: "Please provide a valid email address.",
-          errors: fieldErrors,
+          message: "Invalid submission data.",
+          errors: validation.error.format(),
         },
         { status: 400 }
       );
     }
 
-    const { email, name, interests } = validation.data;
-    const cleanEmail = email.trim().toLowerCase();
-    const cleanName = name.trim();
-    const cleanInterests = interests.trim() || "3D Story-Based Virtual AI Learning";
+    const data = validation.data;
+    const finalEmail = (data.q6_early_access_email || data.email || "").trim().toLowerCase();
+    const finalName = data.name.trim();
 
-    // 1. Persist applicant details to Supabase PostgreSQL database
+    // Optional email validation if provided
+    if (finalEmail) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(finalEmail)) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Please enter a valid email address.",
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    const researchAnswers: AIResearchResponses = {
+      q1_goal: data.q1_goal,
+      q2_current_learning: data.q2_current_learning,
+      q3_biggest_challenge: data.q3_biggest_challenge,
+      q4_interactive_3d: data.q4_interactive_3d,
+      q5_pricing_preference: data.q5_pricing_preference,
+      q6_early_access_email: finalEmail || "Not provided",
+    };
+
+    // 1. Persist to PostgreSQL database (Supabase)
     try {
+      // Ensure ai_learning_research table exists
       await query(`
-        CREATE TABLE IF NOT EXISTS public.waitlist (
+        CREATE TABLE IF NOT EXISTS public.ai_learning_research (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          email TEXT NOT NULL UNIQUE,
+          email TEXT,
           name TEXT,
-          interests TEXT,
+          q1_goal TEXT,
+          q2_current_learning TEXT,
+          q3_biggest_challenge TEXT,
+          q4_interactive_3d TEXT,
+          q5_pricing_preference TEXT,
+          responses JSONB,
           created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
         );
       `);
 
       await query(
         `
-        INSERT INTO public.waitlist (email, name, interests)
-        VALUES ($1, $2, $3)
-        ON CONFLICT (email)
-        DO UPDATE SET
-          name = CASE WHEN EXCLUDED.name <> '' THEN EXCLUDED.name ELSE public.waitlist.name END,
-          interests = CASE WHEN EXCLUDED.interests <> '' THEN EXCLUDED.interests ELSE public.waitlist.interests END;
+        INSERT INTO public.ai_learning_research (
+          email, name, q1_goal, q2_current_learning, q3_biggest_challenge, q4_interactive_3d, q5_pricing_preference, responses
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);
       `,
-        [cleanEmail, cleanName, cleanInterests]
+        [
+          finalEmail || null,
+          finalName || null,
+          data.q1_goal || null,
+          data.q2_current_learning || null,
+          data.q3_biggest_challenge || null,
+          data.q4_interactive_3d || null,
+          data.q5_pricing_preference || null,
+          JSON.stringify(researchAnswers),
+        ]
       );
 
-      await query(`
-        CREATE TABLE IF NOT EXISTS public.ai_learning_waitlist (
-          id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          email TEXT NOT NULL UNIQUE,
-          name TEXT,
-          interests TEXT,
-          created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      // If early access email is provided, also sync into waitlist table
+      if (finalEmail) {
+        await query(`
+          CREATE TABLE IF NOT EXISTS public.waitlist (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            email TEXT NOT NULL UNIQUE,
+            name TEXT,
+            interests TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+        `);
+
+        await query(
+          `
+          INSERT INTO public.waitlist (email, name, interests)
+          VALUES ($1, $2, $3)
+          ON CONFLICT (email)
+          DO UPDATE SET
+            name = CASE WHEN EXCLUDED.name <> '' THEN EXCLUDED.name ELSE public.waitlist.name END,
+            interests = EXCLUDED.interests;
+        `,
+          [
+            finalEmail,
+            finalName,
+            data.q1_goal || "3D Story-Based Virtual AI Learning",
+          ]
         );
-      `);
 
-      await query(
-        `
-        INSERT INTO public.ai_learning_waitlist (email, name, interests)
-        VALUES ($1, $2, $3)
-        ON CONFLICT (email)
-        DO UPDATE SET
-          name = CASE WHEN EXCLUDED.name <> '' THEN EXCLUDED.name ELSE public.ai_learning_waitlist.name END,
-          interests = CASE WHEN EXCLUDED.interests <> '' THEN EXCLUDED.interests ELSE public.ai_learning_waitlist.interests END;
-      `,
-        [cleanEmail, cleanName, cleanInterests]
-      );
+        await query(`
+          CREATE TABLE IF NOT EXISTS public.ai_learning_waitlist (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            email TEXT NOT NULL UNIQUE,
+            name TEXT,
+            interests TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+          );
+        `);
+
+        await query(
+          `
+          INSERT INTO public.ai_learning_waitlist (email, name, interests)
+          VALUES ($1, $2, $3)
+          ON CONFLICT (email)
+          DO UPDATE SET
+            name = CASE WHEN EXCLUDED.name <> '' THEN EXCLUDED.name ELSE public.ai_learning_waitlist.name END,
+            interests = EXCLUDED.interests;
+        `,
+          [
+            finalEmail,
+            finalName,
+            data.q1_goal || "3D Story-Based Virtual AI Learning",
+          ]
+        );
+      }
     } catch (dbErr) {
       console.error("[WAITLIST_DATABASE_ERROR]:", dbErr);
     }
@@ -117,61 +185,68 @@ export async function POST(request: Request) {
     const resendApiKey = process.env.RESEND_API_KEY;
     const ownerEmailAddress = "markcharleskojo@gmail.com";
 
-    const timestamp = new Date().toLocaleString("en-US", {
-      timeZone: "UTC",
-      dateStyle: "full",
-      timeStyle: "medium",
-    }) + " (UTC)";
-
-    const subscriberTemplate = renderSubscriberWaitlistEmail(
-      cleanName,
-      cleanEmail
-    );
-    const ownerTemplate = renderOwnerWaitlistNotification(
-      cleanName,
-      cleanEmail,
-      cleanInterests,
-      timestamp,
-      totalCount,
-      allMembers
-    );
+    const timestamp =
+      new Date().toLocaleString("en-US", {
+        timeZone: "UTC",
+        dateStyle: "full",
+        timeStyle: "medium",
+      }) + " (UTC)";
 
     let subscriberDelivery = "pending";
     let ownerDelivery = "pending";
 
     if (resendApiKey) {
-      // Email A: Confirmation to Subscriber thanking them for joining
-      try {
-        const subRes = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${resendApiKey}`,
-          },
-          body: JSON.stringify({
-            from: "Charles Mark <waitlist@charlesmark.tech>",
-            to: [cleanEmail],
-            reply_to: ownerEmailAddress,
-            subject: subscriberTemplate.subject,
-            html: subscriberTemplate.html,
-            text: subscriberTemplate.text,
-          }),
-        });
+      // Email A: Confirmation to Subscriber thanking them for joining (only if email was provided)
+      if (finalEmail) {
+        try {
+          const subscriberTemplate = renderSubscriberWaitlistEmail(
+            finalName,
+            finalEmail
+          );
 
-        if (subRes.ok) {
-          subscriberDelivery = "delivered";
-        } else {
-          const errData = await subRes.text();
-          console.error("[RESEND_SUBSCRIBER_ERROR]:", subRes.status, errData);
-          subscriberDelivery = "failed_" + subRes.status;
+          const subRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${resendApiKey}`,
+            },
+            body: JSON.stringify({
+              from: "Charles Mark <waitlist@charlesmark.tech>",
+              to: [finalEmail],
+              reply_to: ownerEmailAddress,
+              subject: subscriberTemplate.subject,
+              html: subscriberTemplate.html,
+              text: subscriberTemplate.text,
+            }),
+          });
+
+          if (subRes.ok) {
+            subscriberDelivery = "delivered";
+          } else {
+            const errData = await subRes.text();
+            console.error("[RESEND_SUBSCRIBER_ERROR]:", subRes.status, errData);
+            subscriberDelivery = "failed_" + subRes.status;
+          }
+        } catch (subErr) {
+          console.error("[RESEND_SUBSCRIBER_EXCEPTION]:", subErr);
+          subscriberDelivery = "exception";
         }
-      } catch (subErr) {
-        console.error("[RESEND_SUBSCRIBER_EXCEPTION]:", subErr);
-        subscriberDelivery = "exception";
+      } else {
+        subscriberDelivery = "skipped_no_email";
       }
 
-      // Email B: Notification to Owner (markcharleskojo@gmail.com)
+      // Email B: Notification to Owner (markcharleskojo@gmail.com) upon every fill
       try {
+        const ownerTemplate = renderOwnerWaitlistNotification(
+          finalName,
+          finalEmail,
+          data.q1_goal || "3D Story-Based Virtual AI Learning",
+          timestamp,
+          totalCount,
+          allMembers,
+          researchAnswers
+        );
+
         const ownerRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -181,7 +256,7 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "Charles Mark Waitlist <waitlist@charlesmark.tech>",
             to: [ownerEmailAddress],
-            reply_to: cleanEmail,
+            reply_to: finalEmail || ownerEmailAddress,
             subject: ownerTemplate.subject,
             html: ownerTemplate.html,
             text: ownerTemplate.text,
@@ -207,7 +282,7 @@ export async function POST(request: Request) {
         CREATE TABLE IF NOT EXISTS public.waitlist_email_log (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
           recipient TEXT NOT NULL DEFAULT 'markcharleskojo@gmail.com',
-          signup_email TEXT NOT NULL,
+          signup_email TEXT,
           signup_name TEXT,
           interests TEXT,
           delivery_status TEXT NOT NULL,
@@ -222,9 +297,9 @@ export async function POST(request: Request) {
       `,
         [
           ownerEmailAddress,
-          cleanEmail,
-          cleanName,
-          cleanInterests,
+          finalEmail || "anonymous",
+          finalName,
+          data.q1_goal || "AI Research",
           `sub:${subscriberDelivery},owner:${ownerDelivery}`,
         ]
       );
@@ -234,8 +309,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message:
-        "You're on the waitlist! We have sent a confirmation email to your inbox.",
+      message: finalEmail
+        ? "Thank you! Your research responses were recorded and your waitlist spot is reserved."
+        : "Thank you! Your research responses have been recorded.",
     });
   } catch (err: unknown) {
     console.error("[WAITLIST_API_ERROR]:", err);
