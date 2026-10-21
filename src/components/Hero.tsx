@@ -25,7 +25,7 @@ export function Hero() {
           {/* Left Column (Desktop) / Main Content */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-7 text-left">
             
-            {/* MOBILE PORTRAIT & STATUS: Prominently displayed right at top of content so Charles's photo is visible above the fold */}
+            {/* MOBILE PORTRAIT: Prominently displayed right at top of content so Charles's photo is visible above the fold */}
             <div className="lg:hidden flex items-center gap-3.5 pb-0.5">
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-[#B58A64] ring-2 ring-[#B58A64]/30 shadow-xl flex-shrink-0 bg-[#241A15]">
                 <Image
@@ -38,15 +38,11 @@ export function Hero() {
                 />
               </div>
               <div className="min-w-0">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#241A15] border border-[#B58A64]/40 text-[10px] font-mono text-[#D8C5AF]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>AVAILABLE FOR PROJECTS</span>
-                </div>
-                <div className="font-display font-bold text-base sm:text-lg text-[#F5F0E8] mt-0.5 tracking-tight">
+                <div className="font-display font-bold text-lg sm:text-xl text-[#F5F0E8] tracking-tight">
                   Charles Mark
                 </div>
-                <div className="font-mono text-[11px] sm:text-xs text-[#B58A64] truncate">
-                  Applied AI & Cloud Systems Engineer
+                <div className="font-mono text-xs text-[#B58A64] truncate mt-0.5">
+                  AI Systems & Forward Deployed Engineer
                 </div>
               </div>
             </div>
@@ -118,18 +114,12 @@ export function Hero() {
               <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#150F0B] via-[#150F0B]/70 to-transparent" />
               
               {/* Executive Credentials Floating Card */}
-              <div className="absolute bottom-4 inset-x-4 p-3.5 rounded-2xl bg-[#150F0B]/90 border border-[#B58A64]/40 backdrop-blur-md shadow-lg flex items-center justify-between">
-                <div>
-                  <div className="font-display font-bold text-sm text-[#F5F0E8] tracking-wide">
-                    Charles Mark
-                  </div>
-                  <div className="font-mono text-[11px] text-[#B58A64] tracking-wide">
-                    AI Systems & Forward Deployed Engineer
-                  </div>
+              <div className="absolute bottom-4 inset-x-4 p-3.5 rounded-2xl bg-[#150F0B]/90 border border-[#B58A64]/40 backdrop-blur-md shadow-lg">
+                <div className="font-display font-bold text-sm text-[#F5F0E8] tracking-wide">
+                  Charles Mark
                 </div>
-                <div className="flex items-center gap-1.5 font-mono text-[11px] font-medium text-[#D8C5AF]">
-                  <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                  <span>Available</span>
+                <div className="font-mono text-[11px] text-[#B58A64] tracking-wide">
+                  AI Systems & Forward Deployed Engineer
                 </div>
               </div>
             </div>

@@ -117,10 +117,7 @@ export function SolutionsEngine() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 mb-2 font-mono text-xs font-semibold text-[#B58A64] tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B58A64]" />
-            <span>PROBLEM SOLVING & SOLUTIONS RENDERING</span>
-          </div>
+
           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
             HOW I SOLVE BOTTLENECKS & IMPROVE YOUR BUSINESS
           </h2>

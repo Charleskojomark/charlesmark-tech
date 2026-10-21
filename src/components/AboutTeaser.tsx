@@ -86,7 +86,6 @@ export function AboutTeaser() {
                     sizes="(max-width: 640px) 112px, 128px"
                     priority
                   />
-                  <span className="absolute top-2 right-2 w-3 h-3 rounded-full bg-[#10B981] border-2 border-[#241A15]" title="Available for client projects" />
                 </div>
 
                 <span className="font-display font-bold text-lg sm:text-xl text-[#241A15] tracking-wide uppercase">
