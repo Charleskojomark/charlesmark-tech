@@ -11,8 +11,7 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { SectionNavigator } from "@/components/SectionNavigator";
 import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
-import { FreeAuditSection } from "@/components/FreeAuditSection";
-import { AILearningWaitlistSection } from "@/components/AILearningWaitlistSection";
+import { FreeAuditTeaser } from "@/components/FreeAuditTeaser";
 
 export default function HomePage() {
   return (
@@ -59,14 +58,10 @@ export default function HomePage() {
         <ReviewsSection />
       </SectionReveal>
 
-      {/* 5. 3D Story-Based Virtual AI Learning App Waitlist */}
-      <SectionReveal className="relative z-10">
-        <AILearningWaitlistSection />
-      </SectionReveal>
 
-      {/* 6. Free 15-Minute Async AI & Automation Architecture Audit / Shareable Waitlist */}
+      {/* 5. Free 15-Minute Async AI & Automation Architecture Audit Teaser */}
       <SectionReveal className="relative z-10">
-        <FreeAuditSection />
+        <FreeAuditTeaser />
       </SectionReveal>
 
       {/* 6. FAQ */}

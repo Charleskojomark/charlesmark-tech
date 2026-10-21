@@ -37,6 +37,7 @@ export const siteConfig = {
   },
   nav: [
     { label: "Free Audit", href: "/#audit" },
+    { label: "3D AI Waitlist", href: "/waitlist" },
     { label: "Services", href: "/services" },
     { label: "How I Work", href: "/#how-it-works" },
     { label: "Insights", href: "/insights" },

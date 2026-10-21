@@ -53,6 +53,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/waitlist" className="text-[#B58A64] font-semibold hover:text-[#241A15] transition-colors flex items-center gap-1.5">
+                  <span>3D AI App Waitlist</span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#B58A64]/20 border border-[#B58A64]/40 font-mono">NEW</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/#how-it-works" className="text-[#4A3428] hover:text-[#241A15] transition-colors">
                   How I Work
                 </Link>

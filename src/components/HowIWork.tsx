@@ -1,8 +1,5 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Compass, PencilRuler, Wrench, ShieldCheck, TrendingUp, Check, Calendar, ArrowUpRight } from "lucide-react";
+import React from "react";
+import { Compass, PencilRuler, Wrench, ShieldCheck, TrendingUp, Calendar, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
@@ -90,15 +87,11 @@ const STEPS: Step[] = [
 ];
 
 export function HowIWork() {
-  const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const currentStep = STEPS[activeStepIndex];
-  const StepIcon = currentStep.icon;
-
   return (
-    <section id="how-it-works" className="py-12 sm:py-16 md:py-24 bg-[#FAF7F2] border-y border-[#D8C5AF]/70 scroll-mt-16">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 bg-[#FAF7F2] border-y border-[#D8C5AF]/70 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mb-8 sm:mb-12 md:mb-14">
+        <div className="max-w-3xl mb-8 sm:mb-12">
           <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
             ENGINEERING METHODOLOGY
           </span>
@@ -110,104 +103,38 @@ export function HowIWork() {
           </p>
         </div>
 
-        {/* Step Selector Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 mb-8">
-          {STEPS.map((step, index) => {
-            const isSelected = activeStepIndex === index;
+        {/* 5 Primary Phase Cards with One-Line Explanation Each */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 mb-8">
+          {STEPS.map((step) => {
+            const Icon = step.icon;
             return (
-              <button
+              <div
                 key={step.step}
-                type="button"
-                onClick={() => setActiveStepIndex(index)}
-                className={`flex flex-col text-left p-4 rounded-2xl border transition-all duration-200 cursor-pointer ${
-                  isSelected
-                    ? "bg-[#241A15] border-[#241A15] text-[#F5F0E8] shadow-md ring-2 ring-[#B58A64]"
-                    : "bg-[#F5F0E8] border-[#D8C5AF] text-[#4A3428] hover:border-[#4A3428] hover:bg-[#FAF7F2]"
-                }`}
-                aria-pressed={isSelected}
+                className="flex flex-col justify-between p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span
-                    className={`font-mono text-xs font-bold ${
-                      isSelected ? "text-[#B58A64]" : "text-[#4A3428]/60"
-                    }`}
-                  >
-                    PHASE {step.step}
-                  </span>
-                  {isSelected && <span className="w-2 h-2 rounded-full bg-[#B58A64]" />}
+                <div>
+                  <div className="flex items-center justify-between mb-3.5">
+                    <span className="font-mono text-xs font-bold text-[#B58A64]">
+                      PHASE {step.step}
+                    </span>
+                    <div className="w-8 h-8 rounded-lg bg-[#241A15] text-[#D8C5AF] flex items-center justify-center">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                  </div>
+                  <h3 className="font-display font-bold text-base text-[#241A15] tracking-tight mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-[#4A3428] leading-relaxed">
+                    {step.headline}
+                  </p>
                 </div>
-                <span className="font-display font-bold text-sm tracking-tight">
-                  {step.title}
-                </span>
-              </button>
+              </div>
             );
           })}
         </div>
 
-        {/* Detailed Stage Card with Motion */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentStep.step}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="bg-[#F5F0E8] rounded-3xl p-6 sm:p-10 border border-[#D8C5AF] shadow-sm"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              <div className="lg:col-span-7 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center">
-                    <StepIcon className="w-5 h-5 text-[#B58A64]" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-xs text-[#B58A64] font-semibold tracking-wider uppercase">
-                      STAGE {currentStep.step} / 05
-                    </span>
-                    <h3 className="font-display font-bold text-2xl text-[#241A15]">
-                      {currentStep.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <p className="font-display text-lg text-[#241A15] font-semibold leading-snug pt-2">
-                  &ldquo;{currentStep.headline}&rdquo;
-                </p>
-                <p className="text-sm text-[#4A3428] leading-relaxed">
-                  {currentStep.description}
-                </p>
-
-                <div className="mt-4 p-4 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/70">
-                  <span className="font-mono text-[11px] text-[#241A15] font-bold tracking-wider uppercase block mb-1">
-                    ENGINEERING CONSIDERATION:
-                  </span>
-                  <p className="text-xs text-[#4A3428] font-mono leading-relaxed">
-                    {currentStep.engineeringFocus}
-                  </p>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 bg-[#FAF7F2] rounded-2xl p-6 border border-[#D8C5AF]">
-                <span className="font-mono text-xs text-[#241A15] font-semibold uppercase tracking-wider block mb-4">
-                  KEY DELIVERABLES
-                </span>
-                <ul className="space-y-3">
-                  {currentStep.deliverables.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-xs text-[#4A3428]">
-                      <div className="w-4 h-4 rounded-full bg-[#B58A64]/20 text-[#4A3428] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3 h-3 text-[#241A15]" />
-                      </div>
-                      <span className="leading-tight">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Step-Action Conversion Footer */}
-        <div className="mt-8 p-5 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Action Conversion Footer */}
+        <div className="p-5 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <span className="font-display font-bold text-sm sm:text-base text-[#241A15] block">
               Ready to take your business systems from problem to production?

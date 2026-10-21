@@ -1,20 +1,11 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import {
   Workflow,
   Cpu,
   Server,
   Cloud,
-  CheckCircle2,
-  Calendar,
   ArrowUpRight,
-  TrendingUp,
-  ShieldCheck,
-  Zap,
 } from "lucide-react";
-import { siteConfig } from "@/config/site";
-import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 interface SolutionItem {
   id: string;
@@ -108,187 +99,62 @@ const SOLUTIONS: SolutionItem[] = [
 ];
 
 export function SolutionsEngine() {
-  const [activeTab, setActiveTab] = useState(0);
-  const activeSolution = SOLUTIONS[activeTab];
-  const Icon = activeSolution.icon;
-
   return (
-    <section id="solutions-engine" className="py-14 sm:py-20 md:py-28 bg-[#FAF7F2] border-y border-[#D8C5AF]/70 scroll-mt-16 relative">
+    <section id="solutions-engine" className="py-12 sm:py-16 md:py-20 bg-[#FAF7F2] border-y border-[#D8C5AF]/70 scroll-mt-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-10 sm:mb-14">
-
+        <div className="max-w-3xl mb-8 sm:mb-12">
           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
             HOW I SOLVE BOTTLENECKS & IMPROVE YOUR BUSINESS
           </h2>
-          <p className="text-sm sm:text-base text-[#4A3428] mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4A3428] mt-2 sm:mt-3 leading-relaxed">
             Every engagement is engineered around your business&apos;s bottom line. Select any operational challenge below to see the exact technical architecture I build and the measurable business ROI delivered.
           </p>
         </div>
 
-        {/* 4 Solution Selector Tabs */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-8">
+        {/* 4 Primary Solution Buttons */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
           {SOLUTIONS.map((item, idx) => {
             const TabIcon = item.icon;
-            const isSelected = activeTab === idx;
 
             return (
-              <button
+              <div
                 key={item.id}
-                type="button"
-                onClick={() => setActiveTab(idx)}
-                className={`flex flex-col text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-200 cursor-pointer ${
-                  isSelected
-                    ? "bg-[#241A15] text-[#F5F0E8] border-[#241A15] shadow-lg scale-[1.02]"
-                    : "bg-[#F5F0E8] hover:bg-[#FAF7F2] text-[#241A15] border-[#D8C5AF]"
-                }`}
+                className="group flex flex-col justify-between p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <div
-                    className={`w-8 h-8 rounded-xl flex items-center justify-center ${
-                      isSelected ? "bg-[#FAF7F2] text-[#241A15]" : "bg-[#241A15] text-[#F5F0E8]"
-                    }`}
-                  >
-                    <TabIcon className="w-4 h-4" />
-                  </div>
-                  <span
-                    className={`font-mono text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                      isSelected
-                        ? "bg-[#B58A64] text-[#241A15]"
-                        : "bg-[#FAF7F2] text-[#4A3428] border border-[#D8C5AF]"
-                    }`}
-                  >
-                    SOL 0{idx + 1}
-                  </span>
-                </div>
-                <span className="font-display font-bold text-xs sm:text-sm leading-snug">
-                  {item.category}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Active Solution Deep Dive Showcase */}
-        <div className="bg-[#FAF7F2] rounded-3xl p-6 sm:p-10 border border-[#D8C5AF] shadow-xl relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-            {/* Left 7 Cols: The Problem & Solution Breakdown */}
-            <div className="lg:col-span-7 space-y-5">
-              <div>
-                <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block mb-1">
-                  SOLUTION 0{activeTab + 1} • {activeSolution.category}
-                </span>
-                <h3 className="font-display text-xl sm:text-3xl font-extrabold text-[#241A15] leading-snug">
-                  {activeSolution.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#4A3428] font-medium mt-1">
-                  {activeSolution.tagline}
-                </p>
-              </div>
-
-              {/* The Friction vs The Engineered Solution */}
-              <div className="space-y-3 pt-2">
-                <div className="p-4 rounded-2xl bg-[#F5F0E8] border border-red-200/80">
-                  <span className="font-mono text-[10px] text-red-800 font-bold uppercase tracking-wider block mb-1">
-                    THE BUSINESS BOTTLENECK YOU ARE EXPERIENCING:
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#4A3428] leading-relaxed">
-                    {activeSolution.friction}
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-[#F5F0E8] border border-emerald-300">
-                  <span className="font-mono text-[10px] text-emerald-800 font-bold uppercase tracking-wider block mb-1">
-                    HOW CHARLES SOLVES IT FOR YOUR BUSINESS:
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#241A15] font-medium leading-relaxed">
-                    {activeSolution.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* Technologies Applied */}
-              <div className="pt-2">
-                <span className="font-mono text-[10px] text-[#4A3428]/80 font-bold uppercase tracking-wider block mb-2">
-                  TECHNOLOGIES APPLIED TO THIS SOLUTION:
-                </span>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {activeSolution.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-md bg-[#F5F0E8] border border-[#D8C5AF] font-mono text-[11px] text-[#241A15] font-semibold"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right 5 Cols: Tangible Business ROI & Immediate Action Buttons */}
-            <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-6 lg:border-l lg:border-[#D8C5AF]/70 lg:pl-8">
-              {/* ROI Metrics Cards */}
-              <div className="space-y-3">
-                <span className="font-mono text-[11px] text-[#241A15] font-bold uppercase tracking-widest block">
-                  MEASURABLE BUSINESS IMPROVEMENT:
-                </span>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
-                  {activeSolution.businessRoi.map((roi, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-2xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-sm flex items-center justify-between"
-                    >
-                      <span className="font-mono text-xs text-[#D8C5AF]">
-                        {roi.label}
-                      </span>
-                      <span className="font-display font-extrabold text-sm sm:text-base text-[#10B981]">
-                        {roi.value}
-                      </span>
+                <div>
+                  <div className="flex items-center justify-between mb-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center group-hover:bg-[#4A3428] transition-colors shadow-xs">
+                      <TabIcon className="w-5 h-5 text-[#D8C5AF]" />
                     </div>
-                  ))}
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#FAF7F2] text-[#4A3428] border border-[#D8C5AF]">
+                      SOL 0{idx + 1}
+                    </span>
+                  </div>
+                  <h3 className="font-display font-bold text-base text-[#241A15] leading-snug mb-1.5">
+                    {item.category}
+                  </h3>
+                  <p className="text-xs text-[#4A3428] leading-relaxed">
+                    {item.tagline}
+                  </p>
                 </div>
-              </div>
 
-              {/* Direct Booking & Action Section for This Solution */}
-              <div className="p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
-                <span className="font-mono text-xs text-[#241A15] font-bold uppercase tracking-wider block">
-                  READY TO SOLVE THIS IN YOUR BUSINESS?
-                </span>
-                <p className="text-xs text-[#4A3428]">
-                  Schedule a 20-minute solutions review. We will inspect your current technical setup and provide an actionable architectural plan.
-                </p>
-
-                <div className="flex flex-col sm:flex-row lg:flex-col gap-2 pt-1">
-                  {/* Book a Call on Cal.com */}
-                  <a
-                    href={siteConfig.booking.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
-                  >
-                    <Calendar className="w-4 h-4 text-[#B58A64] flex-shrink-0" />
-                    <span>Book a Kickoff Call</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#D8C5AF] flex-shrink-0" />
-                  </a>
-
-                  {/* Chat on WhatsApp */}
+                <div className="pt-4 mt-4 border-t border-[#D8C5AF]/60 flex items-center justify-between">
                   <a
                     href={`https://wa.me/2347082367382?text=${encodeURIComponent(
-                      `Hi Charles, I'd like to book a call and discuss ${activeSolution.category} for our business.`
+                      `Hi Charles, I'd like to discuss ${item.category} for our business.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
+                    className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[#241A15] hover:text-[#B58A64] transition-colors"
                   >
-                    <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
-                    <span>Discuss on WhatsApp</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-white opacity-80 flex-shrink-0" />
+                    <span>Discuss Solution</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

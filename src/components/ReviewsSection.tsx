@@ -1,28 +1,86 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   Star,
   ShieldCheck,
   Quote,
   Sparkles,
-  Pause,
-  Play,
   CheckCircle2,
 } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 
 export function ReviewsSection() {
-  const [isPaused, setIsPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDownRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // Quadruple the 2 reviews (8 cards total) so the track easily exceeds any ultra-wide screen
-  // and translateX(-50%) loops infinitely and seamlessly.
+  // Repeat testimonials so the track seamlessly loops infinitely
   const marqueeCards = [
     ...testimonials,
     ...testimonials,
     ...testimonials,
     ...testimonials,
   ];
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+
+    const loop = (currentTime: number) => {
+      const delta = currentTime - lastTime;
+      lastTime = currentTime;
+
+      // Only auto-advance when user is not actively dragging
+      if (!isDownRef.current && container) {
+        // Continuous smooth advancement (~35px per sec)
+        container.scrollLeft += delta * 0.035;
+
+        const halfWidth = container.scrollWidth / 2;
+        if (container.scrollLeft >= halfWidth) {
+          container.scrollLeft -= halfWidth;
+        } else if (container.scrollLeft <= 0) {
+          container.scrollLeft += halfWidth;
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    animationFrameId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    isDownRef.current = true;
+    setIsDragging(true);
+    startXRef.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeftRef.current = scrollRef.current.scrollLeft;
+  };
+
+  const handleMouseLeave = () => {
+    isDownRef.current = false;
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    isDownRef.current = false;
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDownRef.current || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
 
   return (
     <section
@@ -45,12 +103,12 @@ export function ReviewsSection() {
               PROVEN IN PRODUCTION.
             </h2>
             <p className="text-sm sm:text-base text-[#4A3428] font-sans mt-2 max-w-xl leading-relaxed">
-              Direct feedback from CTOs and product design leads on engineering
+              Direct feedback from CTOs, product designers, and innovation leaders on engineering
               rigor, clean architectures, and shipping on schedule.
             </p>
           </div>
 
-          {/* Social Proof Badges & Pause Control */}
+          {/* Social Proof Badges */}
           <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF] shadow-2xs">
               <div className="flex items-center text-amber-500">
@@ -69,53 +127,38 @@ export function ReviewsSection() {
               </span>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#241A15] text-[#F5F0E8] border border-[#B58A64]/40 shadow-2xs">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#241A15] text-[#F5F0E8] border border-[#B58A64]/40 shadow-2xs">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               <span className="font-mono text-[11px] font-medium tracking-wide">
                 100% Verified Reviews
               </span>
             </div>
-
-            {/* Marquee Play/Pause Toggle Button */}
-            <button
-              type="button"
-              onClick={() => setIsPaused((prev) => !prev)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] border border-[#D8C5AF] text-[#4A3428] hover:text-[#241A15] text-xs font-mono transition-colors shadow-2xs cursor-pointer"
-              aria-label={isPaused ? "Resume auto slide" : "Pause auto slide"}
-              title={isPaused ? "Resume auto slide" : "Pause auto slide"}
-            >
-              {isPaused ? (
-                <>
-                  <Play className="w-3.5 h-3.5 fill-current text-[#B58A64]" />
-                  <span>Resume</span>
-                </>
-              ) : (
-                <>
-                  <Pause className="w-3.5 h-3.5 fill-current text-[#4A3428]" />
-                  <span>Pause</span>
-                </>
-              )}
-            </button>
           </div>
         </div>
       </div>
 
-      {/* Continuous Horizontal Slide Marquee Container */}
+      {/* Continuous Horizontal Interactive Marquee Container */}
       <div
-        className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_5%,black_95%,transparent_100%)]"
+        className="relative w-full [mask-image:linear-gradient(to_right,transparent_0%,black_4%,black_96%,transparent_100%)] select-none"
         aria-live="off"
       >
         <div
-          className={`flex gap-4 sm:gap-6 w-max animate-marquee pause-marquee py-2 ${
-            isPaused ? "[animation-play-state:paused!important]" : ""
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className={`flex gap-4 sm:gap-6 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-3 px-4 sm:px-8 touch-pan-x ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
           }`}
+          style={{ WebkitOverflowScrolling: "touch" }}
         >
           {marqueeCards.map((review, idx) => (
             <div
               key={`${review.id}-${idx}`}
-              className="group relative flex flex-col justify-between w-[330px] sm:w-[460px] md:w-[520px] flex-shrink-0 p-6 sm:p-7 rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
+              className="group relative flex flex-col justify-between w-[320px] sm:w-[460px] md:w-[500px] flex-shrink-0 p-6 sm:p-7 rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
             >
-              {/* Decorative Subtle Quote Icon in Background */}
+              {/* Decorative Quote Icon */}
               <Quote className="absolute right-6 top-6 w-12 h-12 text-[#B58A64]/10 -rotate-12 pointer-events-none" />
 
               <div>
@@ -132,7 +175,7 @@ export function ReviewsSection() {
 
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-[10px] font-mono text-emerald-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>VERIFIED CLIENT</span>
+                    <span>VERIFIED REVIEW</span>
                   </div>
                 </div>
 
@@ -183,7 +226,7 @@ export function ReviewsSection() {
       {/* Bottom Hint */}
       <div className="max-w-7xl mx-auto px-4 text-center mt-6">
         <p className="text-[11px] font-mono text-[#4A3428]/70">
-          Hover over any card to pause • Continuous horizontal review stream
+          Swipe or drag to explore freely • Continuously auto-scrolling
         </p>
       </div>
     </section>

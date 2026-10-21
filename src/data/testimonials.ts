@@ -40,4 +40,17 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     initials: "FT",
   },
+  {
+    id: "unclekay-innovation-growth-hub",
+    quote:
+      "I have known Charles Mark for over three years, and throughout this time, he has consistently demonstrated exceptional expertise, professionalism, and dedication to his work. He is highly skilled at what he does, pays attention to detail, and is committed to delivering quality results. Beyond his technical expertise, he is reliable, knowledgeable, and passionate about providing excellent service. My experience with him has been very positive, and I have no hesitation in recommending him to anyone looking for a competent and trustworthy expert. If you need someone who truly understands his craft and delivers with excellence, Charles Mark is definitely someone to trust!",
+    author: "Unclekay",
+    role: "Hub Manager",
+    company: "Innovation Growth Hub",
+    outcome: "Over 3 years of exceptional expertise, professionalism, and trustworthy delivery",
+    tag: "Technical Expertise & Delivery",
+    verified: true,
+    rating: 5,
+    initials: "UK",
+  },
 ];

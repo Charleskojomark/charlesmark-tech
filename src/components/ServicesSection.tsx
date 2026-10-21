@@ -73,28 +73,12 @@ export function ServicesSection() {
                     </div>
                   </Card3DItem>
 
-                  {/* Who It's For & Description */}
-                  <div className="space-y-3 mb-6 text-xs text-[#4A3428]">
-                    <p className="font-medium text-[#241A15]">
-                      <span className="font-mono text-[10px] text-[#B58A64] uppercase tracking-wider block font-bold mb-0.5">
-                        BEST FOR:
-                      </span>
-                      {service.whoItsFor}
-                    </p>
-                    <p className="leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  {/* Deliverables Checklist */}
-                  <div className="space-y-2 pt-4 border-t border-[#D8C5AF]/60 mb-6">
-                    <span className="font-mono text-[10px] text-[#241A15] uppercase tracking-widest font-bold block mb-2">
-                      WHAT YOU GET IN PRODUCTION:
-                    </span>
+                  {/* Deliverables Checklist - Simple Direct Bullet Points */}
+                  <div className="space-y-2.5 my-6">
                     {service.whatYouGet.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-[#38261D]">
-                        <Check className="w-3.5 h-3.5 text-emerald-700 mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-[#241A15]">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <span className="leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
