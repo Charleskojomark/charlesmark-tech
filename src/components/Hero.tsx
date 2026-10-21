@@ -12,7 +12,7 @@ import { WhatsAppIcon } from "@/components/icons/BrandIcons";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[640px] sm:min-h-[700px] lg:min-h-[740px] flex items-center overflow-hidden bg-[#150F0B] text-[#F5F0E8] py-10 sm:py-14 lg:py-18">
+    <section className="relative min-h-0 sm:min-h-[700px] lg:min-h-[740px] flex items-center overflow-hidden bg-[#150F0B] text-[#F5F0E8] pt-4 pb-8 sm:py-14 lg:py-18">
       {/* Ambient atmospheric warm backlight */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
         <div className="absolute right-0 lg:right-1/4 top-1/4 w-[350px] sm:w-[500px] lg:w-[650px] h-[350px] sm:h-[500px] lg:h-[650px] rounded-full bg-gradient-to-br from-[#B58A64]/20 via-[#D8C5AF]/10 to-transparent blur-3xl opacity-75" />
@@ -20,37 +20,41 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-center">
           
-          {/* MOBILE PORTRAIT: Displayed at the TOP on mobile so head is prominently at the top */}
-          <div className="lg:hidden flex flex-col items-center text-center">
-            {/* Prominent Mobile Portrait with head clearly visible at the top */}
-            <div className="relative w-full max-w-[270px] sm:max-w-[310px] aspect-[4/4.6] rounded-3xl overflow-hidden border-2 border-[#B58A64]/40 shadow-2xl bg-gradient-to-b from-[#241A15] to-[#150F0B]">
-              <Image
-                src="/charles-mark.png"
-                alt="Charles Mark - Business Solutions Architect & Applied AI Engineer"
-                fill
-                priority
-                sizes="(max-width: 640px) 270px, 310px"
-                className="object-cover object-top"
-              />
-              {/* Bottom subtle blend */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#150F0B] via-[#150F0B]/80 to-transparent" />
-              {/* Availability Badge */}
-              <div className="absolute bottom-3 inset-x-3 py-1.5 px-3 rounded-full bg-[#150F0B]/90 border border-[#B58A64]/40 backdrop-blur-md flex items-center justify-center">
-                <span className="font-mono text-[10px] text-[#F5F0E8] font-semibold tracking-wide">
-                  Charles Mark • Available for Projects
-                </span>
+          {/* Left Column (Desktop) / Main Content */}
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-7 text-left">
+            
+            {/* MOBILE PORTRAIT & STATUS: Prominently displayed right at top of content so Charles's photo is visible above the fold */}
+            <div className="lg:hidden flex items-center gap-3.5 pb-0.5">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-[#B58A64] ring-2 ring-[#B58A64]/30 shadow-xl flex-shrink-0 bg-[#241A15]">
+                <Image
+                  src="/charles-mark.png"
+                  alt="Charles Mark - Business Solutions Architect & Applied AI Engineer"
+                  fill
+                  priority
+                  sizes="80px"
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="min-w-0">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#241A15] border border-[#B58A64]/40 text-[10px] font-mono text-[#D8C5AF]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>AVAILABLE FOR PROJECTS</span>
+                </div>
+                <div className="font-display font-bold text-base sm:text-lg text-[#F5F0E8] mt-0.5 tracking-tight">
+                  Charles Mark
+                </div>
+                <div className="font-mono text-[11px] sm:text-xs text-[#B58A64] truncate">
+                  Applied AI & Cloud Systems Engineer
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Left Column (Desktop) / Main Content */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-7 text-left">
             {/* Solution-Oriented Headline for Business Leaders */}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.35rem] font-extrabold text-[#F5F0E8] tracking-tight leading-[1.12]">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.35rem] font-extrabold text-[#F5F0E8] tracking-tight leading-[1.15]">
               I engineer AI automations, agentic systems, and cloud backends that{" "}
-              <span className="text-[#B58A64] underline decoration-[#B58A64]/40 underline-offset-8">
+              <span className="text-[#B58A64] underline decoration-[#B58A64]/40 underline-offset-4 sm:underline-offset-8">
                 eliminate operational bottlenecks
               </span>{" "}
               and scale business revenue.
@@ -62,22 +66,22 @@ export function Hero() {
             </div>
 
             {/* Supporting Business Description */}
-            <p className="text-base sm:text-lg text-[#D8C5AF] leading-relaxed max-w-xl font-normal">
+            <p className="text-xs sm:text-base lg:text-lg text-[#D8C5AF] leading-relaxed max-w-xl font-normal">
               Trained by FAANG engineers and certified in Applied AI & Forward Deployed Engineering (Educative.io), I turn manual administrative friction into reliable, automated, high-margin software systems.
             </p>
 
             {/* High-Converting Action Buttons: Book a Call (Cal.com) + Chat on WhatsApp */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
+            <div className="pt-1 sm:pt-2 grid grid-cols-2 sm:flex sm:items-center gap-2.5 sm:gap-4">
               {/* Primary: Book a Call on Cal.com */}
               <a
                 href={siteConfig.booking.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-[#B58A64] hover:bg-[#C99C74] text-[#150F0B] font-display font-bold text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#B58A64] hover:bg-[#C99C74] text-[#150F0B] font-display font-bold text-xs sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap"
               >
-                <Calendar className="w-5 h-5 text-[#150F0B]" />
-                <span>Book a Solutions Call</span>
-                <ArrowUpRight className="w-4 h-4 text-[#150F0B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#150F0B]" />
+                <span>Book a Call</span>
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#150F0B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
 
               {/* Secondary: Chat on WhatsApp */}
@@ -85,11 +89,11 @@ export function Hero() {
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-7 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs sm:text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap"
               >
-                <WhatsAppIcon className="w-5 h-5 fill-current" />
-                <span>Chat on WhatsApp</span>
-                <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+                <span>WhatsApp</span>
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
             </div>
           </div>

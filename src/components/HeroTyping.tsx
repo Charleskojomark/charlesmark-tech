@@ -51,13 +51,13 @@ export function HeroTyping() {
 
   return (
     <div className="py-1">
-      <div className="inline-flex items-center min-h-[2.5rem] sm:min-h-[3rem] max-w-full">
-        <span className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#B58A64] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5">
+      <div className="inline-flex items-center min-h-[2.25rem] sm:min-h-[3rem] max-w-full">
+        <span className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-[#B58A64] tracking-tight border-b-2 border-[#B58A64]/40 pb-0.5">
           {currentText}
         </span>
         <span
           aria-hidden="true"
-          className="inline-block w-[3px] h-6 sm:h-8 md:h-9 bg-[#B58A64] shadow-[0_0_8px_rgba(181,138,100,0.8)] ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
+          className="inline-block w-[3px] h-5 sm:h-8 md:h-9 bg-[#B58A64] shadow-[0_0_8px_rgba(181,138,100,0.8)] ml-1.5 animate-caret rounded-full align-middle flex-shrink-0"
         />
       </div>
     </div>
