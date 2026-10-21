@@ -218,17 +218,17 @@ export function TrustStrip() {
         {/* Compact Floating Dialog: Non-blocking, no dark full-screen backdrop, no scroll lock */}
         {activeDetail && activeItem && (
           <div
-            className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center p-3 sm:p-5"
+            className="fixed inset-x-0 top-[70px] bottom-[86px] sm:top-24 sm:bottom-8 z-[110] pointer-events-none flex items-center justify-center px-3 sm:px-5"
             role="region"
             aria-label="Discipline Specification Preview"
           >
             <div
               ref={dialogRef}
-              className="pointer-events-auto relative w-full max-w-lg bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/50 rounded-2xl shadow-2xl shadow-black/80 ring-1 ring-[#B58A64]/20 p-4 sm:p-5 my-auto max-h-[82vh] overflow-y-auto animate-in zoom-in-95 fade-in duration-150"
+              className="pointer-events-auto relative w-full max-w-lg bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/50 rounded-2xl shadow-2xl shadow-black/90 ring-1 ring-[#B58A64]/20 p-4 sm:p-5 my-auto max-h-full overflow-y-auto overscroll-contain animate-in zoom-in-95 fade-in duration-150"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Floating Dialog Top Header */}
-              <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#4A3428]/80">
+              {/* Floating Dialog Top Header: sticky so title & close button are always visible */}
+              <div className="sticky -top-4 -mx-4 px-4 pt-1 pb-3 sm:-top-5 sm:-mx-5 sm:px-5 sm:pt-1 bg-[#1C1410] z-20 flex items-start justify-between gap-3 border-b border-[#4A3428]/80">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-xl bg-[#B58A64] text-[#150F0B] flex items-center justify-center flex-shrink-0 shadow-md">
                     <activeItem.icon className="w-4 h-4" />
