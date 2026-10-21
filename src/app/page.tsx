@@ -6,6 +6,7 @@ import { SolutionsEngine } from "@/components/SolutionsEngine";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowIWork } from "@/components/HowIWork";
 import { ReviewsSection } from "@/components/ReviewsSection";
+import { CertificationsSection } from "@/components/CertificationsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SectionReveal } from "@/components/SectionReveal";
@@ -83,6 +84,11 @@ export default function HomePage() {
       {/* 4. How I work: From Diagnostic Call to Production Deployment */}
       <SectionReveal className="relative z-10">
         <HowIWork />
+      </SectionReveal>
+
+      {/* Verified Professional Certifications & Institutional Credentials */}
+      <SectionReveal className="relative z-10">
+        <CertificationsSection />
       </SectionReveal>
 
       {/* Verified Client & Partner Reviews Continuous Slide */}

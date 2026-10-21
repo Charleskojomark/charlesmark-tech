@@ -40,6 +40,7 @@ export const siteConfig = {
     { label: "3D AI Waitlist", href: "/waitlist" },
     { label: "Services", href: "/services" },
     { label: "How I Work", href: "/#how-it-works" },
+    { label: "Certifications", href: "/#certifications" },
     { label: "Insights", href: "/insights" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },

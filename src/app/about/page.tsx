@@ -15,6 +15,7 @@ import { siteConfig } from "@/config/site";
 import { WhatsAppIcon, LinkedInIcon } from "@/components/icons/BrandIcons";
 import { SystemDiagram } from "@/components/SystemDiagram";
 import { TechnicalCapabilities } from "@/components/TechnicalCapabilities";
+import { CertificationsSection } from "@/components/CertificationsSection";
 
 import type { Metadata } from "next";
 
@@ -121,29 +122,37 @@ export default function AboutPage() {
             </p>
 
             {/* Core Pedigree Box */}
-            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] my-6 space-y-3">
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#B58A64]" />
-                <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider">
-                  ENGINEERING PEDIGREE & CREDENTIALS
-                </span>
+            <div className="p-6 rounded-2xl bg-[#FAF7F2] border border-[#D8C5AF] my-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-[#B58A64]" />
+                  <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider">
+                    ENGINEERING PEDIGREE & CREDENTIALS
+                  </span>
+                </div>
+                <a
+                  href="#certifications"
+                  className="text-[11px] font-mono text-[#B58A64] hover:text-[#241A15] underline underline-offset-4"
+                >
+                  View all 7 credentials ↓
+                </a>
               </div>
               <ul className="space-y-2 text-xs font-mono text-[#241A15]">
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
-                  <span><strong>Trained by FAANG Engineers</strong> in distributed system architecture & production AI</span>
+                  <span><strong>DeepLearning.AI:</strong> Agentic AI (Mentored by Andrew Ng)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
-                  <span><strong>Educative.io Certified:</strong> Agentic System Design & LangGraph State Machines</span>
+                  <span><strong>Meta (Coursera):</strong> Back-End Developer Specialization (9-Course System Architecture)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
-                  <span><strong>Educative.io Certified:</strong> Applied AI Engineering & Production RAG Pipelines</span>
+                  <span><strong>Udacity • AWS:</strong> AWS AI Practitioner Challenge</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
-                  <span><strong>Educative.io Certified:</strong> Forward Deployed Engineering & Enterprise Integration</span>
+                  <span><strong>Educative (FAANG Mentored):</strong> Agentic System Design, Applied AI, AI Workflows & Forward Deployed Engineering</span>
                 </li>
               </ul>
             </div>
@@ -244,6 +253,11 @@ export default function AboutPage() {
         <section className="mb-20">
           <TechnicalCapabilities />
         </section>
+
+        {/* Verified Professional Certifications */}
+        <div className="mb-20">
+          <CertificationsSection />
+        </div>
 
         {/* Ways to Work Together CTA */}
         <section className="p-8 sm:p-12 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428]">
