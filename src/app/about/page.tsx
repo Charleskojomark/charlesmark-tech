@@ -38,7 +38,9 @@ export const metadata: Metadata = {
     description:
       "Applied AI & Forward Deployed Systems Engineer. Bridging robust backend infrastructure, cloud DevOps, and production agentic AI systems.",
     url: `${siteConfig.url}/about`,
+    siteName: siteConfig.name,
     type: "profile",
+    locale: "en_US",
     images: [
       {
         url: siteConfig.ogImage,
@@ -47,6 +49,13 @@ export const metadata: Metadata = {
         alt: `${siteConfig.name} - About Charles Mark`,
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About Charles Mark | ${siteConfig.name}`,
+    description:
+      "Applied AI & Forward Deployed Systems Engineer. Bridging robust backend infrastructure, cloud DevOps, and production agentic AI systems.",
+    images: [siteConfig.ogImage],
   },
 };
 

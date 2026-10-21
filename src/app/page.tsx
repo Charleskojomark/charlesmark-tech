@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { StickyBookCallBar } from "@/components/StickyBookCallBar";
 import { TrustStrip } from "@/components/TrustStrip";
@@ -11,6 +12,40 @@ import { SectionReveal } from "@/components/SectionReveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ThreeBackgroundCanvas } from "@/components/ThreeBackgroundCanvas";
 import { FreeAuditTeaser } from "@/components/FreeAuditTeaser";
+import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "Charles Mark | Business Solutions Architect & Applied AI Engineer",
+  description:
+    "I engineer AI automations, agentic systems, and cloud backends that eliminate operational bottlenecks and scale business revenue. FAANG-trained systems engineer.",
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  openGraph: {
+    title: "Charles Mark | Business Solutions Architect & Applied AI Engineer",
+    description:
+      "I engineer AI automations, agentic systems, and cloud backends that eliminate operational bottlenecks and scale business revenue. FAANG-trained systems engineer.",
+    url: siteConfig.url,
+    siteName: `${siteConfig.name} Platform`,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: `${siteConfig.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Charles Mark - Business Solutions Architect & Applied AI Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Charles Mark | Business Solutions Architect & Applied AI Engineer",
+    description:
+      "I engineer AI automations, agentic systems, and cloud backends that eliminate operational bottlenecks and scale business revenue.",
+    images: [`${siteConfig.url}/opengraph-image`],
+  },
+};
 
 export default function HomePage() {
   return (

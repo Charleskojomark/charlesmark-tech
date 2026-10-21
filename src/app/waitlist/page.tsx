@@ -5,11 +5,32 @@ export const metadata: Metadata = {
   title: "Join the Waitlist | 3D Story-Based Virtual AI Learning",
   description:
     "Master artificial intelligence in an interactive 3D virtual world. Solve narrative engineering quests, explore neural spaces, and build intelligent systems. Join the closed beta waitlist today.",
+  alternates: {
+    canonical: "https://charlesmark.tech/waitlist",
+  },
   openGraph: {
     title: "Join the Waitlist | 3D Story-Based Virtual AI Learning",
     description:
-      "Master artificial intelligence in an interactive 3D virtual world. Solve narrative engineering quests, explore neural spaces, and build intelligent systems.",
-    url: "https://www.charlesmark.tech/waitlist",
+      "Master artificial intelligence in an interactive 3D virtual world. Solve narrative engineering quests, explore neural spaces, and build intelligent systems. Reserve your closed beta spot.",
+    url: "https://charlesmark.tech/waitlist",
+    siteName: "Charles Mark | 3D Virtual AI Learning",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "https://charlesmark.tech/waitlist/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "3D Story-Based Virtual AI Learning Waitlist",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Join the Waitlist | 3D Story-Based Virtual AI Learning",
+    description:
+      "Master artificial intelligence in an interactive 3D virtual world. Solve narrative engineering quests and build intelligent systems.",
+    images: ["https://charlesmark.tech/waitlist/opengraph-image"],
   },
 };
 

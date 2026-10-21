@@ -7,11 +7,32 @@ export const metadata: Metadata = {
   title: "Free 15-Minute Async AI & Architecture Audit | Charles Mark",
   description:
     "Submit your business bottleneck and receive a private, custom 1-page architecture teardown or 10-minute video mapping the exact tools, stack, and cost breakdown to solve it. 100% free, zero obligation.",
+  alternates: {
+    canonical: "https://charlesmark.tech/audit",
+  },
   openGraph: {
     title: "Free 15-Minute Async AI & Architecture Audit | Charles Mark",
     description:
       "Submit your business bottleneck and receive a private, custom 1-page architecture teardown or 10-minute video mapping the exact tools, stack, and cost breakdown to solve it.",
-    url: "https://www.charlesmark.tech/audit",
+    url: "https://charlesmark.tech/audit",
+    siteName: "Charles Mark Platform",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "https://charlesmark.tech/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Free 15-Minute AI & Architecture Audit - Charles Mark",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free 15-Minute Async AI & Architecture Audit | Charles Mark",
+    description:
+      "Submit your business bottleneck and receive a custom 1-page architecture teardown and cost breakdown. 100% free.",
+    images: ["https://charlesmark.tech/opengraph-image"],
   },
 };
 
