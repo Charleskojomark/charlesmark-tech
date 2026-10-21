@@ -91,6 +91,28 @@ export async function POST(request: Request) {
       console.error("[WAITLIST_DATABASE_ERROR]:", dbErr);
     }
 
+    // Query total count and recent signups to include in owner notification
+    let totalCount = 1;
+    let allMembers: { name?: string | null; email: string; created_at: string | Date }[] = [];
+
+    try {
+      const countRes = await query(
+        "SELECT COUNT(*)::int AS count FROM public.waitlist;"
+      );
+      if (countRes && countRes.rows && countRes.rows[0]) {
+        totalCount = countRes.rows[0].count;
+      }
+
+      const membersRes = await query(
+        "SELECT name, email, created_at FROM public.waitlist ORDER BY created_at DESC LIMIT 50;"
+      );
+      if (membersRes && membersRes.rows) {
+        allMembers = membersRes.rows;
+      }
+    } catch (countErr) {
+      console.error("[WAITLIST_COUNT_ERROR]:", countErr);
+    }
+
     // 2. Dispatch emails via Resend exclusively
     const resendApiKey = process.env.RESEND_API_KEY;
     const ownerEmailAddress = "markcharleskojo@gmail.com";
@@ -109,7 +131,9 @@ export async function POST(request: Request) {
       cleanName,
       cleanEmail,
       cleanInterests,
-      timestamp
+      timestamp,
+      totalCount,
+      allMembers
     );
 
     let subscriberDelivery = "pending";

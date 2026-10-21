@@ -4,6 +4,12 @@
  * No database strings or sensitive internal infrastructure exposed.
  */
 
+export interface WaitlistMemberSummary {
+  name?: string | null;
+  email: string;
+  created_at: string | Date;
+}
+
 export function renderSubscriberWaitlistEmail(name: string, email: string) {
   const displayName = name && name.trim() ? name.trim() : "there";
   const subject = "✨ You're on the waitlist | 3D Story-Based Virtual AI Learning";
@@ -77,21 +83,23 @@ export function renderSubscriberWaitlistEmail(name: string, email: string) {
                 </table>
               </div>
 
-              <p style="margin: 0 0 24px 0;">
+              <p style="margin: 0 0 20px 0;">
                 Have questions, ideas, or feedback on what you would love to see inside the virtual learning world? Feel free to connect with Charles directly:
               </p>
 
-              <!-- CTA Buttons -->
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 0 24px 0;">
+              <!-- CTA Buttons: Full-width stacked buttons for perfect mobile display -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin: 0 0 28px 0;">
                 <tr>
-                  <td style="padding-right: 12px;">
-                    <a href="https://wa.me/2347082367382?text=Hi%20Charles%2C%20I%20just%20joined%20the%203D%20AI%20learning%20waitlist%21" target="_blank" style="display: inline-block; background-color: #25D366; color: #FFFFFF; font-size: 12px; font-weight: 700; text-decoration: none; padding: 12px 20px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                  <td style="padding-bottom: 12px;">
+                    <a href="https://wa.me/2347082367382?text=Hi%20Charles%2C%20I%20just%20joined%20the%203D%20AI%20learning%20waitlist%21" target="_blank" style="display: block; width: 100%; box-sizing: border-box; text-align: center; background-color: #25D366; color: #FFFFFF; font-size: 13px; font-weight: 700; text-decoration: none; padding: 14px 20px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
                       Connect on WhatsApp &rarr;
                     </a>
                   </td>
+                </tr>
+                <tr>
                   <td>
-                    <a href="https://charlesmark.tech" target="_blank" style="display: inline-block; background-color: #241A15; border: 1px solid #4A3428; color: #F5F0E8; font-size: 12px; font-weight: 700; text-decoration: none; padding: 12px 20px; border-radius: 10px; text-transform: uppercase; letter-spacing: 1px;">
-                      Visit Platform
+                    <a href="https://charlesmark.tech" target="_blank" style="display: block; width: 100%; box-sizing: border-box; text-align: center; background-color: #241A15; border: 1px solid #4A3428; color: #F5F0E8; font-size: 13px; font-weight: 700; text-decoration: none; padding: 13px 20px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+                      Visit Platform &rarr;
                     </a>
                   </td>
                 </tr>
@@ -151,10 +159,62 @@ export function renderOwnerWaitlistNotification(
   name: string,
   email: string,
   interests: string,
-  timestamp: string
+  timestamp: string,
+  totalCount: number,
+  allMembers: WaitlistMemberSummary[] = []
 ) {
   const displayName = name && name.trim() ? name.trim() : "Not provided";
-  const subject = `🚀 New Waitlist Signup: ${name && name.trim() ? name.trim() : email}`;
+  const subject = `🚀 New Waitlist Signup (#${totalCount}): ${name && name.trim() ? name.trim() : email}`;
+
+  // Format members rows
+  const memberRowsHtml =
+    allMembers.length > 0
+      ? allMembers
+          .map((m, idx) => {
+            const mName = m.name && m.name.trim() ? m.name.trim() : "Subscriber";
+            const joinedDate = new Date(m.created_at).toLocaleString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "UTC",
+            }) + " UTC";
+
+            return `
+            <tr style="border-bottom: 1px solid #33241C;">
+              <td style="padding: 10px 12px; color: #B58A64; font-family: monospace; font-size: 11px;">#${allMembers.length - idx}</td>
+              <td style="padding: 10px 12px; color: #FFFFFF;">
+                <strong>${mName}</strong><br>
+                <span style="color: #D8C5AF; font-size: 11px;">${m.email}</span>
+              </td>
+              <td align="right" style="padding: 10px 12px; color: #D8C5AF; font-size: 11px; white-space: nowrap;">
+                ${joinedDate}
+              </td>
+            </tr>
+          `;
+          })
+          .join("")
+      : `
+        <tr>
+          <td colspan="3" style="padding: 12px; text-align: center; color: #D8C5AF;">
+            ${displayName} (${email}) joined at ${timestamp}
+          </td>
+        </tr>
+      `;
+
+  const memberListText =
+    allMembers.length > 0
+      ? allMembers
+          .map((m, idx) => {
+            const mName = m.name && m.name.trim() ? m.name.trim() : "Subscriber";
+            const joinedDate = new Date(m.created_at).toLocaleString("en-US", {
+              timeZone: "UTC",
+            });
+            return `${allMembers.length - idx}. ${mName} (${m.email}) - Joined: ${joinedDate} UTC`;
+          })
+          .join("\n")
+      : `${displayName} (${email}) - Joined: ${timestamp}`;
 
   const html = `
 <!DOCTYPE html>
@@ -168,25 +228,40 @@ export function renderOwnerWaitlistNotification(
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #0f0a07; padding: 24px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 540px; background-color: #1A120E; border: 1px solid #4A3428; border-radius: 16px; overflow: hidden;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 580px; background-color: #1A120E; border: 1px solid #4A3428; border-radius: 16px; overflow: hidden;">
           <tr>
             <td style="height: 4px; background: #B58A64;"></td>
           </tr>
           <tr>
             <td style="padding: 24px 28px 16px 28px;">
               <span style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #B58A64; letter-spacing: 1.5px; text-transform: uppercase;">
-                WAITLIST NOTIFICATION
+                WAITLIST UPDATE • CHARLES MARK
               </span>
               <h2 style="margin: 8px 0 0 0; font-size: 20px; font-weight: 700; color: #FFFFFF;">
-                New Subscriber Joined
+                New Waitlist Subscriber Joined
               </h2>
+
+              <!-- Big Total Milestone Box -->
+              <div style="background-color: #241A15; border: 1px solid #B58A64; border-radius: 12px; padding: 16px 20px; margin: 18px 0 12px 0; text-align: center;">
+                <span style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #B58A64; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 4px;">
+                  TOTAL MEMBERS ON WAITLIST
+                </span>
+                <span style="font-size: 34px; font-weight: 800; color: #FFFFFF; letter-spacing: -0.5px;">
+                  ${totalCount}
+                </span>
+              </div>
             </td>
           </tr>
+
           <tr>
             <td style="padding: 0 28px 24px 28px; font-size: 13px; color: #D8C5AF; line-height: 1.6;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #241A15; border: 1px solid #4A3428; border-radius: 10px; margin: 12px 0 20px 0;">
+              <!-- Latest Subscriber Card -->
+              <span style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #B58A64; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+                LATEST APPLICANT DETAILS
+              </span>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #241A15; border: 1px solid #4A3428; border-radius: 10px; margin-bottom: 24px;">
                 <tr>
-                  <td style="padding: 12px 16px; border-bottom: 1px solid #33241C; font-weight: 600; color: #B58A64; width: 100px;">Applicant:</td>
+                  <td style="padding: 12px 16px; border-bottom: 1px solid #33241C; font-weight: 600; color: #B58A64; width: 110px;">Applicant:</td>
                   <td style="padding: 12px 16px; border-bottom: 1px solid #33241C; color: #FFFFFF; font-weight: 600;">${displayName}</td>
                 </tr>
                 <tr>
@@ -200,20 +275,35 @@ export function renderOwnerWaitlistNotification(
                   <td style="padding: 12px 16px; border-bottom: 1px solid #33241C; color: #D8C5AF;">${interests || "3D Story-Based Virtual AI Learning"}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 12px 16px; font-weight: 600; color: #B58A64;">Timestamp:</td>
-                  <td style="padding: 12px 16px; color: #D8C5AF;">${timestamp}</td>
+                  <td style="padding: 12px 16px; font-weight: 600; color: #B58A64;">When Joined:</td>
+                  <td style="padding: 12px 16px; color: #FFFFFF; font-weight: 600;">${timestamp}</td>
                 </tr>
               </table>
 
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+              <!-- Reply Action Button -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 24px;">
                 <tr>
                   <td>
-                    <a href="mailto:${email}?subject=Welcome%20to%20the%203D%20AI%20Learning%20Waitlist" style="display: inline-block; background-color: #B58A64; color: #150F0B; font-size: 11px; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 8px; text-transform: uppercase; letter-spacing: 1px;">
-                      Reply to ${displayName}
+                    <a href="mailto:${email}?subject=Welcome%20to%20the%203D%20AI%20Learning%20Waitlist" style="display: inline-block; background-color: #B58A64; color: #150F0B; font-size: 12px; font-weight: 700; text-decoration: none; padding: 12px 22px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                      Reply to ${displayName} &rarr;
                     </a>
                   </td>
                 </tr>
               </table>
+
+              <!-- All Waitlist Members List -->
+              <span style="font-family: 'Courier New', Courier, monospace; font-size: 11px; font-weight: 700; color: #B58A64; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+                ALL WAITLIST MEMBERS &amp; WHEN THEY JOINED (${totalCount})
+              </span>
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #241A15; border: 1px solid #4A3428; border-radius: 10px; overflow: hidden; font-size: 12px;">
+                <tr style="background-color: #140D09; border-bottom: 1px solid #33241C;">
+                  <th align="left" style="padding: 10px 12px; color: #B58A64; font-weight: 700;">#</th>
+                  <th align="left" style="padding: 10px 12px; color: #B58A64; font-weight: 700;">Applicant</th>
+                  <th align="right" style="padding: 10px 12px; color: #B58A64; font-weight: 700;">Joined When</th>
+                </tr>
+                ${memberRowsHtml}
+              </table>
+
             </td>
           </tr>
         </table>
@@ -225,12 +315,18 @@ export function renderOwnerWaitlistNotification(
   `.trim();
 
   const text = `
-NEW WAITLIST SIGNUP
-====================
+NEW WAITLIST SIGNUP (#${totalCount})
+====================================
+Total On Waitlist: ${totalCount}
+
+LATEST APPLICANT:
 Name: ${displayName}
 Email: ${email}
 Interest: ${interests || "3D Story-Based Virtual AI Learning"}
-Timestamp: ${timestamp}
+When Joined: ${timestamp}
+
+ALL MEMBERS ON WAITLIST:
+${memberListText}
 
 Reply directly: mailto:${email}
   `.trim();
