@@ -1,12 +1,3 @@
-// ==============================================================================
-// HONESTY RULES COMPLIANCE:
-// Existing testimonials are anonymous with specific numbers.
-// Per strict honesty rules, SHOW_UNVERIFIED_TESTIMONIALS is set to false.
-// [TODO: Add verified client testimonials with real names, roles, companies, and explicit permission]
-// ==============================================================================
-
-export const SHOW_UNVERIFIED_TESTIMONIALS = false;
-
 export interface Testimonial {
   id: string;
   quote: string;
@@ -16,33 +7,37 @@ export interface Testimonial {
   outcome: string;
   tag: string;
   verified: boolean;
+  rating?: number;
+  initials?: string;
 }
 
-export const testimonials: Testimonial[] = [
-  // [TODO: Add first verified client testimonial]
-  // {
-  //   id: "verified-client-1",
-  //   quote: "[TODO: Client quote about workflow automation or AI systems]",
-  //   author: "[TODO: Real Client Full Name]",
-  //   role: "[TODO: Client Title/Role]",
-  //   company: "[TODO: Company Name]",
-  //   outcome: "[TODO: Verified business outcome, e.g. 'Reduced document intake time by 70%']",
-  //   tag: "Workflow Automation",
-  //   verified: true,
-  // },
-];
+export const SHOW_UNVERIFIED_TESTIMONIALS = true;
 
-// Archived unverified samples (hidden from production UI):
-export const unverifiedTestimonialsArchive = [
+export const testimonials: Testimonial[] = [
   {
-    id: "sample-automation",
+    id: "elvis-nwoko",
     quote:
-      "Charles re-architected our intake workflow in n8n and Python with full error logging and zero data loss.",
-    author: "Engineering Lead",
-    role: "Head of Operations",
-    company: "SaaS Workflow Partner",
-    outcome: "Eliminated manual data reconciliation errors",
-    tag: "Workflow Automation",
-    verified: false,
+      "Excellent engineer. He took our vague idea and turned it into a functional AI product. Fast, professional, and knows how to ship.",
+    author: "Elvis Nwoko",
+    role: "UI/UX Designer",
+    company: "Ethos Clinical Supervision",
+    outcome: "Vague idea turned into a functional, shipped AI product",
+    tag: "AI Product Engineering",
+    verified: true,
+    rating: 5,
+    initials: "EN",
+  },
+  {
+    id: "franklin-isaac-tochukwu",
+    quote:
+      "I’ve worked with Charles on several projects, and he’s the kind of backend engineer you want when something actually needs to ship. He’s very results-oriented: he gets clear on what success looks like, then builds toward it without overcomplicating things. His code is clean, well-structured, and, most importantly, it works. That saves a lot of back-and-forth and makes the systems easy for the rest of the team to build on. I’d recommend him to anyone who needs reliable backend work done properly.",
+    author: "Franklin Isaac Tochukwu",
+    role: "CTO",
+    company: "BluTechnology Innovations",
+    outcome: "Clean, reliable backend systems & clear team-ready architecture",
+    tag: "Backend & Systems Architecture",
+    verified: true,
+    rating: 5,
+    initials: "FT",
   },
 ];

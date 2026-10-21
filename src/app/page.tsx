@@ -4,6 +4,7 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { SolutionsEngine } from "@/components/SolutionsEngine";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowIWork } from "@/components/HowIWork";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactCTA } from "@/components/ContactCTA";
 import { SectionReveal } from "@/components/SectionReveal";
@@ -50,6 +51,11 @@ export default function HomePage() {
       {/* 4. How I work: From Diagnostic Call to Production Deployment */}
       <SectionReveal className="relative z-10">
         <HowIWork />
+      </SectionReveal>
+
+      {/* Verified Client & Partner Reviews Continuous Slide */}
+      <SectionReveal className="relative z-10">
+        <ReviewsSection />
       </SectionReveal>
 
       {/* 5. Free 15-Minute Async AI & Automation Architecture Audit / Shareable Waitlist */}

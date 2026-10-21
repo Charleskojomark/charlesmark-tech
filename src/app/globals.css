@@ -216,8 +216,26 @@ code, pre, .font-mono {
   }
 }
 
-.animate-portrait-ring {
-  animation: ringPulse 3.5s ease-in-out infinite;
+/* Infinite horizontal continuous slide marquee */
+@keyframes marqueeSlide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeSlide 42s linear infinite;
+  will-change: transform;
+}
+
+.pause-marquee:hover,
+.pause-marquee:focus-within {
+  animation-play-state: paused;
 }
 
 /* Respect reduced motion preference */
@@ -229,3 +247,4 @@ code, pre, .font-mono {
     scroll-behavior: auto !important;
   }
 }
+
