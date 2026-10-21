@@ -52,9 +52,9 @@ export function AILearningWaitlistSection() {
     <section
       id="waitlist"
       aria-label="3D AI Learning Waitlist"
-      className="py-12 sm:py-20 text-[#F5F0E8] relative"
+      className="py-0 text-[#F5F0E8] relative w-full"
     >
-      <div className="max-w-xl mx-auto px-4 sm:px-6">
+      <div className="w-full">
         <div className="p-6 sm:p-10 rounded-3xl bg-[#1C1410] border border-[#B58A64]/40 shadow-2xl relative overflow-hidden">
           
           {submitted ? (

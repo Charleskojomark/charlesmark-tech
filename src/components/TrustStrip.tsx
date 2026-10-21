@@ -133,7 +133,7 @@ export function TrustStrip() {
   return (
     <section
       aria-label="Core Engineering Disciplines"
-      className="w-full border-y border-[#D8C5AF]/70 bg-[#FAF7F2] py-5 sm:py-7 my-3 sm:my-6 transition-all duration-300"
+      className="w-full border-y border-[#D8C5AF]/70 bg-[#FAF7F2] py-5 sm:py-7 mb-3 sm:mb-6 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">

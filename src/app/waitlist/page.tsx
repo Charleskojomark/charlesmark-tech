@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft, Sparkles } from "lucide-react";
 import { AILearningWaitlistSection } from "@/components/AILearningWaitlistSection";
 
 export const metadata: Metadata = {
@@ -17,22 +15,10 @@ export const metadata: Metadata = {
 
 export default function WaitlistPage() {
   return (
-    <div className="min-h-screen bg-[#150F0B] text-[#F5F0E8] pt-24 pb-16">
-      {/* Top Breadcrumb / Return to Site Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#241A15] border border-[#B58A64]/40 hover:border-[#B58A64] text-[#D8C5AF] hover:text-[#F5F0E8] font-mono text-xs transition-colors shadow-sm"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Charles Mark Engineering</span>
-        </Link>
-      </div>
-
-      {/* Main Waitlist Experience */}
-      <main>
+    <div className="min-h-[calc(100vh-64px)] sm:min-h-[calc(100vh-80px)] bg-[#150F0B] text-[#F5F0E8] flex items-center justify-center py-4 px-4 sm:px-6">
+      <div className="w-full max-w-xl">
         <AILearningWaitlistSection />
-      </main>
+      </div>
     </div>
   );
 }

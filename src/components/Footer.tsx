@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { WhatsAppIcon, LinkedInIcon } from "@/components/icons/BrandIcons";
@@ -10,8 +11,15 @@ import { WhatsAppIcon, LinkedInIcon } from "@/components/icons/BrandIcons";
 const CURRENT_YEAR = 2026;
 
 export function Footer() {
+  const pathname = usePathname();
+
+  // The waitlist page is a dedicated, focused dark screen; do not render the light footer on it
+  if (pathname === "/waitlist") {
+    return null;
+  }
+
   return (
-    <footer className="bg-[#FAF7F2] border-t border-[#D8C5AF]/70 text-[#241A15] pt-16 pb-12 mt-20">
+    <footer className="bg-[#FAF7F2] border-t border-[#D8C5AF]/70 text-[#241A15] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-[#D8C5AF]/60">
           {/* Brand Column */}
