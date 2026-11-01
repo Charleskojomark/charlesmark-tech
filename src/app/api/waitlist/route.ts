@@ -183,7 +183,7 @@ export async function POST(request: Request) {
 
     // 2. Dispatch emails via Resend exclusively
     const resendApiKey = process.env.RESEND_API_KEY;
-    const ownerEmailAddress = "markcharleskojo@gmail.com";
+    const ownerEmailAddress = "hello@charlesmark.tech";
 
     const timestamp =
       new Date().toLocaleString("en-US", {
@@ -235,7 +235,7 @@ export async function POST(request: Request) {
         subscriberDelivery = "skipped_no_email";
       }
 
-      // Email B: Notification to Owner (markcharleskojo@gmail.com) upon every fill
+      // Email B: Notification to Owner (hello@charlesmark.tech) upon every fill
       try {
         const ownerTemplate = renderOwnerWaitlistNotification(
           finalName,
@@ -281,7 +281,7 @@ export async function POST(request: Request) {
       await query(`
         CREATE TABLE IF NOT EXISTS public.waitlist_email_log (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-          recipient TEXT NOT NULL DEFAULT 'markcharleskojo@gmail.com',
+          recipient TEXT NOT NULL DEFAULT 'hello@charlesmark.tech',
           signup_email TEXT,
           signup_name TEXT,
           interests TEXT,

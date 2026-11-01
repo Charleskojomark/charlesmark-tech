@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import {
   Cpu,
   Server,
@@ -93,12 +94,17 @@ const DISCIPLINE_DETAILS: Record<
 
 export function TrustStrip() {
   const [selectedDiscipline, setSelectedDiscipline] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
 
   const activeDetail = selectedDiscipline ? DISCIPLINE_DETAILS[selectedDiscipline] : null;
   const activeItem = selectedDiscipline ? DISCIPLINES.find((d) => d.label === selectedDiscipline) : null;
 
-  // Listen for Escape key and clicks outside to dismiss floating dialog (without locking scroll or darkening screen)
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Listen for Escape key to dismiss dialog and lock background scroll
   useEffect(() => {
     if (!selectedDiscipline) return;
 
@@ -108,25 +114,15 @@ export function TrustStrip() {
       }
     };
 
-    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-      // If clicking inside the floating dialog, ignore
-      if (dialogRef.current?.contains(target)) return;
-      // If clicking one of the discipline trigger buttons, let its onClick handle toggle/switch
-      if (target.closest("[data-discipline-trigger]")) return;
-      // Otherwise close the floating dialog
-      setSelectedDiscipline(null);
-    };
+    // Lock background scroll while dialog is open to allow clean modal scrolling
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     window.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside, { passive: true });
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
+      document.body.style.overflow = originalOverflow;
     };
   }, [selectedDiscipline]);
 
@@ -215,20 +211,22 @@ export function TrustStrip() {
           </div>
         </div>
 
-        {/* Compact Floating Dialog: Non-blocking, no dark full-screen backdrop, no scroll lock */}
-        {activeDetail && activeItem && (
+        {/* Specification Modal Preview via Portal to avoid stacking context clipping */}
+        {mounted && activeDetail && activeItem && createPortal(
           <div
-            className="fixed inset-x-0 top-[70px] bottom-[86px] sm:top-24 sm:bottom-8 z-[110] pointer-events-none flex items-center justify-center px-3 sm:px-5"
-            role="region"
-            aria-label="Discipline Specification Preview"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-5 bg-black/75 backdrop-blur-xs overflow-y-auto animate-in fade-in duration-150"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="discipline-modal-title"
+            onClick={() => setSelectedDiscipline(null)}
           >
             <div
               ref={dialogRef}
-              className="pointer-events-auto relative w-full max-w-lg bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/50 rounded-2xl shadow-2xl shadow-black/90 ring-1 ring-[#B58A64]/20 p-4 sm:p-5 my-auto max-h-full overflow-y-auto overscroll-contain animate-in zoom-in-95 fade-in duration-150"
+              className="relative w-full max-w-lg bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/60 rounded-2xl shadow-2xl shadow-black ring-1 ring-[#B58A64]/30 my-auto flex flex-col max-h-[90vh] sm:max-h-[85vh] overflow-hidden animate-in zoom-in-95 duration-150"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Floating Dialog Top Header: sticky so title & close button are always visible */}
-              <div className="sticky -top-4 -mx-4 px-4 pt-1 pb-3 sm:-top-5 sm:-mx-5 sm:px-5 sm:pt-1 bg-[#1C1410] z-20 flex items-start justify-between gap-3 border-b border-[#4A3428]/80">
+              {/* Modal Header: Sticky at top */}
+              <div className="flex items-start justify-between gap-3 px-4 py-3.5 sm:px-5 sm:py-4 bg-[#1C1410] border-b border-[#4A3428]/80 flex-shrink-0">
                 <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-xl bg-[#B58A64] text-[#150F0B] flex items-center justify-center flex-shrink-0 shadow-md">
                     <activeItem.icon className="w-4 h-4" />
@@ -261,8 +259,8 @@ export function TrustStrip() {
                 </button>
               </div>
 
-              {/* Dialog Content Sections */}
-              <div className="space-y-3.5 pt-3">
+              {/* Modal Scrollable Body */}
+              <div className="p-4 sm:p-5 space-y-4 overflow-y-auto flex-1 overscroll-contain dark-dialog-scroll">
                 {/* 1. Core Architectural Deliverables */}
                 <div>
                   <span className="font-mono text-[10px] font-bold text-[#B58A64] uppercase tracking-wider block mb-1.5">
@@ -309,14 +307,14 @@ export function TrustStrip() {
                 </div>
 
                 {/* Action Buttons: 50/50 Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-[#4A3428]/80">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-[#4A3428]/80">
                   <a
                     href={`https://wa.me/2347082367382?text=${encodeURIComponent(
                       activeDetail.whatsappMessage
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[40px]"
+                    className="inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[42px]"
                   >
                     <WhatsAppIcon className="w-3.5 h-3.5 fill-current flex-shrink-0" />
                     <span>WhatsApp</span>
@@ -327,7 +325,7 @@ export function TrustStrip() {
                     href={siteConfig.booking.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[40px]"
+                    className="inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap min-h-[42px]"
                   >
                     <Calendar className="w-3.5 h-3.5 text-[#B58A64] flex-shrink-0" />
                     <span>Kickoff Call</span>
@@ -342,7 +340,8 @@ export function TrustStrip() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </section>

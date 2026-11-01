@@ -55,7 +55,7 @@ export const siteConfig = {
   contact: {
     phone: "+2347082367382",
     phoneDisplay: "+234 708 236 7382",
-    email: "markcharleskojo@gmail.com",
+    email: "hello@charlesmark.tech",
     whatsappUrl: "https://wa.me/2347082367382?text=Hi%20Charles%2C%20I'd%20like%20to%20discuss%20an%20AI%20automation%2C%20backend%2C%20or%20agentic%20project",
     getWhatsappUrlForService: (serviceName?: string) => {
       const text = serviceName
@@ -63,7 +63,7 @@ export const siteConfig = {
         : "Hi Charles, I'd like to discuss an AI automation, backend, or agentic project.";
       return `https://wa.me/2347082367382?text=${encodeURIComponent(text)}`;
     },
-    fallbackMailto: "mailto:markcharleskojo@gmail.com?subject=Project%20Inquiry%20-%20AI%20Automation%20%26%20Backend%20Systems",
+    fallbackMailto: "mailto:hello@charlesmark.tech?subject=Project%20Inquiry%20-%20AI%20Automation%20%26%20Backend%20Systems",
     turnaround: "Fast response within 24 hours • Direct WhatsApp or booking",
   },
 };

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import {
   Award,
@@ -27,6 +28,31 @@ export function CertificationsSection() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [activeModalCert, setActiveModalCert] = useState<Certification | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Lock scroll and handle escape key for certificate modal
+  useEffect(() => {
+    if (!activeModalCert) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveModalCert(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [activeModalCert]);
 
   const filteredCerts =
     selectedCategory === "All"
@@ -261,12 +287,12 @@ export function CertificationsSection() {
         </div>
       </div>
 
-      {/* Full-Screen Certificate Modal Preview */}
-      {activeModalCert && (
+      {/* Full-Screen Certificate Modal Preview via Portal */}
+      {mounted && activeModalCert && createPortal(
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6"
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-6"
           onClick={() => setActiveModalCert(null)}
         >
           <div
@@ -321,7 +347,8 @@ export function CertificationsSection() {
               </a>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );

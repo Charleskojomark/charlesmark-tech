@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     // Check for optional configured email notification API (Resend via fetch)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail =
-      process.env.CONTACT_EMAIL || "kcharlesmark@gmail.com";
+      process.env.CONTACT_EMAIL || "hello@charlesmark.tech";
 
     if (resendApiKey) {
       // In production with Resend API key configured:
@@ -83,7 +83,7 @@ Origin: charlesmark.tech
           {
             success: false,
             message:
-              "We encountered an issue submitting your inquiry. Please reach out directly on WhatsApp or email markcharleskojo@gmail.com.",
+              "We encountered an issue submitting your inquiry. Please reach out directly on WhatsApp or email hello@charlesmark.tech.",
           },
           { status: 500 }
         );
@@ -133,7 +133,7 @@ Origin: charlesmark.tech
       {
         success: false,
         message:
-          "An unexpected server error occurred. Please contact Charles directly via markcharleskojo@gmail.com or WhatsApp.",
+          "An unexpected server error occurred. Please contact Charles directly via hello@charlesmark.tech or WhatsApp.",
       },
       { status: 500 }
     );
