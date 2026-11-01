@@ -178,7 +178,7 @@ export function CertificationsSection() {
                   </div>
 
                   {/* Card Body */}
-                  <div className="p-6 pb-4">
+                  <div className="p-4 sm:p-6 pb-3 sm:pb-4">
                     {/* Header: Issuer Badge + Direct Verification Link */}
                     <div className="flex items-center justify-between gap-3 mb-3.5">
                       <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#241A15] text-[#F5F0E8] border border-[#4A3428]">
@@ -207,12 +207,12 @@ export function CertificationsSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display font-bold text-lg text-[#241A15] leading-snug tracking-tight mb-2">
+                    <h3 className="font-display font-bold text-base sm:text-lg text-[#241A15] leading-snug tracking-tight mb-2">
                       {cert.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs text-[#4A3428] leading-relaxed mb-4">
+                    <p className="text-xs text-[#4A3428] leading-relaxed mb-4 text-pretty">
                       {cert.description}
                     </p>
 
@@ -231,7 +231,7 @@ export function CertificationsSection() {
                 </div>
 
                 {/* Card Footer: Metadata & Verification Button */}
-                <div className="p-6 pt-3 border-t border-[#D8C5AF]/60 space-y-3 bg-[#FAF7F2]">
+                <div className="p-4 sm:p-6 pt-3 border-t border-[#D8C5AF]/60 space-y-3 bg-[#FAF7F2]">
                   <div className="flex items-center justify-between text-[11px] font-mono text-[#4A3428]">
                     <span>Issued: <strong className="text-[#241A15]">{cert.issueDate}</strong></span>
 
@@ -332,15 +332,15 @@ export function CertificationsSection() {
             </div>
 
             {/* Modal Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 sm:px-6 bg-[#FAF7F2] border-t border-[#D8C5AF]">
-              <span className="font-mono text-xs text-[#4A3428]">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-4 sm:px-6 bg-[#FAF7F2] border-t border-[#D8C5AF]">
+              <span className="font-mono text-xs text-[#4A3428] truncate">
                 Credential ID: <strong className="text-[#241A15]">{activeModalCert.credentialId}</strong>
               </span>
               <a
                 href={activeModalCert.verificationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#241A15] hover:bg-[#38261D] text-[#FAF7F2] font-mono text-xs font-bold uppercase tracking-wider transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#241A15] hover:bg-[#38261D] text-[#FAF7F2] font-mono text-xs font-bold uppercase tracking-wider transition-all"
               >
                 <span>Verify Live Certificate</span>
                 <ExternalLink className="w-4 h-4 text-[#B58A64]" />

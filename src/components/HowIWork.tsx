@@ -95,10 +95,10 @@ export function HowIWork() {
           <span className="font-mono text-xs text-[#4A3428]/80 uppercase tracking-widest font-semibold block mb-2">
             ENGINEERING METHODOLOGY
           </span>
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-[#241A15] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-[#241A15] tracking-tight text-balance break-words">
             HOW I WORK: FROM PROBLEM TO PRODUCTION
           </h2>
-          <p className="text-xs sm:text-sm text-[#4A3428] mt-2 sm:mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4A3428] mt-2 sm:mt-3 leading-relaxed text-pretty">
             A disciplined, step-by-step engineering process designed to eliminate ambiguity, guarantee reliability, and ensure long-term maintainability.
           </p>
         </div>
@@ -110,7 +110,7 @@ export function HowIWork() {
             return (
               <div
                 key={step.step}
-                className="flex flex-col justify-between p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                className="flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
@@ -134,12 +134,12 @@ export function HowIWork() {
         </div>
 
         {/* Action Conversion Footer */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <span className="font-display font-bold text-sm sm:text-base text-[#241A15] block">
+        <div className="p-4 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="space-y-1 min-w-0">
+            <span className="font-display font-bold text-sm sm:text-base text-[#241A15] block text-balance">
               Ready to take your business systems from problem to production?
             </span>
-            <span className="text-xs text-[#4A3428] font-mono">
+            <span className="text-xs text-[#4A3428] font-mono block text-pretty">
               Schedule a technical kickoff call or message Charles directly.
             </span>
           </div>

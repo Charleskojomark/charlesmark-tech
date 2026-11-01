@@ -149,17 +149,17 @@ export function Footer() {
               {/* Email Direct Row */}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all"
+                className="group flex items-center justify-between p-2.5 rounded-xl bg-[#F5F0E8] border border-[#D8C5AF]/80 hover:border-[#4A3428] transition-all min-w-0"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#000000] flex items-center justify-center text-[11px] text-[#F5F0E8] font-mono">
+                <div className="flex items-center gap-3 min-w-0 mr-2">
+                  <div className="w-5 h-5 rounded-full bg-[#000000] flex items-center justify-center text-[11px] text-[#F5F0E8] font-mono shrink-0">
                     ✉
                   </div>
-                  <span className="font-mono text-xs font-semibold text-[#000000]">
+                  <span className="font-mono text-xs font-semibold text-[#000000] truncate">
                     {siteConfig.contact.email}
                   </span>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 text-[#4A3428]/60 group-hover:text-[#241A15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
               </a>
 
               {/* LinkedIn Row */}

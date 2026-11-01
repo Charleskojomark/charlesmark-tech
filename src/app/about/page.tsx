@@ -66,13 +66,13 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="py-12 md:py-20 bg-[#FAF7F2] text-[#241A15]">
+    <div className="py-8 sm:py-12 md:py-20 bg-[#FAF7F2] text-[#241A15] overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-mono text-[#4A3428] hover:text-[#B58A64] transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-mono text-[#4A3428] hover:text-[#B58A64] transition-colors group py-1 min-h-[36px]"
           >
             <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Home</span>
@@ -80,29 +80,29 @@ export default function AboutPage() {
         </div>
 
         {/* Hero Section */}
-        <header className="mb-16 border-b border-[#D8C5AF]/70 pb-12">
-          <div className="flex flex-col md:flex-row md:items-center gap-8">
-            <div className="relative size-32 sm:size-40 rounded-3xl overflow-hidden border-2 border-[#4A3428] shadow-lg shrink-0 bg-[#241A15]">
+        <header className="mb-12 sm:mb-16 border-b border-[#D8C5AF]/70 pb-8 sm:pb-12">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-6 sm:gap-8 text-center sm:text-left">
+            <div className="relative size-28 sm:size-36 md:size-40 rounded-3xl overflow-hidden border-2 border-[#4A3428] shadow-lg shrink-0 bg-[#241A15]">
               <Image
                 src="/charles-mark.png"
                 alt="Charles Mark - Applied AI & Forward Deployed Systems Engineer"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 640px) 128px, 160px"
+                sizes="(max-width: 640px) 112px, 160px"
                 priority
               />
             </div>
-            <div className="space-y-3">
+            <div className="space-y-3 min-w-0 flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#B58A64]/60">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="size-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-bold">
                   ABOUT CHARLES KOJO MARK
                 </span>
               </div>
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight leading-[1.15] text-balance">
+              <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#241A15] tracking-tight leading-[1.2] text-balance break-words">
                 From Backend Architecture & Cloud Infrastructure to Production Agentic AI Systems.
               </h1>
-              <p className="font-display text-base sm:text-lg text-[#4A3428] font-normal leading-relaxed max-w-2xl text-pretty border-l-2 border-[#B58A64] pl-4 italic">
+              <p className="font-display text-sm sm:text-base md:text-lg text-[#4A3428] font-normal leading-relaxed max-w-2xl text-pretty border-l-2 border-[#B58A64] pl-3 sm:pl-4 italic text-left">
                 &ldquo;I bridge high-throughput backend services, cloud DevOps pipelines, and autonomous agentic systems that run reliably in enterprise production.&rdquo;
               </p>
             </div>
@@ -110,8 +110,8 @@ export default function AboutPage() {
         </header>
 
         {/* The Evolution Story */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 mb-16 items-start">
-          <div className="lg:col-span-8 space-y-8 text-base text-[#38261D] leading-relaxed">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-14 sm:mb-16 items-start">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8 text-base text-[#38261D] leading-relaxed">
             {/* Visual Architecture Progression Stepper */}
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -127,96 +127,96 @@ export default function AboutPage() {
               {/* Responsive Visual Pipeline Pills */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-4 p-2 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF]">
                 <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/60 shadow-xs">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <Server className="size-4 text-[#B58A64] shrink-0" />
-                    <div>
+                    <div className="min-w-0">
                       <span className="font-mono text-[10px] text-[#4A3428]/60 uppercase tracking-wider block">Stage 01</span>
-                      <span className="font-display font-bold text-xs text-[#241A15]">Backend Systems</span>
+                      <span className="font-display font-bold text-xs text-[#241A15] truncate block">Backend Systems</span>
                     </div>
                   </div>
-                  <ArrowRight className="size-3.5 text-[#B58A64] hidden sm:block shrink-0" />
+                  <ArrowRight className="size-3.5 text-[#B58A64] hidden sm:block shrink-0 ml-1" />
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-xl bg-[#FAF7F2] border border-[#D8C5AF]/60 shadow-xs">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <Cloud className="size-4 text-[#B58A64] shrink-0" />
-                    <div>
+                    <div className="min-w-0">
                       <span className="font-mono text-[10px] text-[#4A3428]/60 uppercase tracking-wider block">Stage 02</span>
-                      <span className="font-display font-bold text-xs text-[#241A15]">Cloud & DevOps</span>
+                      <span className="font-display font-bold text-xs text-[#241A15] truncate block">Cloud & DevOps</span>
                     </div>
                   </div>
-                  <ArrowRight className="size-3.5 text-[#B58A64] hidden sm:block shrink-0" />
+                  <ArrowRight className="size-3.5 text-[#B58A64] hidden sm:block shrink-0 ml-1" />
                 </div>
 
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-xs">
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-xs min-w-0">
                   <Cpu className="size-4 text-[#B58A64] shrink-0" />
-                  <div>
+                  <div className="min-w-0">
                     <span className="font-mono text-[10px] text-[#B58A64] uppercase tracking-wider block">Stage 03</span>
-                    <span className="font-display font-bold text-xs text-[#F5F0E8]">Agentic AI Systems</span>
+                    <span className="font-display font-bold text-xs text-[#F5F0E8] truncate block">Agentic AI Systems</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Narrative Stage 1 */}
-            <div className="p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-[#FAF7F2] text-[#B58A64] border border-[#D8C5AF] font-mono text-[10px] font-bold uppercase">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-2 py-0.5 rounded bg-[#FAF7F2] text-[#B58A64] border border-[#D8C5AF] font-mono text-[10px] font-bold uppercase shrink-0">
                   Foundation
                 </span>
-                <h3 className="font-display font-bold text-lg text-[#241A15]">
+                <h3 className="font-display font-bold text-base sm:text-lg text-[#241A15] leading-snug">
                   1. The Backend Bedrock: High-Concurrency & Data Integrity
                 </h3>
               </div>
               <p className="text-sm text-[#4A3428] leading-relaxed text-pretty">
                 My foundation in software engineering was forged in <strong>backend systems</strong>. Before designing multi-agent workflows or vector retrieval architectures, I spent years mastering what keeps mission-critical servers alive: transactional database schemas, idempotent webhook consumers, connection pooling, and resilient API contracts in Node/TypeScript, Python/FastAPI, and Go.
               </p>
-              <p className="text-xs font-mono text-[#4A3428]/80 pt-1">
+              <p className="text-xs font-mono text-[#4A3428]/80 pt-1 break-words">
                 <strong className="text-[#241A15]">Key Capabilities:</strong> FastAPI, PostgreSQL, Redis Caching & Queues, Stripe/PayPal Webhook Idempotency, JWT/OAuth2 Auth.
               </p>
             </div>
 
             {/* Narrative Stage 2 */}
-            <div className="p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-[#FAF7F2] text-[#B58A64] border border-[#D8C5AF] font-mono text-[10px] font-bold uppercase">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-2 py-0.5 rounded bg-[#FAF7F2] text-[#B58A64] border border-[#D8C5AF] font-mono text-[10px] font-bold uppercase shrink-0">
                   Scale & Reliability
                 </span>
-                <h3 className="font-display font-bold text-lg text-[#241A15]">
+                <h3 className="font-display font-bold text-base sm:text-lg text-[#241A15] leading-snug">
                   2. Cloud Infrastructure & DevOps Discipline
                 </h3>
               </div>
               <p className="text-sm text-[#4A3428] leading-relaxed text-pretty">
                 As systems scale, code cannot survive without <strong>cloud infrastructure and DevOps discipline</strong>. I expanded deeply into container orchestration (Docker, Kubernetes), automated CI/CD pipelines via GitHub Actions, cloud architecture on AWS and Google Cloud Platform, and deep observability with OpenTelemetry and Prometheus.
               </p>
-              <p className="text-xs font-mono text-[#4A3428]/80 pt-1">
+              <p className="text-xs font-mono text-[#4A3428]/80 pt-1 break-words">
                 <strong className="text-[#241A15]">Key Capabilities:</strong> Docker Containerization, GCP Cloud Run, AWS ECS/S3, Zero-Downtime CI/CD, Prometheus & Grafana Telemetry.
               </p>
             </div>
 
             {/* Narrative Stage 3 */}
-            <div className="p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="px-2 py-0.5 rounded bg-[#241A15] text-[#B58A64] font-mono text-[10px] font-bold uppercase">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] space-y-3">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-2 py-0.5 rounded bg-[#241A15] text-[#B58A64] font-mono text-[10px] font-bold uppercase shrink-0">
                   Current Frontier
                 </span>
-                <h3 className="font-display font-bold text-lg text-[#241A15]">
+                <h3 className="font-display font-bold text-base sm:text-lg text-[#241A15] leading-snug">
                   3. Applied Agentic AI & Forward Deployed Engineering
                 </h3>
               </div>
               <p className="text-sm text-[#4A3428] leading-relaxed text-pretty">
                 When generative AI emerged, much of the market rushed to build fragile single-prompt wrappers and no-code toy demos that fall apart under production traffic. Recognizing that real enterprise AI demands structural rigor, I specialized in <strong>Agentic System Design</strong>, <strong>Applied AI Engineering</strong>, and <strong>Forward Deployed Engineering</strong> on Educative.io, mentored and trained directly by <strong>FAANG engineers</strong>.
               </p>
-              <p className="text-xs font-mono text-[#4A3428]/80 pt-1">
+              <p className="text-xs font-mono text-[#4A3428]/80 pt-1 break-words">
                 <strong className="text-[#241A15]">Key Capabilities:</strong> LangGraph Multi-Agent Workflows, Tool Calling (Model Context Protocol), Hybrid RAG with pgvector, Automated Evaluation Benchmarks.
               </p>
             </div>
 
             {/* Core Pedigree Box */}
-            <div className="p-6 rounded-2xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-lg space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-[#4A3428]">
+            <div className="p-4 sm:p-6 rounded-2xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-lg space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#4A3428]">
                 <div className="flex items-center gap-2">
-                  <Award className="size-4 text-[#B58A64]" />
+                  <Award className="size-4 text-[#B58A64] shrink-0" />
                   <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider">
                     ENGINEERING PEDIGREE & CREDENTIALS
                   </span>
@@ -229,20 +229,20 @@ export default function AboutPage() {
                 </a>
               </div>
               <ul className="space-y-2.5 text-xs font-mono text-[#D8C5AF]">
-                <li className="flex items-center gap-2.5">
-                  <Check className="size-4 text-[#B58A64] shrink-0" />
+                <li className="flex items-start gap-2.5">
+                  <Check className="size-4 text-[#B58A64] shrink-0 mt-0.5" />
                   <span><strong className="text-[#F5F0E8]">DeepLearning.AI:</strong> Agentic AI (Mentored by Andrew Ng)</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="size-4 text-[#B58A64] shrink-0" />
+                <li className="flex items-start gap-2.5">
+                  <Check className="size-4 text-[#B58A64] shrink-0 mt-0.5" />
                   <span><strong className="text-[#F5F0E8]">Meta (Coursera):</strong> Back-End Developer Specialization (9-Course System Architecture)</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="size-4 text-[#B58A64] shrink-0" />
+                <li className="flex items-start gap-2.5">
+                  <Check className="size-4 text-[#B58A64] shrink-0 mt-0.5" />
                   <span><strong className="text-[#F5F0E8]">Udacity • AWS:</strong> AWS AI Practitioner Challenge</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="size-4 text-[#B58A64] shrink-0" />
+                <li className="flex items-start gap-2.5">
+                  <Check className="size-4 text-[#B58A64] shrink-0 mt-0.5" />
                   <span><strong className="text-[#F5F0E8]">Educative (FAANG Mentored):</strong> Agentic System Design, Applied AI, AI Workflows & Forward Deployed Engineering</span>
                 </li>
               </ul>
@@ -254,8 +254,8 @@ export default function AboutPage() {
           </div>
 
           {/* Quick Facts Sidebar */}
-          <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            <div className="p-6 rounded-3xl bg-[#F5F0E8] border border-[#D8C5AF] shadow-sm">
+          <div className="lg:col-span-4 space-y-5 sm:space-y-6 lg:sticky lg:top-24">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#F5F0E8] border border-[#D8C5AF] shadow-sm">
               <span className="font-mono text-xs text-[#241A15] font-bold uppercase tracking-wider block mb-4">
                 CORE TECHNICAL PILLARS
               </span>
@@ -279,16 +279,16 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-md">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-md">
               <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block mb-2">
                 VERIFIED CONTACT CHANNELS
               </span>
               <div className="space-y-3 pt-2">
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#B58A64] transition-colors py-1.5 border-b border-[#4A3428]"
+                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#B58A64] transition-colors py-2 border-b border-[#4A3428] min-w-0"
                 >
-                  <span className="flex items-center gap-2 truncate mr-2">
+                  <span className="flex items-center gap-2 min-w-0 mr-2">
                     <Mail className="size-4 text-[#B58A64] shrink-0" />
                     <span className="truncate">{siteConfig.contact.email}</span>
                   </span>
@@ -299,10 +299,10 @@ export default function AboutPage() {
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#25D366] transition-colors py-1.5 border-b border-[#4A3428]"
+                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#25D366] transition-colors py-2 border-b border-[#4A3428]"
                 >
                   <span className="flex items-center gap-2">
-                    <WhatsAppIcon className="size-4 fill-[#25D366]" />
+                    <WhatsAppIcon className="size-4 fill-[#25D366] shrink-0" />
                     <span>WhatsApp</span>
                   </span>
                   <span className="text-[#25D366] font-bold">Chat &rarr;</span>
@@ -312,23 +312,23 @@ export default function AboutPage() {
                   href={siteConfig.social.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] transition-colors py-1.5 border-b border-[#4A3428]"
+                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] transition-colors py-2 border-b border-[#4A3428] min-w-0"
                 >
-                  <span className="flex items-center gap-2">
-                    <LinkedInIcon className="size-4 fill-[#0A66C2]" />
+                  <span className="flex items-center gap-2 min-w-0 mr-2">
+                    <LinkedInIcon className="size-4 fill-[#0A66C2] shrink-0" />
                     <span>LinkedIn</span>
                   </span>
-                  <span className="text-[#F5F0E8] font-bold">/{siteConfig.social.linkedin.username}</span>
+                  <span className="text-[#F5F0E8] font-bold truncate">/{siteConfig.social.linkedin.username}</span>
                 </a>
 
                 <a
                   href={siteConfig.social.github.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] transition-colors py-1.5"
+                  className="flex items-center justify-between text-xs font-mono text-[#D8C5AF] hover:text-[#F5F0E8] transition-colors py-2 min-w-0"
                 >
                   <span>GitHub</span>
-                  <span className="text-[#F5F0E8] font-bold">/{siteConfig.social.github.username}</span>
+                  <span className="text-[#F5F0E8] font-bold truncate">/{siteConfig.social.github.username}</span>
                 </a>
               </div>
             </div>
@@ -336,7 +336,7 @@ export default function AboutPage() {
         </div>
 
         {/* Interactive System Diagram Feature */}
-        <section className="mb-20">
+        <section className="mb-14 sm:mb-20">
           <div className="mb-6">
             <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-1">
               SYSTEM DESIGN BLUEPRINT
@@ -348,23 +348,23 @@ export default function AboutPage() {
               Click any node below to inspect protocols, failure handling, and payload contracts across a production client system.
             </p>
           </div>
-          <div className="rounded-3xl bg-[#FAF7F2] p-4 sm:p-6 border border-[#D8C5AF]">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#FAF7F2] p-3 sm:p-6 border border-[#D8C5AF]">
             <SystemDiagram />
           </div>
         </section>
 
         {/* Technical Proficiency Matrix */}
-        <section className="mb-20">
+        <section className="mb-14 sm:mb-20">
           <TechnicalCapabilities />
         </section>
 
         {/* Verified Professional Certifications */}
-        <div id="certifications" className="mb-20 scroll-mt-24">
+        <div id="certifications" className="mb-14 sm:mb-20 scroll-mt-24">
           <CertificationsSection />
         </div>
 
         {/* Ways to Work Together CTA */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-2xl">
+        <section className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl">
               <h2 className="font-display font-bold text-2xl sm:text-3xl text-balance">
@@ -375,12 +375,12 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full sm:w-auto">
               <a
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider shadow-md active:scale-95 transition-all cursor-pointer min-h-[44px]"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider shadow-md active:scale-95 transition-all cursor-pointer min-h-[44px] w-full sm:w-auto"
               >
                 <WhatsAppIcon className="size-4 fill-current shrink-0" />
                 <span>Chat on WhatsApp</span>
@@ -389,7 +389,7 @@ export default function AboutPage() {
 
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer min-h-[44px]"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer min-h-[44px] w-full sm:w-auto"
               >
                 <Mail className="size-4 text-[#B58A64] shrink-0" />
                 <span>Email Direct</span>

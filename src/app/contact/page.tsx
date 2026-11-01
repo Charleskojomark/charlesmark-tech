@@ -66,16 +66,16 @@ export default function ContactPage() {
               DIRECT CLIENT ACCESS
             </span>
           </div>
-          <h1 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#241A15] tracking-tight mb-4">
+          <h1 className="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#241A15] tracking-tight mb-4 text-balance break-words">
             LET&apos;S TALK ON WHATSAPP.
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#4A3428] max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-[#4A3428] max-w-2xl leading-relaxed text-pretty">
             Skip the forms and sales delays. You will speak directly with Charles Mark, AI Systems Engineer. Tap below to start a chat or choose a topic to prefill your inquiry.
           </p>
         </div>
 
         {/* Primary Hero WhatsApp Action Card */}
-        <div className="bg-[#241A15] rounded-3xl p-6 sm:p-10 md:p-12 text-[#F5F0E8] border border-[#4A3428] shadow-2xl mb-12 relative overflow-hidden">
+        <div className="bg-[#241A15] rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 text-[#F5F0E8] border border-[#4A3428] shadow-2xl mb-12 relative overflow-hidden">
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{
@@ -87,7 +87,7 @@ export default function ContactPage() {
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div className="space-y-4 max-w-xl">
               <div className="flex items-center gap-3">
-                <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#1C1410] flex-shrink-0">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#1C1410] flex-shrink-0">
                   <Image
                     src="/charles-mark.png"
                     alt="Charles Mark"
@@ -97,21 +97,21 @@ export default function ContactPage() {
                     priority
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="font-mono text-xs text-[#B58A64] font-bold uppercase tracking-wider block">
                     FOUNDER &amp; LEAD ENGINEER
                   </span>
-                  <h2 className="font-display font-bold text-xl sm:text-2xl text-[#F5F0E8]">
+                  <h2 className="font-display font-bold text-lg sm:text-2xl text-[#F5F0E8] truncate">
                     Charles Mark
                   </h2>
                 </div>
               </div>
 
-              <p className="text-sm sm:text-base text-[#D8C5AF] leading-relaxed">
+              <p className="text-xs sm:text-base text-[#D8C5AF] leading-relaxed text-pretty">
                 Whether you want to automate a repetitive back-office bottleneck, build an AI document assistant, or engineer a reliable backend API, you get direct engineering insight from day one.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#D8C5AF]/90 pt-1">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-mono text-[#D8C5AF]/90 pt-1">
                 <span className="inline-flex items-center gap-1.5 text-emerald-400">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Fast reply</span>
@@ -125,23 +125,23 @@ export default function ContactPage() {
             </div>
 
             {/* Action Buttons: WhatsApp & Cal.com */}
-            <div className="flex flex-col items-stretch md:items-end flex-shrink-0 gap-3">
+            <div className="flex flex-col items-stretch md:items-end flex-shrink-0 gap-3 w-full sm:w-auto">
               <a
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-base shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-200 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-extrabold text-sm sm:text-base shadow-xl hover:shadow-2xl active:scale-[0.98] transition-all duration-200 group min-h-[48px]"
               >
-                <WhatsAppIcon className="w-6 h-6 fill-current flex-shrink-0" />
+                <WhatsAppIcon className="w-5 h-5 sm:w-6 sm:h-6 fill-current flex-shrink-0" />
                 <span>Chat on WhatsApp</span>
-                <ArrowUpRight className="w-5 h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
 
               <a
                 href={siteConfig.booking.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-mono text-xs font-bold border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3 rounded-xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-mono text-xs font-bold border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group min-h-[44px]"
               >
                 <span>📅 Schedule 30-min on Cal.com</span>
                 <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

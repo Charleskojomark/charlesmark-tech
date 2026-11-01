@@ -77,7 +77,7 @@ export function SystemDiagram() {
   const [activeNode, setActiveNode] = useState<NodeItem>(NODES[1]); // default to API Gateway
 
   return (
-    <div className="w-full rounded-2xl bg-[#241A15] border border-[#4A3428] text-[#F5F0E8] p-5 sm:p-7 shadow-xl overflow-hidden relative">
+    <div className="w-full rounded-2xl bg-[#241A15] border border-[#4A3428] text-[#F5F0E8] p-3.5 sm:p-7 shadow-xl overflow-hidden relative">
       {/* Blueprint Grid Background Pattern */}
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
@@ -274,15 +274,15 @@ export function SystemDiagram() {
       </div>
 
       {/* Selected Node Spec Inspector */}
-      <div className="mt-4 pt-4 border-t border-[#4A3428] bg-[#1C1410] rounded-xl p-4 relative z-10">
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-[#B58A64]" />
-            <span className="font-display font-semibold text-sm text-[#F5F0E8]">
+      <div className="mt-4 pt-4 border-t border-[#4A3428] bg-[#1C1410] rounded-xl p-3.5 sm:p-4 relative z-10">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <Zap className="w-4 h-4 text-[#B58A64] shrink-0" />
+            <span className="font-display font-semibold text-sm text-[#F5F0E8] truncate">
               {activeNode.title}
             </span>
           </div>
-          <span className="font-mono text-[10px] text-[#B58A64] border border-[#B58A64]/30 px-2 py-0.5 rounded">
+          <span className="font-mono text-[10px] text-[#B58A64] border border-[#B58A64]/30 px-2 py-0.5 rounded shrink-0">
             {activeNode.tag}
           </span>
         </div>

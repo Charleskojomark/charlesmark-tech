@@ -35,7 +35,7 @@ export function ContactCTA() {
         <Card3D
           maxTilt={6}
           glowColor="rgba(181, 138, 100, 0.18)"
-          className="bg-[#241A15] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#4A3428] shadow-2xl relative overflow-hidden text-[#F5F0E8]"
+          className="bg-[#241A15] rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-14 border border-[#4A3428] shadow-2xl relative overflow-hidden text-[#F5F0E8]"
         >
           {/* Subtle warm glow background */}
           <div
@@ -46,11 +46,11 @@ export function ContactCTA() {
             }}
           />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             {/* Left Column: Direct Invitation */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
               <Card3DItem translateZ={28} className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#241A15] flex-shrink-0">
+                <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-[#B58A64] shadow-md bg-[#241A15] flex-shrink-0">
                   <Image
                     src="/charles-mark.png"
                     alt="Charles Mark"
@@ -59,23 +59,23 @@ export function ContactCTA() {
                     className="object-cover object-top"
                   />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="font-mono text-xs font-bold text-[#B58A64] uppercase tracking-wider block">
                     DIRECT TECHNICAL CONSULTATION
                   </span>
-                  <span className="font-display font-bold text-lg text-[#F5F0E8] block">
+                  <span className="font-display font-bold text-base sm:text-lg text-[#F5F0E8] block truncate">
                     Talk Directly With Charles Mark
                   </span>
                 </div>
               </Card3DItem>
 
               <Card3DItem translateZ={20}>
-                <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#F5F0E8]">
+                <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[#F5F0E8] text-balance break-words">
                   LET&apos;S ARCHITECT YOUR PRODUCTION SYSTEM.
                 </h2>
               </Card3DItem>
 
-              <p className="text-sm sm:text-base text-[#D8C5AF] leading-relaxed">
+              <p className="text-xs sm:text-base text-[#D8C5AF] leading-relaxed text-pretty">
                 No long forms, no sales middlemen, and no waiting days for a ticket reply. Click below to start a direct technical conversation about your backend architecture, cloud DevOps, or agentic AI deployment.
               </p>
 
@@ -85,9 +85,9 @@ export function ContactCTA() {
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-sm sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer whitespace-nowrap min-h-[50px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 sm:px-7 py-3.5 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl active:scale-[0.98] group cursor-pointer whitespace-nowrap min-h-[48px]"
                 >
-                  <WhatsAppIcon className="w-5 h-5 fill-current flex-shrink-0" />
+                  <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-current flex-shrink-0" />
                   <span>Chat on WhatsApp</span>
                   <ArrowUpRight className="w-4 h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
                 </a>
@@ -96,9 +96,9 @@ export function ContactCTA() {
                   href={siteConfig.booking.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-display font-bold text-sm sm:text-base border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group cursor-pointer whitespace-nowrap min-h-[50px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-5 sm:px-7 py-3.5 rounded-xl sm:rounded-2xl bg-[#FAF7F2] hover:bg-[#F5F0E8] text-[#241A15] font-display font-bold text-xs sm:text-base border border-[#D8C5AF] shadow-md active:scale-[0.98] transition-all duration-200 group cursor-pointer whitespace-nowrap min-h-[48px]"
                 >
-                  <Calendar className="w-5 h-5 text-[#B58A64] flex-shrink-0" />
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#B58A64] flex-shrink-0" />
                   <span>Book on Cal.com</span>
                   <ArrowUpRight className="w-4 h-4 text-[#4A3428] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
                 </a>

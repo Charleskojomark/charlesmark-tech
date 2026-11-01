@@ -66,13 +66,13 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="py-12 md:py-20">
+    <div className="py-8 sm:py-12 md:py-20 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back link */}
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#4A3428] hover:text-[#241A15]"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#4A3428] hover:text-[#241A15] py-1 min-h-[36px]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Home</span>
@@ -80,20 +80,20 @@ export default function ServicesPage() {
         </div>
 
         {/* Page Header */}
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <span className="font-mono text-xs text-[#B58A64] uppercase tracking-widest font-semibold block mb-2">
             PRODUCTION ENGINEERING SERVICES
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight mb-4 text-balance break-words">
             AGENTIC AI, CLOUD DEVOPS & BACKEND ARCHITECTURE
           </h1>
-          <p className="text-base text-[#4A3428] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#4A3428] leading-relaxed text-pretty">
             I help companies architect and deploy durable systems where cutting-edge agentic AI meets production-grade cloud infrastructure and resilient backend services. Here are the three core areas where I deliver dependable engineering results.
           </p>
         </div>
 
         {/* Services List */}
-        <div className="space-y-16 mb-20">
+        <div className="space-y-12 sm:space-y-16 mb-16 sm:mb-20">
           {services.map((service, index) => {
             const Icon = ICON_MAP[service.icon as keyof typeof ICON_MAP] || Cpu;
 
@@ -101,18 +101,18 @@ export default function ServicesPage() {
               <section
                 key={service.id}
                 id={service.id}
-                className="bg-[#FAF7F2] rounded-3xl p-8 sm:p-12 border border-[#D8C5AF] scroll-mt-24 shadow-sm"
+                className="bg-[#FAF7F2] rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 border border-[#D8C5AF] scroll-mt-24 shadow-sm"
               >
                 <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-[#D8C5AF]" />
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#241A15] text-[#F5F0E8] flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#D8C5AF]" />
                     </div>
-                    <div>
-                      <span className="font-mono text-xs text-[#B58A64] uppercase font-bold tracking-wider">
+                    <div className="min-w-0">
+                      <span className="font-mono text-xs text-[#B58A64] uppercase font-bold tracking-wider block">
                         SERVICE 0{index + 1}
                       </span>
-                      <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#241A15]">
+                      <h2 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-[#241A15] truncate">
                         {service.name}
                       </h2>
                     </div>
@@ -120,7 +120,7 @@ export default function ServicesPage() {
 
                   <Link
                     href={`/contact?service=${service.id}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl sm:rounded-full bg-[#241A15] hover:bg-[#4A3428] text-[#F5F0E8] font-mono text-xs uppercase tracking-wider font-semibold transition-colors shadow-sm min-h-[44px]"
                   >
                     <span>{service.ctaText}</span>
                     <ArrowUpRight className="w-4 h-4 text-[#D8C5AF]" />
@@ -221,21 +221,21 @@ export default function ServicesPage() {
         </div>
 
         {/* High-Converting Services Page Footer CTA */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-[#241A15] text-[#F5F0E8] border border-[#4A3428] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 max-w-xl">
-            <h3 className="font-display font-bold text-2xl">
+            <h3 className="font-display font-bold text-xl sm:text-2xl text-balance">
               Need technical scoping on your architecture?
             </h3>
-            <p className="text-xs sm:text-sm text-[#D8C5AF]">
+            <p className="text-xs sm:text-sm text-[#D8C5AF] text-pretty">
               Book a free 20-minute architecture review. We will map out your current system bottlenecks, evaluate agentic vs deterministic patterns, and establish an honest technical roadmap.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0 w-full sm:w-auto">
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 min-h-[44px] w-full sm:w-auto"
             >
               <WhatsAppIcon className="w-4 h-4 fill-current" />
               <span>Chat on WhatsApp</span>

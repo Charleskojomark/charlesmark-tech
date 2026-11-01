@@ -227,11 +227,11 @@ export function TrustStrip() {
             >
               {/* Modal Header: Sticky at top */}
               <div className="flex items-start justify-between gap-3 px-4 py-3.5 sm:px-5 sm:py-4 bg-[#1C1410] border-b border-[#4A3428]/80 flex-shrink-0">
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2.5 min-w-0 flex-1">
                   <div className="w-9 h-9 rounded-xl bg-[#B58A64] text-[#150F0B] flex items-center justify-center flex-shrink-0 shadow-md">
                     <activeItem.icon className="w-4 h-4" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-[11px] font-bold text-[#B58A64] uppercase tracking-wider">
                         {activeItem.label} SPECIFICATION

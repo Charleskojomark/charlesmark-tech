@@ -67,17 +67,17 @@ export function Hero() {
             </p>
 
             {/* High-Converting Action Buttons: Book a Call (Cal.com) + Chat on WhatsApp */}
-            <div className="pt-1 sm:pt-2 grid grid-cols-2 sm:flex sm:items-center gap-2.5 sm:gap-4">
+            <div className="pt-2 sm:pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
               {/* Primary: Book a Call on Cal.com */}
               <a
                 href={siteConfig.booking.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#B58A64] hover:bg-[#C99C74] text-[#150F0B] font-display font-bold text-xs sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#B58A64] hover:bg-[#C99C74] text-[#150F0B] font-display font-bold text-sm sm:text-base transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap min-h-[48px]"
               >
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#150F0B]" />
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-[#150F0B] flex-shrink-0" />
                 <span>Book a Call</span>
-                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#150F0B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#150F0B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
               </a>
 
               {/* Secondary: Chat on WhatsApp */}
@@ -85,11 +85,11 @@ export function Hero() {
                 href={siteConfig.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-7 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-xs sm:text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-white font-display font-bold text-sm sm:text-base transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer whitespace-nowrap min-h-[48px]"
               >
-                <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
-                <span>WhatsApp</span>
-                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5 fill-current flex-shrink-0" />
+                <span>Chat on WhatsApp</span>
+                <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform flex-shrink-0" />
               </a>
             </div>
           </div>

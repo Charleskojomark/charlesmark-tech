@@ -134,10 +134,10 @@ export function ReviewsSection() {
                 VERIFIED COLLABORATOR & CLIENT REVIEWS
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight text-balance break-words">
               PROVEN IN PRODUCTION.
             </h2>
-            <p className="text-sm sm:text-base text-[#4A3428] font-sans mt-2 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-base text-[#4A3428] font-sans mt-2 max-w-xl leading-relaxed text-pretty">
               Direct feedback from CTOs, product designers, and innovation leaders on engineering
               rigor, clean architectures, and shipping on schedule.
             </p>
@@ -195,7 +195,7 @@ export function ReviewsSection() {
           {marqueeCards.map((review, idx) => (
             <div
               key={`${review.id}-${idx}`}
-              className="group relative flex flex-col justify-between w-[300px] sm:w-[460px] md:w-[500px] flex-shrink-0 p-6 sm:p-7 rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
+              className="group relative flex flex-col justify-between w-[285px] sm:w-[460px] md:w-[500px] flex-shrink-0 p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#1C1410] text-[#F5F0E8] border border-[#B58A64]/40 hover:border-[#B58A64] shadow-xl hover:shadow-[0_12px_40px_rgba(181,138,100,0.15)] transition-all duration-300"
             >
               {/* Decorative Quote Icon */}
               <Quote className="absolute right-6 top-6 w-12 h-12 text-[#B58A64]/10 -rotate-12 pointer-events-none" />

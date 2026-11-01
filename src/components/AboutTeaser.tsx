@@ -7,7 +7,7 @@ export function AboutTeaser() {
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-[#FAF7F2] border-t border-[#D8C5AF]/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-[#F5F0E8] border border-[#D8C5AF] p-6 sm:p-10 lg:p-12 shadow-sm">
+        <div className="rounded-2xl sm:rounded-3xl bg-[#F5F0E8] border border-[#D8C5AF] p-4 sm:p-10 lg:p-12 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-5">
@@ -18,7 +18,7 @@ export function AboutTeaser() {
                 </span>
               </div>
 
-              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#241A15] tracking-tight">
+              <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-[#241A15] tracking-tight text-balance break-words">
                 FROM BACKEND ARCHITECTURE TO PRODUCTION AGENTIC AI
               </h2>
 

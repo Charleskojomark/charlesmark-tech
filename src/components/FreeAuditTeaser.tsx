@@ -18,21 +18,21 @@ export function FreeAuditTeaser() {
           <span>FREE VALUE OFFER • ZERO OBLIGATION</span>
         </div>
 
-        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F5F0E8] tracking-tight">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F5F0E8] tracking-tight text-balance break-words">
           FREE 15-MINUTE ASYNC AI & AUTOMATION AUDIT
         </h2>
 
-        <p className="text-xs sm:text-sm text-[#D8C5AF] mt-2.5 max-w-xl mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#D8C5AF] mt-2.5 max-w-xl mx-auto leading-relaxed text-pretty">
           Send me your manual bottleneck. Within 48 hours, I will record a private video or 1-page architecture teardown mapping the exact tools and cost breakdown to solve it.
         </p>
 
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/audit"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#B58A64] hover:bg-[#9c7450] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-lg active:scale-95 cursor-pointer whitespace-nowrap min-h-[46px]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl bg-[#B58A64] hover:bg-[#9c7450] text-[#150F0B] font-display font-bold text-xs uppercase tracking-wider transition-all shadow-lg active:scale-95 cursor-pointer min-h-[46px] text-center"
           >
-            <span>View Full Audit Breakdown & Claim</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>View Free Audit Teardown & Claim</span>
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </Link>
         </div>
       </div>

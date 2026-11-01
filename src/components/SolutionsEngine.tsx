@@ -104,10 +104,10 @@ export function SolutionsEngine() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-12">
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#241A15] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold text-[#241A15] tracking-tight text-balance break-words">
             HOW I SOLVE BOTTLENECKS & IMPROVE YOUR BUSINESS
           </h2>
-          <p className="text-sm sm:text-base text-[#4A3428] mt-2 sm:mt-3 leading-relaxed">
+          <p className="text-xs sm:text-base text-[#4A3428] mt-2 sm:mt-3 leading-relaxed text-pretty">
             Every engagement is engineered around your business&apos;s bottom line. Select any operational challenge below to see the exact technical architecture I build and the measurable business ROI delivered.
           </p>
         </div>
@@ -120,7 +120,7 @@ export function SolutionsEngine() {
             return (
               <div
                 key={item.id}
-                className="group flex flex-col justify-between p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="group flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F5F0E8] border border-[#D8C5AF] hover:border-[#B58A64] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
